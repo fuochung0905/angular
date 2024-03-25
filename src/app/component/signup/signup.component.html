@@ -1,0 +1,45 @@
+
+<div style="display: flex; justify-content: center">
+    <div class="containersignin">
+        <div class="form-wrap">
+            <div class="">
+                <form (ngSubmit)="onSubmit()">
+                    <h2 class="title-form">Đăng ký</h2>
+                    <div class="body-form">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name="firstName"  [(ngModel)]="formData.firstName"   aria-required="true"  />
+                            <label >Họ </label>
+                            <span  class="text-danger"></span>
+                        </div>
+                        <div class="body-form">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name="lastName" type="text" [(ngModel)]="formData.lastName"  aria-required="true"   />
+                            <label >Tên</label>
+                            <span  class="text-danger"></span>
+                        </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input  class="form-control" name="email" type="text"  autocomplete="username" aria-required="true" [(ngModel)]="formData.email" placeholder="name@example.com" />
+                            <label >Email</label>
+                            <span  class="text-danger"></span>
+                        </div> 
+                       
+                        <div class="form-floating mb-3">
+                            <input  class="form-control" name="password" type="password"  autocomplete="new-password" aria-required="true" [(ngModel)]="formData.password" placeholder="password" />
+                            <label >Password</label>
+                            <span  class="text-danger"></span>
+                        </div>
+                    
+                        <div class="form-floating mb-3">
+                            <input  class="form-control" name="phoneNumber" type="text" autocomplete="phonenumber"   aria-required="true" [(ngModel)]="formData.phoneNumber" placeholder="XXXXXX" />
+                            <label >Phonenumber</label>
+                            <span  class="text-danger"></span>
+                        </div>
+                        <button  type="button" class="w-100 btn btn-lg btn-primary btsubmit" (click)="onSubmit()">Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

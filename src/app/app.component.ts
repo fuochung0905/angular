@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserStorageService } from './storage/user-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Frontend';
+  isAdminLoggedIn:boolean=UserStorageService.isAdminLogggedIn();
+  isUserLoggedIn:boolean=UserStorageService.isUserLogggedIn();
+  token:string=UserStorageService.getToken();
+  userId:string=UserStorageService.getUserId();
+  user:any=UserStorageService.getUser();
+  userRole:string=UserStorageService.getUserRole();
+  constructor(private router:Router){
+
+  }
+  ngOninit(){
+    this.router.events.subscribe(event=>{
+      this.isAdminLoggedIn=UserStorageService.isAdminLogggedIn();
+      this.isUserLoggedIn=UserStorageService.isUserLogggedIn();
+    })
+  }
+  logout(){
+    UserStorageService.signOut();
+    this.router.navigateByUrl('login');
+  }
+  
 }

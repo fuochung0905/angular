@@ -1,0 +1,45 @@
+<p>postproduct works!</p>
+<form (ngSubmit)="addProduct()" >
+    <div>
+        <label>SELECT CATEGORY</label>
+        <select [(ngModel)]="productDto.categoryId" name="categoryId">
+        <option *ngFor="let category of listOfCategories" [value]="category.id">
+        {{category.name}}
+        </option>
+        </select>
+    </div>
+    <div>
+        <label>Select a File</label>
+        <input type="file" id="fileInput"  (change)="onFileSelected($event)"  >
+        
+    </div>
+    <div *ngIf="selectedFile" >
+        <div>
+          <img [src]="imagePreView" alt="Selected Image">
+        </div>
+    
+    </div>
+    <div>
+        <label>Tên sản phẩm</label>
+        <input type="text" [(ngModel)]="productDto.productName" name="productName" placeholder="Tên sản phẩm">
+    </div>
+    <div>
+        <label>Mô tả</label>
+        <input type="text" [(ngModel)]="productDto.description" name="description" placeholder="Mô tả">
+    </div>
+    <div>
+        <label>Giá nhập</label>
+        <input type="text" [(ngModel)]="productDto.importPrice" name="importPrice" placeholder="Mô tả">
+    </div>
+    <div>
+        <label>Giá bán</label>
+        <input type="text" [(ngModel)]="productDto.exportPrice" name="exportPrice" placeholder="Mô tả">
+    </div>
+    <div>
+        <label>Số lượng</label>
+        <input type="text" [(ngModel)]="productDto.quantity" name="quantity" placeholder="Mô tả">
+    </div>
+    <div>
+        <button type="submit">THÊM</button>
+    </div>
+</form>
