@@ -10,16 +10,14 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { GetAllproductComponent } from './component/get-allproduct/get-allproduct.component';
-import { DetailproductComponent } from './component/detailproduct/detailproduct.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    GetAllproductComponent,
-    DetailproductComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -30,7 +28,8 @@ import { DetailproductComponent } from './component/detailproduct/detailproduct.
     FormsModule,
     HttpClientModule  ,
     AdminModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    UserModule
   
 
    

@@ -1,0 +1,110 @@
+.list-product {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 46px;
+    justify-content: flex-start;
+}
+.list-product .item-product {
+    position: relative;
+    width: calc(25% - 35px);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.list-product .item-product:hover .img-box {
+    transform: translateY(-5px);
+}
+.list-product .item-product:hover .img-box {
+    transform: translateY(-5px);
+}
+.list-product .item-product:hover .card-title {
+    color: #288ad6
+}
+.list-product .item-product .img-box {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    transition: all 300ms ease-in-out;
+}
+
+     .list-product .item-product .img-box img {
+        width: 100%;
+        height: 100%;
+    }
+
+.list-product .item-product .card-body .card-title {
+    font-size: 16px;
+    line-height: 1;
+    margin: 0;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.list-product .item-product .card-body .card-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 500;
+    padding-bottom: 45px;
+}
+
+     .list-product .item-product .card-body .card-detail .card-text {
+        color: #f94331;
+        font-size: 18px;
+    }
+
+.list-product .item-product .card-body .card-detail .card-rate {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        color: #fb6e2e;
+        font-size: 16px;
+    }
+
+      .list-product .item-product .card-body .card-detail .card-rate i {
+            font-size: 12px;
+        }
+
+.list-product .item-product .card-body .box-button {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 15px;
+}
+
+  .list-product .item-product .card-body .box-button .wrap-btn:hover {
+        color: #fff;
+    }
+
+
+
+  .list-product .item-product .card-body .box-button .detail {
+        color: #288ad6;
+        border-color: #288ad6;
+    }
+
+     .list-product .item-product .card-body .box-button .detail:hover::after {
+            background: #288ad6;
+            border-color: #288ad6;
+        }
+
+   .list-product .item-product .card-body .box-button .add {
+        color: #e74c3c;
+        border-color: #e74c3c;
+    }
+
+       .list-product .item-product .card-body .box-button .add:hover::after {
+            background: #e74c3c;
+            border-color: #e74c3c;
+        }
