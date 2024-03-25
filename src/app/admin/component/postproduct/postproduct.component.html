@@ -1,8 +1,8 @@
 <p>postproduct works!</p>
-<form (ngSubmit)="addProduct()" >
+<form (ngSubmit)="addProduct()" [formGroup]="productForm">
     <div>
         <label>SELECT CATEGORY</label>
-        <select [(ngModel)]="productDto.categoryId" name="categoryId">
+        <select formControlName="categoryId" name="categoryId">
         <option *ngFor="let category of listOfCategories" [value]="category.id">
         {{category.name}}
         </option>
@@ -21,23 +21,23 @@
     </div>
     <div>
         <label>Tên sản phẩm</label>
-        <input type="text" [(ngModel)]="productDto.productName" name="productName" placeholder="Tên sản phẩm">
+        <input type="text" formControlName="productName" name="productName" placeholder="Tên sản phẩm">
     </div>
     <div>
         <label>Mô tả</label>
-        <input type="text" [(ngModel)]="productDto.description" name="description" placeholder="Mô tả">
+        <input type="text" formControlName="description" name="description" placeholder="Mô tả">
     </div>
     <div>
         <label>Giá nhập</label>
-        <input type="text" [(ngModel)]="productDto.importPrice" name="importPrice" placeholder="Mô tả">
+        <input type="text" formControlName="importPrice" name="importPrice" placeholder="Mô tả">
     </div>
     <div>
         <label>Giá bán</label>
-        <input type="text" [(ngModel)]="productDto.exportPrice" name="exportPrice" placeholder="Mô tả">
+        <input type="text" formControlName="exportPrice" name="exportPrice" placeholder="Mô tả">
     </div>
     <div>
         <label>Số lượng</label>
-        <input type="text" [(ngModel)]="productDto.quantity" name="quantity" placeholder="Mô tả">
+        <input type="text" formControlName="quantity" name="quantity" placeholder="Mô tả">
     </div>
     <div>
         <button type="submit">THÊM</button>
