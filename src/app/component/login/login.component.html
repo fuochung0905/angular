@@ -6,21 +6,25 @@
                 <div class="body-form">
                     <div class="form-input">
                         <label class="form-label">Email</label>
-                        <input class="form-control" formControlName="email"   type="email"  aria-required="true" placeholder="email" required />
-                        <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"  class="text-danger">Please enter a valid email </span>
+                        <input class="form-control" formControlName="email" type="email" aria-required="true"
+                            placeholder="email" required />
+                        <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                            class="text-danger">Please enter a valid email </span>
                     </div>
                     <div class="form-input">
-                        <label  class="form-label">Password</label>
-                        <input  class="form-control"  formControlName="password"  type="password"  aria-required="true" placeholder="password" required />
-                        <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"  class="text-danger">Please enter a valid password</span>
+                        <label class="form-label">Password</label>
+                        <input class="form-control" formControlName="password" type="password" aria-required="true"
+                            placeholder="password" required />
+                        <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                            class="text-danger">Please enter a valid password</span>
                     </div>
                     <div>
-                        <button  type="submit" class="btsubmit">Đăng nhập</button>
+                        <button type="submit" class="btsubmit">Đăng nhập</button>
                     </div>
                 </div>
                 <div class="foot-form">
-                    <a >Quên mật khẩu</a>
-                    <a routerLink="/signup" routerLinkActive="active">Đăng ký</a>
+                    <a href="#">Quên mật khẩu</a>
+                    <a href="#" routerLink="/signup" routerLinkActive="active">Đăng ký</a>
                 </div>
             </form>
         </div>
