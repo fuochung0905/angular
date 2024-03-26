@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-detailproduct',
@@ -6,5 +8,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./detailproduct.component.css']
 })
 export class DetailproductComponent {
+  product:any={
+
+  };
+   id :any = this.route.snapshot.params['id'];
+  constructor(private route: ActivatedRoute ,
+    private userService:UserService) {
+     }
+     ngOnInit(): void {
+     this.getProductDetails();
+    }
+  getProductDetails(): void {
+    this.userService.getProductsById(this.id)
+      .subscribe((product )=> {
+        product.processImage = 'data:image/jpeg;base64,' + product.byteImage;
+       this.product=product;
+       console.log(product);
+      },
+      (error)=>{
+        console.log('fail',error);
+      }
+      );
+  }
+    
 
 }

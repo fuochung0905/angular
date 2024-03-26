@@ -1,9 +1,21 @@
+
+<div class="main-product">
+    <div class="container-web">
+        <div class="head-product">
+            <div class="title-component-cate">Danh mục: </div>
+            <div class="list-component-cate">
+                
+                <li>
+                    <a >Loại sản phẩm</a>
+                </li>
+            </div>
+            <div class="state-component-cate"></div>   
+        </div>
 <div class="list-product" *ngFor="let product of products">
         <div class="item-product">
             <div class="img-box">
                 <img [src]="product.processImage" alt="product-image">
             </div>
-
             <div class="card-body">
                 <h5 class="card-title">product.productName</h5>
                 <div class="card-detail">
@@ -11,9 +23,11 @@
                     <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
                 </div>
                 <div class="box-button">
-                    <a class="wrap-btn detail" asp-action="Details" asp-route-id="@product.Id">Chi tiết</a>
+                    <button class="wrap-btn detail" routerLink="/product/{{product.id}}" >Chi tiết</button>
                     <button type="button"  class="wrap-btn add"><i class="bi bi-cart-plus"></i><span>Thêm</span></button>
                 </div>
             </div>
         </div>   
+</div>
+    </div>
 </div>
