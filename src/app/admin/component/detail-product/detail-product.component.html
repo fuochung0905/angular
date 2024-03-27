@@ -1,0 +1,30 @@
+<p>postproduct works!</p>
+<form (ngSubmit)="addProduct()" [formGroup]="myForm">
+ <div>
+<img [src]="product.processImage">
+ </div>
+    <div>
+        <label>Tên sản phẩm</label>
+        <input type="text" formControlName="productName" formControlName="productName" name="productName" value="{{product.productName}}">
+    </div>
+    <div>
+        <label>Mô tả</label>
+        <input type="text" formControlName="description" formControlName="description"  name="description" value="{{product.description}}">
+    </div>
+    <div>
+        <label>Giá nhập</label>
+        <input type="text" formControlName="importPrice" formControlName="importPrice"  name="importPrice" value="{{product.importPrice}}">
+    </div>
+    <div>
+        <label>Giá bán</label>
+        <input type="text" formControlName="exportPrice" formControlName="exportPrice"  name="exportPrice" value="{{product.exportPrice}}">
+    </div>
+    <div>
+        <label>Số lượng</label>
+        <input type="text" formControlName="quantity" formControlName="quantity"  name="quantity" value="{{product.quantity}}">
+    </div>
+    <div>
+        <button type="submit">THÊM</button>
+    </div>
+</form>
+

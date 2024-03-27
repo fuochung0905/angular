@@ -1,0 +1,29 @@
+<h2>Danh sách sản phẩm</h2>
+<div *ngIf="product && product.length > 0" class="product-container">
+    <ul class="product-item">
+      <li *ngFor="let product of product">
+        <h3>{{ product.productName }}</h3>
+        <p>Giá: {{ product.exportPrice | currency:'USD':'symbol':'1.2-2' }}</p>
+        <p>Mô tả: {{ product.description }}</p>
+       
+            <div>
+                <img class="images" [src]="product.processImage" alt="product-image">
+            </div>        
+        <p>Số lượng: {{ product.quantity }}</p>
+        <button routerLink="/product/{{product.id}}" routerLinkActive="active">Update</button>
+        <button (click)="deleteProduct(product.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="!product || product.length === 0">
+    <p>Không có sản phẩm nào được tìm thấy.</p>
+  </div>
+  <!-- Template HTML -->
+ 
+  
+  
+  
+
+
+
