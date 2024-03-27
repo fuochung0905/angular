@@ -9,6 +9,7 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostproductComponent } from './component/postproduct/postproduct.component';
 import { PutproductComponent } from './component/putproduct/putproduct.component';
+import { DetailProductComponent } from './component/detail-product/detail-product.component';
 
 
 
@@ -18,7 +19,8 @@ import { PutproductComponent } from './component/putproduct/putproduct.component
     DashboardComponent,
     PostcategoryComponent,
     PostproductComponent,
-    PutproductComponent
+    PutproductComponent,
+    DetailProductComponent
   ],
   imports: [
     CommonModule,

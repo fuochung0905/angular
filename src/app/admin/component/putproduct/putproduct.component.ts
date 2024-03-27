@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OnInit } from '@angular/core';
 
@@ -13,11 +13,12 @@ import { OnInit } from '@angular/core';
 export class PutproductComponent implements OnInit{
   product!: any[];
   productId!: number;
-  showZoomedImage: boolean = false;
+
+
   
   constructor(
     private router:ActivatedRoute,
-    private fb :FormBuilder,
+  
     private adminService: AdminService
   ) { }
 
@@ -27,13 +28,28 @@ export class PutproductComponent implements OnInit{
       this.product = products;
       this.processImages();
     });
-    
   }
 
   processImages(): void {
     this.product.forEach(products => {
       products.processImage = 'data:image/jpeg;base64,' + products.byteImage;
     });
+  }
+
+  
+
+  deleteProduct(productId: any): void {
+    this.adminService.deleteProductById(productId).subscribe(
+      () => {
+        console.log('Product deleted successfully');
+        this.product = this.product.filter(product => product.id !== productId);
+        // Thực hiện các hành động sau khi xóa sản phẩm thành công nếu cần
+      },
+      error => {
+        console.error('Error deleting product: ', error);
+        // Xử lý lỗi nếu có
+      }
+    );
   }
 
   /*getProductImage(): void {

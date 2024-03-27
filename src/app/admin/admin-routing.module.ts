@@ -5,10 +5,12 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { PostcategoryComponent } from './component/postcategory/postcategory.component';
 import { PostproductComponent } from './component/postproduct/postproduct.component';
 import { PutproductComponent } from './component/putproduct/putproduct.component';
+import { DetailProductComponent } from './component/detail-product/detail-product.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent },
 {path:'postproduct',component:PostproductComponent},
+{path:'product/:id',component:DetailProductComponent},
 {path:'dashboard',component:DashboardComponent},
 {path:'postcategory',component:PostcategoryComponent},
 {path:'putproduct',component:PutproductComponent}];

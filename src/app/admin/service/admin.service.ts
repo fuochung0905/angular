@@ -29,32 +29,38 @@ export class AdminService {
   };
   private createAuthorizationHeader():HttpHeaders{
     return new HttpHeaders().set('Authorization','Bearer '+UserStorageService.getToken());
-<<<<<<< HEAD
-  }
+  };
 
   getAllProduct():Observable<any>{
     const token = UserStorageService.getToken();
       return this.http.get(BASIC_URL+'/api/admin/product/', {
         headers:  this.createAuthorizationHeader()
       });
-  }
+  };
 
-  getProductById(Id: number): Observable<any> {
-    return this.http.get(BASIC_URL + '/api/admin/product/' + Id, {
+  getProductById(productId: any): Observable<any> {
+    return this.http.get(BASIC_URL + `/api/admin/product/${productId}`, {
       headers: this.createAuthorizationHeader()
     });
-  }
+  };
 
   getProductImageById(productId: number): Observable<string> {
     return this.http.get<string>(`${BASIC_URL}/${productId}/image`);
-  }
+  };
 
+  deleteProductById(productId: any): Observable<any> {
+    return this.http.delete(BASIC_URL + `/api/admin/product/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  };
+ 
+
+  
  /* getProductById(Id: number): Observable<Product[]> {
     const url = `${BASIC_URL+'/api/admin/product/'}/${Id}`;
     return this.http.get(BASIC_URL+'/api/admin/product/');
     
   }*/
-=======
+
   };
->>>>>>> 4fd3200c910149761f12cf8f34f86ce48ae34c22
-}
+

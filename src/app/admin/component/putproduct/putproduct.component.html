@@ -8,10 +8,10 @@
        
             <div>
                 <img class="images" [src]="product.processImage" alt="product-image">
-            </div>
-        
-        
+            </div>        
         <p>Số lượng: {{ product.quantity }}</p>
+        <button routerLink="/product/{{product.id}}" routerLinkActive="active">Update</button>
+        <button (click)="deleteProduct(product.id)">Delete</button>
       </li>
     </ul>
   </div>
