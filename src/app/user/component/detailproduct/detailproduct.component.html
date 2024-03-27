@@ -1,1 +1,104 @@
-<p>detailproduct works!</p>
+<div class="container-web">
+    <div class="detail-card-wrapper">
+        <div class="card">
+            <!--card trái-->
+            <div class="product-imgs">
+                <div class="img-display">
+                    <div class="img-showcase">
+                        <img [src]="product.processImage" alt="product-image">
+                    </div>
+                </div>
+            </div>
+            <!--card phải-->
+            <div class="product-content">
+                <h2 class="product-title">{{product.productName}}</h2>
+                <a href="#" class="product-link">visit shop</a>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.5(3700)</span>
+                </div>
+                <div class="product-price">
+                    <p class="last-price">Giá cũ: <span class="money">{{product.exportPrice}}</span></p>
+                    <p class="new-price">Giá hiện tại: <span class="money">{{product.importPrice}}</span></p>
+                </div>
+
+                <!-- <div class="product-detail">
+                    <form asp-area="" asp-controller="Home" asp-action="Details">
+                        <div class="box-detail">
+                            <p class="title">Kích thước: </p>
+                            <div class="item-detail">
+                                <div class="item-btn">
+                                    <input asp-for="size" id="@item.variation.value" type="radio" class="variation-size" name="size" value="@item.variation.value">
+                                    <label for="@item.variation.value"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-detail">
+                            <p class="title">Màu sắc: </p>
+                            <div class="item-detail">
+                                <div class="item-btn">
+                                    <input asp-for="color" id="@item.variation.value" type="radio" class="variation-color" name="color" value="@item.variation.value">
+                                    <label for="@item.variation.value">@item.variation.value</label>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="box-detail amount">
+                            <input asp-for="quantity" type="number" min="0" max="@Model.product.qty_inStock" value="1">
+                            <h6>{{product.qty_stock}}</h6>
+                        </div>
+                        <div class="get-product">
+                            <button type="button" class="wrap-btn add">
+                                <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
+                            </button>
+                            <button type="submit" class="wrap-btn buy">
+                                <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
+                            </button>
+                        </div>
+                        
+                    <!-- </form> -->
+                <!-- </div> -->
+
+                <div class="product-describe" style="background:white; border: 1px solid #d9d9d9">
+                    <div style="background: #f0f0f0; border: 1px solid #d9d9d9;">
+                        <h3 style="background: #f0f0f0; padding-left: 10px;">MÔ TẢ SẢN PHẨM</h3>
+                    </div>
+                    <div style="border: 1px solid #d9d9d9;">
+
+                        <div style="padding: 10px;">
+                           {{product.description}}
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                    
+               
+            </div>
+            <div class="social-links">
+                <p>Chia sẻ</p>
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-facebook-messenger"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

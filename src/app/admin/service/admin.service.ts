@@ -13,29 +13,23 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
   addCategory(categoryDto:any):Observable<any>{
-    console.log(categoryDto);
-    const token = UserStorageService.getToken();
-    console.log(token);
       return this.http.post(BASIC_URL+'/api/admin/category/create', categoryDto, {
         headers:  this.createAuthorizationHeader()
       });
-  }
+  };
   getAllCategories():Observable<any>{
-    const token = UserStorageService.getToken();
       return this.http.get(BASIC_URL+'/api/admin/category/', {
         headers:  this.createAuthorizationHeader()
       });
-  }
+  };
   addProduct(productDto:any):Observable<any>{
-    console.log(productDto);
-    const token = UserStorageService.getToken();
-    console.log(token);
       return this.http.post(BASIC_URL+'/api/admin/product/create', productDto, {
         headers:  this.createAuthorizationHeader()
       });
-  }
+  };
   private createAuthorizationHeader():HttpHeaders{
     return new HttpHeaders().set('Authorization','Bearer '+UserStorageService.getToken());
+<<<<<<< HEAD
   }
 
   getAllProduct():Observable<any>{
@@ -60,4 +54,7 @@ export class AdminService {
     return this.http.get(BASIC_URL+'/api/admin/product/');
     
   }*/
+=======
+  };
+>>>>>>> 4fd3200c910149761f12cf8f34f86ce48ae34c22
 }

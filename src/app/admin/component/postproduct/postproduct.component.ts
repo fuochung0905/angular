@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./postproduct.component.css']
 })
 export class PostproductComponent {
-
   productForm!:FormGroup;
   listOfCategories:any=[];
   selectedFile!: File | '';
@@ -65,6 +64,7 @@ PreViewImage(){
 this.adminService.addProduct(formData).subscribe(
   (res)=>{
       console.log('thêm thành công',res);
+      this.router.navigateByUrl('admin/dashboard');
   },
   (error)=>{
     console.log('thêm thất bại',error);
