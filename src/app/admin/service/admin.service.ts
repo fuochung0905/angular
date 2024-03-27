@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
+import { Product } from '../component/putproduct/product.model';
 const BASIC_URL="http://localhost:8080";
 
 @Injectable({
@@ -36,4 +37,27 @@ export class AdminService {
   private createAuthorizationHeader():HttpHeaders{
     return new HttpHeaders().set('Authorization','Bearer '+UserStorageService.getToken());
   }
+
+  getAllProduct():Observable<any>{
+    const token = UserStorageService.getToken();
+      return this.http.get(BASIC_URL+'/api/admin/product/', {
+        headers:  this.createAuthorizationHeader()
+      });
+  }
+
+  getProductById(Id: number): Observable<any> {
+    return this.http.get(BASIC_URL + '/api/admin/product/' + Id, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  getProductImageById(productId: number): Observable<string> {
+    return this.http.get<string>(`${BASIC_URL}/${productId}/image`);
+  }
+
+ /* getProductById(Id: number): Observable<Product[]> {
+    const url = `${BASIC_URL+'/api/admin/product/'}/${Id}`;
+    return this.http.get(BASIC_URL+'/api/admin/product/');
+    
+  }*/
 }
