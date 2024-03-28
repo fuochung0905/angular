@@ -9,11 +9,8 @@ import { Router } from '@angular/router';
 })
 export class GetAllproductComponent implements OnInit {
   products: any[] = [];
-  
-
   constructor(private userService: UserService,
     private router:Router) { }
-
   ngOnInit(): void {
     this.getAllProduct();
   }

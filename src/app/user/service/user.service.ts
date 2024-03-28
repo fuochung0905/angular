@@ -19,7 +19,7 @@ export class UserService {
     });
   };
   getProductsById(productId:any): Observable<any> {
-   
+   console.log(productId);
     return this.httpClient.get(BASIC_URL+`/api/user/product/${productId}`, {
       headers: this.createAuthorizationHeader()
     });
@@ -27,5 +27,15 @@ export class UserService {
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + UserStorageService.getToken());
   };
-  
+   addCart(productId:any,cartDto:any):Observable<any>{
+    return this.httpClient.put(BASIC_URL + `/api/user/cart/add/${productId}`,cartDto,{
+      headers: this.createAuthorizationHeader()
+    })
+  };
+  getAllUserCart(): Observable<any> {
+
+    return this.httpClient.get(BASIC_URL + '/api/user/cart/', {
+      headers: this.createAuthorizationHeader()
+    });
+  };
 }

@@ -17,7 +17,6 @@ import { UserModule } from './user/user.module';
     AppComponent,
     SignupComponent,
     LoginComponent,
- 
   ],
   imports: [
     BrowserModule,
@@ -30,10 +29,6 @@ import { UserModule } from './user/user.module';
     AdminModule,
     MatFormFieldModule,
     UserModule
-  
-
-   
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

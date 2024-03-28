@@ -47,7 +47,13 @@
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 <span id="username">Tên khách hàng</span>
             </a>
-        </li></div>
+        </li>
+        <li class="login-item">
+            <a class="nav-link text-dark" routerLink="/userCart"  title="Manage">
+                <span id="username">Giỏ hàng</span>
+            </a>
+        </li>
+    </div>
         <div id="tooltip-login-item">
           
             <div class="menu-item">
@@ -55,6 +61,7 @@
                     <span>Thông Tin Tài Khoản</span>
                 </a>
             </div>
+
             
             <form class="form-inline" >
                 <button type="submit" class="nav-link btn btn-link text-dark">Đăng Xuất</button>

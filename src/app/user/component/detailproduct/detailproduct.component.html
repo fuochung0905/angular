@@ -26,14 +26,13 @@
                     <p class="new-price">Giá hiện tại: <span class="money">{{product.importPrice}}</span></p>
                 </div>
 
-                <!-- <div class="product-detail">
-                    <form asp-area="" asp-controller="Home" asp-action="Details">
+             <div class="product-detail">
                         <div class="box-detail">
                             <p class="title">Kích thước: </p>
                             <div class="item-detail">
                                 <div class="item-btn">
-                                    <input asp-for="size" id="@item.variation.value" type="radio" class="variation-size" name="size" value="@item.variation.value">
-                                    <label for="@item.variation.value"></label>
+                                    <input  [(ngModel)]="cartDto.size"   type="radio" class="variation-size" name="size" value="Xl">
+                                    <label for="@item.variation.value">Xl</label>
                                 </div>
                             </div>
                         </div>
@@ -41,27 +40,24 @@
                             <p class="title">Màu sắc: </p>
                             <div class="item-detail">
                                 <div class="item-btn">
-                                    <input asp-for="color" id="@item.variation.value" type="radio" class="variation-color" name="color" value="@item.variation.value">
-                                    <label for="@item.variation.value">@item.variation.value</label>
+                                    <input [(ngModel)]="cartDto.colo"   type="radio" class="variation-color" name="colo" value="black">
+                                    <label for="@item.variation.value">black</label>
                                 </div>
                             </div>
-                        </div> -->
+                        </div> 
                         <div class="box-detail amount">
                             <input asp-for="quantity" type="number" min="0" max="@Model.product.qty_inStock" value="1">
                             <h6>{{product.qty_stock}}</h6>
                         </div>
                         <div class="get-product">
-                            <button type="button" class="wrap-btn add">
+                            <button type="button" class="wrap-btn add" (click)="addCart(product.id)">
                                 <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
                             </button>
                             <button type="submit" class="wrap-btn buy">
                                 <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
                             </button>
                         </div>
-                        
-                    <!-- </form> -->
-                <!-- </div> -->
-
+                </div>
                 <div class="product-describe" style="background:white; border: 1px solid #d9d9d9">
                     <div style="background: #f0f0f0; border: 1px solid #d9d9d9;">
                         <h3 style="background: #f0f0f0; padding-left: 10px;">MÔ TẢ SẢN PHẨM</h3>
@@ -71,12 +67,8 @@
                         <div style="padding: 10px;">
                            {{product.description}}
                         </div>
-                        
                     </div>
-                    
                 </div>
-                    
-               
             </div>
             <div class="social-links">
                 <p>Chia sẻ</p>
