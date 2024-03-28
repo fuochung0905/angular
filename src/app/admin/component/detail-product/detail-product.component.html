@@ -1,30 +1,43 @@
 <p>postproduct works!</p>
-<form (ngSubmit)="addProduct()" [formGroup]="myForm">
- <div>
-<img [src]="product.processImage">
- </div>
+<form (ngSubmit)="updateProduct()">
+ 
     <div>
         <label>Tên sản phẩm</label>
-        <input type="text" formControlName="productName" formControlName="productName" name="productName" value="{{product.productName}}">
+        <input type="text" [(ngModel)]="productUpdate.productName" name="productName" value="{{productDto.productName}}">
+    </div>
+    <div class="img-showcase">
+        <img [src]="productDto.processImage" alt="product-image">
     </div>
     <div>
         <label>Mô tả</label>
-        <input type="text" formControlName="description" formControlName="description"  name="description" value="{{product.description}}">
+        <input type="text" [(ngModel)]="productUpdate.description"  name="description" value="{{productDto.description}}">
     </div>
     <div>
         <label>Giá nhập</label>
-        <input type="text" formControlName="importPrice" formControlName="importPrice"  name="importPrice" value="{{product.importPrice}}">
+        <input type="text" [(ngModel)]="productUpdate.importPrice"  name="importPrice" value="{{productDto.importPrice}}">
     </div>
     <div>
         <label>Giá bán</label>
-        <input type="text" formControlName="exportPrice" formControlName="exportPrice"  name="exportPrice" value="{{product.exportPrice}}">
+        <input type="text" [(ngModel)]="productUpdate.exportPrice"  name="exportPrice" value="{{productDto.exportPrice}}">
     </div>
     <div>
         <label>Số lượng</label>
-        <input type="text" formControlName="quantity" formControlName="quantity"  name="quantity" value="{{product.quantity}}">
+        <input type="text" [(ngModel)]="productUpdate.quantity"  name="quantity" value="{{productDto.quantity}}">
     </div>
     <div>
-        <button type="submit">THÊM</button>
+        <button type="submit">Cập nhật</button>
     </div>
 </form>
+
+<div>
+    
+    <div *ngIf="productDto.productId">
+      <h2>{{ productDto.name }}</h2>
+      <p>Price: <input type="text" [(ngModel)]="productDto.price"></p>
+      <p>Description: <textarea [(ngModel)]="productDto.description"></textarea></p>
+     
+      <button (click)="updateProduct()">Update Product</button>
+    </div>
+  </div>
+
 

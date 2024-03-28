@@ -14,7 +14,6 @@ categoryDto :any={
 };
 
   constructor(private adminservice:AdminService,
-    private fb :FormBuilder,
     private router:Router
     ){
 
@@ -27,7 +26,6 @@ categoryDto :any={
  
     this.adminservice.addCategory(this.categoryDto).subscribe((res)=>
     {
-    
         console.log("Add category successfully",res);
           this.router.navigateByUrl('admin/dashboard');
      

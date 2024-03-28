@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/service/user.service';
 import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -11,42 +11,52 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class DetailProductComponent {
   myForm!:FormGroup;
-  id :any = this.routerActive.snapshot.params['id'];
-  product:any={
+  productId: any;
+  productUpdate:any={
+    productName:'',
+    description:'',
+    importPrice:'',
+    exportPrice:'',
+    quantity:''
+  };
+  id:any = this.routerActive.snapshot.params['id'];
+  productDto:any={
     productId:'',
     productName:'',
     description:'',
     importPrice:'',
     exportPrice:'',
     quantity:''
-
-
   }
   constructor(private routerActive:ActivatedRoute,
-    private FB:FormBuilder,
+    private router:Router,
+
     private adminServie:AdminService){
 
   }
   ngOnInit(){
-    this.myForm=this.FB.group({
-      categoryId:[null],
-      productName:[null],
-      description:[null],
-      importPrice:[null],
-      exportPrice:[null],
-      quantity:[null]
-    })
+    
     this.getProductDetails();
   };
-  addProduct(){
-    
+  updateProduct(){
+    this.adminServie.updateProduct(this.id, this.productUpdate)
+      .subscribe(
+        response => {
+          console.log('Data updated successfully:', response);
+          // Cập nhật thành công, xử lý nếu cần
+        },
+        error => {
+          console.error('Error updating data:', error);
+          // Xử lý lỗi nếu có
+        }
+      );
   }
 
   getProductDetails(): void {
     this.adminServie.getProductById(this.id)
       .subscribe((product )=> {
         product.processImage = 'data:image/jpeg;base64,' + product.byteImage;
-       this.product=product;
+       this.productDto=product;
        console.log(product);
       },
       (error)=>{
