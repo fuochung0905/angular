@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
 
 @Component({
@@ -18,7 +18,8 @@ export class DetailproductComponent {
   }
    id :any = this.route.snapshot.params['id'];
   constructor(private route: ActivatedRoute ,
-    private userService:UserService) {
+    private userService:UserService,
+    private router:Router) {
      }
      ngOnInit(): void {
      this.getProductDetails();
@@ -26,6 +27,14 @@ export class DetailproductComponent {
     addCart(productId:any):void{
       this.userService.addCart(productId,this.cartDto).subscribe((res)=>{
           console.log('Success',res);
+      },
+      (error)=>{
+        console.log('Fail',error);
+      })
+    }
+    addOrder(productId:any):void{
+      this.userService.addCart(productId,this.cartDto).subscribe((res)=>{
+         this.router.navigateByUrl('user/order');
       },
       (error)=>{
         console.log('Fail',error);

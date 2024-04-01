@@ -1,0 +1,154 @@
+
+<div class="container-web">
+    <div class ="order-complete">
+        <div class="order-complete-left">
+                <div class="order-complete-address">
+                     <form >
+                    <div class="address-detail">
+                        <div class="address-detail-head">
+                                <h4>Thông tin người nhận</h4>
+                                <a id="open-more-address" (click)="OpenMore()" >Thay đổi địa chỉ</a>
+                        </div>
+                        <div class="address-detail-tail">
+                            <div class="forAddress">
+                                <li>
+                                    <a  >{{user.firstName}} {{user.lastName}} </a>
+                                </li>
+                                <li>    
+                                    <a  >{{user.phoneNumber}}</a>
+                                </li>
+                                <li>
+                                    <a >  {{address.street}} {{address.state}} {{address.country}} {{address.city}}</a>
+                                </li>
+                            </div>
+                          
+                        </div> 
+                    </div>
+                    </form>
+                </div>
+                <form (ngSubmit)="submitOrder()">
+                <div class="order-complete-detail">
+                    <table class="table table-striped">
+                        <tr>
+                            <th></th>
+                            <th>Tên sản phẩm</th>
+                            <th>Ảnh sản phẩm</th>
+                            <th>Phân loại</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Tổng tiền</th>
+                        </tr>
+                       <div  *ngFor="let cart of carts">
+                             <tr>
+                                    <td>
+                                        <label>
+                                        <input  type="radio" 
+                                                  [checked]="selectedOrderId === cart.id" 
+                                                   (change)="updateSelectedOrder(cart.id)" />
+                                        </label>
+                                    </td>
+                                <td>{{cart.productName}}</td>
+                                <td>  
+                                     <img [src]="cart.proImage" alt="product-image"></td>
+                                    <td>
+                                    <span>{{cart.size}}</span>
+                                    <span>{{cart.color}}</span>
+                                    </td>
+                                <td>{{cart.quantity}}</td>
+                                <td class="money">{{cart.price}}</td>
+                                <td class="money">{{cart.quantity * cart.price }}</td>
+                                </tr>   
+                            </div>
+                    </table>
+                </div>
+                    <button class="wrap-btn m-color-full" type="submit">Đặt hàng</button>
+                </form>
+        </div>
+        <div class="order-complete-right">
+                <div class="order-complete-product">
+                    <div class="order-complete-payment">
+                        <h3>Phương Thức Thanh Toán</h3>
+                        <div class="chose-payment">
+                            <div class="chosen-payment">
+                                    <i class="fa fa-money"></i>
+                                    <span>Thanh Toán Khi Nhận Hàng</span>
+                            </div>
+                               
+                        </div>
+                    </div>
+                        <hr>
+                        <hr>
+                    <div class="order-chose-ship">
+                            <h3>Giao Hàng</h3>
+                            <div class="chosen-ship">
+                                <div>
+                                    <input type="radio" onclick="shipchange()">
+                                </div>
+                                <div class="chosen-ship-detail">
+                                    <a>Tiêu chuẩn</a>
+                                    <a id="ship-price">20000.000000</a>
+                                    <div>
+                                        <a>Dự kiến nhận: </a>
+                                        <a>Na/Na</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+                        <hr>
+                        <hr>
+                    <div class="order-complete-end">
+                        <h3>Thông tin đơn hàng</h3>
+                        <div class="order-conplete-end-ship"></div>
+                        <div class="end-details">
+                            <div class="item-all-price">
+                                <a>Tổng tiền sản phẩm: </a>
+                                <a id="pay-item-price">00.000000</a>
+                            </div>
+                            <div class="item-ship-price">
+                                <a>Phí vận chuyển: </a>
+                                <a id="pay-ship">00.000000 </a>
+                            </div>
+                            <div class="item-discount-price">
+                                <a>Tổng giảm: </a>
+                                <a id="pay-dícount">00.000000</a>
+                            </div>
+                            <hr>
+                            <div class="item-end">
+                                <a>Tổng thanh toán: </a>
+                                <a id="pay-all">00.000000</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+            <div class="more-address">
+                
+                    <div class="more-address-head">
+                        <h4> Địa chỉ</h4>
+                    <a routerLink="/user/address" >Thêm địa chỉ mới</a>
+                    </div>
+                    <div class="more-address-list">
+                        <form (ngSubmit)="submitForm()">
+                            <a>
+                                <div class="forlistAddress" *ngFor="let addresst of listAddress">
+                                    <div class="more-address-item">
+                                        <label>
+                                            <input type="radio"  [checked]="selectedAddressId === addresst.id" 
+                                            (change)="updateSelectedAddress(addresst.id)"
+                                            name="addressId" />
+                                          
+                                        </label>
+                                        <a>  <a > {{addresst.state}} {{addresst.street}} {{addresst.country}} {{addresst.city}}</a></a>
+                                    </div>
+                                </div>
+                            </a>
+                            <button class="btn btn-primary" (click)="CloseMore()"  type="submit">Chọn</button>
+                        </form>
+                    </div>
+            </div>
+    </div>
+    
+</div>
+

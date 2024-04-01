@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserStorageService } from './storage/user-storage.service';
 import { Router } from '@angular/router';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,11 @@ export class AppComponent {
   title = 'Frontend';
   isAdminLoggedIn:boolean=UserStorageService.isAdminLogggedIn();
   isUserLoggedIn:boolean=UserStorageService.isUserLogggedIn();
-  token:string=UserStorageService.getToken();
+  token:any=UserStorageService.getToken();
   userId:string=UserStorageService.getUserId();
   user:any=UserStorageService.getUser();
   userRole:string=UserStorageService.getUserRole();
   constructor(private router:Router){
-
   }
   ngOninit(){
     this.router.events.subscribe(event=>{
@@ -24,9 +24,4 @@ export class AppComponent {
       this.isUserLoggedIn=UserStorageService.isUserLogggedIn();
     })
   }
-  logout(){
-    UserStorageService.signOut();
-    this.router.navigateByUrl('login');
-  }
-  
 }

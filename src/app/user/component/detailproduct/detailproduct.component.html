@@ -53,7 +53,7 @@
                             <button type="button" class="wrap-btn add" (click)="addCart(product.id)">
                                 <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
                             </button>
-                            <button type="submit" class="wrap-btn buy">
+                            <button type="submit" class="wrap-btn buy" (click)="addOrder(product.id)" >
                                 <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
                             </button>
                         </div>

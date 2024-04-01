@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserModule } from './user/user.module';
+import { LayoutAppComponent } from './component/layout-app/layout-app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
+    LayoutAppComponent,
   ],
   imports: [
     BrowserModule,

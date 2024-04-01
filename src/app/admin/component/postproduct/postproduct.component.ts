@@ -42,7 +42,8 @@ PreViewImage(){
       importPrice:[null],
       exportPrice:[null],
       quantity:[null]
-    })
+    });
+    
     this.getAllCategories();
   };
   getAllCategories(){
