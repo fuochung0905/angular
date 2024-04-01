@@ -1,24 +1,24 @@
 <p>postproduct works!</p>
 <form (ngSubmit)="updateProduct()">
  
-    <div [formGroup]="myForm" >
+    <div  >
         <label>Tên sản phẩm</label>
-        <input type="text" formControlName="productName" name="productName" value="{{dto.productName}}">
+        <input type="text" [(ngModel)]="productUpdate.productName"   name="productName" value="{{dto.productName}}">
     </div>
     <div class="img-showcase">
         <img [src]="dto.processImage" alt="product-image">
     </div>
     <div>
         <label>Mô tả</label>
-        <input type="text" formControlName="description"  name="description" value="{{dto.description}}">
+        <input type="text" [(ngModel)]="productUpdate.description"    name="description" value="{{dto.description}}">
     </div>
     <div>
         <label>Giá nhập</label>
-        <input type="text" [(ngModel)]="productUpdate.importPrice"  name="importPrice" value="{{dto.importPrice}}">
+        <input type="text"  [(ngModel)]="productUpdate.importPrice"   name="importPrice" value="{{dto.importPrice}}">
     </div>
     <div>
         <label>Giá bán</label>
-        <input type="text" [(ngModel)]="productUpdate.exportPrice"  name="exportPrice" value="{{dto.exportPrice}}">
+        <input type="text" [(ngModel)]="productUpdate.exportPrice"    name="exportPrice" value="{{dto.exportPrice}}">
     </div>
     <div>
         <label>Số lượng</label>
@@ -31,13 +31,13 @@
 
 <div>
     
-    <div *ngIf="dto.productId">
+    <!-- <div *ngIf="dto.productId">
       <h2>{{ dto.name }}</h2>
       <p>Price: <input type="text" [(ngModel)]="dto.price"></p>
       <p>Description: <textarea [(ngModel)]="dto.description"></textarea></p>
      
       <button (click)="updateProduct()">Update Product</button>
-    </div>
+    </div> -->
   </div>
 
 

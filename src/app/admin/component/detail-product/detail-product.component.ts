@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from 'src/app/user/service/user.service';
 import { AdminService } from '../../service/admin.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-detail-product',
@@ -10,8 +9,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./detail-product.component.css']
 })
 export class DetailProductComponent {
-  myForm!:FormGroup;
-  productId: any;
   productUpdate:any={
     productName:'',
     description:'',
@@ -30,7 +27,6 @@ export class DetailProductComponent {
   }
   constructor(private routerActive:ActivatedRoute,
     private router:Router,
-
     private adminServie:AdminService){
 
   }
@@ -39,7 +35,22 @@ export class DetailProductComponent {
     this.getProductDetails();
   };
   updateProduct(){
-    this.adminServie.updateProducts(this.id, this.dto)
+    if(!this.productUpdate.productName){
+      this.productUpdate.productName=this.dto.productName;
+    }
+    if(!this.productUpdate.description){
+      this.productUpdate.description=this.dto.description;
+    }
+    if(!this.productUpdate.importPrice){
+      this.productUpdate.importPrice=this.dto.importPrice;
+    }
+    if(!this.productUpdate.exportPrice){
+      this.productUpdate.exportPrice=this.dto.exportPrice;
+    }
+    if(!this.productUpdate.quantity){
+      this.productUpdate.quantity=this.dto.quantity;
+    }
+    this.adminServie.updateProducts(this.id, this.productUpdate)
       .subscribe(
         response => {
           console.log('Data updated successfully:', response);
