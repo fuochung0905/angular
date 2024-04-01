@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { UserStorageService } from '../storage/user-storage.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
+import { AdminService } from './service/admin.service';
 
 @Component({ 
   selector: 'app-admin',
@@ -6,5 +10,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+  token:any=UserStorageService.getToken;
+  constructor(private router:Router,
+   private adminService:AdminService){
 
+  };
+  isAdminLoggedIn:boolean=UserStorageService.isAdminLogggedIn();
+  ngOninit(){
+    this.router.events.subscribe(event=>{
+      this.isAdminLoggedIn=UserStorageService.isAdminLogggedIn();
+    })
+  };
+  logout():void{
+   this.adminService.logout().subscribe((res)=>{
+    UserStorageService.signOut();
+    this.router.navigateByUrl('login');
+   })
+  }
 }

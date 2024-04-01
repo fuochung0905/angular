@@ -14,6 +14,19 @@ export class AuthService {
   register(signupRequest :any):Observable<any>{
     return this.http.post(BASIC_URL+"/api/v1/auth/register",signupRequest);
   }
+  private createAuthorizationHeader():HttpHeaders{
+    return new HttpHeaders().set('Authorization','Bearer '+UserStorageService.getToken());
+  };
+
+  logout():Observable<any>{
+    const tokens=this.createAuthorizationHeader();
+    console.log(tokens);
+    const token = UserStorageService.getToken();
+      return this.http.get(BASIC_URL+'/logout', {
+        headers:this.createAuthorizationHeader()
+      });
+  };
+
   login(email: string, password: string): any {
     const signinRequest = { email, password };
     return this.http.post(BASIC_URL + '/api/v1/auth/login', signinRequest).pipe(
@@ -37,4 +50,7 @@ export class AuthService {
     
     );
   }
+
+
+
 }

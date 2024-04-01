@@ -24,6 +24,41 @@ export class UserService {
       headers: this.createAuthorizationHeader()
     });
   };
+  getCurrentUser():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/currentUser/',{
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  addAddress(address:any):Observable<any>{
+    return this.httpClient.post(BASIC_URL+'/api/user/address/add',address,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  addOrder(OrderRequest :any):Observable<any>{
+    return this.httpClient.post(BASIC_URL+'/api/user/order/add',OrderRequest,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getListAddresCurrentUser():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/address/',{
+      headers:this.createAuthorizationHeader()
+    })
+  };
+  getAddressCurretUser():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/currentAddress',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  updateAddressIsDefine(AddressDto:any):Observable<any>{
+    return this.httpClient.post(BASIC_URL+'/api/user/address/updateIsDefine',AddressDto,{
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  getAllAddress():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/address/',{
+      headers: this.createAuthorizationHeader()
+    });
+  }
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + UserStorageService.getToken());
   };
@@ -37,5 +72,13 @@ export class UserService {
     return this.httpClient.get(BASIC_URL + '/api/user/cart/', {
       headers: this.createAuthorizationHeader()
     });
+  };
+  logout():Observable<any>{
+    const tokens=this.createAuthorizationHeader();
+    console.log(tokens);
+    const token = UserStorageService.getToken();
+      return this.httpClient.get(BASIC_URL+'/logout', {
+        headers:this.createAuthorizationHeader()
+      });
   };
 }

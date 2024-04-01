@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserStorageService } from 'src/app/storage/user-storage.service';
 
 @Component({
   selector: 'app-postcategory',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./postcategory.component.css']
 })
 export class PostcategoryComponent {
+  
 categoryDto :any={
   name:''
 };
@@ -21,17 +23,18 @@ categoryDto :any={
   }
   ngOninit():void{
   
-  
-  }
+  };
+
   postcategory(){
- 
     this.adminservice.addCategory(this.categoryDto).subscribe((res)=>
     {
-    
         console.log("Add category successfully",res);
           this.router.navigateByUrl('admin/dashboard');
-     
+    },
+    (error)=>{
+    
     })
+
   
   }
   }

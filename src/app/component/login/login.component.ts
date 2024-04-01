@@ -45,7 +45,7 @@ export class LoginComponent {
           }
           else
           if(UserStorageService.isUserLogggedIn()){
-            this.router.navigateByUrl('home');
+            this.router.navigateByUrl('user/home');
           }
        
           console.log('Login successfully:', res);
@@ -56,13 +56,6 @@ export class LoginComponent {
       );
     }
   }  
-  // addCategory(categoryDto:any):Observable<any>{
-  //   return this.http.post('',categoryDto,{
-  //     headers:this.createAuthorizationHeader(),
-  //   })
-  // }
-  // private createAuthorizationHeader():HttpHeaders{
-  //   return new HttpHeaders().set('Authorization','Bearer '+UserStorageService.getToken());
-  // }
+
 
 }

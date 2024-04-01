@@ -1,11 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {  RouterModule } from '@angular/router';
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { GetAllproductComponent } from './component/get-allproduct/get-allproduct.component';
-import { DetailproductComponent } from './component/detailproduct/detailproduct.component';
-import { UserRoutingModule } from './user-routing.module';
+import {  Router, RouterModule } from '@angular/router';
+import { UserStorageService } from '../storage/user-storage.service';
+import { UserService } from './service/user.service';
 
 
 @Component({
@@ -13,6 +10,24 @@ import { UserRoutingModule } from './user-routing.module';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
 
+export class UserComponent {
+  isUserLoggedIn:boolean=UserStorageService.isUserLogggedIn();
+  constructor(private router:Router,
+    private userService:UserService
+   ){
+  };
+  ngOninit(){
+    this.router.events.subscribe(event=>{
+      this.isUserLoggedIn=UserStorageService.isUserLogggedIn();
+    })
+  };
+  logout(){
+    this.userService.logout().subscribe((res)=>{
+      UserStorageService.signOut();
+      this.router.navigateByUrl('login');
+    })
+    
+  }
+ 
 }

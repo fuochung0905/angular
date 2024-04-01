@@ -19,7 +19,7 @@ export class AdminService {
   };
   getAllCategories():Observable<any>{
       return this.http.get(BASIC_URL+'/api/admin/category/', {
-        headers:  this.createAuthorizationHeader()
+        headers:this.createAuthorizationHeader()
       });
   };
   addProduct(productDto:any):Observable<any>{
@@ -28,7 +28,9 @@ export class AdminService {
       });
   };
   private createAuthorizationHeader():HttpHeaders{
-    return new HttpHeaders().set('Authorization','Bearer '+UserStorageService.getToken());
+    const token=UserStorageService.getToken();
+    console.log(token);
+    return new HttpHeaders().set('Authorization','Bearer '+token);
   };
 
   getAllProduct():Observable<any>{
@@ -53,14 +55,14 @@ export class AdminService {
       headers: this.createAuthorizationHeader()
     });
   };
- 
-
-  
- /* getProductById(Id: number): Observable<Product[]> {
-    const url = `${BASIC_URL+'/api/admin/product/'}/${Id}`;
-    return this.http.get(BASIC_URL+'/api/admin/product/');
-    
-  }*/
+  logout():Observable<any>{
+    const tokens=this.createAuthorizationHeader();
+    console.log(tokens);
+    const token = UserStorageService.getToken();
+      return this.http.get(BASIC_URL+'/logout', {
+        headers:this.createAuthorizationHeader()
+      });
+  };
 
   };
 

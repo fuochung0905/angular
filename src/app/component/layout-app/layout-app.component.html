@@ -1,17 +1,10 @@
 
 
-
-
-
-
-
-
-
 <header>
     <div class="container-large">
         <div class="top-box">
             <div class="logo" >
-                <a class="" routerLink="" routerLinkActive="active" ><span>UTC2</span><span>Store</span></a>
+                <a class="" ><span>UTC2</span><span>Store</span></a>
             </div>
 <div >
     <div class="login-wrap">
@@ -46,40 +39,38 @@
 </header>
 <body>
     <div class="content-body">
-        <div style="display: flex; justify-content: center">
-            <div class="containersignin">
-                <div class="form-wrap">
-                    <form (ngSubmit)="login()" [formGroup]="loginForm">
-                        <h2 class="title-form">Đăng nhập</h2>
-                        <div class="body-form">
-                            <div class="form-input">
-                                <label class="form-label">Email</label>
-                                <input class="form-control" formControlName="email" type="email" aria-required="true"
-                                    placeholder="email" required />
-                                <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-                                    class="text-danger">Please enter a valid email </span>
-                            </div>
-                            <div class="form-input">
-                                <label class="form-label">Password</label>
-                                <input class="form-control" formControlName="password" type="password" aria-required="true"
-                                    placeholder="password" required />
-                                <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-                                    class="text-danger">Please enter a valid password</span>
-                            </div>
-                            <div>
-                                <button type="submit" class="btsubmit">Đăng nhập</button>
-                            </div>
-                        </div>
-                        <div class="foot-form">
-                            <a href="#">Quên mật khẩu</a>
-                            <a href="#" routerLink="/signup" routerLinkActive="active">Đăng ký</a>
-                        </div>
-                    </form>
+        <div class="main-product">
+            <div class="container-web">
+                <div class="head-product">
+                    <div class="title-component-cate">Danh mục: </div>
+                    <div class="list-component-cate">
+                        
+                        <li>
+                            <a >Loại sản phẩm</a>
+                        </li>
+                    </div>
+                    <div class="state-component-cate"></div>   
                 </div>
-            </div>
-        
+        <div class="list-product" *ngFor="let product of products">
+                <div class="item-product">
+                    <div class="img-box">
+                        <img [src]="product.processImage" alt="product-image">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.productName}}</h5>
+                        <div class="card-detail">
+                            <p class="card-text money">{{product.description}}</p>
+                            <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="box-button">
+                            <button class="wrap-btn detail" routerLink="/product/{{product.id}}" >Chi tiết</button>
+                            <button type="button"  class="wrap-btn add"><i class="bi bi-cart-plus"></i><span>Thêm</span></button>
+                        </div>
+                    </div>
+                </div>   
         </div>
-        
+            </div>
+        </div>
         </div>
 </body>
 

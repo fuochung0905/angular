@@ -17,14 +17,13 @@
                 <img [src]="product.processImage" alt="product-image">
             </div>
             <div class="card-body">
-                <h5 class="card-title">product.productName</h5>
+                <h5 class="card-title">{{product.productName}}</h5>
                 <div class="card-detail">
-                    <p class="card-text money">product.description</p>
+                    <p class="card-text money">{{product.description}}</p>
                     <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
                 </div>
                 <div class="box-button">
-                    <button class="wrap-btn detail" routerLink="/product/{{product.id}}" >Chi tiết</button>
-                    <button type="button"  class="wrap-btn add"><i class="bi bi-cart-plus"></i><span>Thêm</span></button>
+                    <button class="wrap-btn detail" routerLink="/user/product/{{product.id}}" >Chi tiết sản phẩm</button>
                 </div>
             </div>
         </div>   

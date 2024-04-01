@@ -8,12 +8,15 @@ import { PutproductComponent } from './component/putproduct/putproduct.component
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
 
 const routes: Routes = [
-{ path: '', component: AdminComponent },
-{path:'postproduct',component:PostproductComponent},
-{path:'product/:id',component:DetailProductComponent},
-{path:'dashboard',component:DashboardComponent},
-{path:'postcategory',component:PostcategoryComponent},
-{path:'putproduct',component:PutproductComponent}];
+{ path: '', component: AdminComponent ,
+children:[
+  {path:'postproduct',component:PostproductComponent},
+  {path:'product/:id',component:DetailProductComponent},
+  {path:'dashboard',component:DashboardComponent},
+  {path:'postcategory',component:PostcategoryComponent},
+  {path:'putproduct',component:PutproductComponent}
+]}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
