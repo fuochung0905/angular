@@ -1,28 +1,28 @@
 <p>postproduct works!</p>
 <form (ngSubmit)="updateProduct()">
  
-    <div>
+    <div [formGroup]="myForm" >
         <label>Tên sản phẩm</label>
-        <input type="text" [(ngModel)]="productUpdate.productName" name="productName" value="{{productDto.productName}}">
+        <input type="text" formControlName="productName" name="productName" value="{{dto.productName}}">
     </div>
     <div class="img-showcase">
-        <img [src]="productDto.processImage" alt="product-image">
+        <img [src]="dto.processImage" alt="product-image">
     </div>
     <div>
         <label>Mô tả</label>
-        <input type="text" [(ngModel)]="productUpdate.description"  name="description" value="{{productDto.description}}">
+        <input type="text" formControlName="description"  name="description" value="{{dto.description}}">
     </div>
     <div>
         <label>Giá nhập</label>
-        <input type="text" [(ngModel)]="productUpdate.importPrice"  name="importPrice" value="{{productDto.importPrice}}">
+        <input type="text" [(ngModel)]="productUpdate.importPrice"  name="importPrice" value="{{dto.importPrice}}">
     </div>
     <div>
         <label>Giá bán</label>
-        <input type="text" [(ngModel)]="productUpdate.exportPrice"  name="exportPrice" value="{{productDto.exportPrice}}">
+        <input type="text" [(ngModel)]="productUpdate.exportPrice"  name="exportPrice" value="{{dto.exportPrice}}">
     </div>
     <div>
         <label>Số lượng</label>
-        <input type="text" [(ngModel)]="productUpdate.quantity"  name="quantity" value="{{productDto.quantity}}">
+        <input type="text" [(ngModel)]="productUpdate.quantity"  name="quantity" value="{{dto.quantity}}">
     </div>
     <div>
         <button type="submit">Cập nhật</button>
@@ -31,10 +31,10 @@
 
 <div>
     
-    <div *ngIf="productDto.productId">
-      <h2>{{ productDto.name }}</h2>
-      <p>Price: <input type="text" [(ngModel)]="productDto.price"></p>
-      <p>Description: <textarea [(ngModel)]="productDto.description"></textarea></p>
+    <div *ngIf="dto.productId">
+      <h2>{{ dto.name }}</h2>
+      <p>Price: <input type="text" [(ngModel)]="dto.price"></p>
+      <p>Description: <textarea [(ngModel)]="dto.description"></textarea></p>
      
       <button (click)="updateProduct()">Update Product</button>
     </div>

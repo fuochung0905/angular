@@ -20,7 +20,7 @@ export class DetailProductComponent {
     quantity:''
   };
   id:any = this.routerActive.snapshot.params['id'];
-  productDto:any={
+  dto:any={
     productId:'',
     productName:'',
     description:'',
@@ -39,7 +39,7 @@ export class DetailProductComponent {
     this.getProductDetails();
   };
   updateProduct(){
-    this.adminServie.updateProduct(this.id, this.productUpdate)
+    this.adminServie.updateProducts(this.id, this.dto)
       .subscribe(
         response => {
           console.log('Data updated successfully:', response);
@@ -56,7 +56,7 @@ export class DetailProductComponent {
     this.adminServie.getProductById(this.id)
       .subscribe((product )=> {
         product.processImage = 'data:image/jpeg;base64,' + product.byteImage;
-       this.productDto=product;
+       this.dto=product;
        console.log(product);
       },
       (error)=>{
@@ -64,5 +64,4 @@ export class DetailProductComponent {
       }
       );
   }
-
 }

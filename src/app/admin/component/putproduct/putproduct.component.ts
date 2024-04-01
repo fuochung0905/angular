@@ -52,30 +52,4 @@ export class PutproductComponent implements OnInit{
     );
   }
 
-  /*getProductImage(): void {
-    this.adminService.getProductImageById(this.productId).subscribe((product)
-      => {
-        product.processImage = 'data:image/jpeg;base64,' + product.byteImage;
-        this.product = product;
-        console.log(product);
-      },
-      (error) => {
-        console.error('Error fetching product image:', error);
-      }
-    );
-  }*/
-
- 
-
-  /*getProduct(): void {
-    const Id = this.router.snapshot.paramMap.get('Id');
-    if (Id !== null) {
-      this.adminService.getAllProduct()
-        .subscribe(product => this.product = product);
-    }
-  }*/
-
-  
-
-
 }

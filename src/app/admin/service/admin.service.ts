@@ -54,18 +54,10 @@ export class AdminService {
     });
   };
  
-  updateProduct(productId: any, productDto: any): Observable<any>{
-return this.http.put(BASIC_URL + `/api/admin/product/${productId}`, productDto, {
+  updateProducts(productId: any, dto:any): Observable<any>{
+return this.http.post(BASIC_URL + `/api/admin/product/${productId}`,dto, {
   headers: this.createAuthorizationHeader()
 });
 };
-
-  
- /* getProductById(Id: number): Observable<Product[]> {
-    const url = `${BASIC_URL+'/api/admin/product/'}/${Id}`;
-    return this.http.get(BASIC_URL+'/api/admin/product/');
-    
-  }*/
-
-  };
+};
 
