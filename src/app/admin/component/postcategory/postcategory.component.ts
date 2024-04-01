@@ -16,7 +16,6 @@ categoryDto :any={
 };
 
   constructor(private adminservice:AdminService,
-    private fb :FormBuilder,
     private router:Router
     ){
 

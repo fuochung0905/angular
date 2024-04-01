@@ -55,6 +55,7 @@ export class AdminService {
       headers: this.createAuthorizationHeader()
     });
   };
+<<<<<<< HEAD
   logout():Observable<any>{
     const tokens=this.createAuthorizationHeader();
     console.log(tokens);
@@ -63,6 +64,21 @@ export class AdminService {
         headers:this.createAuthorizationHeader()
       });
   };
+=======
+ 
+  updateProduct(productId: any, productDto: any): Observable<any>{
+return this.http.put(BASIC_URL + `/api/admin/product/${productId}`, productDto, {
+  headers: this.createAuthorizationHeader()
+});
+};
+
+  
+ /* getProductById(Id: number): Observable<Product[]> {
+    const url = `${BASIC_URL+'/api/admin/product/'}/${Id}`;
+    return this.http.get(BASIC_URL+'/api/admin/product/');
+    
+  }*/
+>>>>>>> 513250c67303d6fb6aa2f6c7cfb4648e0f595006
 
   };
 
