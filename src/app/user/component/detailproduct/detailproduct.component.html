@@ -50,10 +50,10 @@
                                 <div *ngIf="vari.name===color">
                                     <div class="">
                                         <div class="item-btn">
-                                            <input  [(ngModel)]="cartDto.colo" type="radio"
+                                            <input  [(ngModel)]="cartDto.color" id="{{vari.value}}" type="radio"
                                             value="{{vari.value}}"
                                              class="variation-color" name="color">
-                                            <label>{{vari.value}}</label>
+                                            <label  for="{{vari.value}}">{{vari.value}}</label>
                                         </div>
                                     </div>
                                 </div>
