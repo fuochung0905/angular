@@ -29,7 +29,7 @@ export class VariationComponent {
   };
   addVariation():void{
     this.adminService.createVariation(this.variation).subscribe((res)=>{
-      this.router.navigateByUrl('admin/putproduct');
+      this.router.navigateByUrl('list-product');
       console.log("create successfully",res);
     },
     (error)=>{

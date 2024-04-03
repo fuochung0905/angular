@@ -16,7 +16,7 @@ children:[
   {path:'product/:id',component:DetailProductComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'postcategory',component:PostcategoryComponent},
-  {path:'putproduct',component:PutproductComponent},
+  {path:'list-product',component:PutproductComponent},
   {path:'createvariation',component:VariationComponent},
   {path:'variationproduct/:id',component:AddVariationComponent}
 ]}

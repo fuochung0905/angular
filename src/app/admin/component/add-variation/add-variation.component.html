@@ -16,7 +16,7 @@
             </div>
             <div class="edit-item">
                 <div class="edit-item-variation">
-                    <form (ngSubmit)="submitForm()" >
+                    <form  >
                         <input  type="hidden" />
                         <ng-container *ngFor="let vc of variationsByCategory">
                           <ng-container *ngIf="vc.name === color">
@@ -40,7 +40,7 @@
                                        {{vc.value}}
                                     </div>
                                     <div class="admin-variation-control">
-                                        <a class="btn-vremove" ><i class="fas fa-remove"></i></a>
+                                        <button class="btn-vremove" type="submit" (click)="removeForm()" ><i class="fas fa-remove"></i></button>
                                     </div>
                                 </div>
                             </ng-container>
@@ -56,7 +56,7 @@
                                        {{vc.value}}
                                     </div>
                                     <div class="admin-variation-control">
-                                        <button type="submit" class="btn-vcheck"><i class="fas fa-check"></i></button>
+                                        <button type="submit" (click)="submitForm()" class="btn-vcheck"><i class="fas fa-check"></i></button>
                                     </div>
                                 </div>
                              </ng-container>
@@ -77,17 +77,12 @@
             </div>
             <div class="edit-item">
                 <div class="edit-item-variation">
-                    <form (ngSubmit)="submitForm()">
+                    <form >
                         <input  type="hidden" />
                         <ng-container *ngFor="let vc of variationsByCategory">
                           <ng-container *ngIf="vc.name === size">
                             {{updateIsAddedToFalse()}}
-                            <!-- <div *ngFor="let vp of variationsByProduct">
-                              <ng-container *ngIf="isVariationInProduct(vp, vc)">
-                                  {{updateIsAddedToTrue()}}
-                                  <ng-template #exitLoop></ng-template>
-                              </ng-container>
-                            </div> -->
+                         
                             {{checkAndUpdateIsAddedToTrue(vc.id)}}
                             <ng-container *ngIf="isAdded">
                                 <div class="edit-item-variation-item">
@@ -101,7 +96,7 @@
                                        {{vc.value}}
                                     </div>
                                     <div class="admin-variation-control">
-                                        <a class="btn-vremove" ><i class="fas fa-remove"></i></a>
+                                        <button class="btn-vremove" type="submit" (click)="removeForm()"><i class="fas fa-remove"></i></button>
                                     </div>
                                 </div>
                             </ng-container>
@@ -117,7 +112,7 @@
                                        {{vc.value}}
                                     </div>
                                     <div class="admin-variation-control">
-                                        <button type="submit" class="btn-vcheck"><i class="fas fa-check"></i></button>
+                                        <button type="submit" (click)="submitForm()" class="btn-vcheck"><i class="fas fa-check"></i></button>
                                     </div>
                                 </div>
                            

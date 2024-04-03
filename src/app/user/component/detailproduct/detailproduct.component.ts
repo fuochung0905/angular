@@ -11,11 +11,16 @@ export class DetailproductComponent {
   product:any={
 
   };
+  variations:any=[];
   cartDto:any={
     colo:'',
     size:''
 
-  }
+  };
+  selectedVariationSizeId: any | null = null;
+  selectedVariationColorId: any | null = null;
+  size:any='size';
+  color:any='color';
    id :any = this.route.snapshot.params['id'];
   constructor(private route: ActivatedRoute ,
     private userService:UserService,
@@ -23,7 +28,15 @@ export class DetailproductComponent {
      }
      ngOnInit(): void {
      this.getProductDetails();
+     this.getAllVariation();
+    };
+    updateSelectedVariationSize(variationId:number){
+      this.selectedVariationSizeId=variationId;
+    };
+    updateSelectedVariationColor(variationId:number){
+      this.selectedVariationColorId=variationId;
     }
+
     addCart(productId:any):void{
       this.userService.addCart(productId,this.cartDto).subscribe((res)=>{
           console.log('Success',res);
@@ -51,6 +64,14 @@ export class DetailproductComponent {
         console.log('fail',error);
       }
       );
+  };
+  getAllVariation():void{
+    this.variations=[];
+    this.userService.getAllVariationProduct(this.id).subscribe(res => {
+      res.forEach((element: any) => {
+        this.variations.push(element);
+      });
+    });
   }
     
 

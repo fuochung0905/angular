@@ -91,5 +91,10 @@ export class UserService {
     return this.httpClient.get(BASIC_URL+'/api/user/order/history',{
       headers:this.createAuthorizationHeader()
     });
-  }
+  };
+  getAllVariationProduct(productId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/variation/product/${productId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
 }

@@ -22,7 +22,7 @@ export class SignupComponent {
   }
 onSubmit() {
   this.auth.register(this.formData).subscribe(response => {
-    console.log('Response:', response);
+  this.router.navigateByUrl('login');
   }, error => {
     console.error('Error:', error);
   });

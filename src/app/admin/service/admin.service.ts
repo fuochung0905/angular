@@ -90,11 +90,15 @@ return this.http.post(BASIC_URL + `/api/admin/product/${productId}`,dto, {
     });
   };
   addVariationToProduct(productVariationDto:any):Observable<any>{
-    return this.http.post(BASIC_URL+'/api/admin/product/addVariation',productVariationDto,{
+    return this.http.put(BASIC_URL+'/api/admin/product/addVariation',productVariationDto,{
       headers:this.createAuthorizationHeader()
     });
-  }
-
+  };
+  removeVariationToProduct(productVariationDto:any):Observable<any>{
+    return this.http.put(BASIC_URL+'/api/admin/product/removeVariation',productVariationDto,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
 
 
 }

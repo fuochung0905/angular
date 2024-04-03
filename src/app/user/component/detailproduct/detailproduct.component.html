@@ -29,19 +29,33 @@
              <div class="product-detail">
                         <div class="box-detail">
                             <p class="title">Kích thước: </p>
-                            <div class="item-detail">
-                                <div class="item-btn">
-                                    <input  [(ngModel)]="cartDto.size"   type="radio" class="variation-size" name="size" value="Xl">
-                                    <label for="@item.variation.value">Xl</label>
+                            <div *ngFor="let vari of variations">
+                                <div *ngIf="vari.name===size">
+                                    <div class="">
+                                        <div class="item-btn">
+                                            <input  [(ngModel)]="cartDto.size" type="radio"
+                                            value="{{vari.value}}"
+                                            class="variation-size"
+                                             name="size">
+                                            <label>{{vari.value}}</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                          
                         </div>
                         <div class="box-detail">
                             <p class="title">Màu sắc: </p>
-                            <div class="item-detail">
-                                <div class="item-btn">
-                                    <input [(ngModel)]="cartDto.colo"   type="radio" class="variation-color" name="colo" value="black">
-                                    <label for="@item.variation.value">black</label>
+                            <div *ngFor="let vari of variations">
+                                <div *ngIf="vari.name===color">
+                                    <div class="">
+                                        <div class="item-btn">
+                                            <input  [(ngModel)]="cartDto.colo" type="radio"
+                                            value="{{vari.value}}"
+                                             class="variation-color" name="color">
+                                            <label>{{vari.value}}</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div> 
