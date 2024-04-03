@@ -13,6 +13,12 @@
     transition: all .3s ;
     background: #fff;
 }
+.btn-wrap i{
+    line-height: 1;
+    padding-bottom: 4px;
+    padding-right: 2px;
+    font-size: 16px;
+}
 ul, li{
     margin: 0;
     padding: 0
@@ -105,8 +111,8 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
 }
 .bottom-box .search-wrap .cart-box .num{
     position: absolute;
-    top: 0;
-    right: -15px;
+    top: 3px;
+    right: -13px;
     display: block;
     line-height: 17px;
     width: 17px;
