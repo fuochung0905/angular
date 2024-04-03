@@ -1,42 +1,42 @@
-
-
 <header>
     <div class="container-large">
         <div class="top-box">
-            <div class="logo" >
-                <a class="" ><span>UTC2</span><span>Store</span></a>
+            <div class="logo">
+                <a class=""><span>UTC2</span><span style="color: #000;">Store</span></a>
             </div>
-<div >
-    <div class="login-wrap">
-        <div class="login-item">
-            <a class="" routerLink="/login" routerLinkActive="active"> <i class="fa-solid fa-circle-user"></i> Đăng nhập</a>
-        </div>
-        <div class="login-item">
-            <a class="" routerLink="/signup" routerLinkActive="active"> <i class="fa-solid fa-phone"></i>Đăng kí</a>
-        </div>
-    </div>
-</div>
+            <div>
+                <div class="login-wrap">
+                    <div class="login-item log">
+                        <a class="btn-wrap" routerLink="/login" routerLinkActive="active">   Đăng nhập</a>
+                    </div>
+                    <div class="login-item reg">
+                        <a class=" btn-wrap" routerLink="/signup" routerLinkActive="active">  Đăng kí</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="bottom-box">
             <ul class="main-menu">
             </ul>
             <div class="search-wrap">
                 <div class="search-box">
-                    <form class="form-inline"  asp-action="Index" method="get" style="display: flex; flex-direction: row;">
+                    <form class="form-inline" asp-action="Index" method="get"
+                        style="display: flex; flex-direction: row;">
                         <div class="">
                             <input type="text" name="searchName" placeholder="Search">
                         </div>
                         <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
-                <a class="cart-box" >
-                    <i class="bi bi-cart"></i>
+                <a class="cart-box">
+                    <i class="fa-solid fa-cart-shopping"></i>
                     <span id="cartCount" class="num">0</span>
                 </a>
             </div>
         </div>
     </div>
 </header>
+
 <body>
     <div class="content-body">
         <div class="main-product">
@@ -44,34 +44,35 @@
                 <div class="head-product">
                     <div class="title-component-cate">Danh mục: </div>
                     <div class="list-component-cate">
-                        
+
                         <li>
-                            <a >Loại sản phẩm</a>
+                            <a>Loại sản phẩm</a>
                         </li>
                     </div>
-                    <div class="state-component-cate"></div>   
+                    <div class="state-component-cate"></div>
                 </div>
-        <div class="list-product" *ngFor="let product of products">
-                <div class="item-product">
-                    <div class="img-box">
-                        <img [src]="product.processImage" alt="product-image">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{product.productName}}</h5>
-                        <div class="card-detail">
-                            <p class="card-text money">{{product.description}}</p>
-                            <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
+                <div class="list-product" *ngFor="let product of products">
+                    <div class="item-product">
+                        <div class="img-box">
+                            <img [src]="product.processImage" alt="product-image">
                         </div>
-                        <div class="box-button">
-                            <button class="wrap-btn detail" routerLink="/product/{{product.id}}" >Chi tiết</button>
-                            <button type="button"  class="wrap-btn add"><i class="bi bi-cart-plus"></i><span>Thêm</span></button>
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.productName}}</h5>
+                            <div class="card-detail">
+                                <p class="card-text money">{{product.description}}</p>
+                                <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
+                            </div>
+                            <div class="box-button">
+                                <button class="btn-wrap detail" routerLink="/product/{{product.id}}">Chi tiết</button>
+                                <button type="button" class="btn-wrap add"><i
+                                        class="bi bi-cart-plus"></i><span>Thêm</span></button>
+                            </div>
                         </div>
                     </div>
-                </div>   
-        </div>
+                </div>
             </div>
         </div>
-        </div>
+    </div>
 </body>
 
 <footer>
@@ -80,13 +81,15 @@
             <div class="about-us">
                 <div class="title fw-semibold">Về chúng tôi</div>
                 <div class="logo">
-                    <a class="" ><span>UTC2</span><span>Store</span></a>
+                    <a class=""><span>UTC2</span><span>Store</span></a>
                 </div>
-                <p class="fw-lighter pt-2">Đến với UTC2<span>STORE</span> quý khách sẽ được trải nghiệm các sản phẩm hoàn toàn mới với chất lượng đảm bảo uy tín - mẫu mã.</p>
+                <p class="fw-lighter pt-2">Đến với UTC2<span>STORE</span> quý khách sẽ được trải nghiệm các sản phẩm
+                    hoàn toàn mới với chất lượng đảm bảo uy tín - mẫu mã.</p>
             </div>
             <div class="other-us">
                 <div class="title fw-semibold">Chi nhánh</div>
-                <span class="fw-lighter">Cơ sở: <span class="fw-bold">Đ.448 Lê Văn Việt, P. Tăng Nhơn Phú A, Tp.Thủ Đức, Tp</span></span><br />
+                <span class="fw-lighter">Cơ sở: <span class="fw-bold">Đ.448 Lê Văn Việt, P. Tăng Nhơn Phú A, Tp.Thủ Đức,
+                        Tp</span></span><br />
             </div>
             <div class="contact-us">
                 <div class="title fw-semibold">Liên hệ</div>
@@ -109,15 +112,15 @@
             </div>
             <div class="follow-us">
                 <div class="title fw-semibold">Hệ thống cửa hàng</div>
-                <p class="fw-lighter">Hiện tại @item.namestorage<span>STORE</span> chỉ hoạt động kinh doanh qua các kênh trực tuyến: Website, Facebook, Instagram, Shopee, Lazada & Tiktok shop</p>
+                <p class="fw-lighter">Hiện tại @item.namestorage<span>STORE</span> chỉ hoạt động kinh doanh qua các kênh
+                    trực tuyến: Website, Facebook, Instagram, Shopee, Lazada & Tiktok shop</p>
                 <div class="list-icon">
-                    <a >  <i class="fa-brands fa-instagram"></i></a>
-                    <a > <i class="fa-brands fa-facebook-f"></i></a>
-                    <a>  <i class="fa-brands fa-tiktok"></i></a>
-                    <a > <i class="fa-brands fa-youtube"></i></a>
+                    <a> <i class="fa-brands fa-instagram"></i></a>
+                    <a> <i class="fa-brands fa-facebook-f"></i></a>
+                    <a> <i class="fa-brands fa-tiktok"></i></a>
+                    <a> <i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-

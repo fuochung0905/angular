@@ -5,7 +5,7 @@
         <div class="container-large">
             <div class="top-box">
                 <div class="logo" >
-                    <a class="" ><span>UTC2</span><span>Store</span></a>
+                    <a class="" ><span>UTC2</span><span style="color: #000;">Store</span></a>
                 </div>
     <div >
         <div id="tooltip-login-wrap">
@@ -19,13 +19,8 @@
             </li>
             <li class="login-item">
                 <form class="form-inline" (ngSubmit)=" logout()" >
-                    <button type="submit" class="nav-link btn btn-link text-dark">Đăng Xuất</button>
+                    <button type="submit" class="logout btn-wrap">Đăng Xuất</button>
                 </form>
-            </li>
-            <li class="login-item">
-                <a class="nav-link text-dark" routerLink="/userCart"  title="Manage">
-                    <span id="username">Giỏ hàng</span>
-                </a>
             </li>
         </div>
         </div>
@@ -43,7 +38,7 @@
                             <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
-                    <a class="cart-box" >
+                    <a class="cart-box"   routerLink="/userCart"  >
                         <i class="bi bi-cart"></i>
                         <span id="cartCount" class="num">0</span>
                     </a>
