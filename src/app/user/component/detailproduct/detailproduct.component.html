@@ -50,10 +50,10 @@
                             <h6>{{product.qty_stock}}</h6>
                         </div>
                         <div class="get-product">
-                            <button type="button" class="wrap-btn add" (click)="addCart(product.id)">
+                            <button type="button" class="btn-wrap add" (click)="addCart(product.id)">
                                 <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
                             </button>
-                            <button type="submit" class="wrap-btn buy" (click)="addOrder(product.id)" >
+                            <button type="submit" class="btn-wrap buy" (click)="addOrder(product.id)" >
                                 <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
                             </button>
                         </div>
@@ -71,7 +71,6 @@
                 </div>
             </div>
             <div class="social-links">
-                <p>Chia sẻ</p>
                 <a href="#">
                     <i class="fab fa-facebook-f"></i>
                 </a>
