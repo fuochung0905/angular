@@ -10,9 +10,9 @@ import { AdminService } from '../../service/admin.service';
 export class AddVariationComponent  {
    productIdString: string = this.routerActive.snapshot.params['id'];
   selectedVariationId: any | null = null;
-  productVariation: { productId: number | null, variationId: string } = {
+  productVariation: { productId: number | null, variationId: number |null } = {
     productId: null,
-    variationId: ''
+    variationId: null
 };
    size:any='size';
    color:any='color';
@@ -82,17 +82,39 @@ export class AddVariationComponent  {
     }
     submitForm():void{
       if (this.selectedVariationId !== null) {
-        this.productVariation.variationId=this.selectedVariationId;
+        this.productVariation.variationId=parseInt(this.selectedVariationId,10);
         this.productVariation.productId=parseInt(this.productIdString,10)
         this.adminService.addVariationToProduct(this.productVariation).subscribe(
           (res) => {
             console.log('Add variation to product success:', res);
             console.log(this.productVariation);
-            // location.reload();
+            location.reload();
             // Xử lý khi service trả về kết quả thành công
           },
           (error) => {
             console.error('Add variation to product error:', error);
+            // Xử lý khi có lỗi từ service
+          }
+        );
+      } else {
+        console.log("No variation selected");
+        // Xử lý trường hợp khi không có địa chỉ nào được chọn
+      }
+    };
+
+    removeForm():void{
+      if (this.selectedVariationId !== null) {
+        this.productVariation.variationId=parseInt(this.selectedVariationId,10);
+        this.productVariation.productId=parseInt(this.productIdString,10)
+        this.adminService.removeVariationToProduct(this.productVariation).subscribe(
+          (res) => {
+            console.log('remove variation to product success:', res);
+            console.log(this.productVariation);
+            location.reload();
+            // Xử lý khi service trả về kết quả thành công
+          },
+          (error) => {
+            console.error('remove variation to product error:', error);
             // Xử lý khi có lỗi từ service
           }
         );

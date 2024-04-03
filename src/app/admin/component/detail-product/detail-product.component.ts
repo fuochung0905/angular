@@ -74,5 +74,6 @@ export class DetailProductComponent {
         console.log('fail',error);
       }
       );
-  }
+  };
+ 
 }

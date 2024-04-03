@@ -2,9 +2,7 @@
     box-sizing: border-box;
 
 }
-<<<<<<< HEAD
-.content-body{
-=======
+
 
 .btn-wrap {
     display: flex;
@@ -23,7 +21,6 @@
 }
 
 .content-body {
->>>>>>> cc4329863ddeae747937ce68df06a6f81c4d2d23
     width: 100%;
 }
 

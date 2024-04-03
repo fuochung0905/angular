@@ -37,8 +37,8 @@ PreViewImage(){
   ngOnInit(){
     this.productForm=this.fb.group({
       categoryId: [''],
-      productName: ['', Validators.required],
-      description: ['', Validators.required],
+      productName: [''],
+      description: [''],
       importPrice: [''],
       exportPrice: [''],
       quantity: ['']
