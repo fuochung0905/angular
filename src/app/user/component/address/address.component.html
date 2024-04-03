@@ -1,33 +1,35 @@
 <div class="address-all">
-    <div class="address-form">
-        <form (ngSubmit)="addAddress()">
-            <div class="address-details">
-                <label  class="control-label">Đường/Thôn</label>
-                <input [(ngModel)]="address.street" name="street" type="text" class="form-control" />
-            
-            </div>
-            <div class="address-details">
-                <label  class="control-label">Thị Trấn/ Xã</label>
-                <input [(ngModel)]="address.state" name="state" type="text" class="form-control" />
-               
-            </div>
-            <div class="address-details">
-                <label  class="control-label">Quận/Huyện</label>
-                <input [(ngModel)]="address.country" name="country" type="text" class="form-control" />
-              
-            </div>
-            <div class="address-details">
-                <label  class="control-label">Tỉnh/Thành Phố</label>
-                <input [(ngModel)]="address.city" name="city" type="text" class="form-control" />
-               
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Lưu" class="btn btn-primary btn-wrap" />
-            </div>
-        </form>
+    <div class="container-web">
+        <div class="address-form">
+            <form (ngSubmit)="addAddress()">
+                <div class="address-details">
+                    <label  class="control-label">Tỉnh/Thành Phố</label>
+                    <input [(ngModel)]="address.city" name="city" type="text" class="form-control" />
+                   
+                </div>
+                <div class="address-details">
+                    <label  class="control-label">Quận/Huyện</label>
+                    <input [(ngModel)]="address.country" name="country" type="text" class="form-control" />
+                  
+                </div>
+                <div class="address-details">
+                    <label  class="control-label">Thị Trấn/ Xã</label>
+                    <input [(ngModel)]="address.state" name="state" type="text" class="form-control" />
+                   
+                </div>
+                <div class="address-details">
+                    <label  class="control-label">Đường/Thôn</label>
+                    <input [(ngModel)]="address.street" name="street" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" value="Lưu" class="btn-wrap save">Lưu</button> 
+                    <button class="btn-wrap back" asp-action="Index">Trở về</button>
+                </div>
+            </form>
+        </div>
     </div>
     <div>
-        <a asp-action="Index">Trở về</a>
+       
     </div>
 
 </div>

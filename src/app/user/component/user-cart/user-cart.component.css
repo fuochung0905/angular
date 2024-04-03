@@ -1,6 +1,10 @@
 body {
     background-color: #fff;
 }
+.container-web{
+    max-width: 1200px;
+    margin:0px auto;
+}
 .my-cart {
     margin-top: 30px;
     border: 1px solid #ccc;
