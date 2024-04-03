@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { UserCartComponent } from './component/user-cart/user-cart.component'; // Import FormsModule
 import { ShowlistproductsComponent } from './component/showlistproducts/showlistproducts.component';
 import { OrderComponent } from './component/order/order.component';
-import { AddressComponent } from './address/address.component';
+import { AddressComponent } from './component/address/address.component';
+import { HistoryOrderComponent } from './component/history-order/history-order.component';
 
 
 
@@ -21,7 +22,8 @@ import { AddressComponent } from './address/address.component';
     UserCartComponent,
     ShowlistproductsComponent,
           OrderComponent,
-           AddressComponent
+           AddressComponent,
+           HistoryOrderComponent
   ],
   imports: [
     CommonModule,

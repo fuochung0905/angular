@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UserStorageService } from '../storage/user-storage.service';
-import { Router } from '@angular/router';
-import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';  
 import { AdminService } from './service/admin.service';
 
 @Component({ 

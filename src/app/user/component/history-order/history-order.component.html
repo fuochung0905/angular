@@ -1,0 +1,85 @@
+
+
+<div class="myorder">
+    <div class="myorder-block">
+        <div class="myorder-block-header">
+            <div class="myorder-block-header-item" >
+                <div class="hh hhall" onclick="opall(this)">
+                    <a >Tất cả</a>
+                    <span id="orderCountall" class="num">0</span>
+                </div>
+            </div>
+            <div class="myorder-block-header-item" >
+                <div class="hh" onclick="opprocess(this)">
+                    <a> Đang xử lí</a>
+                    <span id="orderCountwait" class="num">0</span>
+                </div>
+                
+            </div>
+            <div class="myorder-block-header-item">
+                <div class="hh" onclick="opwait(this)">
+                    <a >Đang giao</a>
+                    <span id="orderCountwait" class="num">0</span>
+                </div>
+                
+            </div>
+            <div class="myorder-block-header-item">
+                <div class="hh" onclick="opcomplete(this)">
+                    <a >Đã nhận</a>
+                    <span id="orderCountcomplete" class="num">0</span>
+                </div>
+                
+            </div>
+            <div class="myorder-block-header-item" >
+                <div class="hh" onclick="ophuy(this)">
+                    <a >Đã hủy</a>
+                    <span id="orderCountcancle" class="num">0</span>
+                </div>
+                
+            </div>
+        </div>
+        <hr />
+        <div class="tab-all-user">
+            <div id="content-pl-tab-all" class="myorder-block-content">
+                <div class="ngFor1">
+                    <div class="myorder-block-content-header">
+                        <div class="myorder-block-content-body-img">Ảnh</div>
+                        <div class="myorder-block-content-body-des">Sản phẩm</div>
+                        <div class="myorder-block-content-body-qty">Số lượng</div>
+                        <div class="myorder-block-content-body-price"> Tổng trả</div>
+                    </div>
+                    <hr />
+                    <div class="myorder-block-content-body">
+                        <div class="myorder-block-content-body-img">  <img src="/images/@item.product.imageUrl" style="width:80px; height:80px;border-radius:6px;"></div>
+
+                        <div class="myorder-block-content-body-des">
+                            <div>  @item.product.productName</div>
+                            <div>Kích thước: @item.size, Màu sắc: @item.color</div>
+                        </div>
+                        
+                        <div class="myorder-block-content-body-qty" >@item.quantity</div>
+                        <div class="myorder-block-content-body-price money"> @item.unitPrice</div>
+                    </div>
+                    <div class="myorder-block-content-header-right">
+                       <div class="ngIf">
+                            <div class="myorder-block-content-header-right-item">Trạng thái: <p class="txtred">Đã hủy</p></div>
+                        </div>
+                        <div class="ngIf">
+                            <div class="myorder-block-content-header-right-item">Trạng thái: <p class="txtblue"> @item.order.status.statusName</p></div>
+                        </div>
+                        <div class="myorder-block-content-header-right-item">Thời gian: @item.order.updateDate</div>
+                       <div class="ngIf">
+                            <div class="myorder-block-content-header-right-item">
+                                <div></div>
+                                <a href="/UserOrder/huydon?id=@item.Id"><button class="wrap-btn m-color-full">Hủy đơn</button></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

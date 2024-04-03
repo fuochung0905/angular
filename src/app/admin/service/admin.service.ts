@@ -69,15 +69,36 @@ return this.http.post(BASIC_URL + `/api/admin/product/${productId}`,dto, {
   headers: this.createAuthorizationHeader()
 });
 };
-};
+  createVariation(variationDto:any):Observable<any>{
+    return this.http.post(BASIC_URL+'/api/admin/variation/create',variationDto,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getAllVariation():Observable<any>{
+    return this.http.get(BASIC_URL+'/api/admin/variation/',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getAllVariationCategory(productId:number):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/variation/category/${productId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getAllVariationProduct(productId:number):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/variation/product/${productId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  addVariationToProduct(productVariationDto:any):Observable<any>{
+    return this.http.post(BASIC_URL+'/api/admin/product/addVariation',productVariationDto,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
 
 
-  
- /* getProductById(Id: number): Observable<Product[]> {
-    const url = `${BASIC_URL+'/api/admin/product/'}/${Id}`;
-    return this.http.get(BASIC_URL+'/api/admin/product/');
-    
-  }*/
+
+}
+
 
 
 

@@ -5,7 +5,8 @@ import { GetAllproductComponent } from './component/get-allproduct/get-allproduc
 import { DetailproductComponent } from './component/detailproduct/detailproduct.component';
 import { UserCartComponent } from './component/user-cart/user-cart.component';
 import { OrderComponent } from './component/order/order.component';
-import { AddressComponent } from './address/address.component';
+import { AddressComponent } from './component/address/address.component';
+import { HistoryOrderComponent } from './component/history-order/history-order.component';
 
 const routes: Routes = [
   {path:'',component:UserComponent,
@@ -14,10 +15,10 @@ children:[
   {path:'address',component:AddressComponent},
   {path:'userCart',component:UserCartComponent},
   {path:'order',component:OrderComponent},
+  {path:'historyOrder',component:HistoryOrderComponent},
   {path:'product/:id',component:DetailproductComponent}
 ]}
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

@@ -58,7 +58,8 @@ export class UserService {
     return this.httpClient.get(BASIC_URL+'/api/user/address/',{
       headers: this.createAuthorizationHeader()
     });
-  }
+  };
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + UserStorageService.getToken());
   };
@@ -81,4 +82,14 @@ export class UserService {
         headers:this.createAuthorizationHeader()
       });
   };
+  getCartCountItem():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/cart/count',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getHistoryOrder():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/history',{
+      headers:this.createAuthorizationHeader()
+    });
+  }
 }

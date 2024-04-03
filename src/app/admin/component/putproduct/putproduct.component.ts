@@ -14,8 +14,6 @@ export class PutproductComponent implements OnInit{
   product!: any[];
   productId!: number;
 
-
-  
   constructor(
     private router:ActivatedRoute,
   

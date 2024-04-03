@@ -10,8 +10,9 @@
                 <img class="images" [src]="product.processImage" alt="product-image">
             </div>        
         <p>Số lượng: {{ product.quantity }}</p>
-        <button routerLink="/product/{{product.id}}" routerLinkActive="active">Update</button>
-        <button (click)="deleteProduct(product.id)">Delete</button>
+        <button routerLink="/admin/product/{{product.id}}" routerLinkActive="active">Cập nhật</button>
+        <button routerLink="/admin/variationproduct/{{product.id}}" routerLinkActive="active">Phân loại</button>
+        <button (click)="deleteProduct(product.id)">Xóa</button>
       </li>
     </ul>
   </div>

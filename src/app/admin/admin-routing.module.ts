@@ -6,6 +6,8 @@ import { PostcategoryComponent } from './component/postcategory/postcategory.com
 import { PostproductComponent } from './component/postproduct/postproduct.component';
 import { PutproductComponent } from './component/putproduct/putproduct.component';
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
+import { VariationComponent } from './component/variation/variation.component';
+import { AddVariationComponent } from './component/add-variation/add-variation.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
@@ -14,7 +16,9 @@ children:[
   {path:'product/:id',component:DetailProductComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'postcategory',component:PostcategoryComponent},
-  {path:'putproduct',component:PutproductComponent}
+  {path:'putproduct',component:PutproductComponent},
+  {path:'createvariation',component:VariationComponent},
+  {path:'variationproduct/:id',component:AddVariationComponent}
 ]}
 ];
 

@@ -11,7 +11,7 @@ export class GetAllproductComponent implements OnInit {
   products: any[] = [];
   constructor(private userService: UserService,
     private router:Router) { }
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.getAllProduct();
   }
   getAllProduct(): void {

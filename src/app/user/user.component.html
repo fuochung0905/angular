@@ -1,6 +1,5 @@
 
 <div >
-
     <header>
         <div class="container-large">
             <div class="top-box">
@@ -14,7 +13,9 @@
             </li>
             <li class="login-item">
                 <a class="nav-link text-dark" title="Manage">
-                    <span id="username">Tên khách hàng</span>
+                    <span id="username">Tên khách hàng</span>  
+                 
+
                 </a>
             </li>
             <li class="login-item">
@@ -22,11 +23,7 @@
                     <button type="submit" class="nav-link btn btn-link text-dark">Đăng Xuất</button>
                 </form>
             </li>
-            <li class="login-item">
-                <a class="nav-link text-dark" routerLink="/userCart"  title="Manage">
-                    <span id="username">Giỏ hàng</span>
-                </a>
-            </li>
+         
         </div>
         </div>
     </div>
@@ -43,9 +40,9 @@
                             <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
-                    <a class="cart-box" >
+                    <a class="cart-box" routerLink="/userCart">
                         <i class="bi bi-cart"></i>
-                        <span id="cartCount" class="num">0</span>
+                        <span class="num" >{{cartCount}}</span>
                     </a>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-postproduct',
@@ -36,12 +36,12 @@ PreViewImage(){
 };
   ngOnInit(){
     this.productForm=this.fb.group({
-      categoryId:[null],
-      productName:[null],
-      description:[null],
-      importPrice:[null],
-      exportPrice:[null],
-      quantity:[null]
+      categoryId: [''],
+      productName: ['', Validators.required],
+      description: ['', Validators.required],
+      importPrice: [''],
+      exportPrice: [''],
+      quantity: ['']
     });
     
     this.getAllCategories();
@@ -53,8 +53,10 @@ PreViewImage(){
     })
   };
   addProduct():void{
+   
     if(this.productForm.valid){
       const formData :FormData=new FormData();
+      
       formData.append('image',this.selectedFile);
       formData.append('categoryId',this.productForm.get('categoryId')?.value);
       formData.append('productName',this.productForm.get('productName')?.value);

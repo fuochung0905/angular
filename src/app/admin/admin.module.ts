@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostproductComponent } from './component/postproduct/postproduct.component';
 import { PutproductComponent } from './component/putproduct/putproduct.component';
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
+import { VariationComponent } from './component/variation/variation.component';
+import { AddVariationComponent } from './component/add-variation/add-variation.component';
 
 
 
@@ -20,7 +22,9 @@ import { DetailProductComponent } from './component/detail-product/detail-produc
     PostcategoryComponent,
     PostproductComponent,
     PutproductComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    VariationComponent,
+    AddVariationComponent
   ],
   imports: [
     CommonModule,
