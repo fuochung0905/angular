@@ -28,7 +28,12 @@
     transition: all .3s;
     background: #fff;
 }
-
+.btn-wrap i{
+    line-height: 1;
+    padding-bottom: 4px;
+    padding-right: 2px;
+    font-size: 16px;
+}
 .btn-wrap.order {
     width: 150px;
     border-radius: 0px;

@@ -1,89 +1,83 @@
 <div class="container-web">
-  
+
     <h3 style="margin: 30px 0px;"> Giỏ hàng của tôi</h3>
 
     <div class="container-web ">
         <div class="my-cart">
-                <h3><i class="bi bi-cart"></i> Giỏ hàng của tôi</h3>
+            <h3>Giỏ hàng của tôi</h3>
+            <section class="main-item-info">
+                <h3 class="hidden-item-main-title">Item Info</h3>
+
+                <div class="item-img">
+
+                    <h5>Hình ảnh</h5>
+                </div>
+                <!--    -->
+                <div class="item-name-product">
+                    <h5>Sản phẩm</h5>
+                </div>
+                <!--    -->
+                <div class="item-money">
+                    <h5>Giá</h5>
+                </div>
+                <div class="item-money">
+                    <h5>Biến thể</h5>
+                </div>
+                <!--    -->
+                <div class="item-quantity">
+                    <h5>Số lượng</h5>
+                </div>
+                <!--    -->
+                <div class="item-moneypay">
+                    <h5>Tổng tiền</h5>
+                </div>
+                <!--    -->
+            </section>
+            <div class="list-product" *ngFor="let cart of carts">
                 <section class="main-item-info">
                     <h3 class="hidden-item-main-title">Item Info</h3>
-
+                    <!--    -->
                     <div class="item-img">
-
-                        <h5>Hình ảnh</h5>
+                        <img [src]="cart.proImage" alt="product-image" style="height: 50px; width: 50px;">
                     </div>
                     <!--    -->
                     <div class="item-name-product">
-                        <h5>Sản phẩm</h5>
+                        <div class="item-name">
+                            <p>{{cart.productName}}</p>
+                        </div>
                     </div>
                     <!--    -->
-                    <div class="item-money">
-                        <h5>Giá</h5>
+                    <div class="item-money money">
+                        <p>{{cart.price}} &nbsp;₫</p>
+
                     </div>
                     <div class="item-money">
-                        <h5>Biến thể</h5>
+                        <p>{{cart.size}}</p>
+                        <p>{{cart.color}}</p>
                     </div>
-                    <!--    -->
                     <div class="item-quantity">
-                        <h5>Số lượng</h5>
+                        <a class="btn btn-info amount">-</a>
+                        <input id="item-soluong" class="amount" value="{{cart.quantity}}" type="number">
+                        <a class="btn btn-info amount">+</a>
                     </div>
                     <!--    -->
-                    <div class="item-moneypay">
-                        <h5>Tổng tiền</h5>
+                    <div class="item-moneypay money">
+                        <p>{{cart.price}} &nbsp;₫</p>
                     </div>
                     <!--    -->
                 </section>
-                <div class="list-product" *ngFor="let cart of carts">
-                    <section class="main-item-info">
-                        <h3 class="hidden-item-main-title">Item Info</h3>
-                        <!--    -->
-                        <div class="item-img">
-                            <img [src]="cart.proImage" alt="product-image" style="height: 50px; width: 50px;">
-                        </div>
-                        <!--    -->
-                        <div class="item-name-product">
-                            <div class="item-name">
-                                <p>{{cart.productName}}</p>
-                            </div>
-                        </div>
-                        <!--    -->
-                        <div class="item-money money">
-                            <p>{{cart.price}}  &nbsp;₫</p>
-
-                        </div>
-                        <div class="item-money">
-                            <p>{{cart.size}}</p>
-                            <p>{{cart.color}}</p>
-
-                        </div>
-                        <!--    -->
-                        <div class="item-quantity">
-                            <a class="btn btn-info amount" >-</a>
-                            <input id="item-soluong" class="amount" value="{{cart.quantity}}" type="number">
-                            <a class="btn btn-info amount">+</a>
-                        </div>
-                        <!--    -->
-                        <div class="item-moneypay money">
-                            <p>{{cart.price}} &nbsp;₫</p>
-                        </div>
-                        <!--    -->
-                    </section>
-                </div>
-                <div class="nav-show-allsell">
-                    <div class="my-2">
-                        <div>
-                            <p>
-                                Tổng cộng : @Model.shoppingCarts.cartDetails.Count Sản Phẩm 
-                            </p>
-                            </div>
+            </div>
+            <div class="nav-show-allsell">
+                <div class="my-2">
+                    <div>
+                        <p>
+                            Tổng cộng : @Model.shoppingCarts.cartDetails.Count Sản Phẩm
+                        </p>
                     </div>
-                    <a asp-controller="UserOrder" asp-action="Userorder" class="wrap-btn m-color-full">Chọn hàng</a>
-
                 </div>
-        
+                <a asp-controller="UserOrder" asp-action="Userorder" class="wrap-btn m-color-full">Chọn hàng</a>
+
+            </div>
+
         </div>
     </div>
-
-
-
-
