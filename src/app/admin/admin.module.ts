@@ -12,7 +12,16 @@ import { PutproductComponent } from './component/putproduct/putproduct.component
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
 import { VariationComponent } from './component/variation/variation.component';
 import { AddVariationComponent } from './component/add-variation/add-variation.component';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { MatTableModule } from '@angular/material/table';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { GetDetailCategoryComponent } from './component/get-detail-category/get-detail-category.component';
 
 
 @NgModule({
@@ -24,7 +33,8 @@ import { AddVariationComponent } from './component/add-variation/add-variation.c
     PutproductComponent,
     DetailProductComponent,
     VariationComponent,
-    AddVariationComponent
+    AddVariationComponent,
+    GetDetailCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +42,16 @@ import { AddVariationComponent } from './component/add-variation/add-variation.c
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule  
+    HttpClientModule  ,
+    MatAutocompleteModule,
+    CdkTreeModule,
+    MatTableModule,
+    CdkTableModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatGridListModule,
   ]
 })
 export class AdminModule { }

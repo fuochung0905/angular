@@ -1,26 +1,51 @@
-<h2>Danh sách sản phẩm</h2>
-<div *ngIf="product && product.length > 0" class="product-container" >
-    <ul class="product-item">
-      <li *ngFor="let product of product">
-        <h3>{{ product.productName }}</h3>
-        <p>Giá: {{ product.exportPrice | currency:'USD':'symbol':'1.2-2' }}</p>
-        <p>Mô tả: {{ product.description }}</p>
-       
-            <div>
-                <img class="images" [src]="product.processImage" alt="product-image">
-            </div>        
-        <p>Số lượng: {{ product.quantity }}</p>
-        <button routerLink="/admin/product/{{product.id}}" routerLinkActive="active">Cập nhật</button>
-        <button routerLink="/admin/variationproduct/{{product.id}}" routerLinkActive="active">Phân loại</button>
-        <button (click)="deleteProduct(product.id)">Xóa</button>
-      </li>
-    </ul>
-  </div>
+<mat-toolbar>Danh sách sản phẩm
+  <br>
+  <button routerLink="/admin/add-product" routerLinkActive="active"><mat-icon size="24">add</mat-icon></button>
+</mat-toolbar>
+  <table mat-table [dataSource]="product" class="mat-elevation-z8">
+    <ng-container matColumnDef="processImage">
+      <th mat-header-cell *matHeaderCellDef> Ảnh </th>
+      <td mat-cell *matCellDef="let element">  <img class="images" [src]="element.processImage" alt="product-image"> </td>
+    </ng-container>
+ 
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef> Tên </th>
+      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Miêu tả </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+    </ng-container>
   
-  <div *ngIf="!product || product.length === 0">
-    <p>Không có sản phẩm nào được tìm thấy.</p>
-  </div>
-  <!-- Template HTML -->
+    <ng-container matColumnDef="importPrice">
+      <th mat-header-cell *matHeaderCellDef> Giá nhập </th>
+      <td mat-cell *matCellDef="let element"> {{element.importPrice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="exportPrice">
+      <th mat-header-cell *matHeaderCellDef> Giá bán </th>
+      <td mat-cell *matCellDef="let element"> {{element.exportPrice}} </td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="Thao tác">
+      <th mat-header-cell *matHeaderCellDef> Thao tác </th>
+      <td mat-cell *matCellDef="let element">  
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle routerLink="/admin/product/{{element.id}}" routerLinkActive="active">Cập nhật</mat-button-toggle>
+          <mat-button-toggle (click)="deleteProduct(element.id)">Xóa</mat-button-toggle>
+          <mat-button-toggle routerLink="/admin/variationproduct/{{element.id}}" routerLinkActive="active">Phân loại</mat-button-toggle>
+        </mat-button-toggle-group>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
+  
+
  
   
   

@@ -2,3 +2,12 @@
     height: auto;
     width: 30%;
 }
+table {
+    width: 100%;
+  }
+  .mat-column-productName{
+    width: 350px;
+  }
+  .mat-column-processImage{
+    width: 150px;
+  }

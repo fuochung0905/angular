@@ -1,131 +1,146 @@
 <div class="admin-product-head">
-    <div class="head-item">
+    <div class="head-item" >
         <div class="head-item-left"><i class="far fa-clipboard"></i> Danh sách sản phẩm</div>
     </div>
     <div class="head-item add-product">
-        <a class="" ><button class="btn-return">Trở về danh sách</button></a>
+        <a class="" ><button routerLink="/admin/list-product" routerLinkActive="active" class="btn-return">Trở về danh sách</button></a>
     </div>
 </div>
 
+
+
 <div class="edit-body edit-body-variation">
-    <div class="edit edit-variation">
-        <div>
-            <div class="edit-item">
-                <div>Màu sắc</div>
-                <hr />
-            </div>
-            <div class="edit-item">
-                <div class="edit-item-variation">
-                    <form  >
-                        <input  type="hidden" />
-                        <ng-container *ngFor="let vc of variationsByCategory">
-                          <ng-container *ngIf="vc.name === color">
-                            {{updateIsAddedToFalse()}}
-                            <!-- <div *ngFor="let vp of variationsByProduct">
-                              <ng-container *ngIf="isVariationInProduct(vp, vc)">
-                                  {{updateIsAddedToTrue()}}
-                                  <ng-template #exitLoop></ng-template>
-                              </ng-container>
-                            </div> -->
-                            {{checkAndUpdateIsAddedToTrue(vc.id)}}
-                            <ng-container *ngIf="isAdded">
-                                <div class="edit-item-variation-item">
-                                    <div class="admin-variation-select">
-                                        <label>
-                                            <input  type="radio" [checked]="selectedVariationId === vc.id" 
-                                            (change)="updateSelectedVariation(vc.id)" />
-                                        </label>
-                                    </div>
-                                    <div class="admin-variation-value" style="color:dodgerblue;">
-                                       {{vc.value}}
-                                    </div>
-                                    <div class="admin-variation-control">
-                                        <button class="btn-vremove" type="submit" (click)="removeForm()" ><i class="fas fa-remove"></i></button>
-                                    </div>
-                                </div>
-                            </ng-container>
-                           <ng-container *ngIf="!isAdded">
-                                <div class="edit-item-variation-item" style="margin-top: 5px;">
-                                    <div class="admin-variation-control">
-                                        <label>
-                                            <input  type="radio" [checked]="selectedVariationId === vc.id" 
-                                            (change)="updateSelectedVariation(vc.id)" />
-                                        </label>
-                                    </div>
-                                    <div class="admin-variation-value">
-                                       {{vc.value}}
-                                    </div>
-                                    <div class="admin-variation-control">
-                                        <button type="submit" (click)="submitForm()" class="btn-vcheck"><i class="fas fa-check"></i></button>
-                                    </div>
-                                </div>
-                             </ng-container>
-                          </ng-container>
-                        </ng-container>
-                    </form>
-                    
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="edit edit-variation">
-        <div>
-            <div class="edit-item">
-                <div>Kích thước</div>
-                <hr />
-            </div>
-            <div class="edit-item">
-                <div class="edit-item-variation">
-                    <form >
-                        <input  type="hidden" />
-                        <ng-container *ngFor="let vc of variationsByCategory">
-                          <ng-container *ngIf="vc.name === size">
-                            {{updateIsAddedToFalse()}}
-                         
-                            {{checkAndUpdateIsAddedToTrue(vc.id)}}
-                            <ng-container *ngIf="isAdded">
-                                <div class="edit-item-variation-item">
-                                    <div class="admin-variation-select">
-                                        <label>
-                                            <input  type="radio" [checked]="selectedVariationId === vc.id" 
-                                            (change)="updateSelectedVariation(vc.id)" />
-                                        </label>
-                                    </div>
-                                    <div class="admin-variation-value" style="color:dodgerblue;">
-                                       {{vc.value}}
-                                    </div>
-                                    <div class="admin-variation-control">
-                                        <button class="btn-vremove" type="submit" (click)="removeForm()"><i class="fas fa-remove"></i></button>
-                                    </div>
-                                </div>
-                            </ng-container>
-                           <ng-container *ngIf="!isAdded">
-                                <div class="edit-item-variation-item" style="margin-top: 5px;">
-                                    <div class="admin-variation-control">
-                                        <label>
-                                            <input  type="radio" [checked]="selectedVariationId === vc.id" 
-                                            (change)="updateSelectedVariation(vc.id)" />
-                                        </label>
-                                    </div>
-                                    <div class="admin-variation-value">
-                                       {{vc.value}}
-                                    </div>
-                                    <div class="admin-variation-control">
-                                        <button type="submit" (click)="submitForm()" class="btn-vcheck"><i class="fas fa-check"></i></button>
-                                    </div>
-                                </div>
-                           
-                        </ng-container>
-                          </ng-container>
-                              
+  
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+            <div class="edit edit-variation">
+                <div>
+                    <div class="edit-item">
+                        <div>Màu sắc</div>
+                        <hr />
+                    </div>
+                    <div class="edit-item">
+                        <div class="edit-item-variation">
+                            <form  >
+                                <input  type="hidden" />
+                                <ng-container *ngFor="let vc of variationsByCategory">
+                                  <ng-container *ngIf="vc.name === color">
+                                    {{updateIsAddedToFalse()}}
+                                    <!-- <div *ngFor="let vp of variationsByProduct">
+                                      <ng-container *ngIf="isVariationInProduct(vp, vc)">
+                                          {{updateIsAddedToTrue()}}
+                                          <ng-template #exitLoop></ng-template>
+                                      </ng-container>
+                                    </div> -->
+                                    {{checkAndUpdateIsAddedToTrue(vc.id)}}
+                                    <ng-container *ngIf="isAdded">
+                                        <div class="edit-item-variation-item">
+                                            <div class="admin-variation-select">
+                                                <label>
+                                                    <input  type="radio" [checked]="selectedVariationId === vc.id" 
+                                                    (change)="updateSelectedVariation(vc.id)" />
+                                                </label>
+                                            </div>
+                                            <div class="admin-variation-value" style="color:dodgerblue;">
+                                               {{vc.value}}
+                                            </div>
+                                            <div class="admin-variation-control">
+                                                <button class="btn-vremove" type="submit" (click)="removeForm()" ><i class="fas fa-remove"></i></button>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                   <ng-container *ngIf="!isAdded">
+                                        <div class="edit-item-variation-item" style="margin-top: 5px;">
+                                            <div class="admin-variation-control">
+                                                <label>
+                                                    <input  type="radio" [checked]="selectedVariationId === vc.id" 
+                                                    (change)="updateSelectedVariation(vc.id)" />
+                                                </label>
+                                            </div>
+                                            <div class="admin-variation-value">
+                                               {{vc.value}}
+                                            </div>
+                                            <div class="admin-variation-control">
+                                                <button type="submit" (click)="submitForm()" class="btn-vcheck"><i class="fas fa-check"></i></button>
+                                            </div>
+                                        </div>
+                                     </ng-container>
+                                  </ng-container>
+                                </ng-container>
+                            </form>
                             
-                        </ng-container>
-                    </form>
-                    
+                        </div>
+        
+                    </div>
                 </div>
-
             </div>
-        </div>
-    </div>
+    
+        </mat-grid-tile>
+    
+    
+    
+        <mat-grid-tile>
+            <div class="edit edit-variation">
+                <div>
+                    <div class="edit-item">
+                        <div>Kích thước</div>
+                        <hr />
+                    </div>
+                    <div class="edit-item">
+                        <div class="edit-item-variation">
+                            <form >
+                                <input  type="hidden" />
+                                <ng-container *ngFor="let vc of variationsByCategory">
+                                  <ng-container *ngIf="vc.name === size">
+                                    {{updateIsAddedToFalse()}}
+                                 
+                                    {{checkAndUpdateIsAddedToTrue(vc.id)}}
+                                    <ng-container *ngIf="isAdded">
+                                        <div class="edit-item-variation-item">
+                                            <div class="admin-variation-select">
+                                                <label>
+                                                    <input  type="radio" [checked]="selectedVariationId === vc.id" 
+                                                    (change)="updateSelectedVariation(vc.id)" />
+                                                </label>
+                                            </div>
+                                            <div class="admin-variation-value" style="color:dodgerblue;">
+                                               {{vc.value}}
+                                            </div>
+                                            <div class="admin-variation-control">
+                                                <button class="btn-vremove" type="submit" (click)="removeForm()"><i class="fas fa-remove"></i></button>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                   <ng-container *ngIf="!isAdded">
+                                        <div class="edit-item-variation-item" style="margin-top: 5px;">
+                                            <div class="admin-variation-control">
+                                                <label>
+                                                    <input  type="radio" [checked]="selectedVariationId === vc.id" 
+                                                    (change)="updateSelectedVariation(vc.id)" />
+                                                </label>
+                                            </div>
+                                            <div class="admin-variation-value">
+                                               {{vc.value}}
+                                            </div>
+                                            <div class="admin-variation-control">
+                                                <button type="submit" (click)="submitForm()" class="btn-vcheck"><i class="fas fa-check"></i></button>
+                                            </div>
+                                        </div>
+                                   
+                                </ng-container>
+                                  </ng-container>
+                                      
+                                    
+                                </ng-container>
+                            </form>
+                            
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+    
+        </mat-grid-tile>
+      
+      </mat-grid-list>
 </div>

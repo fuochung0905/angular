@@ -14,6 +14,7 @@ export class PutproductComponent implements OnInit{
   product!: any[];
   productId!: number;
 
+
   constructor(
     private router:ActivatedRoute,
   
@@ -32,7 +33,9 @@ export class PutproductComponent implements OnInit{
     this.product.forEach(products => {
       products.processImage = 'data:image/jpeg;base64,' + products.byteImage;
     });
-  }
+  };
+  displayedColumns: string[] = [ 'processImage','productName','importPrice', 'exportPrice','quantity','Thao tác'];
+  dataSource = this.product;
 
   
 

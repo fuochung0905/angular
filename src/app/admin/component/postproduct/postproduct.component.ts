@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-postproduct',
@@ -17,7 +18,8 @@ export class PostproductComponent {
 
   constructor(private adminService:AdminService,
     private fb :FormBuilder,
-    private router:Router){
+    private router:Router,
+    private _snackBar: MatSnackBar){
 
   };
 onFileSelected(event:any){
@@ -56,7 +58,6 @@ PreViewImage(){
    
     if(this.productForm.valid){
       const formData :FormData=new FormData();
-      
       formData.append('image',this.selectedFile);
       formData.append('categoryId',this.productForm.get('categoryId')?.value);
       formData.append('productName',this.productForm.get('productName')?.value);
@@ -67,10 +68,21 @@ PreViewImage(){
 this.adminService.addProduct(formData).subscribe(
   (res)=>{
       console.log('thêm thành công',res);
+      this._snackBar.open('Thêm sản phẩm thành công', 'Đóng', {
+        duration: 3000, // Độ dài của snack bar (milliseconds)
+        horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
+        verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
+        panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
+      });
       this.router.navigateByUrl('admin/dashboard');
   },
   (error)=>{
-    console.log('thêm thất bại',error);
+    this._snackBar.open('Thêm sản phẩm thất bại', 'Đóng', {
+      duration: 3000, // Độ dài của snack bar (milliseconds)
+      horizontalPosition: 'end', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
+      verticalPosition: 'top', // Vị trí dọc ('top' | 'bottom')
+      panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
+    });
   }
 )
     }

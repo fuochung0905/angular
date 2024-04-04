@@ -1,4 +1,4 @@
-<p>postproduct works!</p>
+<mat-toolbar>Thêm sản phẩm</mat-toolbar>
 <form (ngSubmit)="addProduct()" [formGroup]="productForm" >
     <div>
         <label>SELECT CATEGORY</label>
@@ -7,7 +7,9 @@
                 {{category.name}}
             </option>
         </select>
+        <button routerLink="/admin/add-category" mat-button><mat-icon size="24">add</mat-icon></button>
     </div>
+  
     <div>
         <label>Select a File</label>
         <input type="file" id="fileInput" (change)="onFileSelected($event)">
@@ -42,7 +44,7 @@
        
     </div>
     <div>
-        <label>Giá bán sản phẩm</label>
+        <label>Số lượng</label>
         <input type="text" formControlName="quantity" name="quantity" placeholder="Giá bán sản phẩm">
        
     </div>

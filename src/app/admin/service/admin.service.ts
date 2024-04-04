@@ -39,6 +39,11 @@ export class AdminService {
         headers:  this.createAuthorizationHeader()
       });
   };
+  getCategoryById(categoryId:any):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/category/${categoryId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
 
   getProductById(productId: any): Observable<any> {
     return this.http.get(BASIC_URL + `/api/admin/product/${productId}`, {
@@ -52,6 +57,11 @@ export class AdminService {
 
   deleteProductById(productId: any): Observable<any> {
     return this.http.delete(BASIC_URL + `/api/admin/product/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  deleteCategoryById(categoryId: any): Observable<any> {
+    return this.http.delete(BASIC_URL + `/api/admin/category/${categoryId}`, {
       headers: this.createAuthorizationHeader()
     });
   };
