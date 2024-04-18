@@ -3,6 +3,7 @@ import { AdminService } from '../../service/admin.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CategoryDto } from 'src/app/dto/CategoryDto.model';
 
 @Component({
   selector: 'app-postproduct',
@@ -11,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PostproductComponent {
   productForm!:FormGroup;
-  listOfCategories:any=[];
+  listOfCategories:CategoryDto[]=[];
   selectedFile!: File | '';
   imagePreView!: String | ArrayBuffer | null ;
 
@@ -41,9 +42,7 @@ PreViewImage(){
       categoryId: [''],
       productName: [''],
       description: [''],
-      importPrice: [''],
-      exportPrice: [''],
-      quantity: ['']
+    
     });
     
     this.getAllCategories();
@@ -58,31 +57,24 @@ PreViewImage(){
    
     if(this.productForm.valid){
       const formData :FormData=new FormData();
-      formData.append('image',this.selectedFile);
+      formData.append('file',this.selectedFile);
       formData.append('categoryId',this.productForm.get('categoryId')?.value);
       formData.append('productName',this.productForm.get('productName')?.value);
       formData.append('description',this.productForm.get('description')?.value);
-      formData.append('importPrice',this.productForm.get('importPrice')?.value);
-      formData.append('exportPrice',this.productForm.get('exportPrice')?.value);
-      formData.append('quantity',this.productForm.get('quantity')?.value);
+    
 this.adminService.addProduct(formData).subscribe(
   (res)=>{
-      console.log('thêm thành công',res);
-      this._snackBar.open('Thêm sản phẩm thành công', 'Đóng', {
-        duration: 3000, // Độ dài của snack bar (milliseconds)
-        horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
-        verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
-        panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
-      });
-      this.router.navigateByUrl('admin/dashboard');
-  },
-  (error)=>{
-    this._snackBar.open('Thêm sản phẩm thất bại', 'Đóng', {
+     
+  },(error)=>{
+    console.log(formData.append);
+
+    this._snackBar.open('Thêm sản phẩm thành công', 'Đóng', {
       duration: 3000, // Độ dài của snack bar (milliseconds)
-      horizontalPosition: 'end', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
-      verticalPosition: 'top', // Vị trí dọc ('top' | 'bottom')
+      horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
+      verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
       panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
     });
+    this.router.navigateByUrl('admin/dashboard');
   }
 )
     }
@@ -92,15 +84,5 @@ this.adminService.addProduct(formData).subscribe(
         this.productForm.controls[i].updateValueAndValidity();
       }
     }
-    this.adminService.addProduct(this.productForm.value).subscribe(
-      (response) => {
-        console.log('Product added successfully:', response);
-        // Reset the form after successfully adding the product
-       this.router.navigateByUrl('admin/dashboard');
-      },
-      (error) => {
-        console.error('Failed to add product:', error);
-      }
-    );
   };
 }

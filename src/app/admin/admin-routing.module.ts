@@ -9,16 +9,20 @@ import { DetailProductComponent } from './component/detail-product/detail-produc
 import { VariationComponent } from './component/variation/variation.component';
 import { AddVariationComponent } from './component/add-variation/add-variation.component';
 import { GetDetailCategoryComponent } from './component/get-detail-category/get-detail-category.component';
+import { ProductItemComponent } from './component/product-item/product-item.component';
+import { CreateVariationComponent } from './component/create-variation/create-variation.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
 children:[
   {path:'add-product',component:PostproductComponent},
+  {path:'add-variation',component:CreateVariationComponent},
+  {path:'product/productItem/:id',component:ProductItemComponent},
   {path:'product/:id',component:DetailProductComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'add-category',component:PostcategoryComponent},
   {path:'list-product',component:PutproductComponent},
-  {path:'add-variation',component:VariationComponent},
+  // {path:'add-variation',component:VariationComponent},
   {path:'variationproduct/:id',component:AddVariationComponent},
   {path:'category/:id',component:GetDetailCategoryComponent}
 ]}

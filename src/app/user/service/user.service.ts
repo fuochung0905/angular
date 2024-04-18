@@ -30,12 +30,12 @@ export class UserService {
     });
   };
   addAddress(address:any):Observable<any>{
-    return this.httpClient.post(BASIC_URL+'/api/user/address/add',address,{
+    return this.httpClient.post(BASIC_URL+'/api/user/address/createNewAddress',address,{
       headers:this.createAuthorizationHeader()
     });
   };
   addOrder(OrderRequest :any):Observable<any>{
-    return this.httpClient.post(BASIC_URL+'/api/user/order/add',OrderRequest,{
+    return this.httpClient.post(BASIC_URL+'/api/user/order/createNewOrder',OrderRequest,{
       headers:this.createAuthorizationHeader()
     });
   };

@@ -1,0 +1,84 @@
+.btn-wrap{
+    display: flex;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0 10px;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000;
+    border-radius: 7px;
+    text-decoration: unset;
+    transition: all .3s ;
+    background-color: #fff;
+}
+.btn-wrap i{
+    line-height: 1;
+    padding-bottom: 4px;
+    padding-right: 2px;
+    font-size: 16px;
+}
+ul, li{
+    margin: 0;
+    padding: 0
+}
+.container-large, .container-web{
+    max-width: 1200px;
+    margin:0px auto;
+}
+form{
+    padding: 20px 0px;
+
+}
+label{
+    margin-bottom: 3px;
+    color: #e74c3c;
+    font-size: 16px;
+    font-weight: 500;
+}
+.address-details{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.address-details input{
+    outline: none;
+    padding: 5px 10px;
+    border: 1px solid;
+}
+.address-details input:focus {
+    box-shadow: unset;
+    border: 1px solid #e74c3c;
+}
+.form-group{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.btn-wrap{
+    display: flex;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0 10px;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 0px;
+    text-decoration: unset;
+    transition: all .3s ;
+    background: #fff;
+}
+.form-group .btn-wrap {
+    width: 150px;
+}
+.form-group .btn-wrap.save{
+    background-color: #e74c3c;
+    color: #fff;
+    border-color: #e74c3c;
+}
+.form-group .btn-wrap.save:hover{
+    filter: brightness(0.9);
+}

@@ -22,6 +22,13 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { GetDetailCategoryComponent } from './component/get-detail-category/get-detail-category.component';
+import { ProductItemComponent } from './component/product-item/product-item.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { CreateVariationComponent } from './component/create-variation/create-variation.component';
 
 
 @NgModule({
@@ -34,7 +41,9 @@ import { GetDetailCategoryComponent } from './component/get-detail-category/get-
     DetailProductComponent,
     VariationComponent,
     AddVariationComponent,
-    GetDetailCategoryComponent
+    GetDetailCategoryComponent,
+    ProductItemComponent,
+    CreateVariationComponent
   ],
   imports: [
     CommonModule,
@@ -52,6 +61,11 @@ import { GetDetailCategoryComponent } from './component/get-detail-category/get-
     MatButtonToggleModule,
     MatIconModule,
     MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatExpansionModule,
   ]
 })
 export class AdminModule { }

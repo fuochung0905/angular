@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
 import { Product } from '../component/putproduct/product.model';
+import { CategoryDto } from 'src/app/dto/CategoryDto.model';
+import { VariationDto } from 'src/app/dto/VariationDto.model';
 const BASIC_URL="http://localhost:8080";
 
 @Injectable({
@@ -12,21 +14,37 @@ export class AdminService {
 
 
   constructor(private http:HttpClient) { }
-  addCategory(categoryDto:any):Observable<any>{
-      return this.http.post(BASIC_URL+'/api/admin/category/create', categoryDto, {
+  addCategory(categoryDto:CategoryDto):Observable<any>{
+      return this.http.post(BASIC_URL+'/api/admin/category/createNewCategory', categoryDto, {
         headers:  this.createAuthorizationHeader()
       });
   };
+  
   getAllCategories():Observable<any>{
       return this.http.get(BASIC_URL+'/api/admin/category/', {
         headers:this.createAuthorizationHeader()
       });
   };
-  addProduct(productDto:any):Observable<any>{
-      return this.http.post(BASIC_URL+'/api/admin/product/create', productDto, {
+  addProduct(productDto:FormData):Observable<any>{
+      return this.http.post(BASIC_URL+'/api/admin/product/createNewProduct', productDto, {
         headers:  this.createAuthorizationHeader()
       });
   };
+  addProductItem(productItemDto:FormData):Observable<any>{
+    return this.http.post(BASIC_URL+'/api/admin/productItem/createNewProductItem', productItemDto, {
+      headers:  this.createAuthorizationHeader()
+    });
+};
+addVariation(variationdto:VariationDto):Observable<any>{
+  return this.http.post(BASIC_URL+'api/admin/variation/createNewVariation',variationdto,{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getAllVariationByProduct(productId:any):Observable<any>{
+  return this.http.get(BASIC_URL+`api/admin/variation/product/${productId}`,{
+    headers:this.createAuthorizationHeader()
+  })
+}
   private createAuthorizationHeader():HttpHeaders{
     const token=UserStorageService.getToken();
     console.log(token);
@@ -44,7 +62,12 @@ export class AdminService {
       headers:this.createAuthorizationHeader()
     });
   }
+updateCategory(categoryId:any,categoryDto:any):Observable<any>{
 
+ return this.http.post(BASIC_URL+`/api/admin/category/updateCategory/${categoryId}`,categoryDto,{
+    headers:this.createAuthorizationHeader()
+  });
+};
   getProductById(productId: any): Observable<any> {
     return this.http.get(BASIC_URL + `/api/admin/product/${productId}`, {
       headers: this.createAuthorizationHeader()
@@ -75,12 +98,12 @@ export class AdminService {
   };
  
   updateProducts(productId: any, dto:any): Observable<any>{
-return this.http.post(BASIC_URL + `/api/admin/product/${productId}`,dto, {
+return this.http.post(BASIC_URL + `/api/admin/product/updateProduct/${productId}`,dto, {
   headers: this.createAuthorizationHeader()
 });
 };
   createVariation(variationDto:any):Observable<any>{
-    return this.http.post(BASIC_URL+'/api/admin/variation/create',variationDto,{
+    return this.http.post(BASIC_URL+'/api/admin/variation/createNewVariation',variationDto,{
       headers:this.createAuthorizationHeader()
     });
   };
@@ -89,26 +112,14 @@ return this.http.post(BASIC_URL + `/api/admin/product/${productId}`,dto, {
       headers:this.createAuthorizationHeader()
     });
   };
-  getAllVariationCategory(productId:number):Observable<any>{
-    return this.http.get(BASIC_URL+`/api/admin/variation/category/${productId}`,{
-      headers:this.createAuthorizationHeader()
-    });
-  };
-  getAllVariationProduct(productId:number):Observable<any>{
-    return this.http.get(BASIC_URL+`/api/admin/variation/product/${productId}`,{
-      headers:this.createAuthorizationHeader()
-    });
-  };
-  addVariationToProduct(productVariationDto:any):Observable<any>{
-    return this.http.put(BASIC_URL+'/api/admin/product/addVariation',productVariationDto,{
-      headers:this.createAuthorizationHeader()
-    });
-  };
-  removeVariationToProduct(productVariationDto:any):Observable<any>{
-    return this.http.put(BASIC_URL+'/api/admin/product/removeVariation',productVariationDto,{
-      headers:this.createAuthorizationHeader()
-    });
-  };
+  getImage(imageName:any):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/images/${imageName}`,
+      {
+        headers:this.createAuthorizationHeader()
+      }
+    );
+  }
+
 
 
 }

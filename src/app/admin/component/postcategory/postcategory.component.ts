@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CategoryDto } from 'src/app/dto/CategoryDto.model';
 
 @Component({
   selector: 'app-postcategory',
@@ -12,14 +13,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PostcategoryComponent {
   categories:any=[];
-categoryDto :any={
-  name:''
-};
+  categoryDto:CategoryDto;
+
 
   constructor(private adminservice:AdminService,
     private router:Router,
     private _snackBar: MatSnackBar
     ){
+      this.categoryDto= new CategoryDto();
   }
   ngOnInit(): void {
     this.adminservice.getAllCategories().subscribe(products => {
@@ -37,7 +38,8 @@ categoryDto :any={
         verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
         panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
       });
-          this.router.navigateByUrl('admin/dashboard');
+          this.router.navigateByUrl('admin/add-category');
+          window.location.reload();
     },
     (error)=>{
       this._snackBar.open('Thêm thất bại', 'Đóng', {

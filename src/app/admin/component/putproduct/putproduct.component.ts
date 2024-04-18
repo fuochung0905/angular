@@ -13,11 +13,8 @@ import { OnInit } from '@angular/core';
 export class PutproductComponent implements OnInit{
   product!: any[];
   productId!: number;
-
-
   constructor(
     private router:ActivatedRoute,
-  
     private adminService: AdminService
   ) { }
 
@@ -25,20 +22,12 @@ export class PutproductComponent implements OnInit{
     this.adminService.getAllProduct().subscribe(products => {
       // Lấy sản phẩm đầu tiên từ danh sách sản phẩm
       this.product = products;
-      this.processImages();
+      console.log(products);
+    
     });
   }
-
-  processImages(): void {
-    this.product.forEach(products => {
-      products.processImage = 'data:image/jpeg;base64,' + products.byteImage;
-    });
-  };
-  displayedColumns: string[] = [ 'processImage','productName','importPrice', 'exportPrice','quantity','Thao tác'];
+  displayedColumns: string[] = [ 'processImage','productName','description','Thao tác'];
   dataSource = this.product;
-
-  
-
   deleteProduct(productId: any): void {
     this.adminService.deleteProductById(productId).subscribe(
       () => {
@@ -52,5 +41,6 @@ export class PutproductComponent implements OnInit{
       }
     );
   }
+
 
 }

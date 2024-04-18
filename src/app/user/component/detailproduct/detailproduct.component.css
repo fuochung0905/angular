@@ -428,6 +428,19 @@ img {
     box-shadow: unset;
     border: unset;
 }
+.item-btn {
+    display: flex;
+}
+.item-btn input{
+    width: 0px;
+}
+.item-btn label{
+    height: 20px;
+    width: 50px;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid #000;
+}
 .item-btn input[type="radio"]:checked + label{
     border: 1px solid #e74c3c;
     color: #e74c3c;
@@ -445,6 +458,13 @@ img {
         display: flex;
         align-items: center;
     }
+  
+    .variation{
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      
+    }
 
     .product-imgs {
         display: flex;
@@ -452,6 +472,7 @@ img {
         justify-content: center;
 
     }
+  
 
     .product-content {
         padding-top: 0;

@@ -1,55 +1,35 @@
 <mat-toolbar>Thêm sản phẩm</mat-toolbar>
-<form (ngSubmit)="addProduct()" [formGroup]="productForm" >
-    <div>
-        <label>SELECT CATEGORY</label>
-        <select formControlName="categoryId" name="categoryId">
-            <option *ngFor="let category of listOfCategories" [value]="category.id">
-                {{category.name}}
-            </option>
-        </select>
-        <button routerLink="/admin/add-category" mat-button><mat-icon size="24">add</mat-icon></button>
-    </div>
-  
-    <div>
-        <label>Select a File</label>
-        <input type="file" id="fileInput" (change)="onFileSelected($event)">
-    </div>
-    <div *ngIf="selectedFile">
+
+<div class="container">
+    <form (ngSubmit)="addProduct()" [formGroup]="productForm">
+        <div class="example-container">
+            <label>SELECT FILE</label>
+            <div>
+                <input type="file" id="fileInput" (change)="onFileSelected($event)">
+            </div>
+            <mat-form-field>
+                <mat-label>SELECT CATEGORY</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let category of listOfCategories" [value]="category.id">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        
+            <mat-form-field>
+                <input matInput type="text" formControlName="productName" name="productName" placeholder="Tên sản phẩm">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" formControlName="description" name="description" placeholder="Mô tả sản phẩm">
+            </mat-form-field>
+            <div>
+                <button type="submit" [disabled]="productForm.invalid">THÊM</button>
+            </div>
+        </div>
+    </form>
+    <div class="image" *ngIf="selectedFile">
         <div>
-            <img [src]="imagePreView" alt="Selected Image">
+            <img [src]="imagePreView" style="width: 300px;height: 300px;" alt="Selected Image">
         </div>
     </div>
-    <div>
-        <label>Tên sản phẩm</label>
-        <input type="text" formControlName="productName" name="productName" placeholder="Tên sản phẩm">
-        <div *ngIf="productForm.get('productName')?.invalid && (productForm.get('productName')?.dirty || productForm.get('productName')?.touched)">
-            <div *ngIf="productForm.controls['productName'].errors && productForm.controls['productName'].errors['required']">Product Name is required</div>
-        </div>
-    </div>
-    <div>
-        <label>Mô tả sản phẩm</label>
-        <input type="text" formControlName="description" name="description" placeholder="Mô tả sản phẩm">
-        <div *ngIf="productForm.get('description')?.invalid && (productForm.get('description')?.dirty || productForm.get('description')?.touched)">
-            <div *ngIf="productForm.controls['description'].errors && productForm.controls['description'].errors['required']">Product Name is required</div>
-        </div>
-    </div>
-    <div>
-        <label>Giá sản phẩm</label>
-        <input type="text" formControlName="importPrice" name="importPrice" placeholder="Giá sản phẩm">
-      
-    </div>
-    <div>
-        <label>Giá bán sản phẩm</label>
-        <input type="text" formControlName="exportPrice" name="exportPrice" placeholder="Giá bán sản phẩm">
-       
-    </div>
-    <div>
-        <label>Số lượng</label>
-        <input type="text" formControlName="quantity" name="quantity" placeholder="Giá bán sản phẩm">
-       
-    </div>
-    <!-- Thêm các trường dữ liệu khác của sản phẩm -->
-    <div>
-        <button type="submit" [disabled]="productForm.invalid">THÊM</button>
-    </div>
-</form>
+</div>

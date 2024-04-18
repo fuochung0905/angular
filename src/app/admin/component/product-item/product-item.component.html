@@ -1,0 +1,48 @@
+<div class="container">
+    <form (ngSubmit)="addProduct()" [formGroup]="productItemForm">
+        <div class="example-container">
+            <input formControlName="productId" name="productId"  hidden>
+                <div>
+                    <label>Select a File</label>
+                    <input type="file" id="file" (change)="onFileSelected($event)">
+                </div>
+            <mat-form-field>
+                <input matInput type="number" formControlName="qyt_stock" name="qyt_stock"  placeholder="Số lượng">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput  type="text" formControlName="price" name="price" placeholder="Giá">
+              </mat-form-field>
+
+
+              <mat-accordion *ngFor="let variation of listVariation">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{variation.name}}
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+              
+                  <mat-radio-group aria-label="SELECT VARIATION">
+                    <div >
+                        <mat-radio-button value=""></mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                  
+                </mat-expansion-panel>
+              </mat-accordion>
+              <div>
+                <button type="submit" [disabled]="productItemForm.invalid">THÊM</button>
+            </div>
+        </div>
+    </form>
+          <div class="image" *ngIf="selectedFile">
+            <div>
+                <img [src]="imagePreView" style="width: 300px; height: 300px;" alt="Selected Image">
+            </div>
+        </div>
+</div>
+    

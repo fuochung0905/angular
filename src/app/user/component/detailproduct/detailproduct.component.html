@@ -29,35 +29,41 @@
              <div class="product-detail">
                         <div class="box-detail">
                             <p class="title">Kích thước: </p>
-                            <div *ngFor="let vari of variations">
-                                <div *ngIf="vari.name===size">
-                                    <div class="">
-                                        <div class="item-btn">
-                                            <input  [(ngModel)]="cartDto.size" type="radio"
-                                            value="{{vari.value}}"
-                                            class="variation-size"
-                                             name="size">
-                                            <label>{{vari.value}}</label>
+                            <div class="variation">
+                                <div *ngFor="let vari of variations">
+                                    <div *ngIf="vari.name===size">
+                                        <div class="">
+                                            <div class="item-btn">
+                                                <input  [(ngModel)]="cartDto.size" id="{{vari.value}}" type="radio"
+                                                value="{{vari.value}}"
+                                                class="variation-size"
+                                                 name="size">
+                                                <label for="{{vari.value}}">{{vari.value}}</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                       
                           
                         </div>
                         <div class="box-detail">
                             <p class="title">Màu sắc: </p>
-                            <div *ngFor="let vari of variations">
-                                <div *ngIf="vari.name===color">
-                                    <div class="">
-                                        <div class="item-btn">
-                                            <input  [(ngModel)]="cartDto.color" id="{{vari.value}}" type="radio"
-                                            value="{{vari.value}}"
-                                             class="variation-color" name="color">
-                                            <label  for="{{vari.value}}">{{vari.value}}</label>
+                            <div class="variation">
+                                <div *ngFor="let vari of variations">
+                                    <div *ngIf="vari.name===color">
+                                        <div class="">
+                                            <div class="item-btn">
+                                                <input  [(ngModel)]="cartDto.color" id="{{vari.value}}" type="radio"
+                                                value="{{vari.value}}"
+                                                 class="variation-color" name="color">
+                                                <label  for="{{vari.value}}">{{vari.value}}</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                           
                         </div> 
                         <div class="box-detail amount">
                             <input asp-for="quantity" type="number" min="0" max="@Model.product.qty_inStock" value="1">
