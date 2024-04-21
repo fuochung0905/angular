@@ -3,7 +3,7 @@ export class CategoryDto{
     name:string;
  constructor(){
     this.id=0;
-    this.name=''
+    this.name='';
  }
    
 }

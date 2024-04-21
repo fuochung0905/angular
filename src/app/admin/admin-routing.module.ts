@@ -6,23 +6,26 @@ import { PostcategoryComponent } from './component/postcategory/postcategory.com
 import { PostproductComponent } from './component/postproduct/postproduct.component';
 import { PutproductComponent } from './component/putproduct/putproduct.component';
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
-import { VariationComponent } from './component/variation/variation.component';
+
 import { AddVariationComponent } from './component/add-variation/add-variation.component';
 import { GetDetailCategoryComponent } from './component/get-detail-category/get-detail-category.component';
 import { ProductItemComponent } from './component/product-item/product-item.component';
 import { CreateVariationComponent } from './component/create-variation/create-variation.component';
+import { CreateVariatioOptionComponent } from './component/create-variatio-option/create-variatio-option.component';
+import { CreatePIVariationComponent } from './component/create-pivariation/create-pivariation.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
 children:[
   {path:'add-product',component:PostproductComponent},
-  {path:'add-variation',component:CreateVariationComponent},
+  {path:'add-variation/category/:id',component:CreateVariationComponent},
+  {path:'add-variation-option',component:CreateVariatioOptionComponent},
+  {path:'variation-option/:id',component:CreatePIVariationComponent},
   {path:'product/productItem/:id',component:ProductItemComponent},
   {path:'product/:id',component:DetailProductComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'add-category',component:PostcategoryComponent},
   {path:'list-product',component:PutproductComponent},
-  // {path:'add-variation',component:VariationComponent},
   {path:'variationproduct/:id',component:AddVariationComponent},
   {path:'category/:id',component:GetDetailCategoryComponent}
 ]}

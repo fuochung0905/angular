@@ -5,12 +5,12 @@
         <div class="example-container">
             <label>SELECT FILE</label>
             <div>
-                <input type="file" id="fileInput" (change)="onFileSelected($event)">
+                <input type="file" id="filein" (change)="onFileSelected($event)">
             </div>
             <mat-form-field>
                 <mat-label>SELECT CATEGORY</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let category of listOfCategories" [value]="category.id">
+                <mat-select formControlName="categoryId" name="categoryId">
+                    <mat-option *ngFor="let category of listOfCategories"  [value]="category.id">
                         {{category.name}}
                     </mat-option>
                 </mat-select>

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VariationDto } from 'src/app/dto/VariationDto.model';
+import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
+import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
 
 @Component({
   selector: 'app-product-item',
@@ -15,9 +17,11 @@ export class ProductItemComponent {
   selectedFile!: File | '';
   imagePreView!: String | ArrayBuffer | null ;
   productItemForm!:FormGroup;
-  listVariation:VariationDto[]=[];
-  panelOpenState = false;
-
+ 
+  listVariationOptionId:any[]=[];
+ 
+  listProductItem:ProductItemDto[]=[];
+ 
   constructor(private adminService:AdminService,
     private fb :FormBuilder,
     private router:Router,
@@ -39,18 +43,21 @@ export class ProductItemComponent {
     }
   };
   ngOnInit(){
+    this.id=this.activeRouter.snapshot.params['id'];
     this.productItemForm=this.fb.group({
       productId: [''],
       qyt_stock: [''],
       price: [''],
     });
-    this.getAllVariationByProduct();
+
+    this.getAllProductItemByProduct();
   };
-  getAllVariationByProduct(){
-    this.adminService.getAllVariationByProduct(this.id).subscribe((res)=>{
-      this.listVariation=res;
-    })
-  }
+getAllProductItemByProduct(){
+  this.id=this.activeRouter.snapshot.params['id'];
+  this.adminService.getAllProductItemByProduct(this.id).subscribe((res)=>{
+this.listProductItem=res;
+  });
+};
 
   addProduct():void{
     if(this.productItemForm.valid){
@@ -63,14 +70,14 @@ this.adminService.addProductItem(formData).subscribe(
   (res)=>{
      
   },(error)=>{
-    console.log(formData.append);
+   console.log(this.listVariationOptionId);
     this._snackBar.open('Thêm sản phẩm thành công', 'Đóng', {
       duration: 3000, // Độ dài của snack bar (milliseconds)
       horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
       verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
       panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
     });
-    this.router.navigateByUrl('admin/dashboard');
+    // this.router.navigateByUrl('admin/dashboard');
   }
 )
     }
@@ -81,4 +88,7 @@ this.adminService.addProductItem(formData).subscribe(
       }
     }
   };
+
+  displayedColumns: string[] = ['avatar','gia','soluong','Thao tác'];
+  dataSource = this.listProductItem;
 }

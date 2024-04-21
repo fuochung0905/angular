@@ -3,13 +3,10 @@ export class ProductDto{
      categoryId:number;
      productName:string;
      description:string;
-     constructor(id:number,
-        categoryId:number,
-        productName:string,
-        description:string){
-            this.id=id;
-            this.categoryId=categoryId;
-            this.description=description;
-            this.productName=productName;
+     constructor(){
+            this.id=0;
+            this.categoryId=0;
+            this.description='';
+            this.productName='';
         }
 }

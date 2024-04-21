@@ -1,46 +1,35 @@
 import { Component } from '@angular/core';
-import { AdminService } from '../../service/admin.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { CategoryDto } from 'src/app/dto/CategoryDto.model';
 import { VariationDto } from 'src/app/dto/VariationDto.model';
+import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
+import { AdminService } from '../../service/admin.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-create-variation',
-  templateUrl: './create-variation.component.html',
-  styleUrls: ['./create-variation.component.css']
+  selector: 'app-create-variatio-option',
+  templateUrl: './create-variatio-option.component.html',
+  styleUrls: ['./create-variatio-option.component.css']
 })
-export class CreateVariationComponent {
-  id:any;
-  variationDto:VariationDto;
-  lisCategory:CategoryDto[]=[];
+export class CreateVariatioOptionComponent {
+  variationOption:VariationOptionDto;
   listVariation:VariationDto[]=[];
   constructor(private adminservice:AdminService,
     private router:Router,
-    private _snackBar: MatSnackBar,
-    private activeRouter:ActivatedRoute
+    private _snackBar: MatSnackBar
     ){
-      this.variationDto= new VariationDto();
+      this.variationOption= new VariationOptionDto();
   }
   ngOnInit(){
-    this.id=this.activeRouter.snapshot.params['id'];
-    this.getAllCategories();
-    this.getAllVariationByCategory();
+    this.getAllVariation();
   };
-  getAllCategories(){
-    this.adminservice.getAllCategories().subscribe((res)=>{
-      this.lisCategory=res;
-    })
-  };
-  getAllVariationByCategory(){
-    this.id=this.activeRouter.snapshot.params['id'];
-    this.adminservice.getAllVariationByCategoryt(this.id).subscribe((res)=>{
+  getAllVariation(){
+    this.adminservice.getAllVariation().subscribe((res)=>{
       this.listVariation=res;
       console.log(this.listVariation);
     })
   };
-  createVariation(){
-    this.adminservice.addVariation(this.variationDto).subscribe((res)=>
+  createVariationOption(){
+    this.adminservice.addVariationOption(this.variationOption).subscribe((res)=>
     {
       this._snackBar.open('Thêm thành công', 'Đóng', {
         duration: 3000, // Độ dài của snack bar (milliseconds)
@@ -52,7 +41,6 @@ export class CreateVariationComponent {
           window.location.reload();
     },
     (error)=>{
-      console.log(this.variationDto);
       this._snackBar.open('Thêm thất bại', 'Đóng', {
         duration: 3000, // Độ dài của snack bar (milliseconds)
         horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
@@ -62,6 +50,4 @@ export class CreateVariationComponent {
     })
   
   };
-  displayedColumns: string[] = ['id','Loại sản phẩm','Tên phân loại','Thao tác'];
-  dataSource = this.listVariation;
 }

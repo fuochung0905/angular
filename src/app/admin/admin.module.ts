@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostproductComponent } from './component/postproduct/postproduct.component';
 import { PutproductComponent } from './component/putproduct/putproduct.component';
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
-import { VariationComponent } from './component/variation/variation.component';
 import { AddVariationComponent } from './component/add-variation/add-variation.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -29,6 +28,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CreateVariationComponent } from './component/create-variation/create-variation.component';
+import { CreateVariatioOptionComponent } from './component/create-variatio-option/create-variatio-option.component';
+import { CreatePIVariationComponent } from './component/create-pivariation/create-pivariation.component';
+
 
 
 @NgModule({
@@ -39,11 +41,13 @@ import { CreateVariationComponent } from './component/create-variation/create-va
     PostproductComponent,
     PutproductComponent,
     DetailProductComponent,
-    VariationComponent,
+
     AddVariationComponent,
     GetDetailCategoryComponent,
     ProductItemComponent,
-    CreateVariationComponent
+    CreateVariationComponent,
+    CreateVariatioOptionComponent,
+    CreatePIVariationComponent
   ],
   imports: [
     CommonModule,
@@ -66,6 +70,7 @@ import { CreateVariationComponent } from './component/create-variation/create-va
     MatSelectModule,
     MatRadioModule,
     MatExpansionModule,
+  
   ]
 })
 export class AdminModule { }

@@ -1,0 +1,41 @@
+<mat-toolbar>{{productDto.productName}}</mat-toolbar>
+<div style="display: flex;">
+    <div >
+        <img class="images" [src]="'http://localhost:8080/images/' + productItemDto.productItemImage" style="width: 200px;height: 200px;">
+    </div>
+    <div>
+        <label >Giá</label>
+        <label >{{productItemDto.price}}</label>
+        <br>
+        <label >Số lượng</label>
+        <label >{{productItemDto.qyt_stock}}</label>
+    </div>
+</div>
+
+
+
+<form (ngSubmit)="addProductItemVariationOption()"> 
+    <mat-accordion *ngFor="let variation of listVariation">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{variation.name}}
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <div *ngFor="let variationOption of listVariationOptionByProduct">
+            <div *ngIf="variation.id===variationOption.variationId">
+              <mat-radio-group aria-label="SELECT VARIATION" name="{{variation.name}}" (change)="updateVariationOptions($event)">
+                <div >
+                    <mat-radio-button [value]="variationOption.id">{{variationOption.value}}</mat-radio-button>
+                </div>
+              </mat-radio-group>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+        </mat-expansion-panel>
+      </mat-accordion>
+      <button type="submit">THÊM</button>
+</form>

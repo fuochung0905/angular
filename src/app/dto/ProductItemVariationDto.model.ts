@@ -1,8 +1,8 @@
 export class ProductItemVariationDto{
  productItemId:number;
      variationOptionId:number;
-     constructor(productItemId:number,variationOptionId:number){
+     constructor(productItemId:number){
         this.productItemId=productItemId;
-        this.variationOptionId=variationOptionId;
+        this.variationOptionId=0;
      }
 }

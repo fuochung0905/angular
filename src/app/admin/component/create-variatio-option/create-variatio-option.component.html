@@ -1,0 +1,19 @@
+<form (ngSubmit)="createVariationOption()">
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>SELECT CATEGORY</mat-label>
+            <mat-select [(ngModel)]="variationOption.variationId" name="variationId">
+                <mat-option *ngFor="let variation of listVariation" [value]="variation.id">
+                    {{variation.categoryName}} - {{variation.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="name" [(ngModel)]="variationOption.value" placeholder="Tên phân loại">
+        </mat-form-field>
+       
+        <div>
+            <button type="submit" mat-button >THÊM</button>
+        </div>
+    </div>
+</form>

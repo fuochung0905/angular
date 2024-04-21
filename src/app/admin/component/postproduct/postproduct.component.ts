@@ -51,6 +51,7 @@ PreViewImage(){
     this.adminService.getAllCategories().subscribe(res=>
     {
      this.listOfCategories=res;
+     console.log(this.listOfCategories);
     })
   };
   addProduct():void{
@@ -74,7 +75,7 @@ this.adminService.addProduct(formData).subscribe(
       verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
       panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
     });
-    this.router.navigateByUrl('admin/dashboard');
+     this.router.navigateByUrl('admin/dashboard');
   }
 )
     }
