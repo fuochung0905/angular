@@ -431,17 +431,17 @@ img {
 .item-btn {
     display: flex;
 }
-.item-btn input{
+.item-btn .radio-label .inputbutton{
     width: 0px;
 }
-.item-btn label{
+.item-btn .radio-label label{
     height: 20px;
     width: 50px;
     text-align: center;
     line-height: 20px;
     border: 1px solid #000;
 }
-.item-btn input[type="radio"]:checked + label{
+.item-btn .radio-label .inputbutton[type="radio"]:checked + label{
     border: 1px solid #e74c3c;
     color: #e74c3c;
 }

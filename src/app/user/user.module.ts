@@ -10,6 +10,7 @@ import { ShowlistproductsComponent } from './component/showlistproducts/showlist
 import { OrderComponent } from './component/order/order.component';
 import { AddressComponent } from './component/address/address.component';
 import { HistoryOrderComponent } from './component/history-order/history-order.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 
@@ -28,7 +29,8 @@ import { HistoryOrderComponent } from './component/history-order/history-order.c
   imports: [
     CommonModule,
     UserRoutingModule, 
-    FormsModule
+    FormsModule,
+    MatRadioModule
     
   ]
 })

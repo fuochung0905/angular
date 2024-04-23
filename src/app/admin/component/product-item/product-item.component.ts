@@ -19,8 +19,9 @@ export class ProductItemComponent {
   productItemForm!:FormGroup;
  
   listVariationOptionId:any[]=[];
- 
+ listVariationOption:VariationOptionDto[]=[];
   listProductItem:ProductItemDto[]=[];
+  idColor:any;
  
   constructor(private adminService:AdminService,
     private fb :FormBuilder,
@@ -44,10 +45,12 @@ export class ProductItemComponent {
   };
   ngOnInit(){
     this.id=this.activeRouter.snapshot.params['id'];
+    this.getAllVariationOptionWithColorByProduct();
     this.productItemForm=this.fb.group({
       productId: [''],
       qyt_stock: [''],
       price: [''],
+      idColor:['']
     });
 
     this.getAllProductItemByProduct();
@@ -58,6 +61,10 @@ getAllProductItemByProduct(){
 this.listProductItem=res;
   });
 };
+updateVariationOptions(event: any) {
+  const selectedValue = event.value;
+ this.idColor=selectedValue;
+}
 
   addProduct():void{
     if(this.productItemForm.valid){
@@ -66,6 +73,7 @@ this.listProductItem=res;
       formData.append('productId',this.id);
       formData.append('qyt_stock',this.productItemForm.get('qyt_stock')?.value);
       formData.append('price',this.productItemForm.get('price')?.value);
+      formData.append('idColor',this.idColor);
 this.adminService.addProductItem(formData).subscribe(
   (res)=>{
      
@@ -88,7 +96,13 @@ this.adminService.addProductItem(formData).subscribe(
       }
     }
   };
+  getAllVariationOptionWithColorByProduct(){
+    this.id=this.activeRouter.snapshot.params['id'];
+    this.adminService.getAllVariationOptionWithColorByProduct(this.id).subscribe((res)=>{
+      this.listVariationOption=res;
+    });
+  };
 
-  displayedColumns: string[] = ['avatar','gia','soluong','Thao tác'];
+  displayedColumns: string[] = ['avatar','gia','soluong','mausac','Thao tác'];
   dataSource = this.listProductItem;
 }

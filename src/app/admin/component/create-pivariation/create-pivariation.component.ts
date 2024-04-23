@@ -16,14 +16,20 @@ import { ProductItemVariationDto } from 'src/app/dto/ProductItemVariationDto.mod
 export class CreatePIVariationComponent {
   id:any;
   panelOpenState = false;
+  
 productItemDto:ProductItemDto;
   productDto:ProductDto;
   listVariationOptionId:any[]=[];
   variationOptionId:any;
+ 
   listproductItemVariationOption:ProductItemVariationDto[]=[];
 productItemVariationOption:ProductItemVariationDto;
+updateProductItemVariation:ProductItemVariationDto;
   listVariation:VariationDto[]=[];
+  listProductItemVariationOptionByProductItem:ProductItemVariationDto[]=[];
+  listVariationOptionWithSizeByProductItem:VariationOptionDto[]=[];
   listVariationOptionByProduct:VariationOptionDto[]=[];
+  listVariationOptionWithSize:VariationOptionDto[]=[];
   constructor(private adminService:AdminService,
     private router:Router,
     private _snackBar: MatSnackBar,
@@ -32,13 +38,14 @@ productItemVariationOption:ProductItemVariationDto;
      this.productItemDto= new ProductItemDto();
      this.id=this.activeRouter.snapshot.params['id'];
      this.productItemVariationOption=new ProductItemVariationDto(this.id);
+     this.updateProductItemVariation=new ProductItemVariationDto(this.id);
   };
   ngOnInit(){
     this.id=this.activeRouter.snapshot.params['id'];
 this.getProductByProductItem();
 this.getProductItem();
-this.getAllVariationByProduct();
-this.getAllVariationOptionByProduct();
+this.getAllVariationOptionWithSize();
+this.getAllProuctItemVariationOptionByProductItem();
   }
   getProductByProductItem(){
     this.id=this.activeRouter.snapshot.params['id'];
@@ -46,11 +53,7 @@ this.getAllVariationOptionByProduct();
       this.productDto=res;
     })
   };
-  getAllVariationByProductItem(){
-    this.adminService.getAllVariationOptionByProduct(this.id).subscribe((res)=>{
-
-    })
-  }
+ 
   getProductItem(){
     this.id=this.activeRouter.snapshot.params['id'];
     this.adminService.getProductItemById(this.id).subscribe((res)=>{
@@ -58,28 +61,6 @@ this.getAllVariationOptionByProduct();
       console.log(this.productItemDto);
     })
   };
-  getAllVariationByProduct(){
-    this.id=this.activeRouter.snapshot.params['id'];
-    this.adminService.getAllVariationByProduct(this.id).subscribe((res)=>{
-      this.listVariation=res;
-      console.log(this.listVariation);
-    })
-  };
-getAllVariationOptionByProduct(){
-  this.id=this.activeRouter.snapshot.params['id'];
-  this.adminService.getAllVariationOptionByProduct(this.id).subscribe((res)=>{
-this.listVariationOptionByProduct=res;
-console.log(this.listVariationOptionByProduct);
-  });
-};
-updateVariationOptions(event: any) {
-  const selectedValue = event.value;
-  if (selectedValue) {
-    const newProductItemVariationOption = new ProductItemVariationDto(this.id);
-    newProductItemVariationOption.variationOptionId = selectedValue;
-    this.listproductItemVariationOption.push(newProductItemVariationOption);
-  }
-}
 addProductItemVariationOption(){
   this.adminService.addVariationOptionForProductItem(this.listproductItemVariationOption).subscribe((res)=>{
     this._snackBar.open('Xóa thành công', 'Đóng', {
@@ -92,8 +73,40 @@ addProductItemVariationOption(){
   },(error)=>{
     console.log(this.listproductItemVariationOption);
   })
+};
+getAllVariationOptionWithSize(){
+  this.id=this.activeRouter.snapshot.params['id'];
+  this.adminService.getAllVariationOptionWithSizeByProduct(this.id).subscribe((res)=>{
+    this.listVariationOptionWithSize=res;
+  });
+};
+
+onCheckboxChange(itemId:number, event:any){
+  if(event.checked){
+    const newProductItemVariationOption = new ProductItemVariationDto(this.id);
+    newProductItemVariationOption.variationOptionId = itemId;
+    this.listproductItemVariationOption.push(newProductItemVariationOption);
+  }
+};
+getAllProuctItemVariationOptionByProductItem():void{
+  this.id=this.activeRouter.snapshot.params['id'];
+this.adminService.getAllProductItemVariationOptionByProductItem(this.id).subscribe((res)=>{
+  this.listProductItemVariationOptionByProductItem=res;
+});
+};
+deleteProductItemVariationOption(productItemVariationId:number){
+  this.adminService.deleteProductItemVariationOption(productItemVariationId).subscribe((res)=>{
+    console.log("success",res);
+    location.reload();
+  })
 }
+displayedColumns: string[] = ['productItemId','idColor','value','quantity','Thao tác'];
+dataSource = this.listProductItemVariationOptionByProductItem;
 
-
-
+updateQuantity(id:number){
+this.adminService.updateProductItemVariatonOption(id,this.updateProductItemVariation).subscribe((res)=>{
+  console.log("success",res);
+  // location.reload();
+})
+}
 }

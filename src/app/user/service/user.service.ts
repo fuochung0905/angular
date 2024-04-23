@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
+import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
 
 const BASIC_URL = 'http://localhost:8080';
 
@@ -63,11 +64,16 @@ export class UserService {
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + UserStorageService.getToken());
   };
-   addCart(productId:any,cartDto:any):Observable<any>{
-    return this.httpClient.put(BASIC_URL + `/api/user/cart/add/${productId}`,cartDto,{
+   addCart(productVariation:ProductVariationOptionDto[]):Observable<any>{
+    return this.httpClient.put(BASIC_URL + '/api/user/cart/add',productVariation,{
       headers: this.createAuthorizationHeader()
     })
   };
+  getUserProductItemById(productItemId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL +`/api/user/productItem/${productItemId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
   getAllUserCart(): Observable<any> {
 
     return this.httpClient.get(BASIC_URL + '/api/user/cart/', {
@@ -97,4 +103,19 @@ export class UserService {
       headers:this.createAuthorizationHeader()
     });
   };
+  getAllVariationoPtionByProduct(productId:any):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/variationOption/product/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  getUserAllProductItemByProduct(productId:any):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/productItem/product/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  };
+getAllVariationOption():Observable<any>{
+ return this.httpClient.get(BASIC_URL+'/api/user/variationOption/',{
+    headers: this.createAuthorizationHeader()
+  });
+};
 }

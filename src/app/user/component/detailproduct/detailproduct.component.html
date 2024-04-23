@@ -5,7 +5,15 @@
             <div class="product-imgs">
                 <div class="img-display">
                     <div class="img-showcase">
-                        <img [src]="product.processImage" alt="product-image">
+                        <div class="image-top">
+                            <img  [src]="'http://localhost:8080/images/' +product.image" >
+                        </div>
+                        <div *ngFor="let productItem of listProductItem">
+                            <div class="image-bottom" style="display: flex;
+                            flex-direction: row;">
+                                <img style="width: 200px;height: 200px;" [src]="'http://localhost:8080/images/' + productItem.image" >
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -22,58 +30,66 @@
                     <span>4.5(3700)</span>
                 </div>
                 <div class="product-price">
-                    <p class="last-price">Giá cũ: <span class="money">{{product.exportPrice}}</span></p>
-                    <p class="new-price">Giá hiện tại: <span class="money">{{product.importPrice}}</span></p>
+                  
+                    <p class="new-price">Giá hiện tại: <span class="money">{{product.price}}</span></p>
                 </div>
-
              <div class="product-detail">
-                        <div class="box-detail">
-                            <p class="title">Kích thước: </p>
-                            <div class="variation">
-                                <div *ngFor="let vari of variations">
-                                    <div *ngIf="vari.name===size">
-                                        <div class="">
-                                            <div class="item-btn">
-                                                <input  [(ngModel)]="cartDto.size" id="{{vari.value}}" type="radio"
-                                                value="{{vari.value}}"
-                                                class="variation-size"
-                                                 name="size">
-                                                <label for="{{vari.value}}">{{vari.value}}</label>
+                    <div class="box-detail">
+                        <p class="title">Màu sắc: </p>
+                        <div *ngFor="let productItem of listProductItem">
+                        <div class="variation">
+                            <div *ngFor="let variationoption of allVariationOption">
+                                <div *ngIf="productItem.idColor===variationoption.id">
+                                    <div *ngFor="let variation of listVariation">
+                                        <div *ngIf="variation.id===productItem.idColor">
+                                            <div class="">
+                                                <div class="item-btn">
+                                                    <input   id="{{productItem.idColor}}" type="radio"
+                                                    value="{{productItem.idColor}}"
+                                                    class="variation-size"
+                                                        name="size">
+                                                    <label for="{{productItem.idColor}}">{{variationoption.value}}</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                       
-                          
                         </div>
-                        <div class="box-detail">
-                            <p class="title">Màu sắc: </p>
-                            <div class="variation">
-                                <div *ngFor="let vari of variations">
-                                    <div *ngIf="vari.name===color">
-                                        <div class="">
-                                            <div class="item-btn">
-                                                <input  [(ngModel)]="cartDto.color" id="{{vari.value}}" type="radio"
-                                                value="{{vari.value}}"
-                                                 class="variation-color" name="color">
-                                                <label  for="{{vari.value}}">{{vari.value}}</label>
+                        </div>
+                    </div>
+
+                    <div class="box-detail">
+                        <p class="title">Kích thước: </p>
+                            <div *ngFor="let variationOption of listvariationOption">
+                                    <div class="variation">
+                                        <div class="item-btn">
+                                            <div class="variation">
+                                                <div class="item-btn">
+                                                    <input   id="{{variationOption.value}}" type="radio"
+                                                    value="{{variationOption.id}}"
+                                                    class="variation-size"
+                                                    name="variation-size">
+                                                    <label for="{{variationOption.value}}">{{variationOption.value}}</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                           
-                        </div> 
+                             </div>
+                        </div>
+                       
+
+               
+                   
                         <div class="box-detail amount">
-                            <input asp-for="quantity" type="number" min="0" max="@Model.product.qty_inStock" value="1">
-                            <h6>{{product.qty_stock}}</h6>
+                            <input asp-for="quantity" type="number" min="0" max="{{product.quantity}}" value="1">
+                            <h6>{{product.quantity}}</h6>
                         </div>
                         <div class="get-product">
-                            <button type="button" class="btn-wrap add" (click)="addCart(product.id)">
+                            <button type="button" class="btn-wrap add" (click)="addCart()" >
                                 <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
                             </button>
-                            <button type="submit" class="btn-wrap buy" (click)="addOrder(product.id)" >
+                            <button type="submit" class="btn-wrap buy" >
                                 <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
                             </button>
                         </div>

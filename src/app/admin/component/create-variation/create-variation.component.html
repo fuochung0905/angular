@@ -9,7 +9,15 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="text" name="name" [(ngModel)]="variationDto.name" placeholder="Tên phân loại">
+          <mat-select name="name" [(ngModel)]="variationDto.name">
+            <mat-option  value="Kích thước">
+               Kích thước
+            </mat-option>
+            <mat-option  value="Màu sắc">
+              Màu sắc
+           </mat-option>
+        </mat-select>
+           
         </mat-form-field>
        
         <div>

@@ -30,6 +30,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CreateVariationComponent } from './component/create-variation/create-variation.component';
 import { CreateVariatioOptionComponent } from './component/create-variatio-option/create-variatio-option.component';
 import { CreatePIVariationComponent } from './component/create-pivariation/create-pivariation.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -70,7 +71,7 @@ import { CreatePIVariationComponent } from './component/create-pivariation/creat
     MatSelectModule,
     MatRadioModule,
     MatExpansionModule,
-  
+    MatCheckboxModule,
   ]
 })
 export class AdminModule { }

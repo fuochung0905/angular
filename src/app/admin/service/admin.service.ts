@@ -101,7 +101,6 @@ getAllVariationByCategoryt(categoryId:any):Observable<any>{
     });
   }
 updateCategory(categoryId:any,categoryDto:any):Observable<any>{
-
  return this.http.post(BASIC_URL+`/api/admin/category/updateCategory/${categoryId}`,categoryDto,{
     headers:this.createAuthorizationHeader()
   });
@@ -118,6 +117,11 @@ updateCategory(categoryId:any,categoryDto:any):Observable<any>{
 
   deleteProductById(productId: any): Observable<any> {
     return this.http.delete(BASIC_URL + `/api/admin/product/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  deleteProductItemVariationOption(productItemVariationId:number):Observable<any>{
+    return this.http.delete(BASIC_URL + `/api/admin/product_item_variation_option/${productItemVariationId}`, {
       headers: this.createAuthorizationHeader()
     });
   };
@@ -140,6 +144,11 @@ return this.http.post(BASIC_URL + `/api/admin/product/updateProduct/${productId}
   headers: this.createAuthorizationHeader()
 });
 };
+updateProductItemVariatonOption(productItemVariationId:number,productItemVariation:ProductItemVariationDto):Observable<any>{
+  return this.http.post(BASIC_URL+ `/api/admin/product_item_variation_option/${productItemVariationId}`,productItemVariation, {
+    headers: this.createAuthorizationHeader()
+  })
+}
   createVariation(variationDto:any):Observable<any>{
     return this.http.post(BASIC_URL+'/api/admin/variation/createNewVariation',variationDto,{
       headers:this.createAuthorizationHeader()
@@ -156,8 +165,27 @@ return this.http.post(BASIC_URL + `/api/admin/product/updateProduct/${productId}
         headers:this.createAuthorizationHeader()
       }
     );
-  }
-
+  };
+  getAllVariationOptionWithColorByProduct(productId:number):Observable<any>{
+    return this.http.get(BASIC_URL+ `/api/admin/variation_option/color/product/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  getAllVariationOptionWithSizeByProduct(productId:number):Observable<any>{
+    return this.http.get(BASIC_URL+ `/api/admin/variation_option/size/product/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  };
+getAllVariationOptionWithSizeByProductItem(productItemId:number):Observable<any>{
+  return this,this.http.get(BASIC_URL+`/api/admin/variation_option/productItem/${productItemId}`, {
+    headers: this.createAuthorizationHeader()
+  });
+};
+getAllProductItemVariationOptionByProductItem(productItemId:number):Observable<any>{
+  return this.http.get(BASIC_URL+`/api/admin/product_item_variation_option/productItem/${productItemId}`, {
+    headers: this.createAuthorizationHeader()
+  });
+};
 
 
 }
