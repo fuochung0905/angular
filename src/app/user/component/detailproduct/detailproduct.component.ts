@@ -56,12 +56,11 @@ export class DetailproductComponent {
         console.log(this.listProductVariationOption);
         console.log('Fail',error);
       })
-    }
+    };
 
   getProductDetails(): void {
     this.userService.getProductsById(this.id)
       .subscribe((product )=> {
-     
        this.product=product;
        console.log(product);
       },
@@ -81,6 +80,7 @@ export class DetailproductComponent {
       this.id=this.route.snapshot.params['id'];
       this.userService.getAllVariationProduct(this.id).subscribe((res)=>{
         this.listVariation=res;
+        console.log(this.allVariationOption);
       })
     };
     getAllProductItemByProduct(){
@@ -101,14 +101,24 @@ export class DetailproductComponent {
     getAllVariationOption(){
       this.userService.getAllVariationOption().subscribe((res)=>{
       this.allVariationOption=res;
+      console.log(this.allVariationOption);
       })
-
     };
     handleRadioButtonClick(selectedValue:number){
+      this.selectedVariationColorId=selectedValue;
         this.userService.getUserProductItemById(selectedValue).subscribe((res)=>{
           this.product=res;
-          location.reload();
-        })
-    }
+         
+        });
+    };
+    handleRadiobuttonColor(selectedValue:number){
+      this.selectedVariationSizeId=selectedValue;
+      this.selectedVariationColorId;
+    this.userService.getProductClickColor(this.selectedVariationColorId,this.selectedVariationSizeId).subscribe((res)=>{
+      this.product=res;
+    })
+
+    };
+    
 
 }

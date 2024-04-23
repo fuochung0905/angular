@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
 import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
+import { productClickColor } from 'src/app/dto/productClickColor.model';
 
 const BASIC_URL = 'http://localhost:8080';
 
@@ -72,8 +73,13 @@ export class UserService {
   getUserProductItemById(productItemId:number):Observable<any>{
     return this.httpClient.get(BASIC_URL +`/api/user/productItem/${productItemId}`,{
       headers:this.createAuthorizationHeader()
-    })
-  }
+    });
+  };
+  getProductClickColor(colorId:number,variationOptionId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/product/variationOption/${variationOptionId}/${colorId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
   getAllUserCart(): Observable<any> {
 
     return this.httpClient.get(BASIC_URL + '/api/user/cart/', {

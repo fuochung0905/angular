@@ -10,40 +10,66 @@
                     <button type="submit" class="nav-link btn btn-link text-dark">Đăng Xuất</button>
                 </form>
             </div>
-            <ul class="admin-menu">
-                <li class="item-menu">
-                    <a routerLink="/admin/dashboard">
-                        <div class="title">
-                            <div class="item-icon"><i class="fas fa-home"></i></div>
-                            <h3 routerLink="/admin/dashboard">Trang Chủ</h3>
-                        </div>
-                        <div class="show d-none"><i class="fa-solid fa-angle-up"></i></div>
-                    </a>
-                </li>
-                <li class="item-menu">
-                    <a routerLink="/admin/list-product">
-                        <div class="title">
-                            <div class="item-icon"><i class="bi bi-cart4"></i></div>
-                            <h3>Quản lý sản phẩm</h3>
-                        </div>
-                     
-                    </a>
-                </li>
+            <mat-accordion class="sidebar-item" >
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                       Quản lí danh mục
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>
+                        <a routerLink="/admin/add-category" routerLinkActive="active">Loại sản phẩm</a>
+                    </p>
+                   <p>
+                    <a routerLink="/admin/list-product" routerLinkActive="active">Danh sách sản phẩm</a>
+                   </p>
             
-                <li class="item-menu">
-                    <a >
-                        <div class="title">
-                            <div class="item-icon"><i class="bi bi-list-check"></i></div>
-                            <h3>Quản lý đơn hàng</h3>
-                        </div>
-                        <div class="show"><i class="fa-solid fa-angle-up"></i></div>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item"><i class="bi bi-dot"></i><a href="/Admin/orders">Thông tin đơn hàng</a></li>
-                        <li class="submenu-item"><i class="bi bi-dot"></i><a href="/Admin/orders/history">Lịch sử đơn hàng</a></li>
-                    </ul>
-                </li>
-            </ul>
+                  </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion class="sidebar-item">
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                     Quản lí đơn hàng
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>
+                    <a >Tất cả</a>
+                  </p>
+                  <p>
+                    <a>Đơn hàng chờ duyệt</a>
+                  </p>
+                  <p>
+                    <a >Đơn hàng chờ giao</a>
+                  </p>
+                  <p>
+                    <a >Đơn hàng hoàn thành</a>
+                  </p>
+                  <p>
+                    <a >Đơn hàng bị hủy</a>
+                  </p>
+                 
+                </mat-expansion-panel>
+          </mat-accordion>
+          <mat-accordion class="sidebar-item">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 Quản lí tài khoản
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>
+                <a >Tất cả</a>
+              </p>
+              <p>
+                <a>Khôi phục tài khoản</a>
+              </p>
+            </mat-expansion-panel>
+      </mat-accordion>
+                
         </div>
         <div class="admin-content">
          <router-outlet></router-outlet>

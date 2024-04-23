@@ -8,12 +8,12 @@
                         <div class="image-top">
                             <img  [src]="'http://localhost:8080/images/' +product.image" >
                         </div>
-                        <div *ngFor="let productItem of listProductItem">
+                        <!-- <div *ngFor="let productItem of listProductItem">
                             <div class="image-bottom" style="display: flex;
                             flex-direction: row;">
                                 <img style="width: 200px;height: 200px;" [src]="'http://localhost:8080/images/' + productItem.image" >
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -37,20 +37,16 @@
                     <div class="box-detail">
                         <p class="title">Màu sắc: </p>
                         <div *ngFor="let productItem of listProductItem">
-                        <div class="variation">
+                        <div class="variation" style="display: flex;">
                             <div *ngFor="let variationoption of allVariationOption">
                                 <div *ngIf="productItem.idColor===variationoption.id">
-                                    <div *ngFor="let variation of listVariation">
-                                        <div *ngIf="variation.id===productItem.idColor">
-                                            <div class="">
-                                                <div class="item-btn">
-                                                    <input   id="{{productItem.idColor}}" type="radio"
-                                                    value="{{productItem.idColor}}"
-                                                    class="variation-size"
-                                                        name="size">
-                                                    <label for="{{productItem.idColor}}">{{variationoption.value}}</label>
-                                                </div>
-                                            </div>
+                                    <div class="" >
+                                        <div class="item-btn" style="margin: 10px;">
+                                            <input (click)="handleRadioButtonClick(productItem.idColor)"  id="{{productItem.idColor}}" type="radio"
+                                            value="{{productItem.idColor}}"
+                                            class="variation-size"
+                                                name="size">
+                                            <label for="{{productItem.idColor}}">{{variationoption.value}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +62,7 @@
                                         <div class="item-btn">
                                             <div class="variation">
                                                 <div class="item-btn">
-                                                    <input   id="{{variationOption.value}}" type="radio"
+                                                    <input (click)="handleRadiobuttonColor(variationOption.id)"  id="{{variationOption.value}}" type="radio"
                                                     value="{{variationOption.id}}"
                                                     class="variation-size"
                                                     name="variation-size">

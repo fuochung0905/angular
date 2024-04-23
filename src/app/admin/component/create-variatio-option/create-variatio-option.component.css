@@ -1,0 +1,26 @@
+.outer-container {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    /* align-items: center; */
+     /* Căn giữa theo chiều dọc */
+    height: 97vh; /* Chiều cao bằng chiều cao của viewport */
+    background-color: #f0f0f0; /* Màu nền trắng cho phần ngoài khối */
+}
+
+.gray-background {
+    background-color: #ffffff ; /* Màu nền xám cho khối chứa form */
+    padding: 20px; /* Khoảng cách giữa form và khung ngoài */
+    height: 300px;
+    width: 500px;
+}
+
+.form-variationoption {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+     /* Căn giữa theo chiều ngang */
+}
+.form-fiel{
+    padding: 10px;
+}

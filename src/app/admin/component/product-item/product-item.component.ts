@@ -102,7 +102,9 @@ this.adminService.addProductItem(formData).subscribe(
       this.listVariationOption=res;
     });
   };
-
+  pageVariationOption(){
+    this.router.navigateByUrl("/admin/add-variation-option");
+  }
   displayedColumns: string[] = ['avatar','gia','soluong','mausac','Thao tác'];
   dataSource = this.listProductItem;
 }
