@@ -6,19 +6,17 @@ export class UserCartDto{
      size:string;
      productName:string;
     image:string;
-    constructor( id:number,
-        quantity:number,
-        price:number,
-        color:string,
-        size:string,
-        productName:string,
-       image:string){
-        this.id=id;
-        this.quantity=quantity;
-        this.price=price;
-        this.color=color;
-        this.size=size;
-        this.productName=productName;
-        this.image=image;
+    idColor:number;
+    idSize:number;
+    constructor( ){
+        this.id=0;
+        this.quantity=0;
+        this.price=0;
+        this.color='';
+        this.size='';
+        this.productName='';
+        this.image='';
+        this.idColor=0;
+        this.idSize=0;
        }
 }

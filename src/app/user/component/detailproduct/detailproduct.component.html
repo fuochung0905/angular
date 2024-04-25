@@ -73,19 +73,15 @@
                                     </div>
                              </div>
                         </div>
-                       
-
-               
-                   
                         <div class="box-detail amount">
-                            <input asp-for="quantity" type="number" min="0" max="{{product.quantity}}" value="1">
+                            <input  type="number" min="1" max="{{product.quantity}}" value="1" [(ngModel)]="colorSize.quantity" name="quantity">
                             <h6>{{product.quantity}}</h6>
                         </div>
                         <div class="get-product">
                             <button type="button" class="btn-wrap add" (click)="addCart()" >
                                 <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
                             </button>
-                            <button type="submit" class="btn-wrap buy" >
+                            <button type="submit" class="btn-wrap buy" (click)="addOrder()" >
                                 <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
                             </button>
                         </div>

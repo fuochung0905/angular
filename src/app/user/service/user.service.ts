@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
 import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
 import { productClickColor } from 'src/app/dto/productClickColor.model';
+import { ColorSize } from 'src/app/dto/ColorSize.model';
 
 const BASIC_URL = 'http://localhost:8080';
 
@@ -65,8 +66,13 @@ export class UserService {
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + UserStorageService.getToken());
   };
-   addCart(productVariation:ProductVariationOptionDto[]):Observable<any>{
-    return this.httpClient.put(BASIC_URL + '/api/user/cart/add',productVariation,{
+   addCart(colorSize:ColorSize):Observable<any>{
+    return this.httpClient.post(BASIC_URL + '/api/user/cart/add',colorSize,{
+      headers: this.createAuthorizationHeader()
+    })
+  };
+  removeCart(colorSize:ColorSize):Observable<any>{
+    return this.httpClient.post(BASIC_URL + '/api/user/cart/remove',colorSize,{
       headers: this.createAuthorizationHeader()
     })
   };
@@ -81,11 +87,12 @@ export class UserService {
     });
   };
   getAllUserCart(): Observable<any> {
-
     return this.httpClient.get(BASIC_URL + '/api/user/cart/', {
       headers: this.createAuthorizationHeader()
     });
   };
+ 
+
   logout():Observable<any>{
     const tokens=this.createAuthorizationHeader();
     console.log(tokens);

@@ -26,43 +26,63 @@
                     </div>
                     </form>
                 </div>
+
+
+
                 <form (ngSubmit)="submitOrder()">
-                <div class="order-complete-detail">
-                    <table class="table table-striped">
-                        <tr>
-                            <th></th>
-                            <th>Tên sản phẩm</th>
-                            <th>Ảnh sản phẩm</th>
-                            <th>Phân loại</th>
-                            <th>Số lượng</th>
-                            <th>Giá</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                       <div  *ngFor="let cart of carts">
-                             <tr>
-                                    <td>
-                                        <label>
-                                        <input  type="radio" 
-                                                  [checked]="selectedOrderId === cart.id" 
-                                                   (change)="updateSelectedOrder(cart.id)" />
-                                        </label>
-                                    </td>
-                                <td>{{cart.productName}}</td>
-                                <td>  
-                                     <img [src]="cart.proImage" alt="product-image"></td>
-                                    <td>
-                                    <span>{{cart.size}}</span>
-                                    <span>{{cart.color}}</span>
-                                    </td>
-                                <td>{{cart.quantity}}</td>
-                                <td class="money">{{cart.price}}</td>
-                                <td class="money">{{cart.quantity * cart.price }}</td>
-                                </tr>   
-                            </div>
-                    </table>
-                </div>
-                    <button class="btn-wrap order" type="submit">Đặt hàng</button>
-                </form>
+                    <table mat-table [dataSource]="carts" class="mat-elevation-z8">
+                        <ng-container matColumnDef="thaotac">
+                          <th mat-header-cell *matHeaderCellDef> </th>
+                          <td mat-cell *matCellDef="let element">
+                            <label>
+                                <input  type="checkbox" 
+                                          [checked]="selectedOrderId === element.id" 
+                                           (change)="updateSelectedOrder(element.id)" />
+                                </label>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="anh">
+                          <th mat-header-cell *matHeaderCellDef>Ảnh </th>
+                          <td mat-cell *matCellDef="let element">  <img  [src]="'http://localhost:8080/images/' +element.image" style="width: 50px; height: 50px;" > </td>
+                        </ng-container>
+                       
+                        <ng-container matColumnDef="ten">
+                          <th mat-header-cell *matHeaderCellDef> Tên sản phẩm </th>
+                          <td mat-cell *matCellDef="let element">  
+                            {{element.productName}}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="phanloai">
+                            <th mat-header-cell *matHeaderCellDef> Phân loại </th>
+                            <td mat-cell *matCellDef="let element">  
+                                <span>{{element.color}}</span>
+                                <br>
+                                <span>{{element.size}}</span>
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="soluong">
+                            <th mat-header-cell *matHeaderCellDef> Số lượng </th>
+                            <td mat-cell *matCellDef="let element">  
+                                {{element.quantity}}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="gia">
+                            <th mat-header-cell *matHeaderCellDef> Giá </th>
+                            <td mat-cell *matCellDef="let element">  
+                                {{element.price}}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="tongtien">
+                            <th mat-header-cell *matHeaderCellDef> Tổng tiền </th>
+                            <td mat-cell *matCellDef="let element">  
+                                {{tinhtich(element.price,element.quantity)}} 
+                            </td>
+                          </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      <button type="submit">Đặt hàng</button>
+    </form>
         </div>
         <div class="order-complete-right">
                 <div class="order-complete-product">

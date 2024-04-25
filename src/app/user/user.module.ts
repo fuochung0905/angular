@@ -11,7 +11,7 @@ import { OrderComponent } from './component/order/order.component';
 import { AddressComponent } from './component/address/address.component';
 import { HistoryOrderComponent } from './component/history-order/history-order.component';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -30,7 +30,8 @@ import { MatRadioModule } from '@angular/material/radio';
     CommonModule,
     UserRoutingModule, 
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule, 
     
   ]
 })

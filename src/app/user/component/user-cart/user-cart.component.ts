@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
+import { UserCartDto } from 'src/app/dto/UserCartDto.model';
+import { ColorSize } from 'src/app/dto/ColorSize.model';
 
 @Component({
   selector: 'app-user-cart',
@@ -8,19 +10,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-cart.component.css']
 })
 export class UserCartComponent {
-  carts: any[] = [];
+  carts: UserCartDto[] = [];
+  colorSize:ColorSize;
   constructor(private userService: UserService,
-    private router:Router) { }
+    private router:Router) {
+      this.colorSize= new ColorSize();
+     }
   ngOnInit(): void {
     this.getAllProduct();
   }
   getAllProduct(): void {
-    this.carts = [];
+    
     this.userService.getAllUserCart().subscribe(res => {
-      res.forEach((element: any) => {
-        element.proImage = 'data:image/jpeg;base64,' + element.image;
-        this.carts.push(element);
-      });
+      this.carts=res;
     });
+  };
+  addCart(idColor:number,idSize:number){
+    this.colorSize= new ColorSize();
+    this.colorSize.idColor=idSize;
+    this.colorSize.variationOptionId=idColor;
+    this.colorSize.quantity=1;
+
+    this.userService.addCart(this.colorSize).subscribe((res)=>{
+ 
+    },
+    (error)=>{
+    this.getAllProduct();
+    })
+  };
+  removeCart(idColor:number,idSize:number){
+    this.colorSize= new ColorSize();
+    this.colorSize.idColor=idSize;
+    this.colorSize.variationOptionId=idColor;
+
+    this.userService.removeCart(this.colorSize).subscribe((res)=>{
+    
+    },
+    (error)=>{
+    this.getAllProduct();
+    })
   };
 }

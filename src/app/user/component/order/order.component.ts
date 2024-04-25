@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class OrderComponent {
   selectedAddressId: any | null = null;
-  diachi:any={
+
+    diachi:any={
     id:''
   }
   selectedOrderId:any|null=null;
@@ -44,6 +45,10 @@ export class OrderComponent {
     this.getCurrentUser();
      this.getAddressCurretUser();
     this.getListAddresCurrentUser();
+  }
+  tinhtich(so1:number,so2:number):number{
+    return so1*so2;
+   
   }
   
   OpenMore() {
@@ -94,10 +99,7 @@ export class OrderComponent {
   getAllCart(): void {
     this.carts = [];
     this.userService.getAllUserCart().subscribe(res => {
-      res.forEach((element: any) => {
-        element.proImage = 'data:image/jpeg;base64,' + element.image;
-        this.carts.push(element);
-      });
+     this.carts=res;
     });
   };
 submitOrder(){
@@ -107,24 +109,23 @@ submitOrder(){
     this.userService.addOrder(this.dathang).subscribe(
       (res) => {
         console.log('Update success:', res.message);
-       location.reload()
-        // Xử lý khi service trả về kết quả thành công
+       location.reload();
       },
       (error) => {
         console.error('order error:', error);
-        // Xử lý khi có lỗi từ service
+       
       }
     );
   } else {
     console.log("No cart selected");
-    // Xử lý trường hợp khi không có địa chỉ nào được chọn
+  
   }
 };
 updateSelectedOrder(cartid:number){
   this.selectedOrderId=cartid;
 }
   updateSelectedAddress(addressId: number) {
-    // Cập nhật selectedAddressId khi người dùng chọn một địa chỉ mới
+
     this.selectedAddressId = addressId;
   };
 
@@ -136,21 +137,24 @@ updateSelectedOrder(cartid:number){
         (res) => {
           console.log('Update success:', res);
           this.reloadPage();
-          // Xử lý khi service trả về kết quả thành công
+         
         },
         (error) => {
           console.error('Update error:', error);
-          // Xử lý khi có lỗi từ service
+        
         }
       );
     } else {
       console.log("No address selected");
-      // Xử lý trường hợp khi không có địa chỉ nào được chọn
+ 
     }
   };
+
   reloadPage() {
     this.router.navigateByUrl('user/order', { skipLocationChange: true }).then(() => {
       this.router.navigate([this.router.url]);
     });
-  }
+  };
+  displayedColumns: string[] = ['thaotac','anh','ten','phanloai','soluong','gia','tongtien'];
+  dataSource = this.carts;
 }

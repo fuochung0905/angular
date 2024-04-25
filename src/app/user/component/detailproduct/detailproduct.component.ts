@@ -6,6 +6,7 @@ import { ProductDto } from 'src/app/dto/ProductDto.model';
 import { VariationDto } from 'src/app/dto/VariationDto.model';
 import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
 import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
+import { ColorSize } from 'src/app/dto/ColorSize.model';
 
 @Component({
   selector: 'app-detailproduct',
@@ -20,9 +21,9 @@ export class DetailproductComponent {
   listProductItem:ProductItemDto[]=[];
   product:ProductDto;
   variations:any=[];
-  listProductVariationOption:ProductVariationOptionDto[]=[];
-  productVariationOptionDto:ProductVariationOptionDto;
-
+  colorId!:number;
+  sizeId!:number;
+colorSize:ColorSize;
   selectedVariationSizeId: any | null = null;
   selectedVariationColorId: any | null = null;
    id :any = this.route.snapshot.params['id'];
@@ -30,7 +31,7 @@ export class DetailproductComponent {
     private userService:UserService,
     private router:Router) {
       this.id  = this.route.snapshot.params['id'];
-      this.productVariationOptionDto=new ProductVariationOptionDto( this.id );
+      this.colorSize= new ColorSize();
   this.product= new ProductDto();
      }
      ngOnInit(): void {
@@ -47,13 +48,28 @@ export class DetailproductComponent {
     updateSelectedVariationColor(variationId:number){
       this.selectedVariationColorId=variationId;
     }
+    addOrder():void{
+      this.colorSize.idColor=this.sizeId;
+      this.colorSize.variationOptionId=this.colorId;
+      this.userService.addCart(this.colorSize).subscribe((res)=>{
+       this.router.navigateByUrl('/order');
 
-    addCart():void{
-      this.userService.addCart(this.listProductVariationOption).subscribe((res)=>{
-          console.log('Success',res);
       },
       (error)=>{
-        console.log(this.listProductVariationOption);
+        this.router.navigateByUrl('/order');
+      })
+    };
+    addCart():void{
+      this.colorSize= new ColorSize();
+      this.colorSize.idColor=this.sizeId;
+      this.colorSize.variationOptionId=this.colorId;
+      this.colorSize.quantity=1;
+      this.userService.addCart(this.colorSize).subscribe((res)=>{
+          console.log('Success',res);
+          console.log(this.colorSize);
+      },
+      (error)=>{
+        console.log(this.colorSize);
         console.log('Fail',error);
       })
     };
@@ -73,51 +89,46 @@ export class DetailproductComponent {
     this.id=this.route.snapshot.params['id'];
     this.userService.getAllVariationoPtionByProduct(this.id).subscribe((res)=>{
     this.listvariationOption=res;
-    console.log(this.listvariationOption);
+  
     });
   };
     getAllVairationByProduct(){
       this.id=this.route.snapshot.params['id'];
       this.userService.getAllVariationProduct(this.id).subscribe((res)=>{
         this.listVariation=res;
-        console.log(this.allVariationOption);
+     
       })
     };
     getAllProductItemByProduct(){
       this.id=this.route.snapshot.params['id'];
       this.userService.getUserAllProductItemByProduct(this.id).subscribe((res)=>{
       this.listProductItem=res;
-      console.log(this.listProductItem);
+    
       })
     };
-    updateVariationOptions(event: any) {
-      const selectedValue = event.value;
-      if (selectedValue) {
-        const productVariationOption = new ProductVariationOptionDto(this.id);
-        productVariationOption.variationOptionId = selectedValue;
-        this.listProductVariationOption.push(productVariationOption);
-      }
-    };
+   
     getAllVariationOption(){
       this.userService.getAllVariationOption().subscribe((res)=>{
       this.allVariationOption=res;
-      console.log(this.allVariationOption);
+    
       })
     };
     handleRadioButtonClick(selectedValue:number){
       this.selectedVariationColorId=selectedValue;
+      this.sizeId=selectedValue;
+      console.log(this.sizeId);
         this.userService.getUserProductItemById(selectedValue).subscribe((res)=>{
           this.product=res;
-         
         });
     };
     handleRadiobuttonColor(selectedValue:number){
       this.selectedVariationSizeId=selectedValue;
       this.selectedVariationColorId;
+      this.colorId=selectedValue;
+      console.log(this.colorId);
     this.userService.getProductClickColor(this.selectedVariationColorId,this.selectedVariationSizeId).subscribe((res)=>{
       this.product=res;
     })
-
     };
     
 
