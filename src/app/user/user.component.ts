@@ -13,6 +13,7 @@ import { UserService } from './service/user.service';
 
 export class UserComponent implements AfterViewInit{
   cartCount: number = 0;
+  panelOpenState = false;
   isUserLoggedIn:boolean=UserStorageService.isUserLogggedIn();
   constructor(private router:Router,
     private userService:UserService ){
@@ -37,7 +38,6 @@ export class UserComponent implements AfterViewInit{
   getCartCount(){
     this.userService.getCartCountItem().subscribe((res:number)=>{
        this.cartCount = res;
-   console.log(this.cartCount,res);
     })
   }
  

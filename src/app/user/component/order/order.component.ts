@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogorderComponent } from '../dialogorder/dialogorder.component';
 
 @Component({
   selector: 'app-order',
@@ -38,6 +41,8 @@ export class OrderComponent {
     country:''
   };
   constructor(private userService: UserService,
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar,
     private router:Router) { }
     
   ngOnInit(): void {
@@ -49,6 +54,19 @@ export class OrderComponent {
   tinhtich(so1:number,so2:number):number{
     return so1*so2;
    
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogorderComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'OK') {
+        this.router.navigateByUrl('/user/address');
+      } else {
+       this.dialog.closeAll();
+      }
+    });
   }
   
   OpenMore() {
@@ -73,11 +91,8 @@ export class OrderComponent {
     }
 }
   getListAddresCurrentUser():void{
-    this.listAddress = [];
     this.userService.getListAddresCurrentUser().subscribe(res => {
-      res.forEach((element: any) => {
-        this.listAddress.push(element);
-      });
+   this.listAddress=res;
     });
   }
   getCurrentUser():void{
@@ -88,7 +103,15 @@ export class OrderComponent {
   };
   getAddressCurretUser():void{
     this.userService.getAddressCurretUser().subscribe((res)=>{
-      this.address=res;
+      if(res){
+        if( res.message==='User does not have an address yet'){
+       
+          this.router.navigateByUrl('/user/address');
+        }
+       
+    
+      }
+      
     });
   };
   getAllAddress():void{
@@ -105,15 +128,21 @@ export class OrderComponent {
 submitOrder(){
   if (this.selectedOrderId !== null) {
     this.dathang.cartid=this.selectedOrderId;
- 
     this.userService.addOrder(this.dathang).subscribe(
       (res) => {
-        console.log('Update success:', res.message);
-       location.reload();
+        if(res){
+          if(res.message==="user not address"){
+            this.openDialog();
+          }
+          else{
+           
+          }
+        }
+        
+      // this.router.navigateByUrl('/historyOrder');
       },
       (error) => {
-        console.error('order error:', error);
-       
+        this.router.navigateByUrl('/user/historyOrder');
       }
     );
   } else {

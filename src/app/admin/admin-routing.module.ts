@@ -13,6 +13,7 @@ import { ProductItemComponent } from './component/product-item/product-item.comp
 import { CreateVariationComponent } from './component/create-variation/create-variation.component';
 import { CreateVariatioOptionComponent } from './component/create-variatio-option/create-variatio-option.component';
 import { CreatePIVariationComponent } from './component/create-pivariation/create-pivariation.component';
+import { OrderAllComponent } from './component/order-all/order-all.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
@@ -27,7 +28,8 @@ children:[
   {path:'add-category',component:PostcategoryComponent},
   {path:'list-product',component:PutproductComponent},
   {path:'variationproduct/:id',component:AddVariationComponent},
-  {path:'category/:id',component:GetDetailCategoryComponent}
+  {path:'category/:id',component:GetDetailCategoryComponent},
+  {path:'orderAll',component:OrderAllComponent}
 ]}
 ];
 

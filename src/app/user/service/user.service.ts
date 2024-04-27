@@ -21,6 +21,16 @@ export class UserService {
       headers: this.createAuthorizationHeader()
     });
   };
+  getAllProductByCategory(categoryId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/product/category/${categoryId}`, {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+  getAllCategory():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/category/',{
+      headers: this.createAuthorizationHeader()
+    });
+  };
   getProductsById(productId:any): Observable<any> {
    console.log(productId);
     return this.httpClient.get(BASIC_URL+`/api/user/product/${productId}`, {
@@ -108,6 +118,31 @@ export class UserService {
   };
   getHistoryOrder():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/order/history',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getHistoryOrderApproved():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/historyApproved',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getHistoryOrderDelivered():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/historyTransport',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getHistoryOrderCancel():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/historyDelivered',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getHistoryOrderTransport():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/historyCancel',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getHistoryOrderChoxacnhan():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/historyOrdered',{
       headers:this.createAuthorizationHeader()
     });
   };

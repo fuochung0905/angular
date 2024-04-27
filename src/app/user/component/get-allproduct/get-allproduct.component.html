@@ -3,23 +3,24 @@
     <div class="container-web">
         <div class="head-product">
             <div class="title-component-cate">Danh mục: </div>
-            <div class="list-component-cate">
-                
-                <li>
-                    <a >Loại sản phẩm</a>
-                </li>
+            <a (click)="getAllProduct()" style="padding-left: 20px;">Tất cả</a>
+          
+            <div class="list-component-cate" *ngFor="let cate of categoryDto" style="padding-left: 20px;">
+
+                    <a (click)="getProductByCategory(cate.id)">{{cate.name}}</a>
+             
             </div>
             <div class="state-component-cate"></div>   
         </div>
 <div class="list-product" *ngFor="let product of products">
         <div class="item-product">
             <div class="img-box">
-                <img [src]="product.processImage" alt="product-image">
+                <img  [src]="'http://localhost:8080/images/' +product.image" >
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{product.productName}}</h5>
                 <div class="card-detail">
-                    <p class="card-text money">{{product.description}}</p>
+                    <p class="card-text money">{{product.price}}</p>
                     <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
                 </div>
                 <div class="box-button">

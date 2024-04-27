@@ -31,6 +31,12 @@ import { CreateVariationComponent } from './component/create-variation/create-va
 import { CreateVariatioOptionComponent } from './component/create-variatio-option/create-variatio-option.component';
 import { CreatePIVariationComponent } from './component/create-pivariation/create-pivariation.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { OrderAllComponent } from './component/order-all/order-all.component';
+import { OrderWaitAcceptComponent } from './component/order-wait-accept/order-wait-accept.component';
+import { OrderAcceptComponent } from './component/order-accept/order-accept.component';
+import { OrderTransportComponent } from './component/order-transport/order-transport.component';
+import { OrderCompleteComponent } from './component/order-complete/order-complete.component';
+import { OrderCancelComponent } from './component/order-cancel/order-cancel.component';
 
 
 
@@ -48,7 +54,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ProductItemComponent,
     CreateVariationComponent,
     CreateVariatioOptionComponent,
-    CreatePIVariationComponent
+    CreatePIVariationComponent,
+    OrderAllComponent,
+    OrderWaitAcceptComponent,
+    OrderAcceptComponent,
+    OrderTransportComponent,
+    OrderCompleteComponent,
+    OrderCancelComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,10 @@ import { AddressComponent } from './component/address/address.component';
 import { HistoryOrderComponent } from './component/history-order/history-order.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogorderComponent } from './component/dialogorder/dialogorder.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -22,9 +26,10 @@ import { MatTableModule } from '@angular/material/table';
     DetailproductComponent,
     UserCartComponent,
     ShowlistproductsComponent,
-          OrderComponent,
-           AddressComponent,
-           HistoryOrderComponent
+    OrderComponent,
+    AddressComponent,
+    HistoryOrderComponent,
+    DialogorderComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +37,9 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     MatRadioModule,
     MatTableModule, 
+    MatTabsModule,
+    MatDialogModule,
+    MatExpansionModule
     
   ]
 })

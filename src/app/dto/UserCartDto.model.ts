@@ -8,6 +8,10 @@ export class UserCartDto{
     image:string;
     idColor:number;
     idSize:number;
+    orderStatus:string;
+    orderDate:string;
+    username:string;
+    addressUser:string;
     constructor( ){
         this.id=0;
         this.quantity=0;
@@ -18,5 +22,9 @@ export class UserCartDto{
         this.image='';
         this.idColor=0;
         this.idSize=0;
+        this.orderStatus='';
+        this.orderDate='';
+        this.addressUser='';
+        this.username='';
        }
 }

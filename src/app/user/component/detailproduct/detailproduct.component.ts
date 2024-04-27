@@ -15,7 +15,6 @@ import { ColorSize } from 'src/app/dto/ColorSize.model';
 })
 export class DetailproductComponent {
   listVariation:VariationDto[]=[];
- 
   listvariationOption:VariationOptionDto[]=[];
   allVariationOption:VariationOptionDto[]=[];
   listProductItem:ProductItemDto[]=[];
@@ -32,7 +31,7 @@ colorSize:ColorSize;
     private router:Router) {
       this.id  = this.route.snapshot.params['id'];
       this.colorSize= new ColorSize();
-  this.product= new ProductDto();
+      this.product= new ProductDto();
      }
      ngOnInit(): void {
       this.id=this.route.snapshot.params['id'];
@@ -65,23 +64,19 @@ colorSize:ColorSize;
       this.colorSize.variationOptionId=this.colorId;
       this.colorSize.quantity=1;
       this.userService.addCart(this.colorSize).subscribe((res)=>{
-          console.log('Success',res);
-          console.log(this.colorSize);
+    
       },
       (error)=>{
-        console.log(this.colorSize);
-        console.log('Fail',error);
+    
       })
     };
 
   getProductDetails(): void {
-    this.userService.getProductsById(this.id)
-      .subscribe((product )=> {
+    this.userService.getProductsById(this.id).subscribe((product)=> {
        this.product=product;
-       console.log(product);
       },
       (error)=>{
-        console.log('fail',error);
+      
       }
       );
   };
@@ -103,20 +98,17 @@ colorSize:ColorSize;
       this.id=this.route.snapshot.params['id'];
       this.userService.getUserAllProductItemByProduct(this.id).subscribe((res)=>{
       this.listProductItem=res;
-    
       })
     };
    
     getAllVariationOption(){
       this.userService.getAllVariationOption().subscribe((res)=>{
       this.allVariationOption=res;
-    
       })
     };
     handleRadioButtonClick(selectedValue:number){
       this.selectedVariationColorId=selectedValue;
       this.sizeId=selectedValue;
-      console.log(this.sizeId);
         this.userService.getUserProductItemById(selectedValue).subscribe((res)=>{
           this.product=res;
         });
@@ -125,7 +117,6 @@ colorSize:ColorSize;
       this.selectedVariationSizeId=selectedValue;
       this.selectedVariationColorId;
       this.colorId=selectedValue;
-      console.log(this.colorId);
     this.userService.getProductClickColor(this.selectedVariationColorId,this.selectedVariationSizeId).subscribe((res)=>{
       this.product=res;
     })

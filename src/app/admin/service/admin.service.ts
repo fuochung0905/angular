@@ -126,7 +126,7 @@ updateCategory(categoryId:any,categoryDto:any):Observable<any>{
     });
   };
   deleteCategoryById(categoryId: any): Observable<any> {
-    return this.http.delete(BASIC_URL + `/api/admin/category/${categoryId}`, {
+    return this.http.delete(BASIC_URL + `/api/admin/category/deleteProduct/${categoryId}`, {
       headers: this.createAuthorizationHeader()
     });
   };
@@ -184,6 +184,36 @@ getAllVariationOptionWithSizeByProductItem(productItemId:number):Observable<any>
 getAllProductItemVariationOptionByProductItem(productItemId:number):Observable<any>{
   return this.http.get(BASIC_URL+`/api/admin/product_item_variation_option/productItem/${productItemId}`, {
     headers: this.createAuthorizationHeader()
+  });
+};
+getHistoryOrder():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/order/history',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getHistoryOrderApproved():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/order/historyApproved',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getHistoryOrderDelivered():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/order/historyTransport',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getHistoryOrderCancel():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/order/historyDelivered',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getHistoryOrderTransport():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/order/historyCancel',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getHistoryOrderChoxacnhan():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/order/historyOrdered',{
+    headers:this.createAuthorizationHeader()
   });
 };
 
