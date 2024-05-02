@@ -14,6 +14,8 @@ import { CreateVariationComponent } from './component/create-variation/create-va
 import { CreateVariatioOptionComponent } from './component/create-variatio-option/create-variatio-option.component';
 import { CreatePIVariationComponent } from './component/create-pivariation/create-pivariation.component';
 import { OrderAllComponent } from './component/order-all/order-all.component';
+import { OrderWaitAcceptComponent } from './component/order-wait-accept/order-wait-accept.component';
+import { OrderTransportComponent } from './component/order-transport/order-transport.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
@@ -29,7 +31,9 @@ children:[
   {path:'list-product',component:PutproductComponent},
   {path:'variationproduct/:id',component:AddVariationComponent},
   {path:'category/:id',component:GetDetailCategoryComponent},
-  {path:'orderAll',component:OrderAllComponent}
+  {path:'orderAll',component:OrderAllComponent},
+  {path:'order-wait-accept',component:OrderWaitAcceptComponent},
+  {path:'order-transport',component:OrderTransportComponent}
 ]}
 ];
 

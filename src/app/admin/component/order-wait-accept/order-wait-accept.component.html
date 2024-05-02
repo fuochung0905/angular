@@ -1,1 +1,69 @@
-<p>order-wait-accept works!</p>
+<table mat-table [dataSource]="history" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox 
+        name="SelectId"
+        [checked]="element.id === SelectId"
+        (change)="onCheckboxChange(element.id)">
+        {{ element.id }}
+    </mat-checkbox>
+         </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ảnh">
+      <th mat-header-cell *matHeaderCellDef>Ảnh</th>
+      <td mat-cell *matCellDef="let element"> 
+        <img  [src]="'http://localhost:8080/images/'+element.image" style="width: 50px;height: 50px;" >
+       </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ten">
+      <th mat-header-cell *matHeaderCellDef> Tên sản phẩm</th>
+      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="bienthe">
+      <th mat-header-cell *matHeaderCellDef> Phân loại </th>
+      <td mat-cell *matCellDef="let element"> 
+        {{element.size}}
+      <br>
+      {{element.color}}
+     </td>
+    </ng-container>
+    <ng-container matColumnDef="gia">
+        <th mat-header-cell *matHeaderCellDef>Giá </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+      <ng-container matColumnDef="soluong">
+        <th mat-header-cell *matHeaderCellDef> Số lượng </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+      <ng-container matColumnDef="diachi">
+        <th mat-header-cell *matHeaderCellDef>Địa chỉ </th>
+        <td mat-cell *matCellDef="let element"> {{element.addressUser}} </td>
+      </ng-container>
+      <ng-container matColumnDef="tennguoidung">
+        <th mat-header-cell *matHeaderCellDef>Tên người dùng  </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+      <ng-container matColumnDef="thaotac">
+        <th mat-header-cell *matHeaderCellDef>Thao tác </th>
+        <td mat-cell *matCellDef="let element"> 
+          
+        <button >Duyệt</button> </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
+  
+  <!-- Copyright 2024 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at https://angular.io/license -->

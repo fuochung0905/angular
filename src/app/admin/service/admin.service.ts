@@ -7,6 +7,7 @@ import { CategoryDto } from 'src/app/dto/CategoryDto.model';
 import { VariationDto } from 'src/app/dto/VariationDto.model';
 import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
 import { ProductItemVariationDto } from 'src/app/dto/ProductItemVariationDto.model';
+import { UpdateOrderStatus } from 'src/app/dto/UpdateOrderStatus.model';
 const BASIC_URL="http://localhost:8080";
 
 @Injectable({
@@ -197,17 +198,17 @@ getHistoryOrderApproved():Observable<any>{
   });
 };
 getHistoryOrderDelivered():Observable<any>{
-  return this.http.get(BASIC_URL+'/api/admin/order/historyTransport',{
-    headers:this.createAuthorizationHeader()
-  });
-};
-getHistoryOrderCancel():Observable<any>{
   return this.http.get(BASIC_URL+'/api/admin/order/historyDelivered',{
     headers:this.createAuthorizationHeader()
   });
 };
-getHistoryOrderTransport():Observable<any>{
+getHistoryOrderCancel():Observable<any>{
   return this.http.get(BASIC_URL+'/api/admin/order/historyCancel',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getHistoryOrderTransport():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/order/historyTransport',{
     headers:this.createAuthorizationHeader()
   });
 };
@@ -217,6 +218,11 @@ getHistoryOrderChoxacnhan():Observable<any>{
   });
 };
 
+updateHistoryOrderChoxacnhan(UpdateOrderStatus: UpdateOrderStatus):Observable<any>{
+return this.http.post(BASIC_URL+'/api/admin/order/historyOrdered', UpdateOrderStatus,{
+  headers:this.createAuthorizationHeader()
+});
+}
 
 }
 
