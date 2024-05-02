@@ -5,6 +5,8 @@ import { UserStorageService } from 'src/app/storage/user-storage.service';
 import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
 import { productClickColor } from 'src/app/dto/productClickColor.model';
 import { ColorSize } from 'src/app/dto/ColorSize.model';
+import { UserDto } from 'src/app/dto/UserDto.model';
+import { ReviewDto } from 'src/app/dto/ReviewDto.model';
 
 const BASIC_URL = 'http://localhost:8080';
 
@@ -15,6 +17,48 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+ 
+ 
+  addAddress(address:any):Observable<any>{
+    return this.httpClient.post(BASIC_URL+'/api/user/address/createNewAddress',address,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  addCart(colorSize:ColorSize):Observable<any>{
+    return this.httpClient.post(BASIC_URL + '/api/user/cart/add',colorSize,{
+      headers: this.createAuthorizationHeader()
+    })
+  };
+  addOrder(OrderRequest :any):Observable<any>{
+    return this.httpClient.post(BASIC_URL+'/api/user/order/createNewOrder',OrderRequest,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  addReview(reviewDto:ReviewDto):Observable<any>{
+    return this.httpClient.post(BASIC_URL+'/api/user/review/createNewReview',reviewDto,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  removeCart(colorSize:ColorSize):Observable<any>{
+    return this.httpClient.post(BASIC_URL + '/api/user/cart/remove',colorSize,{
+      headers: this.createAuthorizationHeader()
+    })
+  };
+  getAllReviewByProduct(productId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/review/product/${productId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
+  getListAddresCurrentUser():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/address/',{
+      headers:this.createAuthorizationHeader()
+    })
+  };
+  getAddressCurretUser():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/currentAddress',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
   getAllProducts(): Observable<any> {
 
     return this.httpClient.get(BASIC_URL + '/api/user/product/', {
@@ -42,31 +86,7 @@ export class UserService {
       headers: this.createAuthorizationHeader()
     });
   };
-  addAddress(address:any):Observable<any>{
-    return this.httpClient.post(BASIC_URL+'/api/user/address/createNewAddress',address,{
-      headers:this.createAuthorizationHeader()
-    });
-  };
-  addOrder(OrderRequest :any):Observable<any>{
-    return this.httpClient.post(BASIC_URL+'/api/user/order/createNewOrder',OrderRequest,{
-      headers:this.createAuthorizationHeader()
-    });
-  };
-  getListAddresCurrentUser():Observable<any>{
-    return this.httpClient.get(BASIC_URL+'/api/user/address/',{
-      headers:this.createAuthorizationHeader()
-    })
-  };
-  getAddressCurretUser():Observable<any>{
-    return this.httpClient.get(BASIC_URL+'/api/user/order/currentAddress',{
-      headers:this.createAuthorizationHeader()
-    });
-  };
-  updateAddressIsDefine(AddressDto:any):Observable<any>{
-    return this.httpClient.post(BASIC_URL+'/api/user/address/updateIsDefine',AddressDto,{
-      headers: this.createAuthorizationHeader()
-    });
-  };
+ 
   getAllAddress():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/address/',{
       headers: this.createAuthorizationHeader()
@@ -76,16 +96,8 @@ export class UserService {
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + UserStorageService.getToken());
   };
-   addCart(colorSize:ColorSize):Observable<any>{
-    return this.httpClient.post(BASIC_URL + '/api/user/cart/add',colorSize,{
-      headers: this.createAuthorizationHeader()
-    })
-  };
-  removeCart(colorSize:ColorSize):Observable<any>{
-    return this.httpClient.post(BASIC_URL + '/api/user/cart/remove',colorSize,{
-      headers: this.createAuthorizationHeader()
-    })
-  };
+  
+
   getUserProductItemById(productItemId:number):Observable<any>{
     return this.httpClient.get(BASIC_URL +`/api/user/productItem/${productItemId}`,{
       headers:this.createAuthorizationHeader()
@@ -103,14 +115,7 @@ export class UserService {
   };
  
 
-  logout():Observable<any>{
-    const tokens=this.createAuthorizationHeader();
-    console.log(tokens);
-    const token = UserStorageService.getToken();
-      return this.httpClient.get(BASIC_URL+'/logout', {
-        headers:this.createAuthorizationHeader()
-      });
-  };
+
   getCartCountItem():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/cart/count',{
       headers:this.createAuthorizationHeader()
@@ -121,23 +126,25 @@ export class UserService {
       headers:this.createAuthorizationHeader()
     });
   };
+
+ 
   getHistoryOrderApproved():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/order/historyApproved',{
       headers:this.createAuthorizationHeader()
     });
   };
   getHistoryOrderDelivered():Observable<any>{
-    return this.httpClient.get(BASIC_URL+'/api/user/order/historyTransport',{
-      headers:this.createAuthorizationHeader()
-    });
-  };
-  getHistoryOrderCancel():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/order/historyDelivered',{
       headers:this.createAuthorizationHeader()
     });
   };
-  getHistoryOrderTransport():Observable<any>{
+  getHistoryOrderCancel():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/order/historyCancel',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
+  getHistoryOrderTransport():Observable<any>{
+    return this.httpClient.get(BASIC_URL+'/api/user/order/historyTransport',{
       headers:this.createAuthorizationHeader()
     });
   };
@@ -166,4 +173,28 @@ getAllVariationOption():Observable<any>{
     headers: this.createAuthorizationHeader()
   });
 };
+updateUserInfor(userDto:UserDto):Observable<any>{
+  return this.httpClient.post(BASIC_URL+'/api/user/information/',userDto,{
+    headers:this.createAuthorizationHeader()
+  });
+};
+updateUser(updateUser:FormData):Observable<any>{
+  return this.httpClient.post(BASIC_URL+'/api/user/information/update',updateUser,{
+    headers: this.createAuthorizationHeader()
+  });
+};
+updateAddressIsDefine(AddressDto:any):Observable<any>{
+  return this.httpClient.post(BASIC_URL+'/api/user/address/updateIsDefine',AddressDto,{
+    headers: this.createAuthorizationHeader()
+  });
+};
+logout():Observable<any>{
+  const tokens=this.createAuthorizationHeader();
+  console.log(tokens);
+  const token = UserStorageService.getToken();
+    return this.httpClient.get(BASIC_URL+'/logout', {
+      headers:this.createAuthorizationHeader()
+    });
+};
+
 }

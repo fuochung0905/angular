@@ -104,11 +104,14 @@ export class OrderComponent {
   getAddressCurretUser():void{
     this.userService.getAddressCurretUser().subscribe((res)=>{
       if(res){
-        if( res.message==='User does not have an address yet'){
+        // if( res.message==='User does not have an address yet'){
        
-          this.router.navigateByUrl('/user/address');
-        }
-       
+        //   this.router.navigateByUrl('/user/address');
+        // }
+        // else{
+
+        // }
+       this.address=res;
     
       }
       

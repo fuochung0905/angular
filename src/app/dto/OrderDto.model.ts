@@ -3,22 +3,16 @@ export class OrderDto{
      quantity:number;
      size :string;
     color :string;
-     price:string;
+     price:number;
     addressUser:string;
-   productId:string;
-   constructor(id:number,
-    quantity:number,
-    size :string,
-   color :string,
-    price:string,
-   addressUser:string,
-  productId:string){
-this.id=id;
-this.quantity=quantity;
-this.size=size;
-this.color=color;
-this.price=price;
-this.addressUser=addressUser;
-this.productId=productId;
+   productId:number;
+   constructor(){
+this.id=0;
+this.quantity=0;
+this.size='';
+this.color='';
+this.price=0;
+this.addressUser='';
+this.productId=0;;
   }
 }

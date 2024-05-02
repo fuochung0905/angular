@@ -120,4 +120,46 @@
             </div>
         </div>
     </div>
+    <div style="display: block;unicode-bidi: isolate;">
+        <div class="product-rating">
+            <div class="product-rating-header">
+                <div class="product-rating-header-score">Đánh giá sản phẩm</div>
+            </div>
+            <div class="product-rating-list">
+                <div class="product-rating-list-comment">
+                    <div *ngFor="let review of listReviewDto">
+                        <div class="utc2-product-rating">
+                            <div>
+                                <img  [src]="'http://localhost:8080/images/'+review.imageUser" style="width: 50px; height: 50px;" >
+                            </div>
+
+                            <div class="utc2-product-rating-main">
+                                <p>{{review.username}}</p>
+                                <div>
+                                    <p>{{review.rating}}</p>
+                                </div>
+                                <div>
+                                    Phân loại:{{review.variation}}
+                                </div>
+                                <div>
+                                    <p>{{review.date}}</p>
+                                </div>
+                                <div>
+                                    <p>{{review.comment}}</p>
+                                </div>
+                                <div>
+                                    <img  [src]="'http://localhost:8080/images/'+review.imageName" style="width: 50px; height: 50px;">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+       
+       
+       
+    </div>
 </div>

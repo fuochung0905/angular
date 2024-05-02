@@ -4,7 +4,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { GetAllproductComponent } from './component/get-allproduct/get-allproduct.component';
 import { DetailproductComponent } from './component/detailproduct/detailproduct.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { UserCartComponent } from './component/user-cart/user-cart.component'; // Import FormsModule
 import { ShowlistproductsComponent } from './component/showlistproducts/showlistproducts.component';
 import { OrderComponent } from './component/order/order.component';
@@ -16,6 +16,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogorderComponent } from './component/dialogorder/dialogorder.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { UpdateUserComponent } from './component/update-user/update-user.component';
+import { ReviewProductComponent } from './component/review-product/review-product.component';
 
 
 
@@ -29,12 +31,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
     OrderComponent,
     AddressComponent,
     HistoryOrderComponent,
-    DialogorderComponent
+    DialogorderComponent,
+    UpdateUserComponent,
+    ReviewProductComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule, 
     FormsModule,
+    ReactiveFormsModule,
     MatRadioModule,
     MatTableModule, 
     MatTabsModule,

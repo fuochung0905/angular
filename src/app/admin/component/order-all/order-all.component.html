@@ -7,8 +7,8 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>  </th>
       <td mat-cell *matCellDef="let element">
-        <mat-checkbox    name="name"
-        (change)="onCheckboxChange(element.id, $event)">{{element.id}}
+    <mat-checkbox    name="{{element.id}}" 
+        (change)="onCheckboxChange(element.id, $event)">
       </mat-checkbox>
          </td>
     </ng-container>

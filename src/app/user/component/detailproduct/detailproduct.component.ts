@@ -7,6 +7,7 @@ import { VariationDto } from 'src/app/dto/VariationDto.model';
 import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
 import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
 import { ColorSize } from 'src/app/dto/ColorSize.model';
+import { ReviewDto } from 'src/app/dto/ReviewDto.model';
 
 @Component({
   selector: 'app-detailproduct',
@@ -19,6 +20,7 @@ export class DetailproductComponent {
   allVariationOption:VariationOptionDto[]=[];
   listProductItem:ProductItemDto[]=[];
   product:ProductDto;
+  listReviewDto:ReviewDto[]=[];
   variations:any=[];
   colorId!:number;
   sizeId!:number;
@@ -40,7 +42,15 @@ colorSize:ColorSize;
    this.getAllVairationByProduct();
    this.getAllProductItemByProduct();
    this.getAllVariationOption();
+   this.getAllReviewByProduct();
     };
+    getAllReviewByProduct(){
+      this.id=this.route.snapshot.params['id'];
+      this.userService.getAllReviewByProduct(this.id).subscribe((res)=>{
+        this.listReviewDto=res;
+        console.log(this.listReviewDto);
+      })
+    }
     updateSelectedVariationSize(variationId:number){
       this.selectedVariationSizeId=variationId;
     };
