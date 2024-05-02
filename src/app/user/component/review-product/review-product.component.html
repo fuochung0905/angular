@@ -1,0 +1,7 @@
+<form (submit)="addReview()">
+    <label>Đánh giá</label>
+    <input type="number" max="5" min="1" [(ngModel)]="reviewDto.rating" name="rating">
+    <label>Bình luận sản phẩm</label>
+    <input type="text" placeholder="Bình luận sản phẩm" [(ngModel)]="reviewDto.comment" name="comment">
+    <button type="submit">Thêm</button>
+</form>

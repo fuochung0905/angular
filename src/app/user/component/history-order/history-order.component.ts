@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
 import { UserCartDto } from 'src/app/dto/UserCartDto.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ReviewProductComponent } from '../review-product/review-product.component';
 
 @Component({
   selector: 'app-history-order',
@@ -16,7 +18,8 @@ export class HistoryOrderComponent {
   historyCancel: UserCartDto[] = [];
   historyChoxacnhan: UserCartDto[] = [];
   constructor(private userService: UserService,
-    private router:Router) { }
+    private router:Router,
+    private dialog: MatDialog) { }
   ngOnInit(): void {
     this.getHistoryOrder();
     this.getHistoryCancel();
@@ -63,6 +66,17 @@ export class HistoryOrderComponent {
       this.historyCancel=res;
       console.log(this.history);
       });
+  };
+  openDialog(id: number): void {
+    const dialogRef = this.dialog.open(ReviewProductComponent, {
+      width: '1000px',
+      height:'500px',
+      data: { id: id } 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
  
 }

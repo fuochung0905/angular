@@ -13,8 +13,7 @@ export class SignupComponent {
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
-    phoneNumber: ''
+    password: ''
   };
   
   constructor(private router:Router,private auth: AuthService) {

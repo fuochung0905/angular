@@ -1,0 +1,28 @@
+export class ReviewDto{
+    id:number;
+    orderId:number;
+    comment:string;
+    rating:number;
+    productId:number;
+    userId:number;
+    date:string;
+    productName:string;
+     imageName:string;
+    username:string;
+    imageUser:string;
+    variation:string;
+    constructor(){
+        this.id=0;
+        this.orderId=0;
+        this.rating=0;
+        this.comment='';
+        this.productId=0;
+        this.userId=0;
+        this.productName='';
+        this.imageName='';
+        this.username='';
+        this.date='';
+        this.imageUser='';
+        this.variation='';
+    }
+}
