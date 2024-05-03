@@ -16,6 +16,9 @@ import { CreatePIVariationComponent } from './component/create-pivariation/creat
 import { OrderAllComponent } from './component/order-all/order-all.component';
 import { OrderWaitAcceptComponent } from './component/order-wait-accept/order-wait-accept.component';
 import { OrderTransportComponent } from './component/order-transport/order-transport.component';
+import { InTransportComponent } from './component/in-transport/in-transport.component';
+import { OrderCompleteComponent } from './component/order-complete/order-complete.component';
+import { OrderCancelComponent } from './component/order-cancel/order-cancel.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
@@ -33,7 +36,10 @@ children:[
   {path:'category/:id',component:GetDetailCategoryComponent},
   {path:'orderAll',component:OrderAllComponent},
   {path:'order-wait-accept',component:OrderWaitAcceptComponent},
-  {path:'order-transport',component:OrderTransportComponent}
+  {path:'order-wait-transport',component:OrderTransportComponent},
+  {path:'order-in-transport',component:InTransportComponent},
+  {path:'order-complete',component:OrderCompleteComponent},
+  {path:'order-cancle',component:OrderCancelComponent}
 ]}
 ];
 

@@ -12,7 +12,6 @@ import { CategoryDto } from 'src/app/dto/CategoryDto.model';
   styleUrls: ['./order-wait-accept.component.css']
 })
 export class OrderWaitAcceptComponent {
-  [x: string]: any;
   history: UserCartDto[] = [];
   selected!:boolean;
   SelectId: number | null = null;
@@ -35,22 +34,18 @@ export class OrderWaitAcceptComponent {
         console.log(this.history);
         });
       };
-     /* onCheckboxChange(id:number){
-        this.SelectId = id;
-       
-      }*/
       onCheckboxChange(orderId: number) {
        
         if (this.SelectId = orderId) {
-          console.log('Selected order ID:', orderId);
+         this.orders.id=orderId;
         }
         
       }
-
-
       duyetDonHang() {
-      
-        } 
+      this.adminServe.updateHistoryOrderChoxacnhan(this.orders).subscribe((res)=>{
+       location.reload();
+      });
+        } ;
     
       displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
       dataSource = this.history;

@@ -12,9 +12,12 @@ import { CategoryDto } from 'src/app/dto/CategoryDto.model';
   styleUrls: ['./order-transport.component.css']
 })
 export class OrderTransportComponent {
-
-  [x: string]: any;
   history: UserCartDto[] = [];
+  selected!:boolean;
+  SelectId: number | null = null;
+  orders : any= {
+    id:''
+  };
 
   constructor(private adminServe: AdminService,
     private router:Router,
@@ -26,14 +29,25 @@ export class OrderTransportComponent {
   }
 
   getHistoryOrderTransport(): void {
-    this.adminServe.getHistoryOrderTransport().subscribe(res => {
+    this.adminServe.getHistoryOrderApproved().subscribe(res => {
     this.history=res;
     console.log(this.history);
     });
   };
-  onCheckboxChange(id:number,event:any){
+  onCheckboxChange(orderId: number) {
+       
+    if (this.SelectId = orderId) {
+     this.orders.id=orderId;
+    }
     
-   
+  }
+  UpdateApprovalToTransport(){
+    this.adminServe.updateApprovalToTransport(this.orders).subscribe((res)=>{
+      location.reload();
+    },
+    (error)=>{
+      location.reload();
+    })
   }
 
   displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];

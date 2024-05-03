@@ -1,17 +1,11 @@
-<table mat-table [dataSource]="history" class="mat-elevation-z8">
+
+  <table mat-table [dataSource]="history" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
   
     <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>  </th>
-      <td mat-cell *matCellDef="let element">
-    <mat-checkbox    name="{{element.id}}" 
-        (change)="onCheckboxChange(element.id, $event)">
-      </mat-checkbox>
-         </td>
-    </ng-container>
+
   
     <ng-container matColumnDef="ảnh">
       <th mat-header-cell *matHeaderCellDef>Ảnh</th>
@@ -49,17 +43,20 @@
         <td mat-cell *matCellDef="let element"> {{element.username}} </td>
       </ng-container>
       <ng-container matColumnDef="thaotac">
-        <th mat-header-cell *matHeaderCellDef>Thao tác </th>
+        <th mat-header-cell *matHeaderCellDef>Trạng thái đơn hàng </th>
         <td mat-cell *matCellDef="let element"> 
-        <button>Duyệt</button> </td>
+          <div *ngIf="element.orderStatus==='ordered'">Cần duyệt đơn hàng</div>
+          <div *ngIf="element.orderStatus==='approved'">Cần vận chuyển đơn hàng</div>
+          <div *ngIf="element.orderStatus==='transport'">Đơn hàng đã vận chuyển</div>
+          <div *ngIf="element.orderStatus==='delivered'">Đơn hàng đã hoàn thành</div>
+          <div *ngIf="element.orderStatus==='cancel'">Đơn hàng đã bị hủy</div>
+       </td>
       </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+
   
   
-  
-  <!-- Copyright 2024 Google LLC. All Rights Reserved.
-      Use of this source code is governed by an MIT-style license that
-      can be found in the LICENSE file at https://angular.io/license -->

@@ -37,6 +37,7 @@ import { OrderAcceptComponent } from './component/order-accept/order-accept.comp
 import { OrderTransportComponent } from './component/order-transport/order-transport.component';
 import { OrderCompleteComponent } from './component/order-complete/order-complete.component';
 import { OrderCancelComponent } from './component/order-cancel/order-cancel.component';
+import { InTransportComponent } from './component/in-transport/in-transport.component';
 
 
 
@@ -60,7 +61,8 @@ import { OrderCancelComponent } from './component/order-cancel/order-cancel.comp
     OrderAcceptComponent,
     OrderTransportComponent,
     OrderCompleteComponent,
-    OrderCancelComponent
+    OrderCancelComponent,
+    InTransportComponent
   ],
   imports: [
     CommonModule,

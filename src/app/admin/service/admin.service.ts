@@ -218,12 +218,21 @@ getHistoryOrderChoxacnhan():Observable<any>{
   });
 };
 
-updateHistoryOrderChoxacnhan(UpdateOrderStatus: UpdateOrderStatus):Observable<any>{
-return this.http.post(BASIC_URL+'/api/admin/order/historyOrdered', UpdateOrderStatus,{
+updateHistoryOrderChoxacnhan(UpdateOrderStatus: any):Observable<any>{
+return this.http.post(BASIC_URL+'/api/admin/order/orderedToApproval', UpdateOrderStatus,{
   headers:this.createAuthorizationHeader()
 });
-}
-
+};
+updateApprovalToTransport(UpdateOrderStatus: any):Observable<any>{
+  return this.http.post(BASIC_URL+'/api/admin/order/approvalToTransport', UpdateOrderStatus,{
+    headers:this.createAuthorizationHeader()
+  });
+  };
+  updateTransportToDelivered(UpdateOrderStatus: any):Observable<any>{
+    return this.http.post(BASIC_URL+'/api/admin/order/transportToDelivered', UpdateOrderStatus,{
+      headers:this.createAuthorizationHeader()
+    });
+    };
 }
 
 

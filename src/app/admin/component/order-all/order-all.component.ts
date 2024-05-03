@@ -25,7 +25,7 @@ export class OrderAllComponent {
       onCheckboxChange(id:number,event:any){
         
       }
-      displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
+      displayedColumns: string[] = [ 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
       dataSource = this.history;
   
     }

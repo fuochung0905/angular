@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { UserCartDto } from 'src/app/dto/UserCartDto.model';
 import { AdminService } from '../../service/admin.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-order-complete',
-  templateUrl: './order-complete.component.html',
-  styleUrls: ['./order-complete.component.css']
+  selector: 'app-in-transport',
+  templateUrl: './in-transport.component.html',
+  styleUrls: ['./in-transport.component.css']
 })
-export class OrderCompleteComponent {
+export class InTransportComponent {
   history: UserCartDto[] = [];
   selected!:boolean;
   SelectId: number | null = null;
@@ -22,18 +23,26 @@ export class OrderCompleteComponent {
     this.getHistoryOrderTransport();
   }
   getHistoryOrderTransport(): void {
-    this.adminServe.getHistoryOrderDelivered().subscribe(res => {
+    this.adminServe.getHistoryOrderTransport().subscribe(res => {
     this.history=res;
     console.log(this.history);
     });
   };
   onCheckboxChange(id:number){
-    
     if (this.SelectId = id) {
       this.orders.id=id;
      }
+  };
+  updateTransportToDelivered(){
+    this.adminServe.updateTransportToDelivered(this.orders).subscribe((res)=>{
+        location.reload();
+    },
+  (error)=>{
+    location.reload();
+  })
   }
 
-  displayedColumns: string[] = [ 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi'];
+  displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
       dataSource = this.history;
+
 }
