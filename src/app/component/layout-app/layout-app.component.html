@@ -55,7 +55,7 @@
                 <div class="list-product" *ngFor="let product of products">
                     <div class="item-product">
                         <div class="img-box">
-                            <img [src]="product.processImage" alt="product-image">
+                            <img [src]="'http://localhost:8080/images/' + product.image">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{product.productName}}</h5>
