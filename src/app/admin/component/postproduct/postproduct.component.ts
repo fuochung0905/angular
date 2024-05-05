@@ -54,7 +54,8 @@ PreViewImage(){
      console.log(this.listOfCategories);
     })
   };
-  addProduct():void{
+  addProduct():void
+  {
    
     if(this.productForm.valid){
       const formData :FormData=new FormData();

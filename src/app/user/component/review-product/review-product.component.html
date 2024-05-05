@@ -1,7 +1,16 @@
-<form (submit)="addReview()">
+<form (submit)="addReview()" [formGroup]="reviewForm">
     <label>Đánh giá</label>
-    <input type="number" max="5" min="1" [(ngModel)]="reviewDto.rating" name="rating">
+    <input type="number" max="5" min="1" formControlName="rating" name="rating">
     <label>Bình luận sản phẩm</label>
-    <input type="text" placeholder="Bình luận sản phẩm" [(ngModel)]="reviewDto.comment" name="comment">
+    <input type="text" placeholder="Bình luận sản phẩm" formControlName="comment" name="comment">
+    <label>SELECT FILE</label>
+    <div>
+        <input type="file" id="filein" (change)="onFileSelected($event)">
+    </div>
+    <div class="image" *ngIf="selectedFile">
+        <div>
+            <img [src]="imagePreView" style="width: 300px;height: 300px;" alt="Selected Image">
+        </div>
+    </div>
     <button type="submit">Thêm</button>
 </form>

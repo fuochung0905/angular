@@ -1,4 +1,5 @@
 export class ColorSize{
+   
     idColor:number;
     variationOptionId:number;
     quantity:number;
@@ -6,6 +7,7 @@ export class ColorSize{
     this.idColor=0;
     this.variationOptionId=0;
     this.quantity=0;
+
  }
    
 }
