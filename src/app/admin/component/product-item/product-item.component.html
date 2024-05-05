@@ -1,34 +1,41 @@
 <mat-toolbar> Sản phẩm </mat-toolbar>
 <button class="btn-wrap add-prd" (click)="pageVariationOption()">Thêm biến thể</button>
-<div class="container">
+<div class="">
   <form (ngSubmit)="addProduct()" [formGroup]="productItemForm">
     <div class="example-container">
       <input formControlName="productId" name="productId" hidden>
-      <div>
-        <label>Select a File</label>
-        <input type="file" id="file" (change)="onFileSelected($event)">
-      </div>
-      <mat-form-field>
-        <input matInput type="number" formControlName="qyt_stock" name="qyt_stock" placeholder="Số lượng">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" formControlName="price" name="price" placeholder="Giá">
-      </mat-form-field>
-      <mat-radio-group aria-label="MÀU SẮC" name="color" (change)="updateVariationOptions($event)">
-        <div *ngFor="let variationOption of listVariationOption">
-          <mat-radio-button [value]="variationOption.id">{{variationOption.value}}</mat-radio-button>
+
+      <div class="select-wrap">
+
+        <mat-form-field>
+          <input matInput type="number" formControlName="qyt_stock" name="qyt_stock" placeholder="Số lượng">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" formControlName="price" name="price" placeholder="Giá">
+        </mat-form-field>
+        <mat-radio-group aria-label="MÀU SẮC" name="color" (change)="updateVariationOptions($event)">
+          <div *ngFor="let variationOption of listVariationOption">
+            <mat-radio-button [value]="variationOption.id">{{variationOption.value}}</mat-radio-button>
+          </div>
+        </mat-radio-group>
+
+        <div>
+          <button class="btn-wrap add-prd" type="submit" [disabled]="productItemForm.invalid">Thêm sản phẩm</button>
         </div>
-      </mat-radio-group>
-      <div>
-        <button type="submit" [disabled]="productItemForm.invalid">THÊM</button>
+      </div>
+      <div class="img-wrap">
+        <label for="file" class="imgProduct">Ảnh sản phẩm
+          <div class="image" *ngIf="selectedFile">
+            <div>
+              <img [src]="imagePreView" style="width: 100%; height: auto;" alt="Selected Image">
+            </div>
+          </div>
+        </label>
+        <input style="margin-top: 10px;" type="file" id="file" (change)="onFileSelected($event)">
       </div>
     </div>
   </form>
-  <div class="image" *ngIf="selectedFile">
-    <div>
-      <img [src]="imagePreView" style="width: 300px; height: 300px;" alt="Selected Image">
-    </div>
-  </div>
+
 </div>
 
 <hr>
