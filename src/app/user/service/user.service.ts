@@ -34,7 +34,7 @@ export class UserService {
       headers:this.createAuthorizationHeader()
     });
   };
-  addReview(reviewDto:ReviewDto):Observable<any>{
+  addReview(reviewDto:FormData):Observable<any>{
     return this.httpClient.post(BASIC_URL+'/api/user/review/createNewReview',reviewDto,{
       headers:this.createAuthorizationHeader()
     });

@@ -8,6 +8,7 @@ export class ReviewDto{
     date:string;
     productName:string;
      imageName:string;
+     imageReview:string;
     username:string;
     imageUser:string;
     variation:string;
@@ -24,5 +25,7 @@ export class ReviewDto{
         this.date='';
         this.imageUser='';
         this.variation='';
+        this.imageReview='';
     }
+
 }
