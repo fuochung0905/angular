@@ -1,35 +1,61 @@
 <mat-toolbar>Thêm sản phẩm</mat-toolbar>
 
-<div class="container">
+<div class="">
     <form (ngSubmit)="addProduct()" [formGroup]="productForm">
         <div class="example-container">
-            <label>SELECT FILE</label>
-            <div>
-                <input type="file" id="filein" (change)="onFileSelected($event)">
+
+            <div class="select-wrap">
+                <mat-form-field class="select-box">
+                    <mat-label>Loại sản phẩm</mat-label>
+                    <mat-select formControlName="categoryId" name="categoryId">
+                        <mat-option *ngFor="let category of listOfCategories" [value]="category.id">
+                            {{category.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="select-box">
+                    <input matInput type="text" formControlName="productName" name="productName"
+                        placeholder="Tên sản phẩm">
+                </mat-form-field>
+                <mat-form-field class="select-box">
+                    <input matInput type="text" formControlName="description" name="description"
+                        placeholder="Mô tả sản phẩm">
+                </mat-form-field>
+                <div>
+                    <button class="btn-wrap add-prd" type="submit" [disabled]="productForm.invalid">Thêm</button>
+                </div>
             </div>
-            <mat-form-field>
-                <mat-label>SELECT CATEGORY</mat-label>
-                <mat-select formControlName="categoryId" name="categoryId">
-                    <mat-option *ngFor="let category of listOfCategories"  [value]="category.id">
-                        {{category.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        
-            <mat-form-field>
-                <input matInput type="text" formControlName="productName" name="productName" placeholder="Tên sản phẩm">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="text" formControlName="description" name="description" placeholder="Mô tả sản phẩm">
-            </mat-form-field>
-            <div>
-                <button type="submit" [disabled]="productForm.invalid">THÊM</button>
+
+
+            <div class="img-wrap">
+
+                <label for="filein" class="imgProduct" im>Ảnh sản phẩm
+                    <div class="image" *ngIf="selectedFile">
+                        <div>
+                            <img [src]="imagePreView" style="width: 100%;height: auto;" alt="Selected Image">
+                        </div>
+                    </div>
+                </label>
+
+
+                <div>
+                    <input style="margin-top: 10px;" type="file" id="filein" (change)="onFileSelected($event)">
+                </div>
             </div>
         </div>
     </form>
-    <div class="image" *ngIf="selectedFile">
-        <div>
-            <img [src]="imagePreView" style="width: 300px;height: 300px;" alt="Selected Image">
-        </div>
-    </div>
+    <style>
+        .select-box {
+            background-color: #fff;
+        }
+
+        .select-box div {
+            border-bottom: 1px solid #e74c3c !important;
+        }
+
+        .mat-mdc-text-field-wrapper {
+            border-bottom: 1px solid #e74c3c
+        }
+    </style>
 </div>

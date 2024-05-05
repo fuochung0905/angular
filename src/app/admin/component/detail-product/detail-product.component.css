@@ -1,0 +1,80 @@
+mat-toolbar {
+    background-color: #fff;
+    color: #e74c3c;
+    font-size: 22px;
+    padding-left: 0;
+    border-bottom: 1px solid;
+    margin-bottom: 15px;
+  }
+  .btn-wrap{
+    display: flex;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0 15px;
+      width: auto;
+      height: 35px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #000;
+      border-radius: 0;
+      text-decoration: unset;
+      transition: all .3s;
+      background: #fff;
+      font-weight: 500;
+  }
+  .add-prd{
+    margin-top: 15px;
+    min-width: 100px;
+    color: #e74c3c;
+    border-color: #e74c3c;
+  }
+  .add-prd:hover{
+    background: #e74c3c;
+    border-color: #e74c3c;
+    color: #fff;
+  }
+  .input-top{
+    box-shadow: unset;
+  }
+  .input-top:focus{
+    border-color: #e74c3c;
+    color: #000;
+  }
+  .input-top:valid{
+    border-color: #27ae60;
+    color: #000;
+  }
+  
+table {
+    width: 100%;
+    box-shadow: unset;
+    padding: 10px;
+    border: 1px solid #e74c3c;
+    margin: 25px 0px;
+  }
+  .mat-mdc-header-cell {
+    border-bottom-color: #e74c3c;
+    font-size: 16px;
+    color: #fff;
+    background: #e74c3c !important;
+  }
+  .mat-mdc-cell{
+    padding: 15px;
+    overflow: hidden;
+  }
+  .form-input{
+    margin-bottom: 15px;
+  }
+.form-control{
+    box-shadow: unset;
+}
+.form-label{
+    font-size: 16px;
+    font-weight: 500;
+    color: #e74c3c;
+    margin-bottom: 3px;
+}
+.form-control:focus{
+    border-color: #e74c3c;
+    color: #000;
+  }
