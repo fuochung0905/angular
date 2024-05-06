@@ -379,4 +379,56 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
     font-size: 13px;
     color: #fff;
 }
+
+.username-box {
+    position: relative;
+}
+.username-box:hover .box-action{
+    transform: scaleY(1);
+}
+.username-box .username{
+    margin: 0;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 2;
+}
+.username-box .box-action{
+    position: absolute;
+    width: 100%;
+    top: 110%; 
+    background-color: #fff;
+    border: 1px solid #e74c3c;
+    transform: scaleY(0);
+    transform-origin: top;
+    color: #fff;
+    z-index: 2;
+    transition: all .2s;
+    border-radius: 7px;
+}
+.username-box .box-action::after{
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #e74c3c;
+}
+.username-box .box-action a{
+    color: #e74c3c;
+    text-decoration: unset;
+    margin: 0;
+    padding: 5px 0px;
+    text-align: start;
+    padding: 7px 10px;
+    text-wrap: nowrap;
+    display: flex;
+    overflow: hidden;
+    transition: all .2s;
+}
+.username-box .box-action a:hover{
+    color: #ff1700;
+    text-decoration: underline;
+}
 /*======================================================= HEADER ======================================================= */

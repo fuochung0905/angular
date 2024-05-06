@@ -12,34 +12,46 @@
                                 <img style="width:35px;height:35px;" />
                             </li>
                             <li class="login-item">
-                                <a class="nav-link text-dark" title="Manage">
+                                <!-- <a class="nav-link text-dark" title="Manage">
                                     <mat-accordion>
-                                          <mat-expansion-panel (opened)="panelOpenState = true"
-                                                               (closed)="panelOpenState = false">
+                                        <mat-expansion-panel (opened)="panelOpenState = true"
+                                            (closed)="panelOpenState = false">
                                             <mat-expansion-panel-header>
-                                              <mat-panel-title>
-                                                <span id="username">Tên khách hàng</span>
-                                              </mat-panel-title>
-                                        
+                                                <mat-panel-title>
+                                                    <span id="username">Tên khách hàng</span>
+                                                </mat-panel-title>
+
                                             </mat-expansion-panel-header>
-                                           <a routerLink="/user/userInfor"  routerLinkActive="active">Thông tin tài khoản</a>
-                                           <a routerLink="/user/historyOrder" routerLinkActive="active">Thông tin đơn hàng</a>
-                                          </mat-expansion-panel>
-                                        </mat-accordion>
-                                   
+                                            <a routerLink="/user/userInfor" routerLinkActive="active">Thông tin tài
+                                                khoản</a>
+                                            <a routerLink="/user/historyOrder" routerLinkActive="active">Thông tin đơn
+                                                hàng</a>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
 
-                                </a>
-                                </li>
-            <li class="login-item">
-                <form class="form-inline" (ngSubmit)=" logout()" >
-                    <button type="submit" class="logout btn-wrap">Đăng Xuất</button>
-                </form>
-            </li>
-         
 
-        </div>
-        </div>
-    </div>
+                                </a> -->
+                                <div class="username-box">
+                                    <p class="username">Vu Nguyen Hoang Bao</p>
+                                    <div class="box-action">
+                                        <a routerLink="/user/userInfor" routerLinkActive="active">Thông tin tài
+                                            khoản</a>
+                                        <a routerLink="/user/historyOrder" routerLinkActive="active">Thông tin đơn
+                                            hàng</a>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="login-item">
+                                <form class="form-inline" (ngSubmit)=" logout()">
+                                    <button type="submit" class="logout btn-wrap">Đăng Xuất</button>
+                                </form>
+                            </li>
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="bottom-box">
                 <ul class="main-menu">
