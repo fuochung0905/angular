@@ -19,6 +19,9 @@ import { OrderTransportComponent } from './component/order-transport/order-trans
 import { InTransportComponent } from './component/in-transport/in-transport.component';
 import { OrderCompleteComponent } from './component/order-complete/order-complete.component';
 import { OrderCancelComponent } from './component/order-cancel/order-cancel.component';
+import { UserInformationComponent } from './component/user-information/user-information.component';
+import { HistoryOrderComponent } from '../user/component/history-order/history-order.component';
+import { HistoryUserOrderComponent } from './component/history-user-order/history-user-order.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
@@ -39,7 +42,9 @@ children:[
   {path:'order-wait-transport',component:OrderTransportComponent},
   {path:'order-in-transport',component:InTransportComponent},
   {path:'order-complete',component:OrderCompleteComponent},
-  {path:'order-cancle',component:OrderCancelComponent}
+  {path:'order-cancle',component:OrderCancelComponent},
+  {path:'user-all',component:UserInformationComponent},
+  {path:'history-user/:id',component:HistoryUserOrderComponent}
 ]}
 ];
 

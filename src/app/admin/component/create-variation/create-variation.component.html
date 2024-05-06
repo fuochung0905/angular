@@ -1,17 +1,11 @@
-<mat-toolbar>Phân loại sản phẩm</mat-toolbar>
+
+<mat-toolbar>{{categoryDto.name}}</mat-toolbar>
 <div class="main-variation">
   <div class="variation-top">
     <div class="gray-background">
       <form class="form-variationoption" (ngSubmit)="createVariation()">
-        
-        <div class="form-fiel">
-          <mat-label>Loại sản phẩm</mat-label>
-          <mat-select [(ngModel)]="variationDto.categoryId" name="categoryId">
-              <mat-option *ngFor="let category of lisCategory" [value]="category.id">
-                  {{category.name}}
-              </mat-option>
-          </mat-select>
-        </div>
+
+
         <div class="form-fiel">
           <mat-label>Phân loại sản phẩm</mat-label>
           <mat-select name="name" [(ngModel)]="variationDto.name">

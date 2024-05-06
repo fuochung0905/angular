@@ -38,6 +38,9 @@ import { OrderTransportComponent } from './component/order-transport/order-trans
 import { OrderCompleteComponent } from './component/order-complete/order-complete.component';
 import { OrderCancelComponent } from './component/order-cancel/order-cancel.component';
 import { InTransportComponent } from './component/in-transport/in-transport.component';
+import { UserInformationComponent } from './component/user-information/user-information.component';
+import { DetailUserComponent } from './component/detail-user/detail-user.component';
+import { HistoryUserOrderComponent } from './component/history-user-order/history-user-order.component';
 
 
 
@@ -62,7 +65,10 @@ import { InTransportComponent } from './component/in-transport/in-transport.comp
     OrderTransportComponent,
     OrderCompleteComponent,
     OrderCancelComponent,
-    InTransportComponent
+    InTransportComponent,
+    UserInformationComponent,
+    DetailUserComponent,
+    HistoryUserOrderComponent
   ],
   imports: [
     CommonModule,

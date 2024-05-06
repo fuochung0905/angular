@@ -1,3 +1,4 @@
+
 .outer-container {
     display: flex; 
     background-color: #fff; /* Màu nền trắng cho phần ngoài khối */
@@ -162,3 +163,4 @@
   .mat-mdc-text-field-wrapper{
     border-bottom: 1px solid #e74c3c 
   }
+

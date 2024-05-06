@@ -12,6 +12,7 @@ import { VariationDto } from 'src/app/dto/VariationDto.model';
 })
 export class CreateVariationComponent {
   id:any;
+  categoryDto:CategoryDto;
   variationDto:VariationDto;
   lisCategory:CategoryDto[]=[];
   listVariation:VariationDto[]=[];
@@ -21,17 +22,25 @@ export class CreateVariationComponent {
     private activeRouter:ActivatedRoute
     ){
       this.variationDto= new VariationDto();
+      this.categoryDto= new CategoryDto();
   }
   ngOnInit(){
     this.id=this.activeRouter.snapshot.params['id'];
     this.getAllCategories();
     this.getAllVariationByCategory();
+    this.getCategoryById();
   };
   getAllCategories(){
     this.adminservice.getAllCategories().subscribe((res)=>{
       this.lisCategory=res;
     })
   };
+  getCategoryById(){
+    this.id=this.activeRouter.snapshot.params['id'];
+    this.adminservice.getCategoryById(this.id).subscribe((res)=>{
+      this.categoryDto=res;
+    })
+  }
   getAllVariationByCategory(){
     this.id=this.activeRouter.snapshot.params['id'];
     this.adminservice.getAllVariationByCategoryt(this.id).subscribe((res)=>{
@@ -40,6 +49,8 @@ export class CreateVariationComponent {
     })
   };
   createVariation(){
+    this.id=this.activeRouter.snapshot.params['id'];
+    this.variationDto.categoryId=this.id;
     this.adminservice.addVariation(this.variationDto).subscribe((res)=>
     {
       this._snackBar.open('Thêm thành công', 'Đóng', {
