@@ -98,7 +98,7 @@ img {
 .product-content .product-detail .box-detail .item-detail {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .product-content .product-detail .box-detail .item-detail input {
@@ -106,13 +106,18 @@ img {
     width: 0;
     position: absolute;
 }
-
+.list{
+    display: flex;
+    align-items: center;
+}
 .product-content .product-detail .box-detail .item-detail label {
     padding: 8px 20px;
     line-height: 1;
     border: 1px solid #ccc;
     margin-right: 10px;
     cursor: pointer;
+    min-width: 70px;
+    text-align: center;
 }
 
 .product-content .product-detail .box-detail .item-detail label:hover {
@@ -125,16 +130,22 @@ img {
     color: #e74c3c;
 }
 
-.product-content .product-detail .box-detail.amount {
+.product-content .product-detail .box-detail .amount {
     display: flex;
     align-items: center;
 }
 
-.product-content .product-detail .box-detail.amount h6 {
+.product-content .product-detail .box-detail .amount h6 {
     margin: 0;
     margin-left: 10px;
     font-size: 14px;
     color: #a9a9a9;
+}
+.product-content .product-detail .box-detail .amount input{
+    width: 70px;
+    height: 32px;
+    font-size: 16px;
+    outline: none;
 }
 
 .product-content .product-detail .get-product {
@@ -461,8 +472,7 @@ img {
   
     .variation{
         display: flex;
-        align-items: center;
-        margin-bottom: 30px;
+        align-items: center; 
       
     }
 

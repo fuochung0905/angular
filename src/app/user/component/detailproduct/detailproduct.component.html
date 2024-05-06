@@ -2,19 +2,42 @@
     <div class="detail-card-wrapper">
         <div class="card">
             <!--card trái-->
-            <div class="product-imgs">
-                <div class="img-display">
-                    <div class="img-showcase">
-                        <div class="image-top">
-                            <img  [src]="'http://localhost:8080/images/' + product.image" >
-                        </div>
-                        <!-- <div *ngFor="let productItem of listProductItem">
-                            <div class="image-bottom" style="display: flex;
-                            flex-direction: row;">
-                                <img style="width: 200px;height: 200px;" [src]="'http://localhost:8080/images/' + productItem.image" >
+            <div class="card-left">
+
+                <div class="product-imgs">
+                    <div class="img-display">
+                        <div class="img-showcase">
+                            <div class="image-top">
+                                <img [src]="'http://localhost:8080/images/' + product.image">
                             </div>
-                        </div> -->
+                            <!-- <div *ngFor="let productItem of listProductItem">
+                                <div class="image-bottom" style="display: flex;
+                                flex-direction: row;">
+                                    <img style="width: 200px;height: 200px;" [src]="'http://localhost:8080/images/' + productItem.image" >
+                                </div>
+                            </div> -->
+                        </div>
                     </div>
+                </div>
+                <div class="social-links" style="margin-top: 30px;">
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
                 </div>
             </div>
             <!--card phải-->
@@ -30,94 +53,75 @@
                     <span>4.5(3700)</span>
                 </div>
                 <div class="product-price">
-                  
+
                     <p class="new-price">Giá hiện tại: <span class="money">{{product.price}}</span></p>
                 </div>
-             <div class="product-detail">
+                <div class="product-detail">
                     <div class="box-detail">
                         <p class="title">Màu sắc: </p>
-                        <div *ngFor="let productItem of listProductItem">
-                        <div class="variation" style="display: flex;">
-                            <div *ngFor="let variationoption of allVariationOption">
-                                <div *ngIf="productItem.idColor===variationoption.id">
-                                    <div class="" >
-                                        <div class="item-btn" style="margin: 10px;">
-                                            <input (click)="handleRadioButtonClick(productItem.id)"  id="{{productItem.idColor}}" type="radio"
-                                            value="{{productItem.idColor}}"
-                                            class="variation-size"
-                                                name="size">
+                        <div class="list">
+                            <div *ngFor="let productItem of listProductItem">
+                                <div class="variation" style="display: flex;">
+                                    <div *ngFor="let variationoption of allVariationOption">
+                                        <div class="item-detail" *ngIf="productItem.idColor===variationoption.id">
+                                            <input (click)="handleRadioButtonClick(productItem.id)"
+                                                id="{{productItem.idColor}}" type="radio"
+                                                value="{{productItem.idColor}}" class="variation-size" name="size">
                                             <label for="{{productItem.idColor}}">{{variationoption.value}}</label>
                                         </div>
                                     </div>
                                 </div>
-                            
                             </div>
-                        </div>
                         </div>
                     </div>
 
                     <div class="box-detail">
                         <p class="title">Kích thước: </p>
+                        <div class="list">
                             <div *ngFor="let variationOption of listvariationOption">
-                                    <div class="variation">
-                                        <div class="item-btn">
-                                            <div class="variation">
-                                                <div class="item-btn">
-                                                    <input (click)="handleRadiobuttonColor(variationOption.id)"  id="{{variationOption.value}}" type="radio"
-                                                    value="{{variationOption.id}}"
-                                                    class="variation-size"
-                                                    name="variation-size">
-                                                    <label for="{{variationOption.value}}">{{variationOption.value}}</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                             </div>
-                        </div>
-                        <div class="box-detail amount">
-                            <input  type="number" min="1" max="{{product.quantity}}" value="1" [(ngModel)]="colorSize.quantity" name="quantity">
-                            <h6>{{product.quantity}}</h6>
-                        </div>
-                        <div class="get-product">
-                            <button type="button" class="btn-wrap add" (click)="addCart()" >
-                                <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
-                            </button>
-                            <button type="submit" class="btn-wrap buy" (click)="addOrder()" >
-                                <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
-                            </button>
-                        </div>
-                </div>
-                <div class="product-describe" style="background:white; border: 1px solid #d9d9d9">
-                    <div style="background: #f0f0f0; border: 1px solid #d9d9d9;">
-                        <h3 style="background: #f0f0f0; padding-left: 10px;">MÔ TẢ SẢN PHẨM</h3>
-                    </div>
-                    <div style="border: 1px solid #d9d9d9;">
-
-                        <div style="padding: 10px;">
-                           {{product.description}}
+                                <div class="item-detail">
+                                    <input (click)="handleRadiobuttonColor(variationOption.id)"
+                                        id="{{variationOption.value}}" type="radio" value="{{variationOption.id}}"
+                                        class="variation-size" name="variation-size">
+                                    <label for="{{variationOption.value}}">{{variationOption.value}}</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="box-detail">
+                        <p class="title">Số lượng: </p>
+                        <div class="amount">
+                            <input type="number" min="1" max="{{product.quantity}}" value="1"
+                            [(ngModel)]="colorSize.quantity" name="quantity">
+                        <h6>{{product.quantity}}</h6>
+                        </div>
+                        
+                    </div>
+                    <div class="get-product">
+                        <button type="button" class="btn-wrap add" (click)="addCart()">
+                            <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
+                        </button>
+                        <button type="submit" class="btn-wrap buy" (click)="addOrder()">
+                            <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
+                        </button>
+                    </div>
                 </div>
+                
             </div>
-            <div class="social-links">
-                <a href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-facebook-messenger"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-pinterest"></i>
-                </a>
+            
+        </div>
+
+    </div>
+    <div class="detail-card-wrapper">
+        <div class="product-describe" style="background:white; border: 1px solid #d9d9d9">
+            <div style="background: #f0f0f0; border: 1px solid #d9d9d9;">
+                <h3 style="background: #f0f0f0; padding-left: 10px;">MÔ TẢ SẢN PHẨM</h3>
+            </div>
+            <div style="border: 1px solid #d9d9d9;">
+
+                <div style="padding: 10px;">
+                    {{product.description}}
+                </div>
             </div>
         </div>
     </div>
@@ -131,7 +135,8 @@
                     <div *ngFor="let review of listReviewDto">
                         <div class="utc2-product-rating">
                             <div>
-                                <img  [src]="'http://localhost:8080/images/'+review.imageUser" style="width: 50px; height: 50px;" >
+                                <img [src]="'http://localhost:8080/images/'+review.imageUser"
+                                    style="width: 50px; height: 50px;">
                             </div>
 
                             <div class="utc2-product-rating-main">
@@ -149,18 +154,19 @@
                                     <p>{{review.comment}}</p>
                                 </div>
                                 <div>
-                                    <img  [src]="'http://localhost:8080/images/'+review.imageReview" style="width: 50px; height: 50px;">
+                                    <img [src]="'http://localhost:8080/images/'+review.imageReview"
+                                        style="width: 50px; height: 50px;">
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
-              
+
             </div>
         </div>
-       
-       
-       
+
+
+
     </div>
 </div>

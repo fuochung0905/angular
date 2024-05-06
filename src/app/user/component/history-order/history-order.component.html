@@ -1,397 +1,399 @@
-<mat-tab-group>
-    <mat-tab label="Tất cả"> 
-        <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
-            <div *ngFor="let order of history">
-                <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
-                    <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
-                        <div class="item-header-status" style="display: flex; flex-direction: column;">
-                            <span>{{order.orderStatus}}</span>
-                            <span>{{order.orderDate}}</span>
+<div class="container-web">
+    <mat-tab-group>
+        <mat-tab label="Tất cả"> 
+            <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
+                <div *ngFor="let order of history">
+                    <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
+                        <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
+                            <div class="item-header-status" style="display: flex; flex-direction: column;">
+                                <span>{{order.orderStatus}}</span>
+                                <span>{{order.orderDate}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item-content" style="cursor: pointer;">
-                        <div style="box-sizing: border-box;">
-                            <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
-                                <div class="detail" style="display: flex;">
-                                    <div class="product-image" 
-                                    [style.flexShrink]="'0'" 
-                                    style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
-                                    [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
-                                    <span style="font-size: 12px;
-                                    line-height: 16px;font-weight: 400;
-                                    color: rgb(128, 128, 137);text-align: center;
-                                    position: absolute;
-                                    width: 28px;
-                                    height: 28px;
-                                    background-color: rgb(235, 235, 240);
-                                    display: flex;
-                                    -webkit-box-pack: center;
-                                    justify-content: center;
-                                    -webkit-box-align: center;
-                                    align-items: center;
-                                    right: 0px;
-                                    bottom: 0px;
-                                    border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                        <div class="item-content" style="cursor: pointer;">
+                            <div style="box-sizing: border-box;">
+                                <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
+                                    <div class="detail" style="display: flex;">
+                                        <div class="product-image" 
+                                        [style.flexShrink]="'0'" 
+                                        style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
+                                        [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
+                                        <span style="font-size: 12px;
+                                        line-height: 16px;font-weight: 400;
+                                        color: rgb(128, 128, 137);text-align: center;
+                                        position: absolute;
+                                        width: 28px;
+                                        height: 28px;
+                                        background-color: rgb(235, 235, 240);
+                                        display: flex;
+                                        -webkit-box-pack: center;
+                                        justify-content: center;
+                                        -webkit-box-align: center;
+                                        align-items: center;
+                                        right: 0px;
+                                        bottom: 0px;
+                                        border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                                        </div>
+                                        <div class="product-info" style="background: rgb(255, 255, 255);
+                                        border-radius: 4px;
+                                        font-size: 13px;
+                                        margin-bottom: 20px;
+                                        padding: 16px;">
+                                        <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
+                                        <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
+                                        <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                        </div>
                                     </div>
-                                    <div class="product-info" style="background: rgb(255, 255, 255);
-                                    border-radius: 4px;
-                                    font-size: 13px;
-                                    margin-bottom: 20px;
-                                    padding: 16px;">
-                                    <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
-                                    <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
-                                    <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                    <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
+                                        <span>{{order.price}}</span>
                                     </div>
-                                </div>
-                                <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
-                                    <span>{{order.price}}</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
-                        <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
-                            <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
-                                Tổng tiền
-                            </div>
-                            <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
-                                {{tinhtich(order.price,order.quantity)}}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-          
-    </mat-tab>
-    <mat-tab label="Chờ xác nhận"> 
-        <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
-            <div *ngFor="let order of historyChoxacnhan">
-                <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
-                    <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
-                        <div class="item-header-status" style="display: flex; flex-direction: column;">
-                            <span>{{order.orderStatus}}</span>
-                            <span>{{order.orderDate}}</span>
-                        </div>
-                    </div>
-                    <div class="item-content" style="cursor: pointer;">
-                        <div style="box-sizing: border-box;">
-                            <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
-                                <div class="detail" style="display: flex;">
-                                    <div class="product-image" 
-                                    [style.flexShrink]="'0'" 
-                                    style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
-                                    [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
-                                    <span style="font-size: 12px;
-                                    line-height: 16px;font-weight: 400;
-                                    color: rgb(128, 128, 137);text-align: center;
-                                    position: absolute;
-                                    width: 28px;
-                                    height: 28px;
-                                    background-color: rgb(235, 235, 240);
-                                    display: flex;
-                                    -webkit-box-pack: center;
-                                    justify-content: center;
-                                    -webkit-box-align: center;
-                                    align-items: center;
-                                    right: 0px;
-                                    bottom: 0px;
-                                    border-top-left-radius: 10px;">x{{order.quantity}}</span>
-                                    </div>
-                                    <div class="product-info" style="background: rgb(255, 255, 255);
-                                    border-radius: 4px;
-                                    font-size: 13px;
-                                    margin-bottom: 20px;
-                                    padding: 16px;">
-                                    <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
-                                    <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
-                                    <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
-                                    </div>
+                        <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
+                            <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
+                                <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
+                                    Tổng tiền
                                 </div>
-                                <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
-                                    <span>{{order.price}}</span>
+                                <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
+                                    {{tinhtich(order.price,order.quantity)}}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
-                        <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
-                            <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
-                                Tổng tiền
-                            </div>
-                            <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
-                                {{tinhtich(order.price,order.quantity)}}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-          
-    </mat-tab>
-    <mat-tab label="Đã đặt thành công"> 
-        <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
-            <div *ngFor="let order of historyApproved">
-                <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
-                    <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
-                        <div class="item-header-status" style="display: flex; flex-direction: column;">
-                            <span>{{order.orderStatus}}</span>
-                            <span>{{order.orderDate}}</span>
-                        </div>
-                    </div>
-                    <div class="item-content" style="cursor: pointer;">
-                        <div style="box-sizing: border-box;">
-                            <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
-                                <div class="detail" style="display: flex;">
-                                    <div class="product-image" 
-                                    [style.flexShrink]="'0'" 
-                                    style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
-                                    [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
-                                    <span style="font-size: 12px;
-                                    line-height: 16px;font-weight: 400;
-                                    color: rgb(128, 128, 137);text-align: center;
-                                    position: absolute;
-                                    width: 28px;
-                                    height: 28px;
-                                    background-color: rgb(235, 235, 240);
-                                    display: flex;
-                                    -webkit-box-pack: center;
-                                    justify-content: center;
-                                    -webkit-box-align: center;
-                                    align-items: center;
-                                    right: 0px;
-                                    bottom: 0px;
-                                    border-top-left-radius: 10px;">x{{order.quantity}}</span>
-                                    </div>
-                                    <div class="product-info" style="background: rgb(255, 255, 255);
-                                    border-radius: 4px;
-                                    font-size: 13px;
-                                    margin-bottom: 20px;
-                                    padding: 16px;">
-                                    <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
-                                    <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
-                                    <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
-                                    </div>
-                                </div>
-                                <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
-                                    <span>{{order.price}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
-                        <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
-                            <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
-                                Tổng tiền
-                            </div>
-                            <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
-                                {{tinhtich(order.price,order.quantity)}}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Đang giao">
-        <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
-            <div *ngFor="let order of historyTransport">
-                <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
-                    <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
-                        <div class="item-header-status" style="display: flex; flex-direction: column;">
-                            <span>{{order.orderStatus}}</span>
-                            <span>{{order.orderDate}}</span>
-                        </div>
-                    </div>
-                    <div class="item-content" style="cursor: pointer;">
-                        <div style="box-sizing: border-box;">
-                            <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
-                                <div class="detail" style="display: flex;">
-                                    <div class="product-image" 
-                                    [style.flexShrink]="'0'" 
-                                    style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
-                                    [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
-                                    <span style="font-size: 12px;
-                                    line-height: 16px;font-weight: 400;
-                                    color: rgb(128, 128, 137);text-align: center;
-                                    position: absolute;
-                                    width: 28px;
-                                    height: 28px;
-                                    background-color: rgb(235, 235, 240);
-                                    display: flex;
-                                    -webkit-box-pack: center;
-                                    justify-content: center;
-                                    -webkit-box-align: center;
-                                    align-items: center;
-                                    right: 0px;
-                                    bottom: 0px;
-                                    border-top-left-radius: 10px;">x{{order.quantity}}</span>
-                                    </div>
-                                    <div class="product-info" style="background: rgb(255, 255, 255);
-                                    border-radius: 4px;
-                                    font-size: 13px;
-                                    margin-bottom: 20px;
-                                    padding: 16px;">
-                                    <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
-                                    <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
-                                    <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
-                                    </div>
-                                </div>
-                                <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
-                                    <span>{{order.price}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
-                        <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
-                            <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
-                                Tổng tiền
-                            </div>
-                            <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
-                                {{tinhtich(order.price,order.quantity)}}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Hoàn thành">
-        <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
-            <div *ngFor="let order of historyDelivered">
-                <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
-                    <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
-                        <div class="item-header-status" style="display: flex; flex-direction: column;">
-                            <span>{{order.orderStatus}}</span>
-                            <span>{{order.orderDate}}</span>
-                        </div>
-                    </div>
-                    <div class="item-content" style="cursor: pointer;">
-                        <div style="box-sizing: border-box;">
-                            <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
-                                <div class="detail" style="display: flex;">
-                                    <div class="product-image" 
-                                    [style.flexShrink]="'0'" 
-                                    style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
-                                    [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
-                                    <span style="font-size: 12px;
-                                    line-height: 16px;font-weight: 400;
-                                    color: rgb(128, 128, 137);text-align: center;
-                                    position: absolute;
-                                    width: 28px;
-                                    height: 28px;
-                                    background-color: rgb(235, 235, 240);
-                                    display: flex;
-                                    -webkit-box-pack: center;
-                                    justify-content: center;
-                                    -webkit-box-align: center;
-                                    align-items: center;
-                                    right: 0px;
-                                    bottom: 0px;
-                                    border-top-left-radius: 10px;">x{{order.quantity}}</span>
-                                    </div>
-                                    <div class="product-info" style="background: rgb(255, 255, 255);
-                                    border-radius: 4px;
-                                    font-size: 13px;
-                                    margin-bottom: 20px;
-                                    padding: 16px;">
-                                    <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
-                                    <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
-                                    <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
-                                    </div>
-                                </div>
-                                <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
-                                    <span>{{order.price}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
-                        <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
-                            <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
-                                Tổng tiền
-                            </div>
-                            <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
-                                {{tinhtich(order.price,order.quantity)}}
-                            </div>
-                        </div>
-                        <div>
-                            <a (click)="openDialog(order.id)">Đánh giá sản phẩm</a>
-                        </div>
+    
                     </div>
                 </div>
             </div>
-        </div>
-    </mat-tab>
-
-    <mat-tab label="Đã hủy"> 
-        <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
-            <div *ngFor="let order of historyCancel">
-                <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
-                    <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
-                        <div class="item-header-status" style="display: flex; flex-direction: column;">
-                            <span>{{order.orderStatus}}</span>
-                            <span>{{order.orderDate}}</span>
+              
+        </mat-tab>
+        <mat-tab label="Chờ xác nhận"> 
+            <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
+                <div *ngFor="let order of historyChoxacnhan">
+                    <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
+                        <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
+                            <div class="item-header-status" style="display: flex; flex-direction: column;">
+                                <span>{{order.orderStatus}}</span>
+                                <span>{{order.orderDate}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item-content" style="cursor: pointer;">
-                        <div style="box-sizing: border-box;">
-                            <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
-                                <div class="detail" style="display: flex;">
-                                    <div class="product-image" 
-                                    [style.flexShrink]="'0'" 
-                                    style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
-                                    [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
-                                    <span style="font-size: 12px;
-                                    line-height: 16px;font-weight: 400;
-                                    color: rgb(128, 128, 137);text-align: center;
-                                    position: absolute;
-                                    width: 28px;
-                                    height: 28px;
-                                    background-color: rgb(235, 235, 240);
-                                    display: flex;
-                                    -webkit-box-pack: center;
-                                    justify-content: center;
-                                    -webkit-box-align: center;
-                                    align-items: center;
-                                    right: 0px;
-                                    bottom: 0px;
-                                    border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                        <div class="item-content" style="cursor: pointer;">
+                            <div style="box-sizing: border-box;">
+                                <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
+                                    <div class="detail" style="display: flex;">
+                                        <div class="product-image" 
+                                        [style.flexShrink]="'0'" 
+                                        style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
+                                        [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
+                                        <span style="font-size: 12px;
+                                        line-height: 16px;font-weight: 400;
+                                        color: rgb(128, 128, 137);text-align: center;
+                                        position: absolute;
+                                        width: 28px;
+                                        height: 28px;
+                                        background-color: rgb(235, 235, 240);
+                                        display: flex;
+                                        -webkit-box-pack: center;
+                                        justify-content: center;
+                                        -webkit-box-align: center;
+                                        align-items: center;
+                                        right: 0px;
+                                        bottom: 0px;
+                                        border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                                        </div>
+                                        <div class="product-info" style="background: rgb(255, 255, 255);
+                                        border-radius: 4px;
+                                        font-size: 13px;
+                                        margin-bottom: 20px;
+                                        padding: 16px;">
+                                        <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
+                                        <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
+                                        <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                        </div>
                                     </div>
-                                    <div class="product-info" style="background: rgb(255, 255, 255);
-                                    border-radius: 4px;
-                                    font-size: 13px;
-                                    margin-bottom: 20px;
-                                    padding: 16px;">
-                                    <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
-                                    <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
-                                    <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                    <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
+                                        <span>{{order.price}}</span>
                                     </div>
                                 </div>
-                                <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
-                                    <span>{{order.price}}</span>
+                            </div>
+                        </div>
+                        <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
+                            <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
+                                <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
+                                    Tổng tiền
+                                </div>
+                                <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
+                                    {{tinhtich(order.price,order.quantity)}}
                                 </div>
                             </div>
                         </div>
+    
                     </div>
-                    <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
-                        <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
-                            <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
-                                Tổng tiền
-                            </div>
-                            <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
-                                {{tinhtich(order.price,order.quantity)}}
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
-     </mat-tab>
-  </mat-tab-group>
+              
+        </mat-tab>
+        <mat-tab label="Đã đặt thành công"> 
+            <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
+                <div *ngFor="let order of historyApproved">
+                    <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
+                        <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
+                            <div class="item-header-status" style="display: flex; flex-direction: column;">
+                                <span>{{order.orderStatus}}</span>
+                                <span>{{order.orderDate}}</span>
+                            </div>
+                        </div>
+                        <div class="item-content" style="cursor: pointer;">
+                            <div style="box-sizing: border-box;">
+                                <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
+                                    <div class="detail" style="display: flex;">
+                                        <div class="product-image" 
+                                        [style.flexShrink]="'0'" 
+                                        style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
+                                        [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
+                                        <span style="font-size: 12px;
+                                        line-height: 16px;font-weight: 400;
+                                        color: rgb(128, 128, 137);text-align: center;
+                                        position: absolute;
+                                        width: 28px;
+                                        height: 28px;
+                                        background-color: rgb(235, 235, 240);
+                                        display: flex;
+                                        -webkit-box-pack: center;
+                                        justify-content: center;
+                                        -webkit-box-align: center;
+                                        align-items: center;
+                                        right: 0px;
+                                        bottom: 0px;
+                                        border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                                        </div>
+                                        <div class="product-info" style="background: rgb(255, 255, 255);
+                                        border-radius: 4px;
+                                        font-size: 13px;
+                                        margin-bottom: 20px;
+                                        padding: 16px;">
+                                        <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
+                                        <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
+                                        <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
+                                        <span>{{order.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
+                            <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
+                                <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
+                                    Tổng tiền
+                                </div>
+                                <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
+                                    {{tinhtich(order.price,order.quantity)}}
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Đang giao">
+            <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
+                <div *ngFor="let order of historyTransport">
+                    <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
+                        <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
+                            <div class="item-header-status" style="display: flex; flex-direction: column;">
+                                <span>{{order.orderStatus}}</span>
+                                <span>{{order.orderDate}}</span>
+                            </div>
+                        </div>
+                        <div class="item-content" style="cursor: pointer;">
+                            <div style="box-sizing: border-box;">
+                                <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
+                                    <div class="detail" style="display: flex;">
+                                        <div class="product-image" 
+                                        [style.flexShrink]="'0'" 
+                                        style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
+                                        [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
+                                        <span style="font-size: 12px;
+                                        line-height: 16px;font-weight: 400;
+                                        color: rgb(128, 128, 137);text-align: center;
+                                        position: absolute;
+                                        width: 28px;
+                                        height: 28px;
+                                        background-color: rgb(235, 235, 240);
+                                        display: flex;
+                                        -webkit-box-pack: center;
+                                        justify-content: center;
+                                        -webkit-box-align: center;
+                                        align-items: center;
+                                        right: 0px;
+                                        bottom: 0px;
+                                        border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                                        </div>
+                                        <div class="product-info" style="background: rgb(255, 255, 255);
+                                        border-radius: 4px;
+                                        font-size: 13px;
+                                        margin-bottom: 20px;
+                                        padding: 16px;">
+                                        <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
+                                        <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
+                                        <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
+                                        <span>{{order.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
+                            <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
+                                <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
+                                    Tổng tiền
+                                </div>
+                                <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
+                                    {{tinhtich(order.price,order.quantity)}}
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Hoàn thành">
+            <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
+                <div *ngFor="let order of historyDelivered">
+                    <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
+                        <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
+                            <div class="item-header-status" style="display: flex; flex-direction: column;">
+                                <span>{{order.orderStatus}}</span>
+                                <span>{{order.orderDate}}</span>
+                            </div>
+                        </div>
+                        <div class="item-content" style="cursor: pointer;">
+                            <div style="box-sizing: border-box;">
+                                <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
+                                    <div class="detail" style="display: flex;">
+                                        <div class="product-image" 
+                                        [style.flexShrink]="'0'" 
+                                        style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
+                                        [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
+                                        <span style="font-size: 12px;
+                                        line-height: 16px;font-weight: 400;
+                                        color: rgb(128, 128, 137);text-align: center;
+                                        position: absolute;
+                                        width: 28px;
+                                        height: 28px;
+                                        background-color: rgb(235, 235, 240);
+                                        display: flex;
+                                        -webkit-box-pack: center;
+                                        justify-content: center;
+                                        -webkit-box-align: center;
+                                        align-items: center;
+                                        right: 0px;
+                                        bottom: 0px;
+                                        border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                                        </div>
+                                        <div class="product-info" style="background: rgb(255, 255, 255);
+                                        border-radius: 4px;
+                                        font-size: 13px;
+                                        margin-bottom: 20px;
+                                        padding: 16px;">
+                                        <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
+                                        <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
+                                        <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
+                                        <span>{{order.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
+                            <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
+                                <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
+                                    Tổng tiền
+                                </div>
+                                <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
+                                    {{tinhtich(order.price,order.quantity)}}
+                                </div>
+                            </div>
+                            <div>
+                                <a (click)="openDialog(order.id)">Đánh giá sản phẩm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+    
+        <mat-tab label="Đã hủy"> 
+            <div style="height: auto; overflow: auto; display: flex;flex-direction: column;min-height: calc(-110px+100 vh);">
+                <div *ngFor="let order of historyCancel">
+                    <div class="history-item" style="background:rgb(255, 255, 255); border-radius: 4px; font-size: 13px;margin-bottom: 20px;padding: 16px;">
+                        <div class="item-top" style="border-bottom: 1px solid rgb(235, 235, 240);padding-bottom: 12px;color: rgb(0, 171, 86);font-size: 14px;font-weight: 500;line-height: 20px;">
+                            <div class="item-header-status" style="display: flex; flex-direction: column;">
+                                <span>{{order.orderStatus}}</span>
+                                <span>{{order.orderDate}}</span>
+                            </div>
+                        </div>
+                        <div class="item-content" style="cursor: pointer;">
+                            <div style="box-sizing: border-box;">
+                                <div class="produc" style="display: flex;flex-direction: row;padding: 16px 0px;border-bottom: 1px solid rgb(235, 235, 240);-webkit-box-pack: justify;justify-content: space-between;">
+                                    <div class="detail" style="display: flex;">
+                                        <div class="product-image" 
+                                        [style.flexShrink]="'0'" 
+                                        style="width: 80px; height: 80px; border-radius: 4px; border: 0.5px solid rgb(238, 238, 238); background-repeat: no-repeat; background-size: 90%; background-position: center center; position: relative;"
+                                        [style.backgroundImage]="'url(http://localhost:8080/images/' + order.image + ')'" >
+                                        <span style="font-size: 12px;
+                                        line-height: 16px;font-weight: 400;
+                                        color: rgb(128, 128, 137);text-align: center;
+                                        position: absolute;
+                                        width: 28px;
+                                        height: 28px;
+                                        background-color: rgb(235, 235, 240);
+                                        display: flex;
+                                        -webkit-box-pack: center;
+                                        justify-content: center;
+                                        -webkit-box-align: center;
+                                        align-items: center;
+                                        right: 0px;
+                                        bottom: 0px;
+                                        border-top-left-radius: 10px;">x{{order.quantity}}</span>
+                                        </div>
+                                        <div class="product-info" style="background: rgb(255, 255, 255);
+                                        border-radius: 4px;
+                                        font-size: 13px;
+                                        margin-bottom: 20px;
+                                        padding: 16px;">
+                                        <p class="product-name" style="cursor: pointer;">{{order.productName}}</p>
+                                        <p style="margin-top: 4px;">Màu sắc:{{order.color}} </p>
+                                        <p style="margin-top: 2px;">Kích thước:{{order.size}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="price" style="min-width: 120px;-webkit-box-pack: end; justify-content: flex-end; display: flex;">
+                                        <span>{{order.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-bottom" style="display: flex;  flex-direction: column; align-items: flex-end; margin-top: 12px; width: 100%;">
+                            <div class="total-money" style="font-size: 17px; display: flex; margin-bottom: 12px;">
+                                <div class="title" style="font-weight: 300; color: rgb(128, 128, 137);margin-right: 8px;">
+                                    Tổng tiền
+                                </div>
+                                <div class="total" style="font-weight: 400; color: rgb(56, 56, 61);">
+                                    {{tinhtich(order.price,order.quantity)}}
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+         </mat-tab>
+      </mat-tab-group>
+</div>
