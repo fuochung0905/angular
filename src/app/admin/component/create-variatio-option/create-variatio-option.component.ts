@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CreateVariatioOptionComponent {
   variationOption:VariationOptionDto;
   listVariation:VariationDto[]=[];
+  listVariationOpiton:VariationOptionDto[]=[];
   constructor(private adminservice:AdminService,
     private router:Router,
     private _snackBar: MatSnackBar
@@ -21,6 +22,7 @@ export class CreateVariatioOptionComponent {
   }
   ngOnInit(){
     this.getAllVariation();
+    this.getAllVariationOption();
   };
   getAllVariation(){
     this.adminservice.getAllVariation().subscribe((res)=>{
@@ -28,6 +30,11 @@ export class CreateVariatioOptionComponent {
       console.log(this.listVariation);
     })
   };
+  getAllVariationOption(){
+    this.adminservice.getAllVariationOPtion().subscribe((res)=>{
+      this.listVariationOpiton=res;
+    })
+  }
   createVariationOption(){
     this.adminservice.addVariationOption(this.variationOption).subscribe((res)=>
     {
@@ -37,8 +44,7 @@ export class CreateVariatioOptionComponent {
         verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
         panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
       });
-          this.router.navigateByUrl('admin/add-category');
-          window.location.reload();
+      this.getAllVariationOption();
     },
     (error)=>{
       this._snackBar.open('Thêm thất bại', 'Đóng', {
@@ -50,4 +56,6 @@ export class CreateVariatioOptionComponent {
     })
   
   };
+  displayedColumns: string[] = ['Loại sản phẩm','Tên phân loại','Giá trị'];
+  dataSource = this.listVariationOpiton;
 }

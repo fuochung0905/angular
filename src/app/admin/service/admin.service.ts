@@ -160,6 +160,11 @@ updateProductItemVariatonOption(productItemVariationId:number,productItemVariati
       headers:this.createAuthorizationHeader()
     });
   };
+  getAllVariationOPtion():Observable<any>{
+    return this.http.get(BASIC_URL+'/api/admin/variation_option/',{
+      headers:this.createAuthorizationHeader()
+    });
+  };
   getImage(imageName:any):Observable<any>{
     return this.http.get(BASIC_URL+`/api/admin/images/${imageName}`,
       {
@@ -217,7 +222,21 @@ getHistoryOrderChoxacnhan():Observable<any>{
     headers:this.createAuthorizationHeader()
   });
 };
-
+getAllUser():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/user/',{
+    headers:this.createAuthorizationHeader()
+  })
+};
+getUserById(userId:number):Observable<any>{
+  return this.http.get(BASIC_URL+`/api/admin/user/${userId}`,{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getTotalAmountByUser(userId:number):Observable<any>{
+  return this.http.get(BASIC_URL+`/api/admin/order/totalAmount/user/${userId}`,{
+    headers:this.createAuthorizationHeader()
+  });
+};
 updateHistoryOrderChoxacnhan(UpdateOrderStatus: any):Observable<any>{
 return this.http.post(BASIC_URL+'/api/admin/order/orderedToApproval', UpdateOrderStatus,{
   headers:this.createAuthorizationHeader()
@@ -233,6 +252,11 @@ updateApprovalToTransport(UpdateOrderStatus: any):Observable<any>{
       headers:this.createAuthorizationHeader()
     });
     };
+  deleteUserById(userId:number):Observable<any>{
+    return this.http.delete(BASIC_URL+`/api/admin/user/delete/${userId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
 }
 
 
