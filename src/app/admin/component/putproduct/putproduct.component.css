@@ -1,13 +1,72 @@
-.images{
-    height: auto;
-    width: 30%;
+.images {
+  height: auto;
+  width: 50%;
 }
+
 table {
-    width: 100%;
-  }
-  .mat-column-productName{
-    width: 350px;
-  }
-  .mat-column-processImage{
-    width: 150px;
-  }
+  width: 100%;
+  box-shadow: unset;
+  padding: 10px;
+  border: 1px solid #e74c3c;
+  margin: 25px 0px;
+}
+
+.mat-column-productName {
+  width: 350px;
+}
+
+.mat-column-processImage {
+  width: 150px;
+}
+
+mat-toolbar {
+  background-color: #fff;
+  color: #e74c3c;
+  font-size: 22px;
+  padding-left: 0;
+  border-bottom: 1px solid;
+  margin-bottom: 15px;
+}
+
+.mat-mdc-header-cell {
+  border-bottom-color: #e74c3c;
+  font-size: 16px;
+  color: #fff;
+  background: #e74c3c !important;
+}
+.mat-mdc-cell{
+  padding: 15px;
+  overflow: hidden;
+}
+.dec-col {
+  display: -webkit-box;
+  margin: 25px 0px;
+  padding: 0px 15px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.btn-wrap{
+  display: flex;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 15px;
+    width: auto;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 0;
+    text-decoration: unset;
+    transition: all .3s;
+    background: #fff;
+    font-weight: 500;
+}
+.add-prd{
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+.add-prd:hover{
+  background: #e74c3c;
+  border-color: #e74c3c;
+  color: #fff;
+}

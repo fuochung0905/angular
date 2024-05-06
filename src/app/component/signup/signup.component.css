@@ -137,3 +137,6 @@
     text-decoration: underline;
 
 }
+.form-floating>label{
+    padding: 5px 10px;
+}

@@ -1,11 +1,12 @@
 
+<mat-toolbar>Cập nhật loại sản phẩm</mat-toolbar>
 <form (ngSubmit)="updateCategory()">
     <div  >
         <label>Tên loai sản phẩm</label>
-        <input type="text" class="form-control"  [(ngModel)]="categoryDto.name" type="text" value="{{category.name}}">
+        <input type="text" class="form-control input-top"  [(ngModel)]="categoryDto.name" type="text" value="{{category.name}}">
     </div>
     <div>
-        <button type="submit">Cập nhật</button>
+        <button class="btn-wrap add-prd" type="submit">Cập nhật</button>
     </div>
 </form>
 

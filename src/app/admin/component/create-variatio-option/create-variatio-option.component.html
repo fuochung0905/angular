@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class="main-variation-option">
     <div class="variation-option-top">
@@ -22,6 +23,30 @@
                 </div>
             </form>
         </div>
+=======
+<mat-toolbar>Biến thể</mat-toolbar>
+<div class="outer-container">
+    <div class="gray-background">
+        <form class="form-variationoption" (ngSubmit)="createVariationOption()">
+            <div class="form-fiel">
+                <mat-label style="font-size: 16px;">Chọn biến thể</mat-label>
+                <mat-select class="form-select" [(ngModel)]="variationOption.variationId" name="variationId">
+                    <mat-option *ngFor="let variation of listVariation" [value]="variation.id">
+                        {{variation.categoryName}} - {{variation.name}}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <div class="form-fiel">
+                <mat-form-field style="width: 100%;">
+                    <label>Tên phân loại</label>
+                    <input matInput type="text" name="name" [(ngModel)]="variationOption.value" placeholder="" >
+                </mat-form-field>
+            </div>
+            <div class="form-fiel">
+                <button class="btn-wrap add-prd" type="submit" mat-button>Thêm</button>
+            </div>
+        </form>
+>>>>>>> 1a632a1a8138fb3963b0126b3f80a099948b35c6
     </div>
     <div class="variation-option-bottom">
         <table mat-table [dataSource]="listVariationOpiton" class="mat-elevation-z8">
