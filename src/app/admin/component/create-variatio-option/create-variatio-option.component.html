@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 <div class="main-variation-option">
     <div class="variation-option-top">
@@ -23,7 +22,7 @@
                 </div>
             </form>
         </div>
-=======
+
 <mat-toolbar>Biến thể</mat-toolbar>
 <div class="outer-container">
     <div class="gray-background">
@@ -46,31 +45,8 @@
                 <button class="btn-wrap add-prd" type="submit" mat-button>Thêm</button>
             </div>
         </form>
->>>>>>> 1a632a1a8138fb3963b0126b3f80a099948b35c6
     </div>
-    <div class="variation-option-bottom">
-        <table mat-table [dataSource]="listVariationOpiton" class="mat-elevation-z8">
-    
-            <ng-container matColumnDef="Loại sản phẩm">
-              <th mat-header-cell *matHeaderCellDef> Loại sản phẩm </th>
-              <td mat-cell *matCellDef="let element"> {{element.categoryName}} </td>
-            </ng-container>
-           
-            <ng-container matColumnDef="Tên phân loại">
-                <th mat-header-cell *matHeaderCellDef>Phân loại </th>
-                <td mat-cell *matCellDef="let element"> {{element.variationName}} </td>
-              </ng-container>
-            <ng-container matColumnDef="Giá trị">
-              <th mat-header-cell *matHeaderCellDef> Giá trị </th>
-              <td mat-cell *matCellDef="let element">  
-               {{element.value}}
-              </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-    </div>
+
 
 </div>
 
