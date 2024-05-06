@@ -1,45 +1,45 @@
-
-
 <div class="container-web">
     <h4>Thông tin tài khoản</h4>
-    
-    <form (ngSubmit)="updateUser()">
-    <div class="img-box" *ngIf="selectedFile">
-       
-        <img [src]="imagePreView" style="width: 300px;height: 300px;" alt="Selected Image">
+    <div class="wrap-form">
+        <form (ngSubmit)="updateInfor()">
+            <div class="input-wrap">
+                <label>Họ :</label>
+                <input type="text" name="firstName" [(ngModel)]="userDto.firstName" value="{{userDto.firstName}}">
+            </div>
+            <div class="input-wrap">
+                <label>Tên :</label>
+                <input type="text" name="lastName" [(ngModel)]="userDto.lastName" value="{{userDto.lastName}}">
+            </div>
+            <div class="input-wrap">
+                <label>Email :</label>
+                <input type="text" name="email" [(ngModel)]="userDto.email" value="{{userDto.email}}">
+            </div>
+            <div class="input-wrap">
+                <label>SĐT :</label>
+                <input type="text" name="phoneNumber" [(ngModel)]="userDto.phoneNumber" value="{{userDto.phoneNumber}}">
+            </div>
+            <div class="input-wrap">
+                <button style="max-width: 150px; margin-top: 15px;" class="btn-wrap add-prd" type="submit">Cập nhật</button>
+            </div>
+        </form>
+
+        <form (ngSubmit)="updateUser()">
+            <div class="img-wrap">
+                <label class="imgProduct" for="file">Avatar
+                    <div class=" image" *ngIf="selectedFile">
+                        <img [src]="imagePreView" style="width: 100%;height: auto;" alt="Selected Image">
+                    </div>
+                    <div class=" image" *ngIf="!selectedFile ">
+                        <img [src]="'http://localhost:8080/images/' +userDto.image" style="width: 100%;height: auto;">
+                    </div>
+                </label>
+                <div>
+                    <input style="margin: 10px 0px;" type="file" id="filein" (change)="onFileSelected($event)">
+                </div>
+            </div>
+            <div>
+                <button class="btn-wrap add-prd" type="submit">Cập nhật Avatar</button>
+            </div>
+        </form>
     </div>
-    <div *ngIf="!selectedFile ">
-        <img  [src]="'http://localhost:8080/images/' +userDto.image" style="width: 300px;height: 300px;" >
-    </div>
-    
-    <label>SELECT FILE</label>
-    <div>
-        <input type="file" id="filein" (change)="onFileSelected($event)">
-    </div>
-    <div>
-        <button type="submit">Cập nhật</button>
-    </div>
-    </form>
-    
-    <form (ngSubmit)="updateInfor()">
-    <div>
-        <label>Họ</label>
-        <input type="text" name="firstName" [(ngModel)]="userDto.firstName" value="{{userDto.firstName}}">
-    </div>
-    <div>
-        <label>Tên</label>
-        <input type="text" name="lastName" [(ngModel)]="userDto.lastName" value="{{userDto.lastName}}">
-    </div>
-    <div>
-        <label>Email</label>
-        <input type="text" name="email" [(ngModel)]="userDto.email" value="{{userDto.email}}">
-    </div>
-    <div>
-        <label>SDT</label>
-        <input type="text" name="phoneNumber" [(ngModel)]="userDto.phoneNumber" value="{{userDto.phoneNumber}}">
-    </div>
-    <div>
-        <button type="submit">Cập nhật</button>
-    </div>
-    </form>
 </div>
