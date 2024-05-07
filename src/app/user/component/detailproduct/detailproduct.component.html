@@ -44,7 +44,7 @@
             <div class="product-content">
                 <h2 class="product-title">{{product.productName}}</h2>
                 <a href="#" class="product-link">visit shop</a>
-                <div class="product-rating">
+                <div class="product-rating" style="color: #e74c3c;">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -125,31 +125,29 @@
             </div>
         </div>
     </div>
-    <div style="display: block;unicode-bidi: isolate;">
+    <div style="" class="detail-card-wrapper">
         <div class="product-rating">
-            <div class="product-rating-header">
-                <div class="product-rating-header-score">Đánh giá sản phẩm</div>
+            <div class="product-rating-header" style="background: #f0f0f0; border: 1px solid #d9d9d9;">
+                <h3 style="background: #f0f0f0; padding-left: 10px;">ĐÁNH GIÁ SẢN PHẨM</h3> 
             </div>
-            <div class="product-rating-list">
+            <div class="product-rating-list" style="border: 1px solid #ccc;">
                 <div class="product-rating-list-comment">
                     <div *ngFor="let review of listReviewDto">
                         <div class="utc2-product-rating">
-                            <div>
-                                <img [src]="'http://localhost:8080/images/'+review.imageUser"
-                                    style="width: 50px; height: 50px;">
+                            <div class="infor-cmt">
+                                <img class="ava-cmt" [src]="'http://localhost:8080/images/'+review.imageUser">
+                                <div class="box-name">
+                                    <p>{{review.username}}</p>
+                                    <p style="color: #e74c3c;"><span style="font-weight: 400; font-size: 13px; color: #000;">Đánh giá:</span> {{review.rating}} <i class="fa-solid fa-star"></i></p>
+                                   
+                                    <div class="date-box">
+                                        <p>{{review.date}} <span>|</span>  Phân loại: {{review.variation}}</p>
+                                       
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="utc2-product-rating-main">
-                                <p>{{review.username}}</p>
-                                <div>
-                                    <p>{{review.rating}}</p>
-                                </div>
-                                <div>
-                                    Phân loại:{{review.variation}}
-                                </div>
-                                <div>
-                                    <p>{{review.date}}</p>
-                                </div>
+                            <div class="utc2-product-rating-main" style="margin-left: 54px;"> 
                                 <div>
                                     <p>{{review.comment}}</p>
                                 </div>
