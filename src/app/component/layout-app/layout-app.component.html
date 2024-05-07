@@ -52,21 +52,21 @@
                     </div>
                     <div class="state-component-cate"></div>
                 </div>
-                <div class="list-product" *ngFor="let product of products">
-                    <div class="item-product">
+                
+                <div class="list-product">
+                    <div class="item-product" *ngFor="let product of products">
                         <div class="img-box">
                             <img [src]="'http://localhost:8080/images/' + product.image">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{product.productName}}</h5>
                             <div class="card-detail">
-                                <!-- <p class="card-text money">{{product.description}}</p> -->
+                                <p class="card-text money">{{product.price}}</p>
                                 <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
                             </div>
                             <div class="box-button">
-                                <button class="btn-wrap detail" routerLink="/product/{{product.id}}">Chi tiết</button>
-                                <button type="button" class="btn-wrap add"><i
-                                        class="bi bi-cart-plus"></i><span>Thêm</span></button>
+                                <button class="btn-wrap detail" routerLink="/user/product/{{product.id}}">Chi tiết sản
+                                    phẩm</button>
                             </div>
                         </div>
                     </div>

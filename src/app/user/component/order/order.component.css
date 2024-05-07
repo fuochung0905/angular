@@ -12,7 +12,10 @@
     z-index: 1;
     /* Z-index cao để nằm trên tất cả các phần tử khác */
 }
-
+.container-large, .container-web{
+    max-width: 1200px;
+    margin:0px auto;
+}
 .btn-wrap {
     display: flex;
     cursor: pointer;
