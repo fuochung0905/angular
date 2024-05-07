@@ -8,10 +8,10 @@
       <div class="select-wrap">
 
         <mat-form-field>
-          <input matInput type="number" formControlName="qyt_stock" name="qyt_stock" placeholder="Số lượng">
+          <input matInput type="number" formControlName="qyt_stock" name="qyt_stock" placeholder="Số lượng" min="0" [value]="0" required="">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" formControlName="price" name="price" placeholder="Giá">
+          <input matInput type="text" formControlName="price" name="price" placeholder="Giá" required="">
         </mat-form-field>
         <mat-radio-group aria-label="MÀU SẮC" name="color" (change)="updateVariationOptions($event)">
           <div *ngFor="let variationOption of listVariationOption">

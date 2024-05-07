@@ -65,9 +65,9 @@
                                     <div *ngFor="let variationoption of allVariationOption">
                                         <div class="item-detail" *ngIf="productItem.idColor===variationoption.id">
                                             <input (click)="handleRadioButtonClick(productItem.id)"
-                                                id="{{productItem.idColor}}" type="radio"
-                                                value="{{productItem.idColor}}" class="variation-size" name="size">
-                                            <label for="{{productItem.idColor}}">{{variationoption.value}}</label>
+                                                id="{{productItem.id}}" type="radio"
+                                                value="{{productItem.id}}" class="variation-size" name="size">
+                                            <label for="{{productItem.id}}">{{variationoption.value}}</label>
                                         </div>
                                     </div>
                                 </div>

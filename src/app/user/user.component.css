@@ -291,6 +291,9 @@ header .container-large .top-box .logo a{
     font-size: 24px;
     font-weight: 700;
 }
+header .container-large .top-box .logo a:hover{
+    text-decoration: unset;
+}
 header .container-large .top-box .login-wrap{
     display: flex;
     align-items: center;

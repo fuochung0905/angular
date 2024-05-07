@@ -69,9 +69,10 @@ addProductItemVariationOption(){
       verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
       panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
     });
-
+    this.getAllProuctItemVariationOptionByProductItem();
   },(error)=>{
     console.log(this.listproductItemVariationOption);
+    this.getAllProuctItemVariationOptionByProductItem();
   })
 };
 getAllVariationOptionWithSize(){
@@ -106,7 +107,7 @@ dataSource = this.listProductItemVariationOptionByProductItem;
 updateQuantity(id:number){
 this.adminService.updateProductItemVariatonOption(id,this.updateProductItemVariation).subscribe((res)=>{
   console.log("success",res);
-  // location.reload();
+  location.reload();
 })
 }
 }

@@ -1,5 +1,6 @@
 <div class="main-product">
     <div class="container-web">
+
         <div class="head-product">
             <div class="title-component-cate">Danh mục: </div>
             <a (click)="getAllProduct()" >Tất cả</a>
@@ -11,8 +12,8 @@
             </div>
             <div class="state-component-cate"></div>
         </div>
-        <div class="list-product" *ngFor="let product of products">
-            <div class="item-product">
+        <div class="list-product">
+            <div class="item-product" *ngFor="let product of products">
                 <div class="img-box">
                     <img [src]="'http://localhost:8080/images/' + product.image">
                 </div>
