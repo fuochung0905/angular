@@ -9,7 +9,7 @@
                     <div id="tooltip-login-wrap">
                         <div class="tooltip-login-hover">
                             <li class="login-item">
-                                <img style="width:35px;height:35px;" />
+                                <img  [src]="'http://localhost:8080/images/' +userDto.image" style="width: 35px;height: 35px;" >
                             </li>
                             <li class="login-item">
                                 <a class="nav-link text-dark" title="Manage">
@@ -18,7 +18,7 @@
                                                                (closed)="panelOpenState = false">
                                             <mat-expansion-panel-header>
                                               <mat-panel-title>
-                                                <span id="username">Tên khách hàng</span>
+                                                <span id="username">{{userDto.firstName}} {{userDto.lastName}} </span>
                                               </mat-panel-title>
                                         
                                             </mat-expansion-panel-header>

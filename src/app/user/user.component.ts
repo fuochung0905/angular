@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {  Router, RouterModule } from '@angular/router';
 import { UserStorageService } from '../storage/user-storage.service';
 import { UserService } from './service/user.service';
+import { UserDto } from '../dto/UserDto.model';
 
 
 @Component({
@@ -14,11 +15,14 @@ import { UserService } from './service/user.service';
 export class UserComponent implements AfterViewInit{
   cartCount: number = 0;
   panelOpenState = false;
+  userDto:UserDto;
   isUserLoggedIn:boolean=UserStorageService.isUserLogggedIn();
   constructor(private router:Router,
     private userService:UserService ){
+      this.userDto=new UserDto();
   }
   ngOninit(){
+    this.getCurrentUser();
   
     this.router.events.subscribe(event=>{
       this.isUserLoggedIn=UserStorageService.isUserLogggedIn();
@@ -28,6 +32,7 @@ export class UserComponent implements AfterViewInit{
   ngAfterViewInit() {
     // Gọi hàm này khi component đã được render hoàn tất
     this.getCartCount();
+    this.getCurrentUser();
   }
   logout(){
     this.userService.logout().subscribe((res)=>{
@@ -38,6 +43,12 @@ export class UserComponent implements AfterViewInit{
   getCartCount(){
     this.userService.getCartCountItem().subscribe((res:number)=>{
        this.cartCount = res;
+    })
+  }
+  getCurrentUser(){
+    this.userService.getCurrentUser().subscribe((res)=>{
+        this.userDto=res;
+    
     })
   }
  

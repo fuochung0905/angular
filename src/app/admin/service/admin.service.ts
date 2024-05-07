@@ -237,6 +237,11 @@ getTotalAmountByUser(userId:number):Observable<any>{
     headers:this.createAuthorizationHeader()
   });
 };
+getHistoryOrderByUser(userId:number):Observable<any>{
+  return this.http.get(BASIC_URL+`/api/admin/order/historyOrderByUser/${userId}`,{
+    headers:this.createAuthorizationHeader()
+  });
+};
 updateHistoryOrderChoxacnhan(UpdateOrderStatus: any):Observable<any>{
 return this.http.post(BASIC_URL+'/api/admin/order/orderedToApproval', UpdateOrderStatus,{
   headers:this.createAuthorizationHeader()
