@@ -299,7 +299,6 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -352,14 +351,22 @@ h1 {
     position: relative;
     cursor: pointer;
 }
-
+.side-bar .menu .item .sub-btn.active{
+    background: #b52d1f;
+}
+.side-bar .menu .item .sub-btn.active i{
+    transform: rotate(180deg);
+}
+.side-bar .menu .item .sub-btn i{
+    transition: all .3s;
+}
 .side-bar .menu .item a {
     color: #fff;
     font-size: 16px;
     text-decoration: none;
     display: block;
-    padding: 5px 30px;
-    line-height: 45px;
+    padding: 5px 20px;
+    line-height: 35px;
     border-bottom: 1px solid #ffffff91;
     display: flex;
     align-items: center;
@@ -373,6 +380,7 @@ h1 {
 
 .side-bar .menu .item i {
     margin-right: 15px;
+    font-size: 14px;
 }
 
 .side-bar .menu .item a .dropdown {
@@ -383,12 +391,20 @@ h1 {
 }
 
 .side-bar .menu .item .sub-menu {
-    background: #262627;
-    display: none;
+    background: #b52d1f;
+    opacity: 0;
+    height: 0px;
+    transition: all .3s;
 }
-
+.side-bar .menu .item .sub-menu.active{
+    height: fit-content;
+    opacity: 1;
+}
 .side-bar .menu .item .sub-menu a {
-    padding-left: 80px;
+    padding-left: 45px;
+}
+.side-bar .menu .item .sub-menu a:hover {
+    padding-left: 60px;
 }
 
 .rotate {
@@ -448,4 +464,14 @@ header {
 }
 .mat-toolbar-row, .mat-toolbar-single-row{
     background-color: #fff;
+}
+.logout-btn{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    font-size: 18px;
+    transform: rotate(180deg);
+}
+.logout-btn i{
+    font-size: 22px;
 }

@@ -10,7 +10,12 @@ table {
   border: 1px solid #e74c3c;
   margin: 25px 0px;
 }
-
+table tr{
+  border-bottom: 1px solid #e74c3c;
+}
+table td{
+  border: unset;
+}
 .mat-column-productName {
   width: 350px;
 }

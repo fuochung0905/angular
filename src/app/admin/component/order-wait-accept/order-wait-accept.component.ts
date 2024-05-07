@@ -44,6 +44,9 @@ export class OrderWaitAcceptComponent {
       duyetDonHang() {
       this.adminServe.updateHistoryOrderChoxacnhan(this.orders).subscribe((res)=>{
        location.reload();
+      },
+      (error)=>{
+        location.reload();
       });
         } ;
     

@@ -23,6 +23,29 @@ ul, li{
     margin: 0;
     padding: 0
 }
+.main-product .list-product .item-product .card-body{
+    padding: 0px;
+}
+
+.main-product .list-product .item-product .card-body .card-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+  	-webkit-box-orient: vertical;
+    font-size: 16px;
+    line-height: 1;
+    margin: 0;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.main-product .list-product .item-product .card-body .card-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
 header{
    background-color: #fff;
    border-bottom: 1px solid #ccc;

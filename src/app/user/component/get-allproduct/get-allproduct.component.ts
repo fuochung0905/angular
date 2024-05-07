@@ -10,12 +10,12 @@ import { CategoryDto } from 'src/app/dto/CategoryDto.model';
 })
 export class GetAllproductComponent implements OnInit {
   products: any[] = [];
-  categoryDto:CategoryDto[]=[];
+  categoryDto: CategoryDto[] = [];
   constructor(private userService: UserService,
-    private router:Router) {
-    
-     }
-  ngOnInit(): void { 
+    private router: Router) {
+
+  }
+  ngOnInit(): void {
     this.getAllProduct();
     this.getAllCategory();
   }
@@ -27,16 +27,16 @@ export class GetAllproductComponent implements OnInit {
       });
     });
   };
-  getAllCategory(){
-    this.userService.getAllCategory().subscribe((res)=>{
-this.categoryDto=res;
+  getAllCategory() {
+    this.userService.getAllCategory().subscribe((res) => {
+      this.categoryDto = res;
     })
   };
-  getProductByCategory(id:number){
-this.userService.getAllProductByCategory(id).subscribe((res)=>{
-  this.products=res;
-})
+  getProductByCategory(id: number) {
+    this.userService.getAllProductByCategory(id).subscribe((res) => {
+      this.products = res;
+    })
   }
- 
-  
+
+
 }
