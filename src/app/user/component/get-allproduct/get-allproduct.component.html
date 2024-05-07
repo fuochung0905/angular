@@ -2,9 +2,9 @@
     <div class="container-web">
         <div class="head-product">
             <div class="title-component-cate">Danh mục: </div>
-            <a (click)="getAllProduct()" style="padding-left: 20px;">Tất cả</a>
+            <a (click)="getAllProduct()" >Tất cả</a>
 
-            <div class="list-component-cate" *ngFor="let cate of categoryDto" style="padding-left: 20px;">
+            <div class="list-component-cate" *ngFor="let cate of categoryDto">
 
                 <a (click)="getProductByCategory(cate.id)">{{cate.name}}</a>
 
