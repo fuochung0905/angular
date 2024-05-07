@@ -133,7 +133,25 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
     align-items: center;
     padding: 15px 0px;
 }
+.main-product .head-product a, .main-product .head-product .list-component-cate a{
+    display: block; 
+    padding: 5px 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+    line-height: 20px;
+    text-align: center;
+    margin: 0px 5px;
+    transition: all .2s;
 
+}
+.main-product .head-product a:hover, .main-product .head-product .list-component-cate a:hover{
+    
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+}
+.main-product .head-product .title-component-cate{
+    font-size: 16px;
+}
 .main-product .head-product .filter-product form select {
     padding: 5px;
     margin-right: 10px;
@@ -246,8 +264,15 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
     width: 100%;
     height: 100%;
 }
+.main-product .list-product .item-product .card-body{
+    padding: 0px;
+}
 
 .main-product .list-product .item-product .card-body .card-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+  	-webkit-box-orient: vertical;
     font-size: 16px;
     line-height: 1;
     margin: 0;
