@@ -6,98 +6,42 @@
           <span id="username">Tên Admin</span>
         </a>
         <form class="form-inline" (ngSubmit)=" logout()">
-          <button type="submit" class="nav-link btn btn-link text-dark">Đăng Xuất</button>
+          <button type="submit" class="logout-btn nav-link btn btn-link text-light"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         </form>
       </div>
-      <!-- <div class="side-bar">
-
-        <div class="menu">
+      <div class="side-bar">
+        <div class="menu" (click)="toggleSubMenu($event)">
           <div class="item"><a href="#">Dashboard</a></div>
           <div class="item">
-            <a class="sub-btn">Tables<i class="fa-solid fa-angle-down"></i></a>
+            <a class="sub-btn">Quản lý danh mục<i class="fa-solid fa-angle-down"></i></a>
             <div class="sub-menu">
-              <a href="#" class="sub-item">Sub Item 01</a>
-              <a href="#" class="sub-item">Sub Item 02</a>
-              <a href="#" class="sub-item">Sub Item 03</a>
+              <a routerLink="/admin/add-category" routerLinkActive="active" class="sub-item">Loại sản phẩm</a>
+              <a routerLink="/admin/list-product" routerLinkActive="active" class="sub-item">Danh sách sản phẩm</a>
             </div>
-          
-            <mat-accordion class="sidebar-item" >
-                  <mat-expansion-panel (opened)="panelOpenState = true"
-                                       (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                       Quản lí danh mục
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <p>
-                        <a routerLink="/admin/add-category" routerLinkActive="active">Loại sản phẩm</a>
-                    </p>
-                   <p>
-                    <a routerLink="/admin/list-product" routerLinkActive="active">Danh sách sản phẩm</a>
-                   </p>
-            
-                  </mat-expansion-panel>
-            </mat-accordion>
-            <mat-accordion class="sidebar-item">
-                <mat-expansion-panel (opened)="panelOpenState = true"
-                                     (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                     Quản lí đơn hàng
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <p>
-                    <a routerLink="/admin/orderAll" routerLinkActive="active">Tất cả</a>
-                  </p>
-                  <p>
-                    <a routerLink="/admin/order-wait-accept" routerLinkActive="active">Đơn hàng chờ duyệt</a>
-                  </p>
-                  <p>
-                    <a routerLink="/admin/order-wait-transport" routerLinkActive="active" >Đơn hàng chờ giao</a>
-                  </p>
-                  <p>
-                    <a routerLink="/admin/order-in-transport" routerLinkActive="active"  >Đơn hàng đang giao</a>
-                  </p>
-                  <p>
-                    <a routerLink="/admin/order-complete" routerLinkActive="active">Đơn hàng hoàn thành</a>  
-                  </p>
-                  <p>
-                    <a >Đơn hàng bị hủy</a>
-                  </p>
-                 
-                </mat-expansion-panel>
-          </mat-accordion>
-          <mat-accordion class="sidebar-item">
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                 (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                 Quản lí tài khoản
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p>
-                
-                <a routerLink="/admin/user-all" routerLinkActive="active">Tất cả</a>
-              </p>
-              <p>
-                <a>Khôi phục tài khoản</a>
-              </p>
-            </mat-expansion-panel>
-=======
           </div>
-          <div class="item"><a href="#">Forms</a></div>
           <div class="item">
-            <a class="sub-btn">Settings<i class="fa-solid fa-angle-down"></i></a>
+            <a class="sub-btn">Quản lý đơn hàng<i class="fa-solid fa-angle-down"></i></a>
             <div class="sub-menu">
-              <a href="#" class="sub-item">Sub Item 01</a>
-              <a href="#" class="sub-item">Sub Item 02</a>
+              <a routerLink="/admin/orderAll" routerLinkActive="active" class="sub-item">Tất cả</a>
+              <a routerLink="/admin/order-wait-accept" routerLinkActive="active" class="sub-item">Đơn hàng chờ duyệt</a> 
+              <a routerLink="/admin/order-wait-transport" routerLinkActive="active" class="sub-item">Đơn hàng chờ giao</a> 
+              <a routerLink="/admin/order-in-transport" routerLinkActive="active" class="sub-item">Đơn hàng đang giao</a> 
+              <a routerLink="/admin/order-complete" routerLinkActive="active" class="sub-item">Đơn hàng đã giao</a> 
             </div>
-          </div>
-          <div class="item"><a href="#">About</a></div>
+          </div> 
+          <div class="item">
+            <a class="sub-btn">Quản lý tài khoản<i class="fa-solid fa-angle-down"></i></a>
+            <div class="sub-menu">
+              <a href="#" class="sub-item">Tất cả</a>
+              <a href="#" class="sub-item">Khôi phục tài khoản</a>
+            </div>
+          </div> 
         </div>
-      </div> -->
-      <mat-accordion class="sidebar-item">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      </div>
+
+
+      <!-- <mat-accordion class="sidebar-item">
+       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Quản lí danh mục
@@ -110,7 +54,7 @@
             <a routerLink="/admin/list-product" routerLinkActive="active">Danh sách sản phẩm</a>
           </p>
 
-        </mat-expansion-panel>
+        </mat-expansion-panel> 
 
       </mat-accordion>
       <mat-accordion class="sidebar-item">
@@ -121,19 +65,19 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <p>
-            <a routerLink="/admin/orderAll" routerLinkActive="active">Tất cả</a>
+            <a >Tất cả</a>
           </p>
           <p>
-            <a routerLink="/admin/order-wait-accept" routerLinkActive="active">Đơn hàng chờ duyệt</a>
+            <a >Đơn hàng chờ duyệt</a>
           </p>
           <p>
-            <a routerLink="/admin/order-wait-transport" routerLinkActive="active">Đơn hàng chờ giao</a>
+            <a >Đơn hàng chờ giao</a>
           </p>
           <p>
-            <a routerLink="/admin/order-in-transport" routerLinkActive="active">Đơn hàng đang giao</a>
+            <a >Đơn hàng đang giao</a>
           </p>
           <p>
-            <a routerLink="/admin/order-complete" routerLinkActive="active">Đơn hàng hoàn thành</a>
+            <a >Đơn hàng hoàn thành</a>
           </p>
           <p>
             <a>Đơn hàng bị hủy</a>
@@ -155,7 +99,7 @@
             <a>Khôi phục tài khoản</a>
           </p>
         </mat-expansion-panel>
-      </mat-accordion>
+      </mat-accordion> -->
 
     </div>
     <style>
@@ -166,3 +110,11 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+    $(".menu .item").click(function () {
+      console.log(1)
+    });
+  });
+
+</script>
