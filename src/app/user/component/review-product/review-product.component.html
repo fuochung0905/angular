@@ -1,16 +1,22 @@
+<div class="title">Đánh giá sản phẩm</div>
 <form (submit)="addReview()" [formGroup]="reviewForm">
-    <label>Đánh giá</label>
-    <input type="number" max="5" min="1" formControlName="rating" name="rating">
-    <label>Bình luận sản phẩm</label>
-    <input type="text" placeholder="Bình luận sản phẩm" formControlName="comment" name="comment">
+    <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px;">
+        <label style="margin: 0;">Đánh giá : </label>
+        <input style="width: 50px;" type="number" max="5" min="1" formControlName="rating" name="rating">
+    </div>
+    <div class="form-group">
+        <label>Bình luận sản phẩm</label>
+        <input style="height: 35px; padding: 0px 7px;" type="text" placeholder="Bình luận sản phẩm" formControlName="comment" name="comment">
+    </div>
+
     <label>SELECT FILE</label>
     <div>
         <input type="file" id="filein" (change)="onFileSelected($event)">
     </div>
     <div class="image" *ngIf="selectedFile">
         <div>
-            <img [src]="imagePreView" style="width: 300px;height: 300px;" alt="Selected Image">
+            <img [src]="imagePreView" style="width: 100% ; height: auto;" alt="Selected Image">
         </div>
     </div>
-    <button type="submit">Thêm</button>
+    <button style="margin-top: 10px;" class="btn-wrap add-prd" type="submit">Thêm</button>
 </form>

@@ -2,3 +2,53 @@
     max-width: 1200px;
     margin:0px auto;
 }
+.order-statement{
+    padding: 25px;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+}
+.header-title{
+  font-size: 20px;
+    text-transform: uppercase;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+.item-header-status{
+    display: flex;
+    gap: 7px;;
+}
+.btn-wrap {
+    display: flex;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 15px;
+    width: auto;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 0;
+    text-decoration: unset;
+    transition: all .3s;
+    background: #fff;
+    font-weight: 500;
+    color: #e74c3c !important;
+  }
+  
+  .add-prd {
+    min-width: 100px;
+    color: #e74c3c;
+    border-color: #e74c3c;
+  }
+  
+  .add-prd:hover {
+    background: #e74c3c;
+    border-color: #e74c3c;
+    color: #fff !important;
+  }
+  .danhgiasanpham{
+    color: #e74c3c !important;
+  }
+  .danhgiasanpham:hover{
+    text-decoration: underline !important;
+  }
