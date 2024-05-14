@@ -62,18 +62,16 @@
                     <div class="item-moneypay money">
                         <p>{{cart.price}} &nbsp;₫</p>
                     </div>
-                    <!--    -->
+                  
                 </section>
             </div>
             <div class="nav-show-allsell">
                 <div class="my-2">
                     <div>
-                        <p>
-                            Tổng cộng : @Model.shoppingCarts.cartDetails.Count Sản Phẩm
-                        </p>
+                       
                     </div>
                 </div>
-                <a asp-controller="UserOrder" asp-action="Userorder" class="wrap-btn m-color-full">Chọn hàng</a>
+                <a routerLink="/order" routerLinkActive="active" class="wrap-btn m-color-full">Chọn hàng</a>
 
             </div>
 

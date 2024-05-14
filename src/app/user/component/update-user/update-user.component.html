@@ -27,10 +27,10 @@
             <div class="img-wrap">
                 <label class="imgProduct" for="file">Avatar
                     <div class=" image" *ngIf="selectedFile">
-                        <img [src]="imagePreView" style="width: 100%;height: auto;" alt="Selected Image">
+                        <img [src]="imagePreView" style="width: 100%;height: 100%;" alt="Selected Image">
                     </div>
                     <div class=" image" *ngIf="!selectedFile ">
-                        <img [src]="'http://localhost:8080/images/' +userDto.image" style="width: 100%;height: auto;">
+                        <img [src]="'http://localhost:8080/images/' +userDto.image" style="width: 100%;height: 100%;">
                     </div>
                 </label>
                 <div>

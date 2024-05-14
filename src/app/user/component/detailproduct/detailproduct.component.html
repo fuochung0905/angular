@@ -45,16 +45,14 @@
                 <h2 class="product-title">{{product.productName}}</h2>
                 <a href="#" class="product-link">visit shop</a>
                 <div class="product-rating" style="color: #e74c3c;">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span>4.5(3700)</span>
+                    <p style="color: #e74c3c;"> {{rating}} <i class="fa-solid fa-star"></i>  ({{countReview}})</p>
                 </div>
                 <div class="product-price">
 
                     <p class="new-price">Giá hiện tại: <span class="money">{{product.price}}</span></p>
+                </div>
+                <div>
+                    
                 </div>
                 <div class="product-detail">
                     <div class="box-detail">
@@ -62,14 +60,30 @@
                         <div class="list">
                             <div *ngFor="let productItem of listProductItem">
                                 <div class="variation" style="display: flex;">
-                                    <div *ngFor="let variationoption of allVariationOption">
-                                        <div class="item-detail" *ngIf="productItem.idColor===variationoption.id">
-                                            <input (click)="handleRadioButtonClick(productItem.id)"
-                                                id="{{productItem.id}}" type="radio"
-                                                value="{{productItem.id}}" class="variation-size" name="size">
-                                            <label for="{{productItem.id}}">{{variationoption.value}}</label>
+                                    <div *ngFor="let variationoption of allVariationOption" >
+                                        <div *ngIf="productItem.qyt_stock==0">
+                                            <div class="item-detail active" *ngIf="productItem.idColor==variationoption.id" >
+                                                <div >
+                                                    <input (click)="handleRadioButtonClick(productItem.id)"
+                                                    id="{{productItem.id}}" type="radio"
+                                                    value="{{productItem.id}}" class="variation-size" name="size"disabled >
+                                                <label for="{{productItem.id}}">{{variationoption.value}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="productItem.qyt_stock !=0">
+                                            <div class="item-detail" *ngIf="productItem.idColor===variationoption.id" >
+                                                <div >
+                                                    <input (click)="handleRadioButtonClick(productItem.id)"
+                                                    id="{{productItem.id}}" type="radio"
+                                                    value="{{productItem.id}}" class="variation-size" name="size" >
+                                                <label for="{{productItem.id}}">{{variationoption.value}}</label>
+                                                </div>
+                                              
+                                            </div>
                                         </div>
                                     </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -78,14 +92,51 @@
                     <div class="box-detail">
                         <p class="title">Kích thước: </p>
                         <div class="list">
-                            <div *ngFor="let variationOption of listvariationOption">
-                                <div class="item-detail">
-                                    <input (click)="handleRadiobuttonColor(variationOption.id)"
-                                        id="{{variationOption.value}}" type="radio" value="{{variationOption.id}}"
-                                        class="variation-size" name="variation-size">
-                                    <label for="{{variationOption.value}}">{{variationOption.value}}</label>
+                          
+                                    <div *ngFor="let productItemVariationOption of listProductItemVariationOption">
+                                        <div *ngIf="showsize">
+                                        <div *ngIf="productItemVariationOption.quantity===0">
+                                            <div *ngFor="let variationoption of allVariationOption" >
+                                                    <div *ngIf="productItemVariationOption.variationOptionId===variationoption.id">
+                                                        <div class="item-detail active">
+                                                            <input (click)="handleRadiobuttonColor(variationoption.id)"
+                                                                id="{{variationoption.value}}" type="radio" value="{{variationoption.id}}"
+                                                                class="variation-size" name="variation-size" disabled>
+                                                            <label for="{{variationoption.value}}">{{variationoption.value}}</label>
+                                                        </div>                                        </div>
+                                                   
+                                            </div>
+                                        </div>
+                                        <div *ngIf="productItemVariationOption.quantity!=0">
+                                            <div *ngFor="let variationoption of allVariationOption" >
+                                                    <div *ngIf="productItemVariationOption.variationOptionId===variationoption.id">
+                                                        <div class="item-detail ">
+                                                            <input (click)="handleRadiobuttonColor(variationoption.id)"
+                                                            id="{{variationoption.value}}" type="radio" value="{{variationoption.id}}"
+                                                            class="variation-size" name="variation-size" >
+                                                        <label for="{{variationoption.value}}">{{variationoption.value}}</label>
+                                                        </div>                                   </div>
+                                            </div>
+                                        </div>
+                                     
+                                        </div>
+                                    </div>
+                          
+                          
+                                <div *ngFor="let variationOption of listvariationOption">
+                                   
+                                    <div *ngIf="!showsize">
+                                        <div class="item-detail ">
+                                            <input (click)="handleRadiobuttonColor(variationOption.id)"
+                                                id="{{variationOption.value}}" type="radio" value="{{variationOption.id}}"
+                                                class="variation-size" name="variation-size">
+                                            <label for="{{variationOption.value}}">{{variationOption.value}}</label>
+                                        </div>
+                                    </div>
+                                 
                                 </div>
-                            </div>
+                           
+                           
                         </div>
                     </div>
                     <div class="box-detail">

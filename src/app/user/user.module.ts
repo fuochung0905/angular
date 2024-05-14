@@ -18,6 +18,7 @@ import { DialogorderComponent } from './component/dialogorder/dialogorder.compon
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import { ReviewProductComponent } from './component/review-product/review-product.component';
+import { NotPhoneNumberComponent } from './component/not-phone-number/not-phone-number.component';
 
 
 
@@ -33,7 +34,8 @@ import { ReviewProductComponent } from './component/review-product/review-produc
     HistoryOrderComponent,
     DialogorderComponent,
     UpdateUserComponent,
-    ReviewProductComponent
+    ReviewProductComponent,
+    NotPhoneNumberComponent
   ],
   imports: [
     CommonModule,

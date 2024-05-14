@@ -126,10 +126,25 @@ img {
     min-width: 70px;
     text-align: center;
 }
+.product-content .product-detail .box-detail .item-detail.active label:hover {
+    border: 1px solid #ccc;
+    color: #ccc;
+    opacity: 0.5;
+}
+.product-content .product-detail .box-detail .item-detail.active label:hover {
+    border: 1px solid #ccc;
+    color: #ccc;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 .product-content .product-detail .box-detail .item-detail label:hover {
     border: 1px solid #e74c3c;
     color: #e74c3c;
+}
+
+.active{
+    opacity: 0.5;
 }
 
 .product-content .product-detail .box-detail .item-detail input:checked~label {

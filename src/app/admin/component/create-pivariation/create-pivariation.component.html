@@ -55,10 +55,18 @@
                 Thêm số lượng
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <form (ngSubmit)="updateQuantity(element.id)">
+            <form  [formGroup]="updatequantityForm" (ngSubmit)="updateQuantity(element.id)">
               <label>Số lượng</label>
-              <input type="number" name="name" [(ngModel)]="updateProductItemVariation.quantity">
-              <button type="submit">THÊM</button>
+              <input type="number" name="quantity" formControlName="quantity" [(ngModel)]="updateProductItemVariation.quantity">
+              <div style="color: red;"
+              *ngIf="updatequantityForm.controls['quantity'].invalid && (updatequantityForm.controls['quantity'].dirty || updatequantityForm.controls['quantity'].touched)">
+              <div *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['required']">
+                Vui lòng nhập số lượng sản phẩm</div>
+                <div *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['pattern']">
+                  Số lượng sản phẩm không âm
+                </div>
+            </div>
+              <button type="submit" [disabled]="updatequantityForm.invalid">THÊM</button>
             </form>
           </mat-expansion-panel>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">

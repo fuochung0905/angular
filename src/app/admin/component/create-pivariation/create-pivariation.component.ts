@@ -7,6 +7,7 @@ import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
 import { VariationDto } from 'src/app/dto/VariationDto.model';
 import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
 import { ProductItemVariationDto } from 'src/app/dto/ProductItemVariationDto.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-pivariation',
@@ -14,6 +15,7 @@ import { ProductItemVariationDto } from 'src/app/dto/ProductItemVariationDto.mod
   styleUrls: ['./create-pivariation.component.css']
 })
 export class CreatePIVariationComponent {
+  updatequantityForm!:FormGroup;
   id:any;
   panelOpenState = false;
   
@@ -33,6 +35,7 @@ updateProductItemVariation:ProductItemVariationDto;
   constructor(private adminService:AdminService,
     private router:Router,
     private _snackBar: MatSnackBar,
+    private fb :FormBuilder,
     private activeRouter:ActivatedRoute,){
      this.productDto=new ProductDto();
      this.productItemDto= new ProductItemDto();
@@ -46,6 +49,11 @@ this.getProductByProductItem();
 this.getProductItem();
 this.getAllVariationOptionWithSize();
 this.getAllProuctItemVariationOptionByProductItem();
+this.updatequantityForm=this.fb.group({
+  
+  quantity: ['',[Validators.required, Validators.pattern('^[0-9]*$')]]
+  
+});
   }
   getProductByProductItem(){
     this.id=this.activeRouter.snapshot.params['id'];
@@ -105,6 +113,9 @@ displayedColumns: string[] = ['productItemId','idColor','value','quantity','Thao
 dataSource = this.listProductItemVariationOptionByProductItem;
 
 updateQuantity(id:number){
+  if (this.updatequantityForm.invalid) {
+    return;
+  }
 this.adminService.updateProductItemVariatonOption(id,this.updateProductItemVariation).subscribe((res)=>{
   console.log("success",res);
   location.reload();

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogorderComponent } from '../dialogorder/dialogorder.component';
+import { NotPhoneNumberComponent } from '../not-phone-number/not-phone-number.component';
 
 @Component({
   selector: 'app-order',
@@ -55,10 +56,25 @@ export class OrderComponent {
     return so1*so2;
    
   }
+  openDialog2():void{
+    const dialogRef = this.dialog.open(NotPhoneNumberComponent, {
+      width: '250px',
+    });
+    
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'OK') {
+        this.router.navigateByUrl('/user/userInfor');
+      } else {
+       this.dialog.closeAll();
+      }
+    });
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogorderComponent, {
       width: '250px',
     });
+    
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'OK') {
@@ -137,8 +153,8 @@ submitOrder(){
           if(res.message==="user not address"){
             this.openDialog();
           }
-          else{
-           
+          if(res.message==="user not phoneNumber"){
+              this.openDialog2();
           }
         }
         

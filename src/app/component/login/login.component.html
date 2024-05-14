@@ -1,49 +1,4 @@
 
-
-
-
-
-
-
-
-
-<!-- <header>
-    <div class="container-large">
-        <div class="top-box">
-            <div class="logo" >
-                <a class="" routerLink="" routerLinkActive="active" ><span>UTC2</span><span>Store</span></a>
-            </div>
-<div >
-    <div class="login-wrap">
-        <div class="login-item">
-            <a class="" routerLink="/login" routerLinkActive="active"> <i class="fa-solid fa-circle-user"></i> Đăng nhập</a>
-        </div>
-        <div class="login-item">
-            <a class="" routerLink="/signup" routerLinkActive="active"> <i class="fa-solid fa-phone"></i>Đăng kí</a>
-        </div>
-    </div>
-</div>
-        </div>
-        <div class="bottom-box">
-            <ul class="main-menu">
-            </ul>
-            <div class="search-wrap">
-                <div class="search-box">
-                    <form class="form-inline"  asp-action="Index" method="get" style="display: flex; flex-direction: row;">
-                        <div class="">
-                            <input type="text" name="searchName" placeholder="Search">
-                        </div>
-                        <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </div>
-                <a class="cart-box" >
-                    <i class="bi bi-cart"></i>
-                    <span id="cartCount" class="num">0</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</header> -->
 <body>
     <div class="content-body">
         <div style="display: flex;height: 100vh;justify-content: center;align-items: center;">
@@ -67,7 +22,7 @@
                                     class="text-danger">Please enter a valid password</span>
                             </div>
                             <div>
-                                <button type="submit" class="btsubmit">Đăng nhập</button>
+                                <button type="submit" class="btsubmit" [disabled]="loginForm.invalid">Đăng nhập</button>
                             </div>
                         </div>
                         <div class="foot-form">

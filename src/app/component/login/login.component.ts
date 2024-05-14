@@ -23,11 +23,14 @@ export class LoginComponent {
       password:new FormControl()
     });
     this.loginForm=this.fb.group({
-      email: [null],
-      password: [null]
+      email:  ['',Validators.required],
+      password:  ['',Validators.required]
     });
   }
   login(){
+    if (this.loginForm.invalid) {
+      return;
+    }
     if (this.loginForm.valid) { // Kiểm tra xem form có hợp lệ không
       const email = this.loginForm.get('email')!.value;
       const password = this.loginForm.get('password')!.value;

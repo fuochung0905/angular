@@ -115,7 +115,17 @@ export class UserService {
   };
  
 
+  getSumRatingByProductId(productId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/review/sumRating/product/${productId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
 
+  getCountReviewByProductId(productId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/review/countRating/product/${productId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
   getCartCountItem():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/cart/count',{
       headers:this.createAuthorizationHeader()
@@ -171,6 +181,11 @@ export class UserService {
 getAllVariationOption():Observable<any>{
  return this.httpClient.get(BASIC_URL+'/api/user/variationOption/',{
     headers: this.createAuthorizationHeader()
+  });
+};
+getAllProductItemVariationOptionByProductItem(productItemId:number):Observable<any>{
+  return this.httpClient.get(BASIC_URL+`/api/user/product-item-variation-option/productItem/${productItemId}`,{
+    headers:this.createAuthorizationHeader()
   });
 };
 updateUserInfor(userDto:UserDto):Observable<any>{

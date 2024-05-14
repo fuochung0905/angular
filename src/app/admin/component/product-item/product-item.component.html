@@ -6,12 +6,27 @@
       <input formControlName="productId" name="productId" hidden>
 
       <div class="select-wrap">
-
         <mat-form-field>
           <input matInput type="number" formControlName="qyt_stock" name="qyt_stock" placeholder="Số lượng" min="0" [value]="0" required="">
+          <div style="color: red;"
+          *ngIf="productItemForm.controls['qyt_stock'].invalid && (productItemForm.controls['qyt_stock'].dirty || productItemForm.controls['qyt_stock'].touched)">
+          <div *ngIf="productItemForm.controls['qyt_stock'].errors && productItemForm.controls['qyt_stock'].errors['required']">
+            Vui lòng nhập số lượng sản phẩm</div>
+            <div *ngIf="productItemForm.controls['qyt_stock'].errors && productItemForm.controls['qyt_stock'].errors['pattern']">
+              Số lượng sản phẩm không âm
+            </div>
+        </div>
         </mat-form-field>
         <mat-form-field>
           <input matInput type="text" formControlName="price" name="price" placeholder="Giá" required="">
+          <div style="color: red;"
+          *ngIf="productItemForm.controls['price'].invalid && (productItemForm.controls['price'].dirty || productItemForm.controls['price'].touched)">
+          <div *ngIf="productItemForm.controls['price'].errors && productItemForm.controls['price'].errors['required']">
+            Vui lòng nhập giá sản phẩm</div>
+            <div *ngIf="productItemForm.controls['price'].errors && productItemForm.controls['price'].errors['pattern']">
+              Giá sản phẩm không âm
+            </div>
+        </div>
         </mat-form-field>
         <mat-radio-group aria-label="MÀU SẮC" name="color" (change)="updateVariationOptions($event)">
           <div *ngFor="let variationOption of listVariationOption">

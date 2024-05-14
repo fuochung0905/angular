@@ -1,9 +1,9 @@
 <mat-toolbar>Thêm loại sản phẩm</mat-toolbar>
-<form (ngSubmit)="postcategory()" #categoryForm="ngForm">
+<form (ngSubmit)="postcategory()" [formGroup]="categoryForm">
   <div class="body-form">
     <div class="form-input">
 
-      <input class="form-control input-top" name="name" [(ngModel)]="categoryDto.name" type="text" aria-required="true"
+      <input class="form-control input-top" formControlName="name" name="name" [(ngModel)]="categoryDto.name" type="text" aria-required="true"
         placeholder="Loại sản phẩm" required />
       <div style="color: red;"
         *ngIf="categoryForm.controls['name'].invalid && (categoryForm.controls['name'].dirty || categoryForm.controls['name'].touched)">
