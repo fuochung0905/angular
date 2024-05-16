@@ -12,6 +12,7 @@ import { AdminModule } from './admin/admin.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserModule } from './user/user.module';
 import { LayoutAppComponent } from './component/layout-app/layout-app.component';
+import { DetailProductComponent } from './component/detail-product/detail-product.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LayoutAppComponent } from './component/layout-app/layout-app.component'
     SignupComponent,
     LoginComponent,
     LayoutAppComponent,
+    DetailProductComponent,
   ],
   imports: [
     BrowserModule,

@@ -45,9 +45,7 @@ export class UserService {
     })
   };
   getAllReviewByProduct(productId:number):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/review/product/${productId}`,{
-      headers:this.createAuthorizationHeader()
-    })
+    return this.httpClient.get(BASIC_URL+`/api/guest/review/product/${productId}`)
   }
   getListAddresCurrentUser():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/address/',{
@@ -60,26 +58,17 @@ export class UserService {
     });
   };
   getAllProducts(): Observable<any> {
-
-    return this.httpClient.get(BASIC_URL + '/api/user/product/', {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL + '/api/guest/product/');
   };
   getAllProductByCategory(categoryId:number):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/product/category/${categoryId}`, {
-      headers: this.createAuthorizationHeader()
-    })
+    return this.httpClient.get(BASIC_URL+`/api/guest/product/category/${categoryId}`)
   }
   getAllCategory():Observable<any>{
-    return this.httpClient.get(BASIC_URL+'/api/user/category/',{
-      headers: this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+'/api/guest/category/');
   };
   getProductsById(productId:any): Observable<any> {
    console.log(productId);
-    return this.httpClient.get(BASIC_URL+`/api/user/product/${productId}`, {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+`/api/guest/product/${productId}`);
   };
   getCurrentUser():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/currentUser/',{
@@ -99,14 +88,10 @@ export class UserService {
   
 
   getUserProductItemById(productItemId:number):Observable<any>{
-    return this.httpClient.get(BASIC_URL +`/api/user/productItem/${productItemId}`,{
-      headers:this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL +`/api/guest/productItem/${productItemId}`);
   };
   getProductClickColor(colorId:number,variationOptionId:number):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/product/variationOption/${variationOptionId}/${colorId}`,{
-      headers:this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+`/api/guest/product/variationOption/${variationOptionId}/${colorId}`);
   };
   getAllUserCart(): Observable<any> {
     return this.httpClient.get(BASIC_URL + '/api/user/cart/', {
@@ -116,15 +101,11 @@ export class UserService {
  
 
   getSumRatingByProductId(productId:number):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/review/sumRating/product/${productId}`,{
-      headers:this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+`/api/guest/review/sumRating/product/${productId}`);
   };
 
   getCountReviewByProductId(productId:number):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/review/countRating/product/${productId}`,{
-      headers:this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+`/api/guest/review/countRating/product/${productId}`);
   };
   getCartCountItem():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/cart/count',{
@@ -137,7 +118,6 @@ export class UserService {
     });
   };
 
- 
   getHistoryOrderApproved():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/order/historyApproved',{
       headers:this.createAuthorizationHeader()
@@ -164,29 +144,19 @@ export class UserService {
     });
   };
   getAllVariationProduct(productId:number):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/variation/product/${productId}`,{
-      headers:this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+`/api/guest/variation/product/${productId}`);
   };
   getAllVariationoPtionByProduct(productId:any):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/variationOption/product/${productId}`, {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+`/api/guest/variationOption/product/${productId}`);
   };
   getUserAllProductItemByProduct(productId:any):Observable<any>{
-    return this.httpClient.get(BASIC_URL+`/api/user/productItem/product/${productId}`, {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.httpClient.get(BASIC_URL+`/api/guest/productItem/product/${productId}`);
   };
 getAllVariationOption():Observable<any>{
- return this.httpClient.get(BASIC_URL+'/api/user/variationOption/',{
-    headers: this.createAuthorizationHeader()
-  });
+ return this.httpClient.get(BASIC_URL+'/api/guest/variationOption/');
 };
 getAllProductItemVariationOptionByProductItem(productItemId:number):Observable<any>{
-  return this.httpClient.get(BASIC_URL+`/api/user/product-item-variation-option/productItem/${productItemId}`,{
-    headers:this.createAuthorizationHeader()
-  });
+  return this.httpClient.get(BASIC_URL+`/api/guest/product-item-variation-option/productItem/${productItemId}`);
 };
 updateUserInfor(userDto:UserDto):Observable<any>{
   return this.httpClient.post(BASIC_URL+'/api/user/information/',userDto,{

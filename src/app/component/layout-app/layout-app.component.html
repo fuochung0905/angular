@@ -3,35 +3,63 @@
     <div class="container-large">
         <div class="top-box">
             <div class="logo">
-                <a routerLink="/user/home" routerLinkActive="active" class=""><span>UTC2</span><span style="color: #000;">Store</span></a>
+                <a routerLink="" routerLinkActive="active" class=""><span>UTC2</span><span style="color: #000;">Store</span></a>
             </div>
-            <div>
+            <div *ngIf="!isUserLoggedIn">
                 <div class="login-wrap">
                     <div class="login-item log">
-                        <a class="btn-wrap" routerLink="/login" routerLinkActive="active">   Đăng nhập</a>
+                        <a class="btn-wrap" routerLink="/login" routerLinkActive="active">Đăng nhập</a>
                     </div>
                     <div class="login-item reg">
                         <a class=" btn-wrap" routerLink="/signup" routerLinkActive="active">  Đăng kí</a>
                     </div>
                 </div>
             </div>
+            <div *ngIf="isUserLoggedIn">
+                <div id="tooltip-login-wrap">
+                    <div class="tooltip-login-hover">
+                        <li class="login-item">
+                            <img  [src]="'http://localhost:8080/images/' +userDto.image" style="width: 35px;height: 35px;" >
+                        </li>
+                        <li class="login-item">
+                            <div class="username-box">
+                                <p class="username">{{userDto.firstName}} {{userDto.lastName}}</p>
+                                <div class="box-action">
+                                    <a routerLink="/userInfor" routerLinkActive="active">Thông tin tài
+                                        khoản</a>
+                                    <a routerLink="/historyOrder" routerLinkActive="active">Thông tin đơn
+                                        hàng</a>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="login-item">
+                            <form class="form-inline" (ngSubmit)=" logout()">
+                                <button type="submit" class="logout btn-wrap">Đăng Xuất</button>
+                            </form>
+                        </li>
+
+
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="bottom-box">
             <ul class="main-menu">
             </ul>
             <div class="search-wrap">
                 <div class="search-box">
-                    <form class="form-inline" asp-action="Index" method="get"
-                        style="display: flex; flex-direction: row;">
+                    <form class="form-inline" style="display: flex; flex-direction: row;">
                         <div class="">
                             <input type="text" name="searchName" placeholder="Search">
                         </div>
                         <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
-                <a class="cart-box">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span id="cartCount" class="num">0</span>
+                <a class="cart-box" (click)="checkUser()">
+                    <i class="bi bi-cart"></i>
+                    <span id="cartCount" class="num">{{cartCount}}</span>
                 </a>
             </div>
         </div>
@@ -39,35 +67,33 @@
 </header>
 
 <body>
-    <div class="content-body">
-        <div class="main-product">
-            <div class="container-web">
-                <div class="head-product">
-                    <div class="title-component-cate">Danh mục: </div>
-                    <div class="list-component-cate">
-
-                        <li>
-                            <a>Loại sản phẩm</a>
-                        </li>
-                    </div>
-                    <div class="state-component-cate"></div>
+    <div class="main-product">
+        <div class="container-web">
+            <div class="head-product">
+                <div class="title-component-cate">Danh mục: </div>
+                <a (click)="getAllProduct()" >Tất cả</a>
+    
+                <div class="list-component-cate" *ngFor="let cate of categoryDto">
+    
+                    <a (click)="getProductByCategory(cate.id)">{{cate.name}}</a>
+    
                 </div>
-                
-                <div class="list-product">
-                    <div class="item-product" *ngFor="let product of products">
-                        <div class="img-box">
-                            <img [src]="'http://localhost:8080/images/' + product.image">
+                <div class="state-component-cate"></div>
+            </div>
+            <div class="list-product">
+                <div class="item-product" *ngFor="let product of products">
+                    <div class="img-box">
+                        <img [src]="'http://localhost:8080/images/' + product.image">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.productName}}</h5>
+                        <div class="card-detail">
+                            <p class="card-text money">{{product.price}}</p>
+                            <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{product.productName}}</h5>
-                            <div class="card-detail">
-                                <p class="card-text money">{{product.price}}</p>
-                                <span class="card-rate">4.5<i class="fa-solid fa-star"></i></span>
-                            </div>
-                            <div class="box-button">
-                                <button class="btn-wrap detail" routerLink="/user/product/{{product.id}}">Chi tiết sản
-                                    phẩm</button>
-                            </div>
+                        <div class="box-button">
+                            <button class="btn-wrap detail" routerLink="/product/{{product.id}}">Chi tiết sản
+                                phẩm</button>
                         </div>
                     </div>
                 </div>

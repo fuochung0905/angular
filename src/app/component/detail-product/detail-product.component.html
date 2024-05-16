@@ -1,3 +1,71 @@
+
+<header>
+    <div class="container-large">
+        <div class="top-box">
+            <div class="logo">
+                <a routerLink="/user/home" routerLinkActive="active" class=""><span>UTC2</span><span style="color: #000;">Store</span></a>
+            </div>
+            <div *ngIf="!isUserLoggedIn">
+                <div class="login-wrap">
+                    <div class="login-item log">
+                        <a class="btn-wrap" routerLink="/login" routerLinkActive="active">Đăng nhập</a>
+                    </div>
+                    <div class="login-item reg">
+                        <a class=" btn-wrap" routerLink="/signup" routerLinkActive="active">  Đăng kí</a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isUserLoggedIn">
+                <div id="tooltip-login-wrap">
+                    <div class="tooltip-login-hover">
+                        <li class="login-item">
+                            <img  [src]="'http://localhost:8080/images/' +userDto.image" style="width: 35px;height: 35px;" >
+                        </li>
+                        <li class="login-item">
+                            <div class="username-box">
+                                <p class="username">{{userDto.firstName}} {{userDto.lastName}}</p>
+                                <div class="box-action">
+                                    <a routerLink="/user/userInfor" routerLinkActive="active">Thông tin tài
+                                        khoản</a>
+                                    <a routerLink="/user/historyOrder" routerLinkActive="active">Thông tin đơn
+                                        hàng</a>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="login-item">
+                            <form class="form-inline" (ngSubmit)=" logout()">
+                                <button type="submit" class="logout btn-wrap">Đăng Xuất</button>
+                            </form>
+                        </li>
+
+
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="bottom-box">
+            <ul class="main-menu">
+            </ul>
+            <div class="search-wrap">
+                <div class="search-box">
+                    <form class="form-inline" style="display: flex; flex-direction: row;">
+                        <div class="">
+                            <input type="text" name="searchName" placeholder="Search">
+                        </div>
+                        <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <a class="cart-box" (click)="checkUser()">
+                    <i class="bi bi-cart"></i>
+                    <span id="cartCount" class="num">{{cartCount}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
 <div class="container-web">
     <div class="detail-card-wrapper">
         <div class="card">
@@ -219,3 +287,53 @@
 
     </div>
 </div>
+
+<footer>
+    <div class="container-large">
+        <div class="wrap-footer">
+            <div class="about-us">
+                <div class="title fw-semibold">Về chúng tôi</div>
+                <div class="logo">
+                    <a class=""><span>UTC2</span><span>Store</span></a>
+                </div>
+                <p class="fw-lighter pt-2">Đến với UTC2<span>STORE</span> quý khách sẽ được trải nghiệm các sản phẩm
+                    hoàn toàn mới với chất lượng đảm bảo uy tín - mẫu mã.</p>
+            </div>
+            <div class="other-us">
+                <div class="title fw-semibold">Chi nhánh</div>
+                <span class="fw-lighter">Cơ sở: <span class="">Đ.448 Lê Văn Việt, P. Tăng Nhơn Phú A, Tp.Thủ Đức,
+                        Tp</span></span><br />
+            </div>
+            <div class="contact-us">
+                <div class="title fw-semibold">Liên hệ</div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Điện thoại</p>
+                    <span class="">0399333643</span>
+                </div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Email CSKH</p>
+                    <span class="">6251071033@st.utc2.edu.vn</span>
+                </div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Email công việc</p>
+                    <span class="">phuochungnguyen.work@gmail.com</span>
+                </div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Thứ Hai - Chủ Nhật</p>
+                    <span class="">8h30-22h</span>
+                </div>
+            </div>
+            <div class="follow-us">
+                <div class="title fw-semibold">Hệ thống cửa hàng</div>
+                <p class="fw-lighter">Hiện tại @item.namestorage<span>STORE</span> chỉ hoạt động kinh doanh qua các kênh
+                    trực tuyến: Website, Facebook, Instagram, Shopee, Lazada & Tiktok shop</p>
+                <div class="list-icon">
+                    <a> <i class="fa-brands fa-instagram"></i></a>
+                    <a> <i class="fa-brands fa-facebook-f"></i></a>
+                    <a> <i class="fa-brands fa-tiktok"></i></a>
+                    <a> <i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

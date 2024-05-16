@@ -3,7 +3,7 @@
         <div class="container-large">
             <div class="top-box">
                 <div class="logo" style="cursor: pointer;">
-                    <a routerLink="/user/home" routerLinkActive="active"><span>UTC2</span><span style="color: #000;">Store</span></a>
+                    <a routerLink="" routerLinkActive="active"><span>UTC2</span><span style="color: #000;">Store</span></a>
                 </div>
                 <div>
                     <div id="tooltip-login-wrap">
@@ -12,29 +12,6 @@
                                 <img  [src]="'http://localhost:8080/images/' +userDto.image" style="width: 35px;height: 35px;" >
                             </li>
                             <li class="login-item">
-                                <!-- <a class="nav-link text-dark" title="Manage">
-                                    <mat-accordion>
-                                        <mat-expansion-panel (opened)="panelOpenState = true"
-                                            (closed)="panelOpenState = false">
-                                            <mat-expansion-panel-header>
-                                              <mat-panel-title>
-                                                <span id="username">{{userDto.firstName}} {{userDto.lastName}} </span>
-                                              </mat-panel-title>
-                                        
-                                                <mat-panel-title>
-                                                    <span id="username">Tên khách hàng</span>
-                                                </mat-panel-title>
-
-                                            </mat-expansion-panel-header>
-                                            <a routerLink="/user/userInfor" routerLinkActive="active">Thông tin tài
-                                                khoản</a>
-                                            <a routerLink="/user/historyOrder" routerLinkActive="active">Thông tin đơn
-                                                hàng</a>
-                                        </mat-expansion-panel>
-                                    </mat-accordion>
-
-
-                                </a> -->
                                 <div class="username-box">
                                     <p class="username">{{userDto.firstName}} {{userDto.lastName}}</p>
                                     <div class="box-action">

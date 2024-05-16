@@ -48,7 +48,7 @@ export class LoginComponent {
           }
           else
           if(UserStorageService.isUserLogggedIn()){
-            this.router.navigateByUrl('home');
+            this.router.navigateByUrl('');
           }
        
           console.log('Login successfully:', res);

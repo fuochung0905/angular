@@ -1,22 +1,27 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../service/user.service';
-import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
-import { ProductDto } from 'src/app/dto/ProductDto.model';
-import { VariationDto } from 'src/app/dto/VariationDto.model';
-import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
-import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
-import { ColorSize } from 'src/app/dto/ColorSize.model';
-import { ReviewDto } from 'src/app/dto/ReviewDto.model';
-import { ProductItemVariationOptionDto } from 'src/app/dto/ProductItemVariationOptionDto.model';
 import { forkJoin } from 'rxjs';
+import { ColorSize } from 'src/app/dto/ColorSize.model';
+import { ProductDto } from 'src/app/dto/ProductDto.model';
+import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
+import { ProductItemVariationOptionDto } from 'src/app/dto/ProductItemVariationOptionDto.model';
+import { ReviewDto } from 'src/app/dto/ReviewDto.model';
+import { UserDto } from 'src/app/dto/UserDto.model';
+import { VariationDto } from 'src/app/dto/VariationDto.model';
+import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
+import { UserStorageService } from 'src/app/storage/user-storage.service';
+import { UserService } from 'src/app/user/service/user.service';
 
 @Component({
-  selector: 'app-detailproduct',
-  templateUrl: './detailproduct.component.html',
-  styleUrls: ['./detailproduct.component.css']
+  selector: 'app-detail-product',
+  templateUrl: './detail-product.component.html',
+  styleUrls: ['./detail-product.component.css']
 })
-export class DetailproductComponent {
+export class DetailProductComponent {
+  cartCount: number = 0;
+  isUserLoggedIn:boolean=UserStorageService.isUserLogggedIn();
+  isAdminLoggedIn:boolean=UserStorageService.isUserLogggedIn();
+  userDto:UserDto;
   sumRating! :number;
   countReview!:number;
   listVariation: VariationDto[] = [];
@@ -42,6 +47,7 @@ export class DetailproductComponent {
     this.id = this.route.snapshot.params['id'];
     this.colorSize = new ColorSize();
     this.product = new ProductDto();
+    this.userDto=new UserDto();
   }
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -51,10 +57,32 @@ export class DetailproductComponent {
     this.getAllProductItemByProduct();
     this.getAllVariationOption();
     this.getAllReviewByProduct();
+    this.getCurrentUser();
+    this.getCartCount();
     this.getRatingProductId();
+    this.router.events.subscribe(event=>{
+      this.isUserLoggedIn=UserStorageService.isUserLogggedIn();
+    });
+    this.router.events.subscribe(event=>{
+      this.isAdminLoggedIn=UserStorageService.isAdminLogggedIn();
+    });
   
    
   };
+  checkUser(){
+    if(this.isUserLoggedIn){
+      this.router.navigateByUrl('userCart');
+    }
+    else{
+      if(this.isAdminLoggedIn){
+        this.router.navigateByUrl('login');
+      }
+      else{
+        this.router.navigateByUrl('login');
+      }
+      this.router.navigateByUrl('login');
+    }
+  }
   getAllReviewByProduct() {
     this.id = this.route.snapshot.params['id'];
     this.userService.getAllReviewByProduct(this.id).subscribe((res) => {
@@ -76,27 +104,43 @@ addToRendered(idColor: any): void {
     this.selectedVariationColorId = variationId;
   }
   addOrder(): void {
-    this.colorSize.idColor = this.sizeId;
-    this.colorSize.variationOptionId = this.colorId;
-    this.userService.addCart(this.colorSize).subscribe((res) => {
-      this.router.navigateByUrl('/order');
-
-    },
-      (error) => {
+    if(this.isUserLoggedIn){
+      this.colorSize.idColor = this.sizeId;
+      this.colorSize.variationOptionId = this.colorId;
+      this.userService.addCart(this.colorSize).subscribe((res) => {
         this.router.navigateByUrl('/order');
-      })
+  
+      },
+        (error) => {
+          this.router.navigateByUrl('/order');
+        })
+    }
+    else{
+      this.router.navigateByUrl('login');
+    }
+
   };
   addCart(): void {
-    this.colorSize = new ColorSize();
-    this.colorSize.idColor = this.sizeId;
-    this.colorSize.variationOptionId = this.colorId;
-    this.colorSize.quantity = 1;
-    this.userService.addCart(this.colorSize).subscribe((res) => {
-
-    },
-      (error) => {
-
-      })
+    if(this.isUserLoggedIn){
+      this.colorSize = new ColorSize();
+      this.colorSize.idColor = this.sizeId;
+      this.colorSize.variationOptionId = this.colorId;
+      this.colorSize.quantity = 1;
+      this.userService.addCart(this.colorSize).subscribe((res) => {
+        if(res.message==='User not found'){
+          this.router.navigateByUrl('login');
+        }
+      },
+        (error) => {
+          if(error.message==='User not found'){
+            this.router.navigateByUrl('login');
+          }
+        })
+    }
+    else{
+      this.router.navigateByUrl('login');
+    }
+    
   };
 
   getProductDetails(): void {
@@ -104,7 +148,6 @@ addToRendered(idColor: any): void {
       this.product = product;
     },
       (error) => {
-
       }
     );
   };
@@ -186,6 +229,21 @@ addToRendered(idColor: any): void {
     // Return the current value of this.rating, which might not be calculated yet
     return this.rating;
   }
-
-
+  getCurrentUser(){
+    this.userService.getCurrentUser().subscribe((res)=>{
+        this.userDto=res;
+    })
+  }
+  logout(){
+    this.userService.logout().subscribe((res)=>{
+      UserStorageService.signOut();
+      this.router.navigateByUrl('login');
+    })
+  };
+  getCartCount(){
+    this.userService.getCartCountItem().subscribe((res:number)=>{
+       this.cartCount = res;
+       console.log(res);
+    })
+  }
 }
