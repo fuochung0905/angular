@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
 import { ProductVariationOptionDto } from 'src/app/dto/ProductVariationOptionDto.model';
 import { productClickColor } from 'src/app/dto/productClickColor.model';
 import { ColorSize } from 'src/app/dto/ColorSize.model';
 import { UserDto } from 'src/app/dto/UserDto.model';
 import { ReviewDto } from 'src/app/dto/ReviewDto.model';
+import { OrderRequest } from 'src/app/dto/OrderRequest.mode';
+import { OrderedRequest } from 'src/app/dto/OrderedRequest.model';
+import { CartDetailDto } from 'src/app/dto/CartDetailDto.model';
 
 const BASIC_URL = 'http://localhost:8080';
 
@@ -39,6 +42,18 @@ export class UserService {
       headers:this.createAuthorizationHeader()
     });
   };
+  addPaymentOrder(order: OrderedRequest): Observable<string> {
+    return this.httpClient.post('http://localhost:8080/api/user/vn-pay/payment', order, {
+      headers: this.createAuthorizationHeader(),
+      responseType: 'text'
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  private handleError(error: HttpErrorResponse) {
+    console.error(`Error: ${error.message}`);
+    return throwError(() => new Error('Something went wrong with the payment API'));
+  }
   removeCart(colorSize:ColorSize):Observable<any>{
     return this.httpClient.post(BASIC_URL + '/api/user/cart/remove',colorSize,{
       headers: this.createAuthorizationHeader()
@@ -112,6 +127,11 @@ export class UserService {
       headers:this.createAuthorizationHeader()
     });
   };
+  getCartDetailById(cartId:number):Observable<any>{
+    return this.httpClient.get(BASIC_URL+`/api/user/cartDetail/${cartId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
   getHistoryOrder():Observable<any>{
     return this.httpClient.get(BASIC_URL+'/api/user/order/history',{
       headers:this.createAuthorizationHeader()
@@ -158,6 +178,25 @@ getAllVariationOption():Observable<any>{
 getAllProductItemVariationOptionByProductItem(productItemId:number):Observable<any>{
   return this.httpClient.get(BASIC_URL+`/api/guest/product-item-variation-option/productItem/${productItemId}`);
 };
+getProductBySearchLikeName(productName:string):Observable<any>{
+  return this.httpClient.get(BASIC_URL+`/api/guest/product/search?productName=${productName}`)
+};
+
+getAllPayment():Observable<any>{
+  return this.httpClient.get(BASIC_URL+'/api/user/payment/',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getAllDelivery():Observable<any>{
+  return this.httpClient.get(BASIC_URL+'/api/user/delivery/',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+getAllPaymentTypeByPaymentId(paymentId:number):Observable<any>{
+  return this.httpClient.get(BASIC_URL+`/api/user/paymentType/payment/${paymentId}`,{
+    headers:this.createAuthorizationHeader()
+  });
+};
 updateUserInfor(userDto:UserDto):Observable<any>{
   return this.httpClient.post(BASIC_URL+'/api/user/information/',userDto,{
     headers:this.createAuthorizationHeader()
@@ -181,5 +220,9 @@ logout():Observable<any>{
       headers:this.createAuthorizationHeader()
     });
 };
-
+deleteCartDetailById(cartId:number):Observable<any>{
+  return this.httpClient.delete(BASIC_URL+`/api/user/cart/${cartId}`,{
+    headers:this.createAuthorizationHeader()
+  });
+};
 }

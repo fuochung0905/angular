@@ -50,9 +50,9 @@
             </ul>
             <div class="search-wrap">
                 <div class="search-box">
-                    <form class="form-inline" style="display: flex; flex-direction: row;">
+                    <form class="form-inline" style="display: flex; flex-direction: row;" (ngSubmit)="searchProductName()">
                         <div class="">
-                            <input type="text" name="searchName" placeholder="Search">
+                            <input type="text" name="productName" [(ngModel)]="productName"  placeholder="Search">
                         </div>
                         <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>

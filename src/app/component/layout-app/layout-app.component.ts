@@ -14,6 +14,7 @@ export class LayoutAppComponent {
   cartCount: number = 0;
   products: any[] = [];
   panelOpenState = false;
+  productName:string='';
   userDto:UserDto;
   isUserLoggedIn:boolean=UserStorageService.isUserLogggedIn();
   isAdminLoggedIn:boolean=UserStorageService.isUserLogggedIn();
@@ -84,5 +85,10 @@ export class LayoutAppComponent {
        console.log(res);
     })
   }
-
+  searchProductName(){
+    this.userService.getProductBySearchLikeName(this.productName).subscribe((res)=>{
+      this.products=res;
+      console.log(res);
+    })
+  }
 }

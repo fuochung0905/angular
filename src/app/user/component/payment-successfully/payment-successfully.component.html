@@ -1,0 +1,24 @@
+<div *ngIf="status" class="body">
+    
+    <div class="container">
+      <div class="header">
+        <!-- <img  [src]="'http://localhost:8080/images/success.jpg/' "  > -->
+          <h1>Thanh toán {{ status === 'success' ? 'thành công!' : 'thất bại!' }}</h1>
+      </div>
+      <div class="order-info">
+          <p>Cảm ơn bạn đã hoàn thành thanh toán.</p>
+          <p>Mã đơn hàng của bạn là: <strong>#{{orderInfo}}</strong></p>
+         
+          <p>Tông tiền đơn hàng của bạn là: <strong>{{totalPrice}}</strong></p>
+          <p>Thời gian bạn thanh toán đơn hàng của bạn là: <strong>{{paymentTime}}</strong></p>
+          <p>Bạn sẽ nhận được xác nhận qua email trong thời gian sớm nhất.</p>
+          <button (click)="handlerButtonOrdered()" class="btn-donmua">Thông tin đơn hàng</button>
+          <br>
+          <button (click)="handleButton()" class="btn-thanhtoan">Quay về trang chủ</button>
+      </div>
+  </div>
+    <div *ngIf="status === 'fail'">
+      <p>Quá trình thanh toán thất bại. Vui lòng thử lại.</p>
+      <button (click)="handleButton()" class="btn-thanhtoan">Quay về trang chủ</button>
+    </div>
+</div>

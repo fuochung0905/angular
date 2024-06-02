@@ -120,5 +120,8 @@ this.adminService.updateProductItemVariatonOption(id,this.updateProductItemVaria
   console.log("success",res);
   location.reload();
 })
+};
+pageVariationOption(){
+  this.router.navigateByUrl("/admin/add-variation-option");
 }
 }

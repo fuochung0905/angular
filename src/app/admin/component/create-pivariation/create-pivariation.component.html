@@ -1,4 +1,5 @@
 <mat-toolbar>{{productDto.productName}}</mat-toolbar>
+<button class="btn-wrap add-prd" (click)="pageVariationOption()">Thêm biến thể</button>
 <div style="display: flex;">
   <div>
     <img class="images" [src]="'http://localhost:8080/images/' + productItemDto.image"
@@ -13,7 +14,7 @@
   </div>
   <div class="box-detail">
     <label class="title">Số lượng : </label>
-    <label> {{productItemDto.qyt_stock}}</label>
+    <label> {{productItemDto.quantity}}</label>
   </div>
   <div class="box-detail">
     <label class="title">Kích thước : </label>

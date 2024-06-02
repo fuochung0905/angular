@@ -29,13 +29,13 @@
 
 
 
-                <form style="padding: 0;" (ngSubmit)="submitOrder()">
+                <form style="padding: 0;" >
                     <table style="box-shadow: unset; border: 1px solid #ccc;" mat-table [dataSource]="carts" class="mat-elevation-z8">
                         <ng-container matColumnDef="thaotac">
                           <th mat-header-cell *matHeaderCellDef> </th>
                           <td mat-cell *matCellDef="let element">
                             <label>
-                                <input  type="checkbox" 
+                                <input  type="checkbox" (click)="handleCartId(element.id)"
                                           [checked]="selectedOrderId === element.id" 
                                            (change)="updateSelectedOrder(element.id)" />
                                 </label>
@@ -81,32 +81,41 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>
-                      <button style="margin-top: 15px;" class="btn-wrap order" type="submit">Đặt hàng</button>
+                   
     </form>
         </div>
         <div class="order-complete-right">
                 <div class="order-complete-product">
-                    <div class="order-complete-payment">
-                        <h3>Phương Thức Thanh Toán</h3>
-                        <div class="chose-payment">
-                            <div class="chosen-payment">
-                                    <i class="fa fa-money"></i>
-                                    <span>Thanh Toán Khi Nhận Hàng</span>
+                    <h3>Phương Thức Thanh Toán</h3>
+                        <div class="order-complete-payment" *ngFor="let payment of listPayment">
+                            <div class="chose-payment">
+                                <div class="chosen-payment">
+                                    <i class="fa fa-money" ></i>
+                                    <mat-radio-button (click)="handlePaymentSelection(payment.id)">{{payment.name}}</mat-radio-button>
+                                    <div *ngIf="selectedPaymentId === payment.id">
+                                       <div *ngFor="let paymentType of listpaymentType">
+                                        <mat-radio-button (click)="handlePaymentTypeSelection(paymentType.id)">
+                                            <img  [src]="'http://localhost:8080/images/' +paymentType.image" style="width: 50px; height: 50px;" >
+                                            {{paymentType.value}}</mat-radio-button>
+                                       <br>
+                                    </div>
+                                    </div>
+                                    <span></span>
+                                </div>
                             </div>
-                               
+                            <br>
                         </div>
-                    </div>
                         <hr>
                         <hr>
                     <div class="order-chose-ship">
                             <h3>Giao Hàng</h3>
-                            <div class="chosen-ship">
+                            <div class="chosen-ship" >
                                 <div>
-                                    <input type="radio" >
+                                    <input (click)="handleDelivery()" type="radio" name="delivery"  >
                                 </div>
                                 <div class="chosen-ship-detail">
                                     <a>Tiêu chuẩn</a>
-                                    <a id="ship-price">20000 VND</a>
+                                    <a id="ship-price">20.000 VND</a>
                                     <div>
                                         <a>Dự kiến nhận: </a>
                                         <a>Na/Na</a>
@@ -123,11 +132,11 @@
                         <div class="end-details">
                             <div class="item-all-price">
                                 <a>Tổng tiền sản phẩm: </a>
-                                <a id="pay-item-price">00.000000</a>
+                                <a id="pay-item-price">{{cartDetailDto.price*cartDetailDto.quantity}}</a>
                             </div>
                             <div class="item-ship-price">
                                 <a>Phí vận chuyển: </a>
-                                <a id="pay-ship">00.000000 </a>
+                                <a id="pay-ship">{{priceDelivery}} </a>
                             </div>
                             <div class="item-discount-price">
                                 <a>Tổng giảm: </a>
@@ -136,8 +145,16 @@
                             <hr>
                             <div class="item-end">
                                 <a>Tổng thanh toán: </a>
-                                <a id="pay-all">00.000000</a>
+                                <a id="pay-all">{{(cartDetailDto.price*cartDetailDto.quantity)+priceDelivery}}</a>
                             </div>
+                        </div>
+                    </div>
+                    <div *ngIf="checkCartButton==true && checkDeliveryButton==true && checkPaymentButton==true">
+                        <div *ngIf="selectedPaymentId != 1">
+                            <button style="margin-top: 15px;" class="btn-wrap order" type="submit" ><a href="{{link}}">Đặt hàng</a></button>
+                        </div>
+                      <div *ngIf="selectedPaymentId ===1">
+                            <button style="margin-top: 15px;" class="btn-wrap order" (click)="submitOrder()" type="submit" >Đặt hàng</button>
                         </div>
                     </div>
                 </div>

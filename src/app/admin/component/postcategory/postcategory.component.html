@@ -5,6 +5,7 @@
 
       <input class="form-control input-top" formControlName="name" name="name" [(ngModel)]="categoryDto.name" type="text" aria-required="true"
         placeholder="Loại sản phẩm" required />
+    
       <div style="color: red;"
         *ngIf="categoryForm.controls['name'].invalid && (categoryForm.controls['name'].dirty || categoryForm.controls['name'].touched)">
         <div *ngIf="categoryForm.controls['name'].errors && categoryForm.controls['name'].errors['required']">

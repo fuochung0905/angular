@@ -1,8 +1,14 @@
 export  class OrderRequest{
     cartid:number;
      message:string;
-     constructor(cartid:number,message:string){
-        this.cartid=cartid;
-        this.message=message;
+     paymentId:number;
+     paymentTypeId:number;
+
+     constructor(){
+        this.cartid=0;
+        this.message='';
+        this.paymentId=0;
+        this.paymentTypeId=0;
+
      }
 }

@@ -49,7 +49,7 @@ export class ProductItemComponent {
     this.getAllVariationOptionWithColorByProduct();
     this.productItemForm=this.fb.group({
       productId: [''],
-      qyt_stock: ['',[Validators.required, Validators.pattern('^[0-9]*$')]],
+      // qyt_stock: ['',[Validators.required, Validators.pattern('^[0-9]*$')]],
       price: ['',[Validators.required, Validators.pattern('^[0-9]*$')]],
       idColor:['']
     });
@@ -76,7 +76,7 @@ updateVariationOptions(event: any) {
       const formData :FormData=new FormData();
       formData.append('file',this.selectedFile);
       formData.append('productId',this.id);
-      formData.append('qyt_stock',this.productItemForm.get('qyt_stock')?.value);
+      // formData.append('qyt_stock',this.productItemForm.get('qyt_stock')?.value);
       formData.append('price',this.productItemForm.get('price')?.value);
       formData.append('idColor',this.idColor);
 this.adminService.addProductItem(formData).subscribe(

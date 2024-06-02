@@ -26,7 +26,7 @@
                 </div>
                 <!--    -->
                 <div class="item-moneypay">
-                    <h5>Tổng tiền</h5>
+                    <h5>Thao tác</h5>
                 </div>
                 <!--    -->
             </section>
@@ -60,7 +60,8 @@
                     </div>
                     <!--    -->
                     <div class="item-moneypay money">
-                        <p>{{cart.price}} &nbsp;₫</p>
+                        <button (click)="deleteCartById(cart.id)">Xóa</button>
+                        
                     </div>
                   
                 </section>

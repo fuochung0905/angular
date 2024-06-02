@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { ColorSize } from 'src/app/dto/ColorSize.model';
@@ -10,6 +11,7 @@ import { UserDto } from 'src/app/dto/UserDto.model';
 import { VariationDto } from 'src/app/dto/VariationDto.model';
 import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
 import { UserStorageService } from 'src/app/storage/user-storage.service';
+import { DialogNotQuantityComponent } from 'src/app/user/component/dialog-not-quantity/dialog-not-quantity.component';
 import { UserService } from 'src/app/user/service/user.service';
 
 @Component({
@@ -43,6 +45,7 @@ export class DetailProductComponent {
   renderedIds: any[] = [];
   constructor(private route: ActivatedRoute,
     private userService: UserService,
+    private dialog: MatDialog,
     private router: Router) {
     this.id = this.route.snapshot.params['id'];
     this.colorSize = new ColorSize();
@@ -108,11 +111,20 @@ addToRendered(idColor: any): void {
       this.colorSize.idColor = this.sizeId;
       this.colorSize.variationOptionId = this.colorId;
       this.userService.addCart(this.colorSize).subscribe((res) => {
-        this.router.navigateByUrl('/order');
-  
+        if(res.message==='not quantity'){
+          this.openDialog();
+         }
+         if(res.message==='Thêm thành công'){
+          this.router.navigateByUrl('/order');
+         }
       },
         (error) => {
-          this.router.navigateByUrl('/order');
+          if(error.message==='not quantity'){
+            this.openDialog();
+           }
+           if(error.message==='Thêm thành công'){
+            this.router.navigateByUrl('/order');
+           }
         })
     }
     else{
@@ -120,6 +132,7 @@ addToRendered(idColor: any): void {
     }
 
   };
+
   addCart(): void {
     if(this.isUserLoggedIn){
       this.colorSize = new ColorSize();
@@ -130,11 +143,17 @@ addToRendered(idColor: any): void {
         if(res.message==='User not found'){
           this.router.navigateByUrl('login');
         }
+        if(res.message==='not quantity'){
+          this.openDialog();
+        }
       },
         (error) => {
           if(error.message==='User not found'){
             this.router.navigateByUrl('login');
           }
+          if(error.message==='not quantity'){
+            this.openDialog();
+           }
         })
     }
     else{
@@ -245,5 +264,10 @@ addToRendered(idColor: any): void {
        this.cartCount = res;
        console.log(res);
     })
+  };
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogNotQuantityComponent, {
+      width: '250px',
+    });
   }
 }

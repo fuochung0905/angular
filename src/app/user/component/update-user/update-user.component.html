@@ -1,7 +1,7 @@
 <div class="container-web">
     <h4>Thông tin tài khoản</h4>
-    <div class="wrap-form">
-        <form (ngSubmit)="updateInfor()">
+    <div class="wrap-form"> 
+        <form (ngSubmit)="updateInfor()" [formGroup]="userForm">
             <div class="input-wrap">
                 <label>Họ :</label>
                 <input type="text" name="firstName" [(ngModel)]="userDto.firstName" value="{{userDto.firstName}}">
@@ -16,10 +16,19 @@
             </div>
             <div class="input-wrap">
                 <label>SĐT :</label>
-                <input type="text" name="phoneNumber" [(ngModel)]="userDto.phoneNumber" value="{{userDto.phoneNumber}}">
+                <input type="text" name="phoneNumber" formControlName="phoneNumber" [(ngModel)]="userDto.phoneNumber" value="{{userDto.phoneNumber}}">
+                <div style="color: red;"
+                *ngIf="userForm.controls['phoneNumber'].invalid && (userForm.controls['phoneNumber'].dirty || userForm.controls['phoneNumber'].touched)">
+                <div *ngIf="userForm.controls['phoneNumber'].errors && userForm.controls['phoneNumber'].errors['required']">
+                  Vui lòng nhập số điện thoại</div>
+                  <div *ngIf="userForm.controls['phoneNumber'].errors && userForm.controls['phoneNumber'].errors['pattern']">
+                    Điện thoại không đúng định dạng
+                  </div>
+              </div>
             </div>
+          
             <div class="input-wrap">
-                <button style="max-width: 150px; margin-top: 15px;" class="btn-wrap add-prd" type="submit">Cập nhật</button>
+                <button style="max-width: 150px; margin-top: 15px;" class="btn-wrap add-prd" type="submit" [disabled]="userForm.invalid">Cập nhật</button>
             </div>
         </form>
 

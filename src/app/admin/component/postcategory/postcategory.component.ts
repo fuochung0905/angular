@@ -28,9 +28,8 @@ export class PostcategoryComponent {
       });
   }
   ngOnInit(): void {
-    this.adminservice.getAllCategories().subscribe(products => {
-      // Lấy sản phẩm đầu tiên từ danh sách sản phẩm
-      this.categories = products;
+    this.adminservice.getAllCategories().subscribe((res) => {
+      this.categories = res;
       
     });
   }

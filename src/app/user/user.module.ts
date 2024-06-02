@@ -17,8 +17,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import { ReviewProductComponent } from './component/review-product/review-product.component';
 import { NotPhoneNumberComponent } from './component/not-phone-number/not-phone-number.component';
-
-
+import { DialogNotQuantityComponent } from './component/dialog-not-quantity/dialog-not-quantity.component';
+import { DialogNotOrderComponent } from './component/dialog-not-order/dialog-not-order.component';
+import { DetailOrderComponent } from './component/detail-order/detail-order.component';
+import { PaymentSuccessfullyComponent } from './component/payment-successfully/payment-successfully.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,11 @@ import { NotPhoneNumberComponent } from './component/not-phone-number/not-phone-
     DialogorderComponent,
     UpdateUserComponent,
     ReviewProductComponent,
-    NotPhoneNumberComponent
+    NotPhoneNumberComponent,
+    DialogNotQuantityComponent,
+    DialogNotOrderComponent,
+    DetailOrderComponent,
+    PaymentSuccessfullyComponent
   ],
   imports: [
     CommonModule,

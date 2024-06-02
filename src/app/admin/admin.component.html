@@ -11,7 +11,7 @@
       </div>
       <div class="side-bar">
         <div class="menu" (click)="toggleSubMenu($event)">
-          <div class="item"><a href="#">Dashboard</a></div>
+          <div class="item"><a routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a></div>
           <div class="item">
             <a class="sub-btn">Quản lý danh mục<i class="fa-solid fa-angle-down"></i></a>
             <div class="sub-menu">
@@ -34,6 +34,20 @@
             <div class="sub-menu">
               <a routerLink="/admin/user-all" routerLinkActive="active" class="sub-item">Tất cả</a>
               <a href="#" class="sub-item">Khôi phục tài khoản</a>
+            </div>
+          </div> 
+          <div class="item">
+            <!-- <a class="sub-btn">Quản lý phương thức vận chuyển<i class="fa-solid fa-angle-down"></i></a> -->
+            <a routerLink="/admin/delivery" routerLinkActive="active" class="sub-item">Thêm phương thức vân chuyển</a>
+            <div class="sub-menu">
+            
+            </div>
+          </div> 
+          <div class="item">
+            <!-- <a class="sub-btn">Quản lý phương thức thanh toán<i class="fa-solid fa-angle-down"></i></a> -->
+            <a routerLink="/admin/payment" routerLinkActive="active" class="sub-item">Thêm phương thức thanh toán</a>
+            <div class="sub-menu">
+              
             </div>
           </div> 
         </div>
