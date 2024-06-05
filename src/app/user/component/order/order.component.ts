@@ -275,7 +275,7 @@ submitOrder(){
         }
       },
       (error) => {
-          this.router.navigateByUrl('/user/historyOrder');
+          this.router.navigateByUrl('/user/order-success');
       }
     );
   } else {

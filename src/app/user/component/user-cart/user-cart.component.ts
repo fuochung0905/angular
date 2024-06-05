@@ -35,12 +35,14 @@ export class UserCartComponent {
     this.colorSize.idColor=idSize;
     this.colorSize.variationOptionId=idColor;
     this.colorSize.quantity=1;
-
+    console.log(this.colorSize);
     this.userService.addCart(this.colorSize).subscribe((res)=>{
       console.log(res.message);
+      this.getAllProduct();
     },
     (error)=>{
       console.log(error.message);
+      this.getAllProduct();
     })
   };
   removeCart(idColor:number,idSize:number){

@@ -62,7 +62,15 @@
 .ng-untouched {
     padding: 0px 15px;
 }
-
+.cart-product-name, .cart-product-total {
+    text-align: center; /* Căn giữa theo chiều ngang */
+  }
+.truncate {
+    max-width: 200px; /* Bạn có thể điều chỉnh chiều rộng này */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 .order-complete {
     display: flex;
     flex-direction: row;

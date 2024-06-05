@@ -1,1 +1,16 @@
-<p>detail-user works!</p>
+<div class="body">
+    <div class="container">
+        <div class="profile-header">
+            <img  [src]="'http://localhost:8080/images/'+userDto.image" style="width: 50px;height: 50px;" >
+            <h1>{{userDto.firstName}} {{userDto.lastName}}</h1>
+        </div>
+        <div class="profile-details">
+            <h2>Thông tin Người dùng</h2>
+            <p><strong>Họ:</strong> {{userDto.firstName}}</p>
+            <p><strong>Tên:</strong> {{userDto.lastName}}</p>
+            <p><strong>Tài khoản:</strong> {{userDto.email}}</p>
+            <p><strong>Số điện thoại:</strong> {{userDto.phoneNumber}}</p>
+        </div>
+    </div>
+    <button class="btn-wrap" (click)="onCancelClick()">Ok</button>
+</div>

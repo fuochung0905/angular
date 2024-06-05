@@ -30,6 +30,11 @@ export class AdminService {
         headers:this.createAuthorizationHeader()
       });
   };
+  getAdminUserById(userId:number):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/user/${userId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
   addProduct(productDto:FormData):Observable<any>{
       return this.http.post(BASIC_URL+'/api/admin/product/createNewProduct', productDto, {
         headers:  this.createAuthorizationHeader()
@@ -134,6 +139,11 @@ getAllVariationByCategoryt(categoryId:any):Observable<any>{
       headers:this.createAuthorizationHeader()
     });
   }
+  getOrderDetailById(orderDetailId:number):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/order-detail/${orderDetailId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  };
 updateCategory(categoryId:any,categoryDto:any):Observable<any>{
  return this.http.post(BASIC_URL+`/api/admin/category/updateCategory/${categoryId}`,categoryDto,{
     headers:this.createAuthorizationHeader()

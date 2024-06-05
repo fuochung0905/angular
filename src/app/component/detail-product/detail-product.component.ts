@@ -115,7 +115,9 @@ addToRendered(idColor: any): void {
           this.openDialog();
          }
          if(res.message==='Thêm thành công'){
+          this.getCartCount();
           this.router.navigateByUrl('/order');
+       
          }
       },
         (error) => {
@@ -123,6 +125,7 @@ addToRendered(idColor: any): void {
             this.openDialog();
            }
            if(error.message==='Thêm thành công'){
+            this.getCartCount();
             this.router.navigateByUrl('/order');
            }
         })
@@ -146,6 +149,7 @@ addToRendered(idColor: any): void {
         if(res.message==='not quantity'){
           this.openDialog();
         }
+        this.getCartCount();
       },
         (error) => {
           if(error.message==='User not found'){
@@ -154,6 +158,7 @@ addToRendered(idColor: any): void {
           if(error.message==='not quantity'){
             this.openDialog();
            }
+           this.getCartCount();
         })
     }
     else{

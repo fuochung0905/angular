@@ -44,17 +44,16 @@ updateInfor():void{
       verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
       panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
     });
-     this.getCurrentUser();
+    location.reload();
   })
 }
 updateUser():void{
   if(this.userForm.valid){
     const formData :FormData=new FormData();
     formData.append('file',this.selectedFile);
- 
 this.userService.updateUser(formData).subscribe(
 (res)=>{
-  console.log(formData.append);
+location.reload();
  
 },(error)=>{
   this._snackBar.open('Thêm sản phẩm thành công', 'Đóng', {
@@ -63,7 +62,7 @@ this.userService.updateUser(formData).subscribe(
     verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
     panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
   });
-   this.getCurrentUser();
+  location.reload();
 }
 );
   }

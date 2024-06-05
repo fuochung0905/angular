@@ -81,11 +81,10 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>
-                   
-    </form>
-        </div>
-        <div class="order-complete-right">
-                <div class="order-complete-product">
+                 </form>
+                 <hr>
+                 <br>
+                 <div class="order-complete-product">
                     <h3>Phương Thức Thanh Toán</h3>
                         <div class="order-complete-payment" *ngFor="let payment of listPayment">
                             <div class="chose-payment">
@@ -111,7 +110,8 @@
                             <h3>Giao Hàng</h3>
                             <div class="chosen-ship" >
                                 <div>
-                                    <input (click)="handleDelivery()" type="radio" name="delivery"  >
+                                    <mat-radio-button (click)="handleDelivery()" type="radio" name="delivery"></mat-radio-button>
+                                    <!-- <input (click)="handleDelivery()" type="radio" name="delivery"  > -->
                                 </div>
                                 <div class="chosen-ship-detail">
                                     <a>Tiêu chuẩn</a>
@@ -126,38 +126,82 @@
                     </div>
                         <hr>
                         <hr>
-                    <div class="order-complete-end">
-                        <h3>Thông tin đơn hàng</h3>
-                        <div class="order-conplete-end-ship"></div>
-                        <div class="end-details">
-                            <div class="item-all-price">
-                                <a>Tổng tiền sản phẩm: </a>
-                                <a id="pay-item-price">{{cartDetailDto.price*cartDetailDto.quantity}}</a>
-                            </div>
-                            <div class="item-ship-price">
-                                <a>Phí vận chuyển: </a>
-                                <a id="pay-ship">{{priceDelivery}} </a>
-                            </div>
-                            <div class="item-discount-price">
-                                <a>Tổng giảm: </a>
-                                <a id="pay-dícount">00.000000</a>
-                            </div>
-                            <hr>
-                            <div class="item-end">
-                                <a>Tổng thanh toán: </a>
-                                <a id="pay-all">{{(cartDetailDto.price*cartDetailDto.quantity)+priceDelivery}}</a>
-                            </div>
+                  
+                 
+                </div>
+        </div>
+        <div class="order-complete-right">
+            <div class="your-order">
+                <h3>Thông tin đơn hàng</h3>
+                <div class="your-order-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="cart-product-name">Sản phẩm</th>
+                                <th class="cart-product-total">Thông tin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="cart_item">
+                                <td class="cart-product-name">Tên:</td>
+                                <td class="cart-product-total text-center truncate"><span class="amount">{{cartDetailDto.productName}}</span></td>
+                            </tr>
+                            <tr class="cart_item">
+                                <td class="cart-product-name">Số lượng</td>
+                                <td class="cart-product-total text-center"><span class="amount">{{cartDetailDto.quantity}}</span></td>
+                            </tr>
+                            <tr class="cart_item">
+                                <td class="cart-product-name">Giá</td>
+                                <td class="cart-product-total text-center"><span class="amount">{{cartDetailDto.price}}</span></td>
+                            </tr>
+                            <tr class="cart_item">
+                                <td class="cart-product-name">Kích thước</td>
+                                <td class="cart-product-total text-center"><span class="amount">{{cartDetailDto.size}}</span></td>
+                            </tr>
+                            <tr class="cart_item">
+                                <td class="cart-product-name">Màu sắc</td>
+                                <td class="cart-product-total text-center"><span class="amount">{{cartDetailDto.color}}</span></td>
+                            </tr>
+                        </tbody>
+                   
+                    </table>
+                </div>
+                <div class="order-complete-end">
+                    
+                    <div class="order-conplete-end-ship"></div>
+                    <div class="end-details">
+                        <div class="item-all-price">
+                            <a>Tổng tiền sản phẩm: </a>
+                            <a id="pay-item-price">{{cartDetailDto.price*cartDetailDto.quantity}}</a>
                         </div>
-                    </div>
-                    <div *ngIf="checkCartButton==true && checkDeliveryButton==true && checkPaymentButton==true">
-                        <div *ngIf="selectedPaymentId != 1">
-                            <button style="margin-top: 15px;" class="btn-wrap order" type="submit" ><a href="{{link}}">Đặt hàng</a></button>
+                        <div class="item-ship-price">
+                            <a>Phí vận chuyển: </a>
+                            <a id="pay-ship">{{priceDelivery}} </a>
                         </div>
-                      <div *ngIf="selectedPaymentId ===1">
-                            <button style="margin-top: 15px;" class="btn-wrap order" (click)="submitOrder()" type="submit" >Đặt hàng</button>
+                        <!-- <div class="item-discount-price">
+                            <a>Tổng giảm: </a>
+                            <a id="pay-dícount">00.000000</a>
+                        </div> -->
+                        <hr>
+                        <div class="item-end">
+                            <a>Tổng thanh toán: </a>
+                            <a id="pay-all">{{(cartDetailDto.price*cartDetailDto.quantity)+priceDelivery}}</a>
                         </div>
                     </div>
                 </div>
+                <div class="payment-method">
+                    <div class="payment-accordion">
+                        <div *ngIf="checkCartButton==true && checkDeliveryButton==true && checkPaymentButton==true">
+                            <div *ngIf="selectedPaymentId != 1">
+                                <button style="margin-top: 15px;" class="btn-wrap order" type="submit" ><a href="{{link}}">Đặt hàng</a></button>
+                            </div>
+                          <div *ngIf="selectedPaymentId ===1">
+                                <button style="margin-top: 15px;" class="btn-wrap order" (click)="submitOrder()" type="submit" >Đặt hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
             <div class="more-address">
                     <div class="more-address-head">

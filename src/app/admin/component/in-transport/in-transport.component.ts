@@ -35,7 +35,7 @@ export class InTransportComponent {
   };
   updateTransportToDelivered(){
     this.adminServe.updateTransportToDelivered(this.orders).subscribe((res)=>{
-        location.reload();
+      this.getHistoryOrderTransport();
     },
   (error)=>{
     location.reload();

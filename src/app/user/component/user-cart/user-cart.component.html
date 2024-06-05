@@ -54,13 +54,13 @@
                         <p>{{cart.color}}</p>
                     </div>
                     <div class="item-quantity">
-                        <a class="btn btn-info amount" (click)="removeCart(cart.idSize,cart.idColor)">-</a>
+                        <a class="btn btn-info amount" (click)="removeCart(cart.idSize,cart.productItemId)">-</a>
                         <input id="item-soluong" class="amount" value="{{cart.quantity}}" type="number">
-                        <a class="btn btn-info amount" (click)="addCart(cart.idSize,cart.idColor)" >+</a>
+                        <a class="btn btn-info amount" (click)="addCart(cart.idSize,cart.productItemId)" >+</a>
                     </div>
                     <!--    -->
                     <div class="item-moneypay money">
-                        <button (click)="deleteCartById(cart.id)">Xóa</button>
+                        <button (click)="deleteCartById(cart.id)"  mat-icon-button aria-label="Delete" class="green-icon"><mat-icon>delete</mat-icon></button>
                         
                     </div>
                   

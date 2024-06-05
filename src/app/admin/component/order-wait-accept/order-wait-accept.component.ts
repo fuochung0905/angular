@@ -43,13 +43,13 @@ export class OrderWaitAcceptComponent {
       }
       duyetDonHang() {
       this.adminServe.updateHistoryOrderChoxacnhan(this.orders).subscribe((res)=>{
-       location.reload();
+        this.getHistoryOrderChoxacnhan();
       },
       (error)=>{
-        location.reload();
+        this.getHistoryOrderChoxacnhan();
       });
         } ;
     
-      displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
+      displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thanhtoan','thaotac'];
       dataSource = this.history;
   }

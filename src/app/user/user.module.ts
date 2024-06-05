@@ -21,6 +21,8 @@ import { DialogNotQuantityComponent } from './component/dialog-not-quantity/dial
 import { DialogNotOrderComponent } from './component/dialog-not-order/dialog-not-order.component';
 import { DetailOrderComponent } from './component/detail-order/detail-order.component';
 import { PaymentSuccessfullyComponent } from './component/payment-successfully/payment-successfully.component';
+import { OrderSuccessComponent } from './component/order-success/order-success.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { PaymentSuccessfullyComponent } from './component/payment-successfully/p
     DialogNotQuantityComponent,
     DialogNotOrderComponent,
     DetailOrderComponent,
-    PaymentSuccessfullyComponent
+    PaymentSuccessfullyComponent,
+    OrderSuccessComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +51,8 @@ import { PaymentSuccessfullyComponent } from './component/payment-successfully/p
     MatTableModule, 
     MatTabsModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule
     
   ]
 })

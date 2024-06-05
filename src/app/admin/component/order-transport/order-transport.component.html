@@ -45,10 +45,14 @@
         <th mat-header-cell *matHeaderCellDef>Tên người dùng  </th>
         <td mat-cell *matCellDef="let element"> {{element.username}} </td>
       </ng-container>
+      <ng-container matColumnDef="thanhtoan">
+        <th mat-header-cell *matHeaderCellDef>Thanh toán  </th>
+        <td mat-cell *matCellDef="let element"> {{element.paymentStatus}} </td>
+      </ng-container>
       <ng-container matColumnDef="thaotac">
         <th mat-header-cell *matHeaderCellDef>Thao tác </th>
         <td mat-cell *matCellDef="let element"> 
-          
+          <button ><a routerLink="/admin/detail-order/{{element.id}}" routerLinkActive="active">Chi tiết</a></button>
         <button >Đơn hàng cần được giao</button> </td>
       </ng-container>
   
