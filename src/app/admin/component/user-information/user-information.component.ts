@@ -26,7 +26,7 @@ this.adminService.getAllUser().subscribe((res)=>{
 
 openDialog(id: number): void {
   const dialogRef = this.dialog.open(DetailUserComponent, {
-    width: '700px',
+    width: '500px',
     height:'500px',
     data: { id: id } 
   });

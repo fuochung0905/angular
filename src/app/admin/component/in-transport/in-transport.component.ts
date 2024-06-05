@@ -42,7 +42,7 @@ export class InTransportComponent {
   })
   }
 
-  displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
+  displayedColumns: string[] = ['id', 'ảnh', 'ten','tennguoidung','thaotac'];
       dataSource = this.history;
 
 }

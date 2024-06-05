@@ -1,7 +1,7 @@
 <div class="body">
     <div class="container">
         <div class="profile-header">
-            <img  [src]="'http://localhost:8080/images/'+userDto.image" style="width: 50px;height: 50px;" >
+            <img [src]="'http://localhost:8080/images/' + userDto.image" alt="Avatar của {{userDto.firstName}} {{userDto.lastName}}" class="profile-avatar">
             <h1>{{userDto.firstName}} {{userDto.lastName}}</h1>
         </div>
         <div class="profile-details">
@@ -12,5 +12,7 @@
             <p><strong>Số điện thoại:</strong> {{userDto.phoneNumber}}</p>
         </div>
     </div>
-    <button class="btn-wrap" (click)="onCancelClick()">Ok</button>
+    <div class="button-container">
+        <button class="btn-wrap" (click)="onCancelClick()">Ok</button>
+    </div>
 </div>

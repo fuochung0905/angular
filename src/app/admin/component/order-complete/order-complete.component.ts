@@ -34,6 +34,6 @@ export class OrderCompleteComponent {
      }
   }
 
-  displayedColumns: string[] = [ 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thanhtoan'];
+  displayedColumns: string[] = [ 'ảnh', 'ten', 'tennguoidung','thanhtoan','thaotac'];
       dataSource = this.history;
 }

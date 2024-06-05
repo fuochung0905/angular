@@ -50,6 +50,6 @@ export class OrderWaitAcceptComponent {
       });
         } ;
     
-      displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thanhtoan','thaotac'];
+      displayedColumns: string[] = ['id', 'ảnh', 'ten','tennguoidung','thanhtoan','thaotac'];
       dataSource = this.history;
   }

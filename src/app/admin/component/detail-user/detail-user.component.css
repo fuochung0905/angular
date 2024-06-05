@@ -1,45 +1,84 @@
 .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
+    position: relative; /* Thêm thuộc tính này */
 }
 
 .container {
-    width: 50%;
-    margin: auto;
-    overflow: hidden;
-    background: #fff;
+    background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin-top: 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
 }
 
 .profile-header {
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-.profile-img {
-    width: 150px;
-    height: 150px;
+.profile-avatar {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #4CAF50;
 }
 
-.profile-header h1 {
-    margin: 10px 0;
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
 }
 
 .profile-details {
-    margin-top: 20px;
+    text-align: left;
 }
 
 .profile-details h2 {
-    color: #333;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
     margin-bottom: 10px;
+    color: #4CAF50;
 }
 
 .profile-details p {
-    margin: 5px 0;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.profile-details strong {
+    color: #333;
+}
+
+.button-container {
+    position: absolute; /* Thêm thuộc tính này */
+    right: 20px; /* Thêm thuộc tính này */
+    bottom: 20px; /* Thêm thuộc tính này */
+}
+
+.btn-wrap {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-wrap:hover {
+    background-color: #45a049;
 }
