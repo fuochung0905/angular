@@ -131,7 +131,12 @@ img {
     border: 1px solid #e74c3c;
     color: #e74c3c;
 }
-
+.product-content .product-detail .box-detail .item-detail.active label:hover {
+    border: 1px solid #ccc;
+    color: #ccc;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 .product-content .product-detail .box-detail .item-detail input:checked~label {
     border: 1px solid #e74c3c;
     color: #e74c3c;
