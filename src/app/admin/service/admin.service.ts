@@ -10,6 +10,7 @@ import { ProductItemVariationDto } from 'src/app/dto/ProductItemVariationDto.mod
 import { UpdateOrderStatus } from 'src/app/dto/UpdateOrderStatus.model';
 import { PaymentDto } from 'src/app/dto/PaymentDto.model';
 import { PaymentTypeDto } from 'src/app/dto/PaymentTypeDto.model';
+import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
 const BASIC_URL = "http://localhost:8080";
 
 @Injectable({
@@ -147,6 +148,11 @@ export class AdminService {
   updateCategory(categoryId: any, categoryDto: any): Observable<any> {
     return this.http.post(BASIC_URL + `/api/admin/category/updateCategory/${categoryId}`, categoryDto, {
       headers: this.createAuthorizationHeader()
+    });
+  };
+  updateProductItem(productItemId:number,productItemdto:ProductItemDto):Observable<any>{
+    return this.http.put(BASIC_URL+`/api/admin/productItem/updateProductItem/${productItemId}`,productItemdto,{
+      headers:this.createAuthorizationHeader()
     });
   };
   getProductById(productId: any): Observable<any> {

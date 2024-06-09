@@ -15,6 +15,7 @@ export class DetailProductItemComponent {
     price:'',
    
   };
+  capnhatProductItem:ProductItemDto;
 id:any=this.activeRouter.snapshot.params['id'];
 productItemDto:ProductItemDto;
 
@@ -22,9 +23,11 @@ constructor(
   private adminService : AdminService,
   private router : Router,
   private fb : FormBuilder,
+
   private activeRouter : ActivatedRoute,) {
     this.productItemDto = new ProductItemDto();
-};
+   this.capnhatProductItem= new ProductItemDto();
+}
 
 ngOnInit(){
   this.id = this.activeRouter.snapshot.params['id'];
@@ -49,20 +52,22 @@ getDetailProductItem(){
   )
 }
 updateProduct(){
+  if(this.detailProductItemForm.invalid){
+    return ;
+  }
   if(!this.detailProductItemForm.price){
     this.detailProductItemForm.price=this.productItemDto.price;
   }
  
-  // this.adminService.updateP(this.id, this.productUpdate)
-  //   .subscribe(
-  //     response => {
-  //       console.log('Data updated successfully:', response);
-  //       // Cập nhật thành công, xử lý nếu cần
-  //     },
-  //     error => {
-  //       console.error('Error updating data:', error);
-  //       // Xử lý lỗi nếu có
-  //     }
-  //   );
+  this.adminService.updateProductItem(this.id, this.capnhatProductItem)
+    .subscribe(
+      response => {
+       this.router.navigateByUrl('/admin/list-product')
+      },
+      error => {
+        console.error('Error updating data:', error);
+        // Xử lý lỗi nếu có
+      }
+    );
 }
 }

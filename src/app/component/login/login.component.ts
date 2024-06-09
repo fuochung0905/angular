@@ -43,7 +43,7 @@ export class LoginComponent {
          const test:boolean=UserStorageService.isAdminLogggedIn();
          console.log(test);
           if(UserStorageService.isAdminLogggedIn()){
-            this.router.navigateByUrl('admin/dashboard');
+            this.router.navigateByUrl('admin/list-product');
             console.log(UserStorageService.isAdminLogggedIn())
           }
           else

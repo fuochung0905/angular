@@ -1,7 +1,7 @@
 <mat-toolbar>Cập nhật giá </mat-toolbar>
 
 <div class="">
-    <form  [formGroup]="detailProductItemForm">
+    <form  [formGroup]="detailProductItemForm" (submit)="updateProduct()">
         <div class="example-container">
             <input formControlName="productId" name="productId" hidden>
 
@@ -9,7 +9,7 @@
                 <img class="images" [src]="'http://localhost:8080/images/' + productItemDto.image"
                     style="width: 50px;height: 50px;">
                
-                    <input class="priceUpdate" matInput type="text" formControlName="price" name="price" placeholder="Giá" required=""
+                    <input class="priceUpdate" matInput type="text" formControlName="price" [(ngModel)]="capnhatProductItem.price"   name="price" placeholder="Giá" required=""
                         [value]="productItemDto.price">
                     <div style="color: red;"
                         *ngIf="detailProductItemForm.controls['price'].invalid && (detailProductItemForm.controls['price'].dirty || detailProductItemForm.controls['price'].touched)">
