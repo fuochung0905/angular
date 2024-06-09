@@ -53,7 +53,6 @@ export class DetailProductComponent {
   getProductDetails(): void {
     this.adminServie.getProductById(this.id)
       .subscribe((product )=> {
-        product.processImage = 'data:image/jpeg;base64,' + product.byteImage;
        this.dto=product;
        console.log(product);
       },

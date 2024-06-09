@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./detail-product-item.component.css']
 })
 export class DetailProductItemComponent {
+id:any;
 
 }

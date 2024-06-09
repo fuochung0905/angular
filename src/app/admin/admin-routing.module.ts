@@ -38,7 +38,7 @@ children:[
   {path:'product/productItem/:id',component:ProductItemComponent},
   {path:'product/:id',component:DetailProductComponent},
   {path:'dashboard',component:DashboardComponent},
-  {path:'detail-product-item',component:DetailProductItemComponent},
+  {path:'detail-product-item/:id',component:DetailProductItemComponent},
   {path:'add-category',component:PostcategoryComponent},
   {path:'list-product',component:PutproductComponent},
   {path:'variationproduct/:id',component:AddVariationComponent},
