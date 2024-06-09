@@ -397,8 +397,9 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
 }
 .username-box .box-action{
     position: absolute;
-    width: 100%;
-    top: 110%; 
+    width: auto;
+    top: 120%;
+    left: -50%;
     background-color: #fff;
     border: 1px solid #e74c3c;
     transform: scaleY(0);

@@ -1,11 +1,13 @@
 <div class="body">
+    <h2>Thông tin Người dùng</h2>
     <div class="container">
+       
         <div class="profile-header">
             <img [src]="'http://localhost:8080/images/' + userDto.image" alt="Avatar của {{userDto.firstName}} {{userDto.lastName}}" class="profile-avatar">
             <h1>{{userDto.firstName}} {{userDto.lastName}}</h1>
         </div>
         <div class="profile-details">
-            <h2>Thông tin Người dùng</h2>
+            
             <p><strong>Họ:</strong> {{userDto.firstName}}</p>
             <p><strong>Tên:</strong> {{userDto.lastName}}</p>
             <p><strong>Tài khoản:</strong> {{userDto.email}}</p>
@@ -13,6 +15,6 @@
         </div>
     </div>
     <div class="button-container">
-        <button class="btn-wrap" (click)="onCancelClick()">Ok</button>
+        <button class="btn-wrap" (click)="onCancelClick()">X</button>
     </div>
 </div>

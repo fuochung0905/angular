@@ -397,8 +397,9 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
 }
 .username-box .box-action{
     position: absolute;
-    width: 100%;
-    top: 110%; 
+    width: auto;
+    top: 120%;
+    left: -50%;
     background-color: #fff;
     border: 1px solid #e74c3c;
     transform: scaleY(0);
@@ -578,11 +579,20 @@ img {
     border: 1px solid #e74c3c;
     color: #e74c3c;
 }
+<<<<<<< HEAD:src/app/user/component/detailproduct/detailproduct.component.css
+.product-content .product-detail .box-detail .item-detail.active label:hover {
+    border: 1px solid #ccc;
+    color: #ccc;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+=======
 
 .active{
     opacity: 0.5;
 }
 
+>>>>>>> c07be00be331b61647daeef4c6ffe2e2f0920c8c:src/app/component/detail-product/detail-product.component.css
 .product-content .product-detail .box-detail .item-detail input:checked~label {
     border: 1px solid #e74c3c;
     color: #e74c3c;
