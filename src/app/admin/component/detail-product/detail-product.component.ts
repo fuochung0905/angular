@@ -12,7 +12,6 @@ export class DetailProductComponent {
   productUpdate:any={
     productName:'',
     description:'',
-    importPrice:'',
     exportPrice:'',
     quantity:''
   };
@@ -20,10 +19,7 @@ export class DetailProductComponent {
   dto:any={
     productId:'',
     productName:'',
-    description:'',
-    importPrice:'',
-    exportPrice:'',
-    quantity:''
+    description:''
   }
   constructor(private routerActive:ActivatedRoute,
     private router:Router,
@@ -40,15 +36,6 @@ export class DetailProductComponent {
     }
     if(!this.productUpdate.description){
       this.productUpdate.description=this.dto.description;
-    }
-    if(!this.productUpdate.importPrice){
-      this.productUpdate.importPrice=this.dto.importPrice;
-    }
-    if(!this.productUpdate.exportPrice){
-      this.productUpdate.exportPrice=this.dto.exportPrice;
-    }
-    if(!this.productUpdate.quantity){
-      this.productUpdate.quantity=this.dto.quantity;
     }
     this.adminServie.updateProducts(this.id, this.productUpdate)
       .subscribe(

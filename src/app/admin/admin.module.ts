@@ -44,6 +44,7 @@ import { HistoryUserOrderComponent } from './component/history-user-order/histor
 import { PaymentComponent } from './component/payment/payment.component';
 import { PaymentTypeComponent } from './component/payment-type/payment-type.component';
 import { DetailOrderComponent } from './component/detail-order/detail-order.component';
+import { DetailProductItemComponent } from './component/detail-product-item/detail-product-item.component';
 
 
 
@@ -74,7 +75,8 @@ import { DetailOrderComponent } from './component/detail-order/detail-order.comp
     HistoryUserOrderComponent,
     PaymentComponent,
     PaymentTypeComponent,
-    DetailOrderComponent
+    DetailOrderComponent,
+    DetailProductItemComponent
   ],
   imports: [
     CommonModule,

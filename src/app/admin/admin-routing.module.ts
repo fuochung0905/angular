@@ -26,6 +26,7 @@ import { PaymentComponent } from './component/payment/payment.component';
 import { PaymentTypeComponent } from './component/payment-type/payment-type.component';
 import { DetailUserComponent } from './component/detail-user/detail-user.component';
 import { DetailOrderComponent } from './component/detail-order/detail-order.component';
+import { DetailProductItemComponent } from './component/detail-product-item/detail-product-item.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
@@ -37,6 +38,7 @@ children:[
   {path:'product/productItem/:id',component:ProductItemComponent},
   {path:'product/:id',component:DetailProductComponent},
   {path:'dashboard',component:DashboardComponent},
+  {path:'detail-product-item',component:DetailProductItemComponent},
   {path:'add-category',component:PostcategoryComponent},
   {path:'list-product',component:PutproductComponent},
   {path:'variationproduct/:id',component:AddVariationComponent},
