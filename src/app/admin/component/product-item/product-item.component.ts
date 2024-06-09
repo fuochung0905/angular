@@ -107,6 +107,11 @@ this.adminService.addProductItem(formData).subscribe(
       this.listVariationOption=res;
     });
   };
+  deleteProductItem(id:number){
+    this.adminService.deleteProductItem(id).subscribe((res)=>{
+      this.getAllProductItemByProduct();
+    })
+  }
   pageVariationOption(){
     this.router.navigateByUrl("/admin/add-variation-option");
   }

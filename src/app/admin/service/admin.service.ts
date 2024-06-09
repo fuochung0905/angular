@@ -191,6 +191,11 @@ updateCategory(categoryId:any,categoryDto:any):Observable<any>{
       headers: this.createAuthorizationHeader()
     });
   };
+  deleteProductItem(productItemId:number):Observable<any>{
+    return this.http.delete(BASIC_URL+`/api/admin/productItem/deleteProductItem/${productItemId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
   logout():Observable<any>{
     const tokens=this.createAuthorizationHeader();
     console.log(tokens);

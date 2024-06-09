@@ -36,24 +36,34 @@ export class CreateVariatioOptionComponent {
     })
   }
   createVariationOption(){
-    this.adminservice.addVariationOption(this.variationOption).subscribe((res)=>
-    {
-      this._snackBar.open('Thêm thành công', 'Đóng', {
-        duration: 3000, // Độ dài của snack bar (milliseconds)
-        horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
-        verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
-        panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
-      });
-      this.getAllVariationOption();
-    },
-    (error)=>{
-      this._snackBar.open('Thêm thất bại', 'Đóng', {
-        duration: 3000, // Độ dài của snack bar (milliseconds)
-        horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
-        verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
-        panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
-      });
-    })
+    this.adminservice.addVariationOption(this.variationOption).subscribe(
+      (res) => {
+        if (res instanceof ErrorEvent) {
+          console.error('Lỗi xảy ra:', res.error.message);
+          // Xử lý lỗi từ mạng hoặc client-side
+        } else if (res.status === 404) {
+          
+        } else {
+          this._snackBar.open('Thêm thành công', 'Đóng', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            panelClass: ['mat-snack-bar-custom'],
+          });
+        this,this.getAllVariationOption();
+        }
+      },
+      (error) => {
+        console.error('Lỗi xảy ra:', error);
+        // Xử lý lỗi từ mạng hoặc server-side
+        this._snackBar.open('Giá trị đã tồn tại', 'Đóng', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['mat-snack-bar-custom'],
+        });
+      }
+    );
   
   };
   displayedColumns: string[] = ['Loại sản phẩm','Tên phân loại','Giá trị'];
