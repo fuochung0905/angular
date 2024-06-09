@@ -107,16 +107,12 @@ export class ProductItemComponent {
       this.listVariationOption = res;
     });
   };
-<<<<<<< HEAD
   deleteProductItem(id:number){
     this.adminService.deleteProductItem(id).subscribe((res)=>{
       this.getAllProductItemByProduct();
     })
   }
   pageVariationOption(){
-=======
-  pageVariationOption() {
->>>>>>> a03332b85f93b6c9812e93617eeb0107889ee45a
     this.router.navigateByUrl("/admin/add-variation-option");
   }
   displayedColumns: string[] = ['avatar', 'gia', 'soluong', 'mausac', 'Thao tác'];

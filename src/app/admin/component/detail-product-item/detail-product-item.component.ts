@@ -11,9 +11,13 @@ import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
   styleUrls: ['./detail-product-item.component.css']
 })
 export class DetailProductItemComponent {
+  detailProductItemForm:any={
+    price:'',
+   
+  };
 id:any=this.activeRouter.snapshot.params['id'];
 productItemDto:ProductItemDto;
-detailProductItemForm!: FormGroup;
+
 constructor(
   private adminService : AdminService,
   private router : Router,
@@ -22,25 +26,43 @@ constructor(
     this.productItemDto = new ProductItemDto();
 };
 
-ngOnInt(){
+ngOnInit(){
   this.id = this.activeRouter.snapshot.params['id'];
   this.getDetailProductItem();
   this.detailProductItemForm = this.fb.group({
     price: ['', [Validators.required, Validators.pattern('^[0-9]*$')]]
   })
 }
-// updateDetailProductItem(){
-//   if(!this.productUpdateItem.exportPrice){
-//     this.productUpdateItem.exportPrice = this.productItemDto.
-//   }
-// }
+
 getDetailProductItem(){
   this.id = this.activeRouter.snapshot.params['id'];
   this.adminService.getProductItemDetail(this.id).subscribe(
     (res) => {
       this.productItemDto = res;
       console.log(res);
+    },
+    (error)=>{
+      this.productItemDto = error;
+      console.log(error);
     }
+  
   )
+}
+updateProduct(){
+  if(!this.detailProductItemForm.price){
+    this.detailProductItemForm.price=this.productItemDto.price;
+  }
+ 
+  // this.adminService.updateP(this.id, this.productUpdate)
+  //   .subscribe(
+  //     response => {
+  //       console.log('Data updated successfully:', response);
+  //       // Cập nhật thành công, xử lý nếu cần
+  //     },
+  //     error => {
+  //       console.error('Error updating data:', error);
+  //       // Xử lý lỗi nếu có
+  //     }
+  //   );
 }
 }

@@ -156,7 +156,7 @@ export class AdminService {
   };
 
   getProductItemDetail(productItemId: any): Observable<any> {
-    return this.http.get(BASIC_URL + ` /api/admin/productItem/${productItemId}`, {
+    return this.http.get(BASIC_URL+ `/api/admin/productItem/${productItemId}`, {
       headers: this.createAuthorizationHeader()
     });
   }
@@ -196,18 +196,16 @@ export class AdminService {
       headers: this.createAuthorizationHeader()
     });
   };
-<<<<<<< HEAD
+
   deleteProductItem(productItemId:number):Observable<any>{
     return this.http.delete(BASIC_URL+`/api/admin/productItem/deleteProductItem/${productItemId}`,{
       headers:this.createAuthorizationHeader()
     });
   };
-  logout():Observable<any>{
-    const tokens=this.createAuthorizationHeader();
-=======
+
+
   logout(): Observable<any> {
     const tokens = this.createAuthorizationHeader();
->>>>>>> a03332b85f93b6c9812e93617eeb0107889ee45a
     console.log(tokens);
     const token = UserStorageService.getToken();
     return this.http.get(BASIC_URL + '/logout', {

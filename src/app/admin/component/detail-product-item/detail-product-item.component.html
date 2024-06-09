@@ -1,7 +1,7 @@
 <mat-toolbar>Cập nhật giá </mat-toolbar>
 
 <div class="">
-    <form (ngSubmit)="getDetailProductItem()" [formGroup]="detailProductItemForm">
+    <form  [formGroup]="detailProductItemForm">
         <div class="example-container">
             <input formControlName="productId" name="productId" hidden>
 
@@ -21,8 +21,6 @@
                             Giá sản phẩm không âm
                         </div>
                     </div>
-                
-
                 <div>
                     <button class="btn-wrap add-prd" type="submit" [disabled]="detailProductItemForm.invalid">Cập
                         nhật</button>
