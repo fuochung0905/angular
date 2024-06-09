@@ -7,20 +7,7 @@
         <input class="form-control" type="text" [(ngModel)]="productUpdate.productName"   name="productName" value="{{dto.productName}}">
     </div>
     <div class="img-showcase">
-        <img [src]="dto.processImage" alt="product-image">
-    </div>
-    
-    <div class="form-input">
-        <label class="form-label">Giá nhập</label>
-        <input class="form-control" type="text"  [(ngModel)]="productUpdate.importPrice"   name="importPrice" value="{{dto.importPrice}}">
-    </div>
-    <div class="form-input">
-        <label class="form-label">Giá bán</label>
-        <input class="form-control" class="form-control" type="text" [(ngModel)]="productUpdate.exportPrice"    name="exportPrice" value="{{dto.exportPrice}}">
-    </div>
-    <div class="form-input">
-        <label class="form-label">Số lượng</label>
-        <input class="form-control" type="text" [(ngModel)]="productUpdate.quantity"  name="quantity" value="{{dto.quantity}}">
+        <img  [src]="'http://localhost:8080/images/'+dto.image" style="width: 100px;height: 100px;" >
     </div>
     <div class="form-input">
         <label class="form-label">Mô tả</label>
