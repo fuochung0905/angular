@@ -27,8 +27,7 @@
                     </form>
                 </div>
 
-
-
+                <label> <input type="checkbox" (click)="handleClickOrderAll()"  #myCheckbox (change)="onCheckboxChange(myCheckbox.checked)"> Tất cả</label>
                 <form style="padding: 0;" >
                     <table style="box-shadow: unset; border: 1px solid #ccc;" mat-table [dataSource]="carts" class="mat-elevation-z8">
                         <ng-container matColumnDef="thaotac">
@@ -38,7 +37,7 @@
                                 <input  type="checkbox" (click)="handleCartId(element.id)"
                                           [checked]="selectedOrderId === element.id" 
                                            (change)="updateSelectedOrder(element.id)" />
-                                </label>
+                                </label>   
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="anh">
@@ -133,7 +132,53 @@
         <div class="order-complete-right">
             <div class="your-order">
                 <h3>Thông tin đơn hàng</h3>
-                <div class="your-order-table table-responsive">
+                <div *ngIf="myCheckbox.checked">
+                   
+                        <div >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="cart-product-name">Sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th class="cart-product-total">Tổng tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <div *ngFor="let cartitem of listCartDetailDto" >
+                    
+                                        <tr class="cart_item">
+                                            <td class="cart-product-total text-center truncate">{{cartitem.productName}}</td>
+                                            <td><strong class="product-quantity">
+                                             {{cartitem.quantity}}</strong></td>
+                                            <td class="cart-product-total text-center"><span class="amount">{{cartitem.price}}VND</span></td>
+                                        </tr>
+                                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="order-complete-end">
+                    
+                            <div class="order-conplete-end-ship"></div>
+                            <div class="end-details">
+                                <div class="item-all-price">
+                                    <a>Tổng tiền sản phẩm: </a>
+                                    <a id="pay-item-price">{{totalAmount}}</a>
+                                </div>
+                                <div class="item-ship-price">
+                                    <a>Phí vận chuyển: </a>
+                                    <a id="pay-ship">{{priceDelivery}} </a>
+                                </div>
+                                <hr>
+                                <div class="item-end">
+                                    <a>Tổng thanh toán: </a>
+                                    <a id="pay-all">{{totalAmount+priceDelivery}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    
+                </div>
+                <div *ngIf="myCheckbox.checked==false" class="your-order-table table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
@@ -165,38 +210,38 @@
                         </tbody>
                    
                     </table>
-                </div>
-                <div class="order-complete-end">
+                    <div class="order-complete-end">
                     
-                    <div class="order-conplete-end-ship"></div>
-                    <div class="end-details">
-                        <div class="item-all-price">
-                            <a>Tổng tiền sản phẩm: </a>
-                            <a id="pay-item-price">{{cartDetailDto.price*cartDetailDto.quantity}}</a>
-                        </div>
-                        <div class="item-ship-price">
-                            <a>Phí vận chuyển: </a>
-                            <a id="pay-ship">{{priceDelivery}} </a>
-                        </div>
-                        <!-- <div class="item-discount-price">
-                            <a>Tổng giảm: </a>
-                            <a id="pay-dícount">00.000000</a>
-                        </div> -->
-                        <hr>
-                        <div class="item-end">
-                            <a>Tổng thanh toán: </a>
-                            <a id="pay-all">{{(cartDetailDto.price*cartDetailDto.quantity)+priceDelivery}}</a>
+                        <div class="order-conplete-end-ship"></div>
+                        <div class="end-details">
+                            <div class="item-all-price">
+                                <a>Tổng tiền sản phẩm: </a>
+                                <a id="pay-item-price">{{cartDetailDto.price*cartDetailDto.quantity}}</a>
+                            </div>
+                            <div class="item-ship-price">
+                                <a>Phí vận chuyển: </a>
+                                <a id="pay-ship">{{priceDelivery}} </a>
+                            </div>
+                            <hr>
+                            <div class="item-end">
+                                <a>Tổng thanh toán: </a>
+                                <a id="pay-all">{{(cartDetailDto.price*cartDetailDto.quantity)+priceDelivery}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+             
                 <div class="payment-method">
                     <div class="payment-accordion">
-                        <div *ngIf="checkCartButton==true && checkDeliveryButton==true && checkPaymentButton==true">
+                        <div *ngIf="( checkCartButton==true || checkOrderAll==true )&& checkDeliveryButton==true && checkPaymentButton==true">
                             <div *ngIf="selectedPaymentId != 1">
                                 <button style="margin-top: 15px;" class="btn-wrap order" type="submit" ><a href="{{link}}">Đặt hàng</a></button>
                             </div>
                           <div *ngIf="selectedPaymentId ===1">
+                            <div >
                                 <button style="margin-top: 15px;" class="btn-wrap order" (click)="submitOrder()" type="submit" >Đặt hàng</button>
+                            </div>
+                               
                             </div>
                         </div>
                     </div>

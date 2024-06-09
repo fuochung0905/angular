@@ -18,6 +18,8 @@ import { CartDetailDto } from 'src/app/dto/CartDetailDto.model';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent {
+  totalAmount:number=0;
+  checkOrderAll:boolean=false;
   checkCartButton:boolean=false;
   checkPaymentButton:boolean=false;
   checkDeliveryButton:boolean=false;
@@ -28,6 +30,7 @@ export class OrderComponent {
   listpaymentType:PaymentTypeDto[]=[];
   listPayment:PaymentDto[]=[];
   cartDetailDto:CartDetailDto;
+  listCartDetailDto:CartDetailDto[]=[];
     diachi:any={
     id:''
   }
@@ -43,6 +46,26 @@ export class OrderComponent {
     lastName:''
   };
   isClicked: boolean = false;
+  handleClickOrderAll(){
+    this.selectedOrderId=0;
+    this.checkOrderAll=true;
+    this.checkCartButton=false;
+    this.getAllCartDetail();
+
+  }
+  getAllCartDetail(){
+    this.userService.getAllCartDetail().subscribe((res)=>{
+      this.listCartDetailDto=res;
+      for (let i = 0; i < this.listCartDetailDto.length; i++) {
+        const cartItem = this.listCartDetailDto[i];
+      this.totalAmount=this.totalAmount+(cartItem.quantity*cartItem.price);
+    }
+});
+  };
+
+  onCheckboxChange(isChecked: boolean) {
+    console.log('Checkbox checked:', isChecked);
+  }
   handleClick() {
     this.isClicked = !this.isClicked; // Đảo ngược trạng thái isClicked
   }
@@ -71,9 +94,8 @@ export class OrderComponent {
      this.getAddressCurretUser();
     this.getListAddresCurrentUser();
     this.getAllPayment();
-  
   }
-
+ 
   
   handlePaymentSelection(selectId:number){
     this.checkPaymentButton=true;
@@ -85,6 +107,7 @@ export class OrderComponent {
   }
   handleCartId(selectCartId:number){
     this.checkCartButton=true;
+    this.checkOrderAll=false;
     this.dathang.cartid=selectCartId;
     this.orderedRequest.cartId=selectCartId;
     this.userService.getCartDetailById(selectCartId).subscribe(
@@ -110,7 +133,6 @@ export class OrderComponent {
     this.orderedRequest.id=this.dathang.cartid;
     console.log(this.orderedRequest);
     this.userService.addPaymentOrder(this.orderedRequest).subscribe( (res) => {
-        
       if(res){
         if(res==="user not address"){
           this.openDialog();
@@ -217,17 +239,8 @@ export class OrderComponent {
   getAddressCurretUser():void{
     this.userService.getAddressCurretUser().subscribe((res)=>{
       if(res){
-        // if( res.message==='User does not have an address yet'){
-       
-        //   this.router.navigateByUrl('/user/address');
-        // }
-        // else{
-
-        // }
        this.address=res;
-    
       }
-      
     });
   };
   getAllPayment(){
@@ -273,6 +286,7 @@ submitOrder(){
             this.openDialog3();
           }
         }
+        this.router.navigateByUrl('/user/order-success');
       },
       (error) => {
           this.router.navigateByUrl('/user/order-success');
