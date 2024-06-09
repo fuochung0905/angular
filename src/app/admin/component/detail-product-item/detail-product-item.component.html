@@ -1,1 +1,35 @@
-<p>detail-product-item works!</p>
+<mat-toolbar>Cập nhật giá </mat-toolbar>
+
+<div class="">
+    <form (ngSubmit)="getDetailProductItem()" [formGroup]="detailProductItemForm">
+        <div class="example-container">
+            <input formControlName="productId" name="productId" hidden>
+
+            <div class="select-wrap">
+                <img class="images" [src]="'http://localhost:8080/images/' + productItemDto.image"
+                    style="width: 50px;height: 50px;">
+               
+                    <input class="priceUpdate" matInput type="text" formControlName="price" name="price" placeholder="Giá" required=""
+                        [value]="productItemDto.price">
+                    <div style="color: red;"
+                        *ngIf="detailProductItemForm.controls['price'].invalid && (detailProductItemForm.controls['price'].dirty || detailProductItemForm.controls['price'].touched)">
+                        <div
+                            *ngIf="detailProductItemForm.controls['price'].errors && detailProductItemForm.controls['price'].errors['required']">
+                            Vui lòng nhập giá sản phẩm</div>
+                        <div
+                            *ngIf="detailProductItemForm.controls['price'].errors && detailProductItemForm.controls['price'].errors['pattern']">
+                            Giá sản phẩm không âm
+                        </div>
+                    </div>
+                
+
+                <div>
+                    <button class="btn-wrap add-prd" type="submit" [disabled]="detailProductItemForm.invalid">Cập
+                        nhật</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>

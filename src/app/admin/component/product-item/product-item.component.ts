@@ -13,29 +13,29 @@ import { ProductItemDto } from 'src/app/dto/ProductItemDto.model';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent {
-  id:any=this.activeRouter.snapshot.params['id'];
+  id: any = this.activeRouter.snapshot.params['id'];
   selectedFile!: File | '';
-  imagePreView!: String | ArrayBuffer | null ;
-  productItemForm!:FormGroup;
- 
-  listVariationOptionId:any[]=[];
- listVariationOption:VariationOptionDto[]=[];
-  listProductItem:ProductItemDto[]=[];
-  idColor:any;
+  imagePreView!: String | ArrayBuffer | null;
+  productItemForm!: FormGroup;
 
- 
-  constructor(private adminService:AdminService,
-    private fb :FormBuilder,
-    private router:Router,
+  listVariationOptionId: any[] = [];
+  listVariationOption: VariationOptionDto[] = [];
+  listProductItem: ProductItemDto[] = [];
+  idColor: any;
+
+
+  constructor(private adminService: AdminService,
+    private fb: FormBuilder,
+    private router: Router,
     private _snackBar: MatSnackBar,
-    private activeRouter:ActivatedRoute,){
-     
+    private activeRouter: ActivatedRoute,) {
+
   };
-  onFileSelected(event:any){
-    this.selectedFile=event.target.files[0];
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
     this.PreViewImage();
   };
-  PreViewImage(){
+  PreViewImage() {
     if (this.selectedFile) {
       const reader = new FileReader();
       reader.onload = () => {
@@ -43,73 +43,73 @@ export class ProductItemComponent {
       };
       reader.readAsDataURL(this.selectedFile);
     }
-  };
-  ngOnInit(){
-    this.id=this.activeRouter.snapshot.params['id'];
+  }
+  ngOnInit() {
+    this.id = this.activeRouter.snapshot.params['id'];
     this.getAllVariationOptionWithColorByProduct();
-    this.productItemForm=this.fb.group({
+    this.productItemForm = this.fb.group({
       productId: [''],
       // qyt_stock: ['',[Validators.required, Validators.pattern('^[0-9]*$')]],
-      price: ['',[Validators.required, Validators.pattern('^[0-9]*$')]],
-      idColor:['']
+      price: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      idColor: ['']
     });
 
     this.getAllProductItemByProduct();
   };
 
-getAllProductItemByProduct(){
-  this.id=this.activeRouter.snapshot.params['id'];
-  this.adminService.getAllProductItemByProduct(this.id).subscribe((res)=>{
-this.listProductItem=res;
-  });
-};
-updateVariationOptions(event: any) {
-  const selectedValue = event.value;
- this.idColor=selectedValue;
-}
+  getAllProductItemByProduct() {
+    this.id = this.activeRouter.snapshot.params['id'];
+    this.adminService.getAllProductItemByProduct(this.id).subscribe((res) => {
+      this.listProductItem = res;
+    });
+  };
+  updateVariationOptions(event: any) {
+    const selectedValue = event.value;
+    this.idColor = selectedValue;
+  }
 
-  addProduct():void{
+  addProduct(): void {
     if (this.productItemForm.invalid) {
       return;
     }
-    if(this.productItemForm.valid){
-      const formData :FormData=new FormData();
-      formData.append('file',this.selectedFile);
-      formData.append('productId',this.id);
+    if (this.productItemForm.valid) {
+      const formData: FormData = new FormData();
+      formData.append('file', this.selectedFile);
+      formData.append('productId', this.id);
       // formData.append('qyt_stock',this.productItemForm.get('qyt_stock')?.value);
-      formData.append('price',this.productItemForm.get('price')?.value);
-      formData.append('idColor',this.idColor);
-this.adminService.addProductItem(formData).subscribe(
-  (res)=>{
-     
-  },(error)=>{
-   console.log(this.listVariationOptionId);
-    this._snackBar.open('Thêm sản phẩm thành công', 'Đóng', {
-      duration: 3000, // Độ dài của snack bar (milliseconds)
-      horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
-      verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
-      panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
-    });
-    this.getAllProductItemByProduct();
-  }
-)
+      formData.append('price', this.productItemForm.get('price')?.value);
+      formData.append('idColor', this.idColor);
+      this.adminService.addProductItem(formData).subscribe(
+        (res) => {
+
+        }, (error) => {
+          console.log(this.listVariationOptionId);
+          this._snackBar.open('Thêm sản phẩm thành công', 'Đóng', {
+            duration: 3000, // Độ dài của snack bar (milliseconds)
+            horizontalPosition: 'center', // Vị trí ngang ('start' | 'center' | 'end' | 'left' | 'right')
+            verticalPosition: 'bottom', // Vị trí dọc ('top' | 'bottom')
+            panelClass: ['mat-snack-bar-custom'], // Các lớp CSS tùy chỉnh (optional)
+          });
+          this.getAllProductItemByProduct();
+        }
+      )
     }
-    else{
-      for(const i in this.productItemForm.controls){
+    else {
+      for (const i in this.productItemForm.controls) {
         this.productItemForm.controls[i].markAsDirty();
         this.productItemForm.controls[i].updateValueAndValidity();
       }
     }
   };
-  getAllVariationOptionWithColorByProduct(){
-    this.id=this.activeRouter.snapshot.params['id'];
-    this.adminService.getAllVariationOptionWithColorByProduct(this.id).subscribe((res)=>{
-      this.listVariationOption=res;
+  getAllVariationOptionWithColorByProduct() {
+    this.id = this.activeRouter.snapshot.params['id'];
+    this.adminService.getAllVariationOptionWithColorByProduct(this.id).subscribe((res) => {
+      this.listVariationOption = res;
     });
   };
-  pageVariationOption(){
+  pageVariationOption() {
     this.router.navigateByUrl("/admin/add-variation-option");
   }
-  displayedColumns: string[] = ['avatar','gia','soluong','mausac','Thao tác'];
+  displayedColumns: string[] = ['avatar', 'gia', 'soluong', 'mausac', 'Thao tác'];
   dataSource = this.listProductItem;
 }
