@@ -1,4 +1,6 @@
-<mat-toolbar>Tổng tiền mua hàng: {{totalAmount}} VND</mat-toolbar>
+<mat-toolbar>Tổng tiền mua hàng: <span style="color: #49d388;
+  font-size: 20px;
+  margin-left: 11px;">{{totalAmount}} VND</span></mat-toolbar> 
 <br>
 <table mat-table [dataSource]="listUserCartDto" class="mat-elevation-z8">
     <ng-container matColumnDef="ảnh">
