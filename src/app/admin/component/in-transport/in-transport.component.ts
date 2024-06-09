@@ -35,14 +35,14 @@ export class InTransportComponent {
   };
   updateTransportToDelivered(){
     this.adminServe.updateTransportToDelivered(this.orders).subscribe((res)=>{
-        location.reload();
+      this.getHistoryOrderTransport();
     },
   (error)=>{
     location.reload();
   })
   }
 
-  displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
+  displayedColumns: string[] = ['id', 'ảnh', 'ten','tennguoidung','thaotac'];
       dataSource = this.history;
 
 }

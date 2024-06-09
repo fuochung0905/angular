@@ -1,0 +1,35 @@
+<div class="body">
+  
+    <main>
+        <h1>Chi Tiết Đơn Hàng #{{orderDetailDto.orderDetailId}}</h1>
+        <section class="order-details">
+            <h2>Thông Tin Đơn Hàng</h2>
+            <p><strong>Ngày đặt hàng:</strong> {{orderDetailDto.createDate}}</p>
+            <p><strong>Ngày cập nhật:</strong> {{orderDetailDto.updateDate}}</p>
+            <p><strong>Trạng thái:</strong>{{orderDetailDto.orderStatus}}</p>
+            <p><strong>Phương thức thanh toán:</strong>{{orderDetailDto.orderPayment}}</p>
+            <p><strong>Phương thức vận chuyển:</strong> {{orderDetailDto.orderDelivery}}</p>
+        </section>
+        <section class="customer-details">
+            <h2>Thông Tin Khách Hàng</h2>
+            <p><strong>Tên:</strong>{{orderDetailDto.userName}}</p>
+            <p><strong>Số điện thoại:</strong>{{orderDetailDto.phoneNumber}}</p>
+            <p><strong>Email:</strong>{{orderDetailDto.email}}</p>
+            <p><strong>Địa chỉ:</strong> {{orderDetailDto.addressUser}}</p>
+        </section>
+        <section class="product-details">
+            <h2>Thông tin sản Phẩm</h2>
+            <p><strong>Tên sản phẩm:</strong> {{orderDetailDto.productName}}</p>
+            <p><strong>Kích thước:</strong> {{orderDetailDto.size}}</p>
+            <p><strong>Màu sắc:</strong> {{orderDetailDto.color}}</p>
+            <p><strong>Giá:</strong> {{orderDetailDto.price}}</p>
+            <p><strong>Số lượng:</strong> {{orderDetailDto.quantity}}</p>
+            <p><strong>Tiền ship:</strong> 20.000</p>
+            <p><strong>Tổng tiền:</strong> {{orderDetailDto.price * orderDetailDto.quantity +20000}}</p>
+        </section>
+     
+
+    </main>
+    
+</div>
+

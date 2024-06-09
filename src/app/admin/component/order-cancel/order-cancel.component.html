@@ -4,13 +4,13 @@
     <ng-container matColumnDef="ảnh">
       <th mat-header-cell *matHeaderCellDef>Ảnh</th>
       <td mat-cell *matCellDef="let element"> 
-        <img  [src]="'http://localhost:8080/images/'+element.image" style="width: 50px;height: 50px;" >
+        <img  [src]="'http://localhost:8080/images/'+element.image" style="width: 100px;height: 100px;" >
        </td>
     </ng-container>
   
     <ng-container matColumnDef="ten">
       <th mat-header-cell *matHeaderCellDef> Tên sản phẩm</th>
-      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+      <td mat-cell *matCellDef="let element" class="product-name-cell"> {{element.productName}} </td>
     </ng-container>
     <ng-container matColumnDef="bienthe">
       <th mat-header-cell *matHeaderCellDef> Phân loại </th>
@@ -36,7 +36,10 @@
         <th mat-header-cell *matHeaderCellDef>Tên người dùng  </th>
         <td mat-cell *matCellDef="let element"> {{element.username}} </td>
       </ng-container>
-    
+      <ng-container matColumnDef="thanhtoan">
+        <th mat-header-cell *matHeaderCellDef>Thanh toán  </th>
+        <td mat-cell *matCellDef="let element"> {{element.paymentStatus}} </td>
+      </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

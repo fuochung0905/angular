@@ -1,6 +1,253 @@
+.content-body .swiper-pagination-bullet-active {
+    background: #e74c3c;
+}
+
+.content-body .banner .img-banner {
+    display: block;
+    width: 100%;
+    height: 450px;
+}
+
+.content-body .banner .img-banner img {
+    width: 100%;
+    height: 100%;
+}
+
+.content-body .main-product {
+    margin-top: 35px;
+}
+
+.content-body .main-product .head-product {
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+}
+
+.content-body .main-product .head-product .filter-product form select {
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.content-body .main-product .head-product .search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.content-body .main-product .filter-search {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.content-body .main-product .head-product .search-wrap .search {
+    position: relative;
+}
+
+.content-body .main-product .head-product .search-wrap .search input {
+    border: unset;
+    background: transparent;
+    border-bottom: 1px solid #000;
+    padding: 0px 10px;
+}
+
+.content-body .main-product .head-product .search-wrap .search i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.content-body .main-product .head-product .search-wrap .cart a {
+    position: relative;
+    font-size: 20px;
+}
+
+.content-body .main-product .head-product .search-wrap .cart a .num {
+    position: absolute;
+    z-index: 0;
+    right: -15px;
+    top: 0px;
+    color: #fff;
+    background: #288ad6;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    padding: 0px;
+    text-align: center;
+    font-weight: 400;
+    line-height: 18px;
+    border-radius: 50%;
+}
+
+.content-body .main-product .head-product .cart .search-wrap from {
+    display: flex;
+    align-items: center;
+}
+
+.content-body .main-product .head-product .cart .search-wrap from .search input {
+    border: unset;
+    background: transparent;
+    border-bottom: 1px solid #000;
+    padding: 0px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+footer {
+    margin-top: 50px;
+    border-top: 1px solid #ccc;
+}
+
+footer .wrap-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 45px 0px;
+}
+
+footer .wrap-footer>div {
+    width: 25%;
+    padding-right: 50px;
+    font-size: 14px;
+}
+
+footer .wrap-footer>div .title {
+    color: #e74c3c;
+    font-size: 18px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+footer .wrap-footer>div .text-wrap {
+    margin-bottom: 5px;
+}
+
+footer .wrap-footer>div p {
+    opacity: .7;
+}
+
+footer .wrap-footer>div p>span {
+    opacity: 1;
+}
+
+footer .wrap-footer>div .list-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+footer .wrap-footer>div .list-icon i {
+    display: flex;
+    font-size: 22px;
+    color: #e74c3c;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.list-component-cate {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.list-component-cate li {
+    border: 1px solid;
+    margin: 0px 10px;
+    display: grid;
+    place-content: center;
+}
+
+.list-component-cate li:hover {
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.list-component-cate li a {
+    padding: 5px 15px 5px;
+}
+
+.login-item img {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+#tooltip-login-wrap {
+    position: relative;
+
+}
+
+.tooltip-login-hover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.tooltip-login-hover .login-item {
+    display: grid;
+    justify-content: center;
+}
+
+.tooltip-login-hover .login-item a {
+    display: grid;
+    place-content: center;
+    padding-left: 5px;
+}
+
+#tooltip-login-item {
+    position: absolute;
+    left: 0;
+    top: 110%;
+    background-color: lightblue;
+    border-radius: 7px;
+    width: 100%;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 10px;
+}
+
+#tooltip-login-item::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: -20%;
+    border: 10px solid;
+    border-color: #0000 #0000 lightblue #0000;
+}
+
+#tooltip-login-wrap:hover #tooltip-login-item {
+
+    visibility: visible;
+    opacity: 1;
+}
+
+#tooltip-login-item:hover #tooltip-login-item {
+
+    visibility: visible;
+    opacity: 1;
+}
+
+.money {
+    color: blue;
+}
 .btn-wrap{
     display: flex;
-    cursor: pointer;
     font-size: 15px;
     padding: 0 10px;
     width: 100%;
@@ -11,7 +258,7 @@
     border-radius: 7px;
     text-decoration: unset;
     transition: all .3s ;
-    background: #fff;
+    cursor: pointer;
 }
 .btn-wrap i{
     line-height: 1;
@@ -23,35 +270,12 @@ ul, li{
     margin: 0;
     padding: 0
 }
-.main-product .list-product .item-product .card-body{
-    padding: 0px;
-}
-
-.main-product .list-product .item-product .card-body .card-title {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-  	-webkit-box-orient: vertical;
-    font-size: 16px;
-    line-height: 1;
-    margin: 0;
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-
-.main-product .list-product .item-product .card-body .card-detail {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
 header{
    background-color: #fff;
    border-bottom: 1px solid #ccc;
    box-shadow: 0px 1px 3px 0px #00000054;
 }
-.container-large,.container-web{
+.container-large, .container-web{
     max-width: 1200px;
     margin:0px auto;
 }
@@ -66,6 +290,9 @@ header .container-large .top-box .logo a{
     color: #e74c3c;
     font-size: 24px;
     font-weight: 700;
+}
+header .container-large .top-box .logo a:hover{
+    text-decoration: unset;
 }
 header .container-large .top-box .login-wrap{
     display: flex;
@@ -92,6 +319,15 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
     color: #fff;
     border-color: #e74c3c;
     background-color: #e74c3c;
+}
+.btn-wrap.logout{ 
+    color: #e74c3c;
+    border-color: #e74c3c;
+    background-color: #fff;
+}
+.btn-wrap.logout:hover{
+    background-color: #e74c3c;   
+    color: #fff;
 }
 .bottom-box {
     padding-bottom: 15px;
@@ -130,7 +366,7 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
     cursor: pointer;
 }
 .bottom-box .search-wrap .cart-box  i{
-    font-size: 16px;
+    font-size: 18px;
 }
 .bottom-box .search-wrap .cart-box .num{
     position: absolute;
@@ -146,50 +382,159 @@ header .container-large .top-box .login-wrap .login-item.reg a:hover{
     font-size: 13px;
     color: #fff;
 }
-/*======================================================= HEADER ======================================================= */
-footer{
-    border-top: 1px solid #ccc;
-}
-.wrap-footer{
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    padding: 25px 0px;
 
+.username-box {
+    position: relative;
 }
-.wrap-footer > div{
-    width: 25%;
+.username-box:hover .box-action{
+    transform: scaleY(1);
 }
-.wrap-footer > div .title{
-    font-size: 20px;
-    font-weight: 500;
-    color: #e74c3c;
-    text-transform: uppercase;
-    padding-bottom: 20px;
-}
-.wrap-footer .list-icon{
-    display: flex;
-    gap: 15px;
-}
-.wrap-footer .list-icon a{
+.username-box .username{
+    margin: 0;
+    font-size: 15px;
     cursor: pointer;
-    display: flex;
-    width: 25px;
-    height: 25px;
+    line-height: 2;
+}
+.username-box .box-action{
+    position: absolute;
+    width: auto;
+    top: 120%;
+    left: -50%;
+    background-color: #fff;
     border: 1px solid #e74c3c;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    color: #e74c3c;   
+    transform: scaleY(0);
+    transform-origin: top;
+    color: #fff;
+    z-index: 2;
+    transition: all .2s;
+    border-radius: 7px;
+}
+.username-box .box-action::after{
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #e74c3c;
+}
+.username-box .box-action a{
+    color: #e74c3c;
+    text-decoration: unset;
+    margin: 0;
+    padding: 5px 0px;
+    text-align: start;
+    padding: 7px 10px;
+    text-wrap: nowrap;
+    display: flex;
+    overflow: hidden;
     transition: all .2s;
 }
-.wrap-footer .list-icon a:hover{
-    background: #e74c3c;
-    color: #fff;
+.username-box .box-action a:hover{
+    color: #ff1700;
+    text-decoration: underline;
 }
-.main-product{
+/*======================================================= HEADER ======================================================= */
+.main-product {
+    margin-top: 35px;
+}
+
+.main-product .head-product {
+    display: flex;
+    align-items: center;
     padding: 15px 0px;
 }
+.main-product .head-product a, .main-product .head-product .list-component-cate a{
+    display: block; 
+    padding: 5px 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+    line-height: 20px;
+    text-align: center;
+    margin: 0px 5px;
+    transition: all .2s;
+
+}
+.main-product .head-product a:hover, .main-product .head-product .list-component-cate a:hover{
+    
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+}
+.main-product .head-product .title-component-cate{
+    font-size: 16px;
+}
+.main-product .head-product .filter-product form select {
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.main-product .head-product .search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-product .filter-search {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.head-product .search-wrap .search {
+    position: relative;
+}
+
+.main-product .head-product .search-wrap .search input {
+    border: unset;
+    background: transparent;
+    border-bottom: 1px solid #000;
+    padding: 0px 10px;
+}
+
+.main-product .head-product .search-wrap .search i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.main-product .head-product .search-wrap .cart a {
+    position: relative;
+    font-size: 20px;
+}
+
+.main-product .head-product .search-wrap .cart a .num {
+    position: absolute;
+    z-index: 0;
+    right: -15px;
+    top: 0px;
+    color: #fff;
+    background: #288ad6;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    padding: 0px;
+    text-align: center;
+    font-weight: 400;
+    line-height: 18px;
+    border-radius: 50%;
+}
+
+.main-product .head-product .cart .search-wrap from {
+    display: flex;
+    align-items: center;
+}
+
+.main-product .head-product .cart .search-wrap from .search input {
+    border: unset;
+    background: transparent;
+    border-bottom: 1px solid #000;
+    padding: 0px 10px;
+}
+
 .main-product .list-product {
     width: 100%;
     display: flex;
@@ -231,8 +576,15 @@ footer{
     width: 100%;
     height: 100%;
 }
+.main-product .list-product .item-product .card-body{
+    padding: 0px;
+}
 
 .main-product .list-product .item-product .card-body .card-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+  	-webkit-box-orient: vertical;
     font-size: 16px;
     line-height: 1;
     margin: 0;
@@ -275,12 +627,16 @@ footer{
 .main-product .list-product .item-product .card-body .box-button .detail {
     color: #288ad6;
     border-color: #288ad6;
+    border-radius: unset;
+    border: 1px solid;
 }
 
 .main-product .list-product .item-product .card-body .box-button .detail:hover{
     background: #288ad6;
     border-color: #288ad6;
     color: #fff;
+   
+
 }
 
 .main-product .list-product .item-product .card-body .box-button .add {
@@ -288,16 +644,7 @@ footer{
     border-color: #e74c3c;
 }
 
-.main-product .list-product .item-product .card-body .box-button .add:hover{
+.main-product .list-product .item-product .card-body .box-button .add:hover::after {
     background: #e74c3c;
     border-color: #e74c3c;
-    color: #fff;
-}
-.box-button {
-    display: flex;
-    gap: 25px;
-}
-.box-button button{
-    border: 1px solid;
-    border-radius: unset;
 }

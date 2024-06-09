@@ -4,7 +4,7 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>  </th>
       <td mat-cell *matCellDef="let element">
-       <mat-checkbox    name="SelectId"
+       <mat-checkbox  name="SelectId"
         (change)="onCheckboxChange(element.id)">
       </mat-checkbox>
          </td>
@@ -13,43 +13,27 @@
     <ng-container matColumnDef="ảnh">
       <th mat-header-cell *matHeaderCellDef>Ảnh</th>
       <td mat-cell *matCellDef="let element"> 
-        <img  [src]="'http://localhost:8080/images/'+element.image" style="width: 50px;height: 50px;" >
+        <img  [src]="'http://localhost:8080/images/'+element.image" style="width: 100px;height: 100px;" >
        </td>
     </ng-container>
   
     <ng-container matColumnDef="ten">
       <th mat-header-cell *matHeaderCellDef> Tên sản phẩm</th>
-      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+      <td mat-cell *matCellDef="let element" class="product-name-cell"> {{element.productName}} </td>
     </ng-container>
-    <ng-container matColumnDef="bienthe">
-      <th mat-header-cell *matHeaderCellDef> Phân loại </th>
-      <td mat-cell *matCellDef="let element"> 
-        {{element.size}}
-      <br>
-      {{element.color}}
-     </td>
-    </ng-container>
-    <ng-container matColumnDef="gia">
-        <th mat-header-cell *matHeaderCellDef>Giá </th>
-        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-      </ng-container>
-      <ng-container matColumnDef="soluong">
-        <th mat-header-cell *matHeaderCellDef> Số lượng </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-      </ng-container>
-      <ng-container matColumnDef="diachi">
-        <th mat-header-cell *matHeaderCellDef>Địa chỉ </th>
-        <td mat-cell *matCellDef="let element"> {{element.addressUser}} </td>
-      </ng-container>
       <ng-container matColumnDef="tennguoidung">
         <th mat-header-cell *matHeaderCellDef>Tên người dùng  </th>
-        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+        <td mat-cell *matCellDef="let element" class="product-name-cell"> {{element.username}} </td>
+      </ng-container>
+      <ng-container matColumnDef="thanhtoan">
+        <th mat-header-cell *matHeaderCellDef>Thanh toán  </th>
+        <td mat-cell *matCellDef="let element"> {{element.paymentStatus}} </td>
       </ng-container>
       <ng-container matColumnDef="thaotac">
         <th mat-header-cell *matHeaderCellDef>Thao tác </th>
         <td mat-cell *matCellDef="let element"> 
-          
-        <button >Đơn hàng cần được giao</button> </td>
+          <button ><a routerLink="/admin/detail-order/{{element.id}}" routerLinkActive="active">Chi tiết</a></button>
+        <button >Chờ giao</button> </td>
       </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

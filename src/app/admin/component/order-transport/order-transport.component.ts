@@ -43,14 +43,14 @@ export class OrderTransportComponent {
   }
   UpdateApprovalToTransport(){
     this.adminServe.updateApprovalToTransport(this.orders).subscribe((res)=>{
-      location.reload();
+      this.getHistoryOrderTransport();
     },
     (error)=>{
-      location.reload();
+      this.getHistoryOrderTransport();
     })
   }
 
-  displayedColumns: string[] = ['id', 'ảnh', 'ten', 'bienthe','gia','soluong','tennguoidung','diachi','thaotac'];
+  displayedColumns: string[] = ['id', 'ảnh', 'ten','tennguoidung','thanhtoan','thaotac'];
       dataSource = this.history;
 
 }

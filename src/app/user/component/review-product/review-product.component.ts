@@ -74,7 +74,7 @@ location.reload();
       for(const i in this.reviewForm.controls){
         this.reviewForm.controls[i].markAsDirty();
         this.reviewForm.controls[i].updateValueAndValidity();
-      }
+      }  
     }
   };
 }

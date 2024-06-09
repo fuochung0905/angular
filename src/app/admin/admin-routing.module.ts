@@ -22,6 +22,10 @@ import { OrderCancelComponent } from './component/order-cancel/order-cancel.comp
 import { UserInformationComponent } from './component/user-information/user-information.component';
 import { HistoryOrderComponent } from '../user/component/history-order/history-order.component';
 import { HistoryUserOrderComponent } from './component/history-user-order/history-user-order.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { PaymentTypeComponent } from './component/payment-type/payment-type.component';
+import { DetailUserComponent } from './component/detail-user/detail-user.component';
+import { DetailOrderComponent } from './component/detail-order/detail-order.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent ,
@@ -44,7 +48,11 @@ children:[
   {path:'order-complete',component:OrderCompleteComponent},
   {path:'order-cancle',component:OrderCancelComponent},
   {path:'user-all',component:UserInformationComponent},
-  {path:'history-user/:id',component:HistoryUserOrderComponent}
+  {path:'history-user/:id',component:HistoryUserOrderComponent},
+  {path:'payment',component:PaymentComponent},
+  {path:'payment/paymentType/:id',component:PaymentTypeComponent},
+  {path:'detail-order/:id',component:DetailOrderComponent}
+
 ]}
 ];
 

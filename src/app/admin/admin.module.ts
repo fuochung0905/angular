@@ -41,6 +41,9 @@ import { InTransportComponent } from './component/in-transport/in-transport.comp
 import { UserInformationComponent } from './component/user-information/user-information.component';
 import { DetailUserComponent } from './component/detail-user/detail-user.component';
 import { HistoryUserOrderComponent } from './component/history-user-order/history-user-order.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { PaymentTypeComponent } from './component/payment-type/payment-type.component';
+import { DetailOrderComponent } from './component/detail-order/detail-order.component';
 
 
 
@@ -68,7 +71,10 @@ import { HistoryUserOrderComponent } from './component/history-user-order/histor
     InTransportComponent,
     UserInformationComponent,
     DetailUserComponent,
-    HistoryUserOrderComponent
+    HistoryUserOrderComponent,
+    PaymentComponent,
+    PaymentTypeComponent,
+    DetailOrderComponent
   ],
   imports: [
     CommonModule,

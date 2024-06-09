@@ -8,6 +8,8 @@ import { VariationDto } from 'src/app/dto/VariationDto.model';
 import { VariationOptionDto } from 'src/app/dto/VariationOption.model';
 import { ProductItemVariationDto } from 'src/app/dto/ProductItemVariationDto.model';
 import { UpdateOrderStatus } from 'src/app/dto/UpdateOrderStatus.model';
+import { PaymentDto } from 'src/app/dto/PaymentDto.model';
+import { PaymentTypeDto } from 'src/app/dto/PaymentTypeDto.model';
 const BASIC_URL="http://localhost:8080";
 
 @Injectable({
@@ -28,6 +30,11 @@ export class AdminService {
         headers:this.createAuthorizationHeader()
       });
   };
+  getAdminUserById(userId:number):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/user/${userId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
   addProduct(productDto:FormData):Observable<any>{
       return this.http.post(BASIC_URL+'/api/admin/product/createNewProduct', productDto, {
         headers:  this.createAuthorizationHeader()
@@ -50,6 +57,37 @@ addVariationOption(variationOptionDto:VariationOptionDto):Observable<any>{
 };
 addVariationOptionForProductItem(productItemVariationDtos:ProductItemVariationDto[]):Observable<any>{
   return this.http.post(BASIC_URL+'/api/admin/productItem/addVariation',productItemVariationDtos,{
+    headers:this.createAuthorizationHeader()
+  });
+};
+
+addPayment(paymentDto:PaymentDto):Observable<any>{
+  return this.http.post(BASIC_URL+'/api/admin/payment',paymentDto,{
+    headers:this.createAuthorizationHeader()
+  })
+};
+addPaymentType(paymentTypeDto:PaymentTypeDto):Observable<any>{
+  return this.http.post(BASIC_URL+'/api/admin/paymentType/',paymentTypeDto,{
+    headers:this.createAuthorizationHeader()
+  })
+};
+getAllDelivery():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/delivery/',{
+    headers:this.createAuthorizationHeader()
+  })
+};
+getAllPayment():Observable<any>{
+  return this.http.get(BASIC_URL+'/api/admin/payment/',{
+    headers:this.createAuthorizationHeader()
+  })
+};
+getAllPaymentType():Observable<any>{
+ return this.http.get(BASIC_URL+'/api/admin/paymentType/',{
+    headers:this.createAuthorizationHeader()
+  })
+};
+getAllPaymentTypeByPayment(paymentTypeId:number):Observable<any>{
+  return this.http.get(BASIC_URL+`/api/admin/paymentType/payment/${paymentTypeId}`,{
     headers:this.createAuthorizationHeader()
   });
 };
@@ -101,6 +139,11 @@ getAllVariationByCategoryt(categoryId:any):Observable<any>{
       headers:this.createAuthorizationHeader()
     });
   }
+  getOrderDetailById(orderDetailId:number):Observable<any>{
+    return this.http.get(BASIC_URL+`/api/admin/order-detail/${orderDetailId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  };
 updateCategory(categoryId:any,categoryDto:any):Observable<any>{
  return this.http.post(BASIC_URL+`/api/admin/category/updateCategory/${categoryId}`,categoryDto,{
     headers:this.createAuthorizationHeader()
@@ -115,7 +158,19 @@ updateCategory(categoryId:any,categoryDto:any):Observable<any>{
   getProductImageById(productId: number): Observable<string> {
     return this.http.get<string>(`${BASIC_URL}/${productId}/image`);
   };
-
+  getCountOrdered():Observable<any>{
+    return this.http.get(BASIC_URL+'/api/admin/order/getCountOrdered',{
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  getTotalRevenueToday():Observable<any>{
+    return this.http.get(BASIC_URL+'/api/admin/order/getTotalRevenueToday',{
+      headers: this.createAuthorizationHeader()
+    });
+  };
+  getTotalRevenueOfMonth(month: number, year: number, active: boolean): Observable<number> {
+    return this.http.get<number>(BASIC_URL+`/api/admin/order/total-revenue-of-month?month=${month}&year=${year}&active=${active}`);
+  }
   deleteProductById(productId: any): Observable<any> {
     return this.http.delete(BASIC_URL + `/api/admin/product/${productId}`, {
       headers: this.createAuthorizationHeader()

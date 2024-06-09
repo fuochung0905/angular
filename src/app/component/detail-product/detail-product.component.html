@@ -1,0 +1,340 @@
+
+<header>
+    <div class="container-large">
+        <div class="top-box">
+            <div class="logo">
+                <a routerLink="/user/home" routerLinkActive="active" class=""><span>UTC2</span><span style="color: #000;">Store</span></a>
+            </div>
+            <div *ngIf="!isUserLoggedIn">
+                <div class="login-wrap">
+                    <div class="login-item log">
+                        <a class="btn-wrap" routerLink="/login" routerLinkActive="active">Đăng nhập</a>
+                    </div>
+                    <div class="login-item reg">
+                        <a class=" btn-wrap" routerLink="/signup" routerLinkActive="active">  Đăng kí</a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isUserLoggedIn">
+                <div id="tooltip-login-wrap">
+                    <div class="tooltip-login-hover">
+                        <li class="login-item">
+                            <img  [src]="'http://localhost:8080/images/' +userDto.image" style="width: 35px;height: 35px;" >
+                        </li>
+                        <li class="login-item">
+                            <div class="username-box">
+                                <p class="username">{{userDto.firstName}} {{userDto.lastName}}</p>
+                                <div class="box-action">
+                                    <a routerLink="/user/userInfor" routerLinkActive="active">Thông tin tài
+                                        khoản</a>
+                                    <a routerLink="/user/historyOrder" routerLinkActive="active">Thông tin đơn
+                                        hàng</a>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="login-item">
+                            <form class="form-inline" (ngSubmit)=" logout()">
+                                <button type="submit" class="logout btn-wrap">Đăng Xuất</button>
+                            </form>
+                        </li>
+
+
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="bottom-box">
+            <ul class="main-menu">
+            </ul>
+            <div class="search-wrap">
+                <div class="search-box">
+                    <form class="form-inline" style="display: flex; flex-direction: row;">
+                        <div class="">
+                            <input type="text" name="searchName" placeholder="Search">
+                        </div>
+                        <button class="" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <a class="cart-box" (click)="checkUser()">
+                    <i class="bi bi-cart"></i>
+                    <span id="cartCount" class="num">{{cartCount}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container-web">
+    <div class="detail-card-wrapper">
+        <div class="card">
+            <!--card trái-->
+            <div class="card-left">
+
+                <div class="product-imgs">
+                    <div class="img-display">
+                        <div class="img-showcase">
+                            <div class="image-top">
+                                <img [src]="'http://localhost:8080/images/' + product.image">
+                            </div>
+                            <!-- <div *ngFor="let productItem of listProductItem">
+                                <div class="image-bottom" style="display: flex;
+                                flex-direction: row;">
+                                    <img style="width: 200px;height: 200px;" [src]="'http://localhost:8080/images/' + productItem.image" >
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links" style="margin-top: 30px;">
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
+            </div>
+            <!--card phải-->
+            <div class="product-content">
+                <h2 class="product-title">{{product.productName}}</h2>
+                <a href="#" class="product-link">visit shop</a>
+                <div class="product-rating" style="color: #e74c3c;">
+                    <p style="color: #e74c3c;"> {{rating}} <i class="fa-solid fa-star"></i>  ({{countReview}})</p>
+                </div>
+                <div class="product-price">
+
+                    <p class="new-price">Giá hiện tại: <span class="money">{{product.price}}</span></p>
+                </div>
+                <div>
+                    
+                </div>
+                <div class="product-detail">
+                    <div class="box-detail">
+                        <p class="title">Màu sắc: </p>
+                        <div class="list">
+                            <div *ngFor="let productItem of listProductItem">
+                                <div class="variation" style="display: flex;">
+                                    <div *ngFor="let variationoption of allVariationOption" >
+                                        <div *ngIf="productItem.qyt_stock==0">
+                                            <div class="item-detail active" *ngIf="productItem.idColor==variationoption.id" >
+                                                <div >
+                                                    <input (click)="handleRadioButtonClick(productItem.id)"
+                                                    id="{{productItem.id}}" type="radio"
+                                                    value="{{productItem.id}}" class="variation-size" name="size"disabled >
+                                                <label for="{{productItem.id}}">{{variationoption.value}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="productItem.qyt_stock !=0">
+                                            <div class="item-detail" *ngIf="productItem.idColor===variationoption.id" >
+                                                <div >
+                                                    <input (click)="handleRadioButtonClick(productItem.id)"
+                                                    id="{{productItem.id}}" type="radio"
+                                                    value="{{productItem.id}}" class="variation-size" name="size" >
+                                                <label for="{{productItem.id}}">{{variationoption.value}}</label>
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-detail">
+                        <p class="title">Kích thước: </p>
+                        <div class="list">
+                          
+                                    <div *ngFor="let productItemVariationOption of listProductItemVariationOption">
+                                        <div *ngIf="showsize">
+                                        <div *ngIf="productItemVariationOption.quantity===0">
+                                            <div *ngFor="let variationoption of allVariationOption" >
+                                                    <div *ngIf="productItemVariationOption.variationOptionId===variationoption.id">
+                                                        <div class="item-detail active">
+                                                            <input (click)="handleRadiobuttonColor(variationoption.id)"
+                                                                id="{{variationoption.value}}" type="radio" value="{{variationoption.id}}"
+                                                                class="variation-size" name="variation-size" disabled>
+                                                            <label for="{{variationoption.value}}">{{variationoption.value}}</label>
+                                                        </div>                                        </div>
+                                                   
+                                            </div>
+                                        </div>
+                                        <div *ngIf="productItemVariationOption.quantity!=0">
+                                            <div *ngFor="let variationoption of allVariationOption" >
+                                                    <div *ngIf="productItemVariationOption.variationOptionId===variationoption.id">
+                                                        <div class="item-detail ">
+                                                            <input (click)="handleRadiobuttonColor(variationoption.id)"
+                                                            id="{{variationoption.value}}" type="radio" value="{{variationoption.id}}"
+                                                            class="variation-size" name="variation-size" >
+                                                        <label for="{{variationoption.value}}">{{variationoption.value}}</label>
+                                                        </div>                                   </div>
+                                            </div>
+                                        </div>
+                                     
+                                        </div>
+                                    </div>
+                          
+                          
+                                <div *ngFor="let variationOption of listvariationOption">
+                                   
+                                    <div *ngIf="!showsize">
+                                        <div class="item-detail ">
+                                            <input (click)="handleRadiobuttonColor(variationOption.id)"
+                                                id="{{variationOption.value}}" type="radio" value="{{variationOption.id}}"
+                                                class="variation-size" name="variation-size">
+                                            <label for="{{variationOption.value}}">{{variationOption.value}}</label>
+                                        </div>
+                                    </div>
+                                 
+                                </div>
+                           
+                           
+                        </div>
+                    </div>
+                    <div class="box-detail">
+                        <p class="title">Số lượng: </p>
+                        <div class="amount">
+                            <input type="number" min="1" max="{{product.quantity}}" value="1"
+                            [(ngModel)]="colorSize.quantity" name="quantity">
+                        <h6>{{product.quantity}}</h6>
+                        </div>
+                        
+                    </div>
+                    <div class="get-product">
+                        <button type="button" class="btn-wrap add" (click)="addCart()">
+                            <i class="bi bi-cart-plus"></i> <span>Thêm vào giỏ hàng</span>
+                        </button>
+                        <button type="submit" class="btn-wrap buy" (click)="addOrder()">
+                            <i class="bi bi-bag-check"></i> <span>Mua hàng</span>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+    <div class="detail-card-wrapper">
+        <div class="product-describe" style="background:white; border: 1px solid #d9d9d9">
+            <div style="background: #f0f0f0; border: 1px solid #d9d9d9;">
+                <h3 style="background: #f0f0f0; padding-left: 10px;">MÔ TẢ SẢN PHẨM</h3>
+            </div>
+            <div style="border: 1px solid #d9d9d9;">
+
+                <div style="padding: 10px;">
+                    {{product.description}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="" class="detail-card-wrapper">
+        <div class="product-rating">
+            <div class="product-rating-header" style="background: #f0f0f0; border: 1px solid #d9d9d9;">
+                <h3 style="background: #f0f0f0; padding-left: 10px;">ĐÁNH GIÁ SẢN PHẨM</h3> 
+            </div>
+            <div class="product-rating-list" style="border: 1px solid #ccc;">
+                <div class="product-rating-list-comment">
+                    <div *ngFor="let review of listReviewDto">
+                        <div class="utc2-product-rating">
+                            <div class="infor-cmt">
+                                <img class="ava-cmt" [src]="'http://localhost:8080/images/'+review.imageUser">
+                                <div class="box-name">
+                                    <p>{{review.username}}</p>
+                                    <p style="color: #e74c3c;"><span style="font-weight: 400; font-size: 13px; color: #000;">Đánh giá:</span> {{review.rating}} <i class="fa-solid fa-star"></i></p>
+                                   
+                                    <div class="date-box">
+                                        <p>{{review.date}} <span>|</span>  Phân loại: {{review.variation}}</p>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="utc2-product-rating-main" style="margin-left: 54px;"> 
+                                <div>
+                                    <p>{{review.comment}}</p>
+                                </div>
+                                <div>
+                                    <img [src]="'http://localhost:8080/images/'+review.imageReview"
+                                        style="width: 50px; height: 50px;">
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<footer>
+    <div class="container-large">
+        <div class="wrap-footer">
+            <div class="about-us">
+                <div class="title fw-semibold">Về chúng tôi</div>
+                <div class="logo">
+                    <a class=""><span>UTC2</span><span>Store</span></a>
+                </div>
+                <p class="fw-lighter pt-2">Đến với UTC2<span>STORE</span> quý khách sẽ được trải nghiệm các sản phẩm
+                    hoàn toàn mới với chất lượng đảm bảo uy tín - mẫu mã.</p>
+            </div>
+            <div class="other-us">
+                <div class="title fw-semibold">Chi nhánh</div>
+                <span class="fw-lighter">Cơ sở: <span class="">Đ.448 Lê Văn Việt, P. Tăng Nhơn Phú A, Tp.Thủ Đức,
+                        Tp</span></span><br />
+            </div>
+            <div class="contact-us">
+                <div class="title fw-semibold">Liên hệ</div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Điện thoại</p>
+                    <span class="">0399333643</span>
+                </div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Email CSKH</p>
+                    <span class="">6251071033@st.utc2.edu.vn</span>
+                </div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Email công việc</p>
+                    <span class="">phuochungnguyen.work@gmail.com</span>
+                </div>
+                <div class="text-wrap">
+                    <p class="fw-lighter">Thứ Hai - Chủ Nhật</p>
+                    <span class="">8h30-22h</span>
+                </div>
+            </div>
+            <div class="follow-us">
+                <div class="title fw-semibold">Hệ thống cửa hàng</div>
+                <p class="fw-lighter">Hiện tại @item.namestorage<span>STORE</span> chỉ hoạt động kinh doanh qua các kênh
+                    trực tuyến: Website, Facebook, Instagram, Shopee, Lazada & Tiktok shop</p>
+                <div class="list-icon">
+                    <a> <i class="fa-brands fa-instagram"></i></a>
+                    <a> <i class="fa-brands fa-facebook-f"></i></a>
+                    <a> <i class="fa-brands fa-tiktok"></i></a>
+                    <a> <i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

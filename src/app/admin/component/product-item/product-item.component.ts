@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VariationDto } from 'src/app/dto/VariationDto.model';
@@ -22,6 +22,7 @@ export class ProductItemComponent {
  listVariationOption:VariationOptionDto[]=[];
   listProductItem:ProductItemDto[]=[];
   idColor:any;
+
  
   constructor(private adminService:AdminService,
     private fb :FormBuilder,
@@ -48,13 +49,14 @@ export class ProductItemComponent {
     this.getAllVariationOptionWithColorByProduct();
     this.productItemForm=this.fb.group({
       productId: [''],
-      qyt_stock: [''],
-      price: [''],
+      // qyt_stock: ['',[Validators.required, Validators.pattern('^[0-9]*$')]],
+      price: ['',[Validators.required, Validators.pattern('^[0-9]*$')]],
       idColor:['']
     });
 
     this.getAllProductItemByProduct();
   };
+
 getAllProductItemByProduct(){
   this.id=this.activeRouter.snapshot.params['id'];
   this.adminService.getAllProductItemByProduct(this.id).subscribe((res)=>{
@@ -67,11 +69,14 @@ updateVariationOptions(event: any) {
 }
 
   addProduct():void{
+    if (this.productItemForm.invalid) {
+      return;
+    }
     if(this.productItemForm.valid){
       const formData :FormData=new FormData();
       formData.append('file',this.selectedFile);
       formData.append('productId',this.id);
-      formData.append('qyt_stock',this.productItemForm.get('qyt_stock')?.value);
+      // formData.append('qyt_stock',this.productItemForm.get('qyt_stock')?.value);
       formData.append('price',this.productItemForm.get('price')?.value);
       formData.append('idColor',this.idColor);
 this.adminService.addProductItem(formData).subscribe(

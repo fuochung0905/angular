@@ -1,0 +1,75 @@
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header img {
+    width: 80px;
+}
+
+.header h1 {
+    color: #4CAF50;
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+.order-info p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.order-info strong {
+    color: #000;
+}
+.btn-thanhtoan{
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    background-color: rgb(255, 255, 255);
+    outline: 0px;
+    cursor: pointer;
+    border: 1px solid rgb(11, 116, 229);
+    color: rgb(11, 116, 229);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px
+}
+.btn-donmua{
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    background-color: rgb(255, 255, 255);
+    outline: 0px;
+    cursor: pointer;
+    border: 1px solid rgb(229, 11, 55);
+    color: rgb(229, 11, 55);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px
+}

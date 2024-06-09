@@ -1,5 +1,4 @@
 export class ColorSize{
-   
     idColor:number;
     variationOptionId:number;
     quantity:number;

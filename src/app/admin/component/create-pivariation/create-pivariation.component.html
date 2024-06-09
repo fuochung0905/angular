@@ -1,4 +1,5 @@
 <mat-toolbar>{{productDto.productName}}</mat-toolbar>
+<button class="btn-wrap add-prd" (click)="pageVariationOption()">Thêm biến thể</button>
 <div style="display: flex;">
   <div>
     <img class="images" [src]="'http://localhost:8080/images/' + productItemDto.image"
@@ -13,7 +14,7 @@
   </div>
   <div class="box-detail">
     <label class="title">Số lượng : </label>
-    <label> {{productItemDto.qyt_stock}}</label>
+    <label> {{productItemDto.quantity}}</label>
   </div>
   <div class="box-detail">
     <label class="title">Kích thước : </label>
@@ -55,10 +56,18 @@
                 Thêm số lượng
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <form (ngSubmit)="updateQuantity(element.id)">
+            <form  [formGroup]="updatequantityForm" (ngSubmit)="updateQuantity(element.id)">
               <label>Số lượng</label>
-              <input type="number" name="name" [(ngModel)]="updateProductItemVariation.quantity">
-              <button type="submit">THÊM</button>
+              <input type="number" name="quantity" formControlName="quantity" [(ngModel)]="updateProductItemVariation.quantity">
+              <div style="color: red;"
+              *ngIf="updatequantityForm.controls['quantity'].invalid && (updatequantityForm.controls['quantity'].dirty || updatequantityForm.controls['quantity'].touched)">
+              <div *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['required']">
+                Vui lòng nhập số lượng sản phẩm</div>
+                <div *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['pattern']">
+                  Số lượng sản phẩm không âm
+                </div>
+            </div>
+              <button type="submit" [disabled]="updatequantityForm.invalid">THÊM</button>
             </form>
           </mat-expansion-panel>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">

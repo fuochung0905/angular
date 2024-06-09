@@ -13,7 +13,9 @@ body {
     border-radius: 15px;
     padding: 10px;
 }
-
+.green-icon mat-icon {
+    color: rgb(41, 0, 128); /* Bạn có thể thay thế bằng mã màu bạn muốn, ví dụ: #00ff00 */
+  }
 .my-cart h3 {
     color: #e74c3c;
     font-size: 22px;

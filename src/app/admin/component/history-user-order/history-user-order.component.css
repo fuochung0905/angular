@@ -1,0 +1,6 @@
+.product-name-cell {
+    max-width: 150px; /* hoặc chiều rộng tùy ý mà bạn muốn */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

@@ -39,9 +39,9 @@ PreViewImage(){
 };
   ngOnInit(){
     this.productForm=this.fb.group({
-      categoryId: [''],
-      productName: [''],
-      description: [''],
+      categoryId: ['',Validators.required],
+      productName: ['',Validators.required],
+      description: ['',Validators.required],
     
     });
     
@@ -56,6 +56,9 @@ PreViewImage(){
   };
   addProduct():void
   {
+    if (this.productForm.invalid) {
+      return;
+    }
    
     if(this.productForm.valid){
       const formData :FormData=new FormData();
