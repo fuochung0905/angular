@@ -4,3 +4,40 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  mat-toolbar {
+    background-color: #fff;
+    color: #e74c3c;
+    font-size: 22px;
+    padding-left: 0;
+    border-bottom: 1px solid;
+    margin-bottom: 15px;
+  }
+  .product-name-cell {
+    max-width: 150px; /* hoặc chiều rộng tùy ý mà bạn muốn */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  table {
+    width: 100%;
+    box-shadow: unset;
+    padding: 10px;
+    border: 1px solid #e74c3c;
+    margin: 25px 0px;
+  }
+  table tr{
+    margin-bottom: 15px;
+  }
+  .mdc-data-table__row:last-child .mat-mdc-cell {
+    border-bottom: none;
+    /* padding: 7px; */
+}
+.mat-mdc-header-cell {
+    border-bottom-color: #e74c3c;
+    font-size: 16px;
+    color: #fff;
+    background: #e74c3c !important;
+  }
+  .mdc-data-table__cell, .mdc-data-table__header-cell {
+    padding: 10px 16px 10px 16px;
+}

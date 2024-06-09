@@ -1,33 +1,42 @@
 <mat-toolbar>{{productDto.productName}}</mat-toolbar>
-<button class="btn-wrap add-prd" (click)="pageVariationOption()">Thêm biến thể</button>
-<div style="display: flex;">
+<button class="btn-wrap add-prd" (click)="pageVariationOption()">Thêm loại kích thước </button>
+<div class="wrap-box">
+
+  
+  <div>
+    <form (ngSubmit)="addProductItemVariationOption()">
+      <div class="box-detail sp">
+        <div>
+          <label class="title">Thêm số lượng cho loại kích thước : </label>
+          <div class="box-size">
+            <div class="item-size" *ngFor="let item of listVariationOptionWithSize">
+              <mat-checkbox [(ngModel)]="item.checked" name="item.value"
+                (change)="onCheckboxChange(item.id, $event)">{{item.value}}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+        <button class="btn-wrap add-prd" type="submit">Xác nhận</button>
+      </div>
+    </form>
+  </div>
   <div>
     <img class="images" [src]="'http://localhost:8080/images/' + productItemDto.image"
-      style="width: 200px;height: 200px;">
-  </div>
+      style="width: 200px;height: 200px; margin-top: 15px;">
 
+    <form (ngSubmit)="addProductItemVariationOption()">
+      <div class="box-detail">
+        <label class="title">Giá : </label>
+        <label> {{productItemDto.price}}</label>
+      </div>
+      <div class="box-detail">
+        <label class="title">Số lượng : </label>
+        <label> {{productItemDto.quantity}}</label>
+      </div>
+    </form>
+  </div>
 </div>
-<form (ngSubmit)="addProductItemVariationOption()">
-  <div class="box-detail">
-    <label class="title">Giá : </label>
-    <label> {{productItemDto.price}}</label>
-  </div>
-  <div class="box-detail">
-    <label class="title">Số lượng : </label>
-    <label> {{productItemDto.quantity}}</label>
-  </div>
-  <div class="box-detail">
-    <label class="title">Kích thước : </label>
-    <div *ngFor="let item of listVariationOptionWithSize">
-      <mat-checkbox [(ngModel)]="item.checked" name="item.value"
-        (change)="onCheckboxChange(item.id, $event)">{{item.value}}
-      </mat-checkbox>
-    </div>
-  </div>
-  <button class="btn-wrap add-prd" type="submit">Thêm</button>
-</form>
 
-<hr>
 <table mat-table [dataSource]="listProductItemVariationOptionByProductItem" class="mat-elevation-z8">
   <ng-container matColumnDef="productItemId">
     <th mat-header-cell *matHeaderCellDef> ProductItem </th>
@@ -56,18 +65,21 @@
                 Thêm số lượng
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <form  [formGroup]="updatequantityForm" (ngSubmit)="updateQuantity(element.id)">
+            <form [formGroup]="updatequantityForm" (ngSubmit)="updateQuantity(element.id)">
               <label>Số lượng</label>
-              <input type="number" name="quantity" formControlName="quantity" [(ngModel)]="updateProductItemVariation.quantity">
+              <input type="number" name="quantity" formControlName="quantity"
+                [(ngModel)]="updateProductItemVariation.quantity">
               <div style="color: red;"
-              *ngIf="updatequantityForm.controls['quantity'].invalid && (updatequantityForm.controls['quantity'].dirty || updatequantityForm.controls['quantity'].touched)">
-              <div *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['required']">
-                Vui lòng nhập số lượng sản phẩm</div>
-                <div *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['pattern']">
+                *ngIf="updatequantityForm.controls['quantity'].invalid && (updatequantityForm.controls['quantity'].dirty || updatequantityForm.controls['quantity'].touched)">
+                <div
+                  *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['required']">
+                  Vui lòng nhập số lượng sản phẩm</div>
+                <div
+                  *ngIf="updatequantityForm.controls['quantity'].errors && updatequantityForm.controls['quantity'].errors['pattern']">
                   Số lượng sản phẩm không âm
                 </div>
-            </div>
-              <button type="submit" [disabled]="updatequantityForm.invalid">THÊM</button>
+              </div>
+              <button class="add_mount" type="submit" [disabled]="updatequantityForm.invalid">THÊM</button>
             </form>
           </mat-expansion-panel>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
