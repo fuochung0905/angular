@@ -170,9 +170,14 @@ updateCategory(categoryId:any,categoryDto:any):Observable<any>{
   };
   getTotalRevenueOfMonth(month: number, year: number, active: boolean): Observable<number> {
     return this.http.get<number>(BASIC_URL+`/api/admin/order/total-revenue-of-month?month=${month}&year=${year}&active=${active}`);
-  }
+  };
+  getCurrentLogin():Observable<any>{
+    return this.http.get('http://localhost:8080/api/admin/user/current',{
+      headers: this.createAuthorizationHeader()
+    });
+  };
   deleteProductById(productId: any): Observable<any> {
-    return this.http.delete(BASIC_URL + `/api/admin/product/${productId}`, {
+    return this.http.delete(BASIC_URL +`/api/admin/product/${productId}`, {
       headers: this.createAuthorizationHeader()
     });
   };

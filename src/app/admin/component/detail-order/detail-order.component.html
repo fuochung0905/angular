@@ -6,7 +6,21 @@
             <h2>Thông Tin Đơn Hàng</h2>
             <p><strong>Ngày đặt hàng:</strong> {{orderDetailDto.createDate}}</p>
             <p><strong>Ngày cập nhật:</strong> {{orderDetailDto.updateDate}}</p>
-            <p><strong>Trạng thái:</strong>{{orderDetailDto.orderStatus}}</p>
+            <div *ngIf="orderDetailDto.orderStatus==='ordered'">
+                <p><strong>Trạng thái:</strong>Chờ xét duyệt</p>
+            </div>
+            <div *ngIf="orderDetailDto.orderStatus==='approved'">
+                <p><strong>Trạng thái:</strong>Chờ vận chuyển</p>
+            </div>
+            <div *ngIf="orderDetailDto.orderStatus==='transport'">
+                <p><strong>Trạng thái:</strong>Đang vận chuyển</p>
+            </div>
+            <div *ngIf="orderDetailDto.orderStatus==='delivered'">
+                <p><strong>Trạng thái:</strong>Hoàn thành</p>
+            </div>
+            <div *ngIf="orderDetailDto.orderStatus==='cancel'">
+                <p><strong>Trạng thái:</strong>Đã hủy</p>
+            </div>
             <p><strong>Phương thức thanh toán:</strong>{{orderDetailDto.orderPayment}}</p>
             <p><strong>Phương thức vận chuyển:</strong> {{orderDetailDto.orderDelivery}}</p>
         </section>
@@ -30,6 +44,22 @@
      
 
     </main>
-    
+    <div>
+        <div *ngIf="orderDetailDto.orderStatus==='ordered'">
+           <button (click)="duyetDonHang()">DUYỆT</button>
+        </div>
+        <div *ngIf="orderDetailDto.orderStatus==='approved'">
+            <button (click)="chuyenDenDonViVanChuyenDonHang()">ĐÃ CHUYỂN ĐI VẬN CHUYỂN</button>
+        </div>
+        <div *ngIf="orderDetailDto.orderStatus==='transport'">
+            <button (click)="donHangNguoiNhanDaNhan()">ĐÃ NHẬN HÀNG</button>
+        </div>
+        <!-- <div *ngIf="orderDetailDto.orderStatus==='delivered'">
+            <button>NGƯỜI MUA ĐÃ NHẬN</button>
+        </div>
+        <div *ngIf="orderDetailDto.orderStatus==='cancel'">
+            <button>ĐÃ HỦY</button>
+        </div> -->
+    </div>
 </div>
 

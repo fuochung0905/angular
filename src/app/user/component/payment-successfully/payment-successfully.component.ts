@@ -45,6 +45,7 @@ export class PaymentSuccessfullyComponent implements OnInit{
       let num: number = Number(this.orderInfo);
       this.orderRequest.cartid=num;
       this.orderRequest.paymentId=2;
+      console.log(this.orderRequest);
       this.userService.addOrder(this.orderRequest).subscribe(
         (res) => {
        

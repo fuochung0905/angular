@@ -1,13 +1,18 @@
 <div *ngIf="isAdminLoggedIn">
   <div class="admin-layout-main">
     <div class="admin-sidebar">
+      <form class="form-inline" (ngSubmit)=" logout()">
+        <button type="submit" class="logout-btn nav-link btn btn-link text-light"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+      </form>
       <div class="admin-profile">
-        <a class="name" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-          <span id="username">Tên Admin</span>
-        </a>
-        <form class="form-inline" (ngSubmit)=" logout()">
-          <button type="submit" class="logout-btn nav-link btn btn-link text-light"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
-        </form>
+       
+        <img  class="img" [src]="'http://localhost:8080/images/' +userDto.image" style="width: 50px; height: 50px;" >
+        <div class="name">
+          <span id="username">{{userDto.firstName}} {{userDto.lastName}}</span>
+        </div>
+         
+     
+       
       </div>
       <div class="side-bar">
         <div class="menu" (click)="toggleSubMenu($event)">

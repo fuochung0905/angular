@@ -37,6 +37,11 @@ export class UserService {
       headers:this.createAuthorizationHeader()
     });
   };
+  addOrderAll(orderRequest:OrderRequest):Observable<any>{
+    return this.httpClient.post(BASIC_URL+'/api/user/order/orderAll',orderRequest,{
+      headers:this.createAuthorizationHeader()
+    });
+  };
   addReview(reviewDto:FormData):Observable<any>{
     return this.httpClient.post(BASIC_URL+'/api/user/review/createNewReview',reviewDto,{
       headers:this.createAuthorizationHeader()
@@ -197,6 +202,12 @@ getAllPaymentTypeByPaymentId(paymentId:number):Observable<any>{
     headers:this.createAuthorizationHeader()
   });
 };
+getAllCartDetail():Observable<any>{
+  return this.httpClient.get(BASIC_URL+'/api/user/cartDetail/',{
+    headers:this.createAuthorizationHeader()
+  });
+};
+
 updateUserInfor(userDto:UserDto):Observable<any>{
   return this.httpClient.post(BASIC_URL+'/api/user/information/',userDto,{
     headers:this.createAuthorizationHeader()
